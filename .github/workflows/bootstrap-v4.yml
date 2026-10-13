@@ -1,0 +1,27 @@
+name: Import reviewed V4 snapshot
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Import exact reviewed commit and tag
+        env:
+          V4_COMMIT: 2d0b3a9aa000a5118d5a5330bfbb9909a06b8dac
+          V3_COMMIT: 89a0edd6de65dec875d9d2ca778d11022b45084f
+        run: |
+          git -c http.https://github.com/.extraheader= fetch --no-tags https://github.com/saeideeshghi/marpich-sanat-v3.git "$V3_COMMIT"
+          base64 --decode .github/v4-snapshot.bundle.b64 > /tmp/v4-release.bundle
+          git bundle verify /tmp/v4-release.bundle
+          git fetch /tmp/v4-release.bundle refs/heads/main:refs/remotes/release/main refs/tags/v4.0.0:refs/tags/v4.0.0
+          test "$(git rev-parse refs/remotes/release/main)" = "$V4_COMMIT"
+          test "$(git rev-parse refs/tags/v4.0.0^{commit})" = "$V4_COMMIT"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          mps_bootstrap=$(git rev-parse HEAD)
+          mps_tree=$(git rev-parse "$V4_COMMIT^{tree}")
+          mps_commit=$(git commit-tree "$mps_tree" -p "$mps_bootstrap" -p "$V4_COMMIT" -m 'Publish reviewed Marpich Sanat 4.0.0 snapshot')
+          test "$(git rev-parse "$mps_commit^{tree}")" = "$mps_tree"
+          git push --atomic origin "$mps_commit:refs/heads/main" refs/tags/v4.0.0
