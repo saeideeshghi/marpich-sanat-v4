@@ -752,3 +752,24 @@ body[data-page="projects"] .projects-page__testimonials-subtitle p {
         transition: none;
     }
 }
+
+/* Give author metadata its own row so stars cannot squeeze the full name. */
+@media (max-width: 1179px) {
+    body[data-page="projects"] .projects-page__testimonial-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    body[data-page="projects"] .projects-page__testimonial-footer > div:first-child {
+        width: 100%;
+        min-width: 0;
+    }
+    body[data-page="projects"] .projects-page__testimonial-footer strong {
+        display: block;
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+    }
+    body[data-page="projects"] .projects-page__rating {
+        align-self: flex-end;
+    }
+}

@@ -14,7 +14,13 @@ function executeGit(program, args, cwd) {
     return { status: result.status, stdout: result.stdout || "", stderr: result.stderr || "" };
 }
 
-export function setupGithub({ cwd = projectRoot, repository, execute = executeGit, report = console.log } = {}) {
+export function setupGithub({
+    cwd = projectRoot,
+    repository,
+    replaceOrigin = false,
+    execute = executeGit,
+    report = console.log,
+} = {}) {
     const target = parseGithubRepository(repository).repository;
     if (!existsSync(resolve(cwd, "package.json"))) throw new Error("Run setup beside the project's package.json.");
     const git = (args, statuses = [0]) => {
@@ -29,10 +35,19 @@ export function setupGithub({ cwd = projectRoot, repository, execute = executeGi
         if (git(["rev-parse", "--show-prefix"]).stdout.trim())
             throw new Error("This folder is inside another Git repository. Use a separate folder for the new site.");
         origin = git(["remote", "get-url", "origin"], [0, 2]).stdout.trim();
-        if (origin && repositoryFromOrigin(origin).toLowerCase() !== target.toLowerCase())
-            throw new Error(
-                "This folder already points to another origin. Extract the new ZIP into a separate folder without copying the old .git directory.",
-            );
+        if (origin && repositoryFromOrigin(origin).toLowerCase() !== target.toLowerCase()) {
+            if (!replaceOrigin)
+                throw new Error(
+                    "This folder already points to another origin. Extract the new ZIP into a separate folder without copying the old .git directory.",
+                );
+            // Migration is explicit and preserves the old remote and history.
+            const previous = git(["remote", "get-url", "previous-origin"], [0, 2]);
+            if (previous.status === 0 && previous.stdout.trim() !== origin)
+                throw new Error("previous-origin already points elsewhere. Review remotes before migration.");
+            if (previous.status === 2) git(["remote", "add", "previous-origin", origin]);
+            git(["remote", "set-url", "origin", `https://github.com/${target}.git`]);
+            origin = `https://github.com/${target}.git`;
+        }
     } else git(["init", "-b", "main"]);
     if (!origin) git(["remote", "add", "origin", `https://github.com/${target}.git`]);
     writeFileSync(resolve(cwd, "github-pages.json"), JSON.stringify({ repository: target }, null, 2) + "\n");
@@ -43,9 +58,13 @@ export function setupGithub({ cwd = projectRoot, repository, execute = executeGi
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
     try {
         const args = process.argv.slice(2);
-        if (args.length !== 2 || args[0] !== "--repo")
-            throw new Error("Usage: npm run github:setup -- --repo OWNER/REPO");
-        setupGithub({ repository: args[1] });
+        if (
+            args[0] !== "--repo" ||
+            !args[1] ||
+            (args.length !== 2 && !(args.length === 3 && args[2] === "--replace-origin"))
+        )
+            throw new Error("Usage: npm run github:setup -- --repo OWNER/REPO [--replace-origin]");
+        setupGithub({ repository: args[1], replaceOrigin: args.includes("--replace-origin") });
     } catch (error) {
         console.error(`[STOP] ${error.message}`);
         process.exitCode = 1;

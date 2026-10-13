@@ -69,7 +69,7 @@ export function publishGithub({
     const git = (args, statuses) => run("git", args, statuses);
     const readGit = (args) => git(args).stdout.trim();
     if (releaseTag && !/^v[0-9][A-Za-z0-9._-]*$/.test(releaseTag))
-        throw new Error("Use a version tag such as v3 or v3.0.1.");
+        throw new Error("Use a version tag such as v4 or v4.0.1.");
     if (releaseTag) git(["check-ref-format", `refs/tags/${releaseTag}`]);
     if (readGit(["rev-parse", "--is-inside-work-tree"]) !== "true")
         throw new Error("Run in the project repository clone.");
@@ -96,7 +96,9 @@ export function publishGithub({
     // would fail before its first commit. Existing clones still switch normally.
     if (git(["symbolic-ref", "--quiet", "--short", "HEAD"], [0, 1]).stdout.trim() !== "main") git(["switch", "main"]);
     const version = () => JSON.parse(readFileSync(resolve(cwd, "package.json"), "utf8")).version;
-    if (!/^3\.\d+\.\d+(?:-[\w.-]+)?$/.test(version())) throw new Error("Merge the V3 files into this clone first.");
+    const releaseVersion = version();
+    if (!/^\d+\.\d+\.\d+(?:-[\w.-]+)?(?:\+[\w.-]+)?$/.test(releaseVersion) || Number(releaseVersion.split(".")[0]) < 3)
+        throw new Error("Merge the current project files into this clone first.");
     run(process.execPath, ["scripts/clean-legacy.js", "--apply"]);
     const validate = () => {
         run("npm", ["ci"]);
@@ -106,14 +108,15 @@ export function publishGithub({
     validate();
     git(["status", "--short"]);
     git(["add", "-A"]);
-    if (git(["diff", "--cached", "--quiet"], [0, 1]).status === 1) git(["commit", "-m", "Update Marpich Sanat V3"]);
+    if (git(["diff", "--cached", "--quiet"], [0, 1]).status === 1)
+        git(["commit", "-m", `Update Marpich Sanat ${releaseVersion}`]);
     const beforeRebase = readGit(["rev-parse", "HEAD"]);
     if (readGit(["ls-remote", "--heads", "origin", "refs/heads/main"])) {
         git(["pull", "--rebase", "origin", "main"]);
     } else if (readGit(["ls-remote", "--heads", "origin"])) {
         throw new Error("Origin has another branch but no main. Review the repository before publishing.");
     }
-    if (!/^3\.\d+\.\d+(?:-[\w.-]+)?$/.test(version()))
+    if (version() !== releaseVersion)
         throw new Error("The rebased package version changed. Review it before publishing.");
     const head = readGit(["rev-parse", "HEAD"]);
     if (head !== beforeRebase) validate();
@@ -151,7 +154,9 @@ export function publishGithub({
             ? ["push", "--set-upstream", "--atomic", "origin", "main", `refs/tags/${releaseTag}`]
             : ["push", "--set-upstream", "origin", "main"],
     );
-    report(`[OK] V3 published: main${pushTag ? ` + ${releaseTag}` : ""}. Check the GitHub Actions deployment.`);
+    report(
+        `[OK] ${releaseVersion} published: main${pushTag ? ` + ${releaseTag}` : ""}. Check the GitHub Actions deployment.`,
+    );
     if (repository) report(`Site after deployment: ${githubPagesUrl(repository)}`);
 }
 
@@ -159,7 +164,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     try {
         const args = process.argv.slice(2);
         if (args.length && (args.length !== 2 || args[0] !== "--release-tag"))
-            throw new Error("Usage: npm run publish:github [-- --release-tag v3.0.1]");
+            throw new Error("Usage: npm run publish:github [-- --release-tag v4.0.1]");
         publishGithub({ releaseTag: args[1] || "" });
     } catch (error) {
         console.error(`[STOP] ${error.message}`);

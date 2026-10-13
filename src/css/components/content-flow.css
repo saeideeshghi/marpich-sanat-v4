@@ -196,6 +196,53 @@ body[data-page="home"] main .site-text-link--plain > .site-text-link__label {
     }
 }
 
+/* Keep tablet consultation copy in the form's centered column, aligned with
+ * the input text rather than centering the individual lines. */
+@media (min-width: 559px) and (max-width: 1179px) {
+    body[data-page="home"] [data-consultation] .site-consultation__copy {
+        width: 100%;
+        max-width: 550px;
+        margin-inline: auto;
+        padding-inline: 12px;
+    }
+    body[data-page="home"] [data-consultation] .site-consultation__copy > :is(h2, p) {
+        text-align: right !important;
+        text-align-last: right !important;
+    }
+}
+@media (min-width: 640px) and (max-width: 767px) {
+    body[data-page="home"] [data-consultation] .site-consultation__copy {
+        padding-inline: 16px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1179px) {
+    body[data-page="home"] [data-consultation] .site-consultation__copy {
+        padding-inline: 20px;
+    }
+}
+@media (min-width: 767px) and (max-width: 1024px) {
+    body[data-page] [data-consultation] .site-consultation__copy {
+        width: 100%;
+        max-width: 550px;
+        margin-inline: auto;
+        padding-inline: 16px;
+    }
+    body[data-page] [data-consultation] .site-consultation__copy > :is(h2, p) {
+        text-align: right !important;
+        text-align-last: right !important;
+    }
+    body[data-page] .catalog-consultation__content > :is(h2, p) {
+        padding-inline: 16px;
+        text-align: right !important;
+        text-align-last: right !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    body[data-page] [data-consultation] .site-consultation__copy {
+        padding-inline: 20px;
+    }
+}
+
 /* Search fields share the surrounding panel color, including the enhanced
  * catalog dropdowns. These selectors do not affect enquiry or contact fields. */
 body[data-page] .product-search .product-search__field-row,

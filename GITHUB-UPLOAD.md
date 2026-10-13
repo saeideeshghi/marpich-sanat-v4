@@ -1,6 +1,6 @@
-# انتشار V3 در Repository جدید
+# انتشار V4 در Repository جدید
 
-نام پیشنهادی این بسته `saeideeshghi/marpich-sanat-v3` است. اگر نام دیگری انتخاب می‌کنی، همان نام را در دستور `github:setup` وارد کن. تنظیم مقصد و مسیر Pages از یک فایل، `github-pages.json`، خوانده می‌شود؛ در GitHub Actions نام واقعی مخزن مبنای مسیر سایت است.
+نام پیشنهادی این بسته `saeideeshghi/marpich-sanat-v4` است. اگر نام دیگری انتخاب می‌کنی، همان نام را در دستور `github:setup` وارد کن. تنظیم مقصد و مسیر Pages از یک فایل، `github-pages.json`، خوانده می‌شود؛ در GitHub Actions نام واقعی مخزن مبنای مسیر سایت است.
 
 ## رفع نمایش سایت بدون CSS در مخزن فعلی
 
@@ -20,19 +20,19 @@ npm run build:pages
 npm run preview:pages
 ```
 
-URL دارای نام مخزن را که Vite چاپ می‌کند باز کن؛ مثلاً `http://localhost:4173/marpich-sanat-v3/index.html`.
+URL دارای نام مخزن را که Vite چاپ می‌کند باز کن؛ مثلاً `http://localhost:4173/marpich-sanat-v4/index.html`.
 
 ## ۱. ساخت مخزن خالی در GitHub
 
 1. وارد حساب `saeideeshghi` شو و صفحهٔ <https://github.com/new> را باز کن.
-2. Owner را `saeideeshghi` و Repository name را `marpich-sanat-v3` قرار بده.
+2. Owner را `saeideeshghi` و Repository name را `marpich-sanat-v4` قرار بده.
 3. Visibility را **Public** انتخاب کن.
 4. گزینه‌های افزودن README، gitignore و License را فعال نکن. این فایل‌ها از پروژهٔ محلی ارسال می‌شوند.
 5. **Create repository** را بزن. اگر نام از قبل وجود دارد، یک نام آزاد انتخاب کن و آن را در مرحلهٔ تنظیم مقصد جایگزین کن.
 
 ## ۲. آماده‌کردن پوشهٔ جدا روی ویندوز
 
-1. یک پوشهٔ جدید با نام `marpich-sanat-v3` روی Desktop بساز.
+1. یک پوشهٔ جدید با نام `marpich-sanat-v4` روی Desktop بساز.
 2. محتویات ZIP را مستقیم در آن استخراج کن؛ `package.json` باید در ریشهٔ این پوشه باشد.
 3. پوشه‌های واقعی تصاویر و فونت‌ها را از پروژهٔ قبلی، با حفظ مسیرهایشان، کپی کن: `assets`، `fonts` و محتویات `public`. هنگام کپی `public`، فایل‌های موجود را Merge کن. `docs` را هم می‌توانی با همان مسیر قبلی کپی کنی.
 4. پوشهٔ `.git` پروژهٔ قبلی را کپی نکن. تاریخچه و Origin پروژهٔ جدید جدا ساخته می‌شوند.
@@ -41,7 +41,7 @@ URL دارای نام مخزن را که Vite چاپ می‌کند باز کن؛
 Git و Node.js باید نصب باشند؛ حداقل Node این پروژه `22.12.0` است و Node 24 فعلی‌ات مناسب است. ترمینال VS Code را روی **PowerShell** باز کن:
 
 ```powershell
-cd "$env:USERPROFILE\Desktop\marpich-sanat-v3"
+cd "$env:USERPROFILE\Desktop\marpich-sanat-v4"
 git --version
 node --version
 npm --version
@@ -50,7 +50,7 @@ npm --version
 ## ۳. تنظیم مقصد؛ فقط یک بار
 
 ```powershell
-npm run github:setup -- --repo saeideeshghi/marpich-sanat-v3
+npm run github:setup -- --repo saeideeshghi/marpich-sanat-v4
 git remote -v
 ```
 
@@ -59,7 +59,7 @@ git remote -v
 خروجی `git remote -v` باید برای Fetch و Push به این آدرس اشاره کند:
 
 ```text
-https://github.com/saeideeshghi/marpich-sanat-v3.git
+https://github.com/saeideeshghi/marpich-sanat-v4.git
 ```
 
 برای نام متفاوت، مثلاً `marpich-sanat-final`، فقط دستور تنظیم اولیه را این‌طور اجرا کن:
@@ -101,10 +101,10 @@ npm run publish:github
 3. در **Settings → Pages** آدرس سایت نمایش داده می‌شود. برای نام پیشنهادی:
 
 ```text
-https://saeideeshghi.github.io/marpich-sanat-v3/index.html
+https://saeideeshghi.github.io/marpich-sanat-v4/index.html
 ```
 
-برای نام دیگر، بخش `marpich-sanat-v3` در URL برابر نام همان مخزن است. مسیر فایل‌های JS، CSS، تصاویر و فونت‌ها نیز با نام جدید ساخته می‌شود.
+برای نام دیگر، بخش `marpich-sanat-v4` در URL برابر نام همان مخزن است. مسیر فایل‌های JS، CSS، تصاویر و فونت‌ها نیز با نام جدید ساخته می‌شود.
 
 اگر اولین Workflow قبل از فعال‌کردن Pages شکست خورد، پس از تنظیم Source به تب Actions برو، Workflow را انتخاب کن و **Run workflow → main → Run workflow** را بزن.
 
@@ -121,7 +121,7 @@ npm run publish:github
 Tag فقط برای انتشار نسخهٔ مشخص لازم است؛ برای آپدیت روزانه لازم نیست:
 
 ```powershell
-npm run publish:github -- --release-tag v3.0.1
+npm run publish:github -- --release-tag v4.0.1
 ```
 
 ## رفع خطاهای رایج
@@ -144,3 +144,12 @@ npm run publish:github -- --release-tag v3.0.1
 - [ساخت Repository در GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository)
 - [تنظیم GitHub Actions برای Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 - [مسیر Base و انتشار Vite روی Pages](https://vite.dev/guide/static-deploy.html#github-pages)
+
+## ?????? ???? ???? ?? V3 ?? V4
+
+??? ????? ???? ???????? ???? marpich-sanat-v3 ?????? ????? ????? ?? package.json ?????? ??????. ???? ?????? ???? ???? checkout? ?? ?? ???? ???? ????? ????? ??? origin ?? ????? ?????? ? ???? ???? ?? ?? ??? previous-origin ??? ??????:
+
+```powershell
+npm run github:setup -- --repo saeideeshghi/marpich-sanat-v4 --replace-origin
+npm run publish:github -- --release-tag v4.0.0
+```

@@ -18,5 +18,7 @@
   "src/css/components/consultation.css",
   "src/css/components/faq.css",
   "src/css/layout-checks.css",
-  "src/css/pages/project-details-reference.css"
+  "src/css/pages/project-details-reference.css",
+  "PUBLISH-NAV-FIX.md",
+  "WINDOWS-PUSH-FIX.md"
 ]

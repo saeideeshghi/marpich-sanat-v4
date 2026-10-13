@@ -1,4 +1,4 @@
-# مارپیچ صنعت · V3
+# مارپیچ صنعت · V4
 
 ## تحویل بک‌اند و اصلاحات سرعت/امنیت · ۱۲ اکتبر ۲۰۲۶
 
@@ -112,7 +112,7 @@ Breakpoints: موبایل تا ۶۳۹px؛ تبلت ۶۴۰–۱۱۷۹px؛ دسک�
 پس از ساخت مخزن خالی Public در GitHub، فقط یک بار:
 
 ```powershell
-npm run github:setup -- --repo saeideeshghi/marpich-sanat-v3
+npm run github:setup -- --repo saeideeshghi/marpich-sanat-v4
 ```
 
 برای ارسال اولیه و تمام آپدیت‌های بعدی:

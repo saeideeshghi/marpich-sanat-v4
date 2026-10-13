@@ -48,6 +48,7 @@ try {
     git(["tag", "-a", "v3", "-m", "V3"]);
     git(["push", "origin", "main", "refs/tags/v3"]);
     const oldTag = git(["rev-parse", "refs/tags/v3"]);
+    writeFileSync(join(repo, "package.json"), '{"version":"4.0.0"}\n');
     writeFileSync(join(repo, "edit.txt"), "Products grid fix\n");
     publish();
     assert.equal(git(["rev-parse", "refs/tags/v3"]), oldTag);

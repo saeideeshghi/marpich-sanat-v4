@@ -67,6 +67,22 @@ try {
     assert.equal(git(["remote", "get-url", "origin"]), "https://github.com/saeideeshghi/marpich-sanat-v3.git");
     assert.equal(readFileSync(join(repo, "github-pages.json"), "utf8"), settings);
     assert(!calls.slice(beforeWrong).some((c) => ["init", "add", "set-url", "commit", "push"].includes(c[1])));
+    setupGithub({
+        cwd: repo,
+        repository: "saeideeshghi/marpich-sanat-v4",
+        replaceOrigin: true,
+        execute,
+        report: () => {},
+    });
+    assert.equal(git(["remote", "get-url", "origin"]), "https://github.com/saeideeshghi/marpich-sanat-v4.git");
+    assert.equal(git(["remote", "get-url", "previous-origin"]), "https://github.com/saeideeshghi/marpich-sanat-v3.git");
+    setupGithub({
+        cwd: repo,
+        repository: "saeideeshghi/marpich-sanat-v4",
+        replaceOrigin: true,
+        execute,
+        report: () => {},
+    });
     const nested = join(repo, "nested");
     mkdirSync(nested);
     writeFileSync(join(nested, "package.json"), '{"version":"3.0.0"}\n');
