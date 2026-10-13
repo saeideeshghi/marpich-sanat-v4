@@ -1,0 +1,24 @@
+<!-- Shared template: faq-item. Content values come from src/data/pages at build time. -->
+<article class="industry-textile__faq-item {{openClass}} site-faq__item" data-faq-item>
+    <h3>
+        <button
+            type="button"
+            data-faq-trigger
+            aria-expanded="{{expanded}}"
+            aria-controls="{{id}}-answer"
+            id="{{id}}-trigger"
+            class="site-faq__question"
+        >
+            <span>{{question}}</span>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+    </h3>
+    <div
+        id="{{id}}-answer"
+        class="industry-textile__faq-answer site-faq__answer"
+        {{{hidden}}}
+        role="region"
+        aria-labelledby="{{id}}-trigger"
+        >{{answer}}</div
+    >
+</article>

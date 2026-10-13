@@ -1,0 +1,35 @@
+/* Center text inside dedicated badge roles, including wrapped lines and
+ * block/flex/grid layouts. Sizes, colours, padding and positions stay page-owned. */
+body[data-page] main :is(.site-card__media-tag, .site-card__meta-tag, .site-card__status-tag) {
+    direction: rtl;
+    text-align: center;
+    text-align-last: center;
+    justify-content: center;
+    justify-items: center;
+    white-space: normal;
+}
+
+/* The JS enhancement adds this only when the original badge slot wraps. Short
+ * badges keep their page-owned geometry; long badges get a complete grid/flex row. */
+body[data-page] main :is(.site-card__media-tag, .site-card__meta-tag, .site-card__status-tag)[data-badge-wrapped] {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0;
+    flex: 1 0 100% !important;
+    grid-column: 1 / -1 !important;
+    align-items: center;
+    justify-content: center;
+    padding-block: 4px;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+}
+body[data-page] main .site-card__media-tag[data-badge-wrapped] {
+    inset-inline: 0;
+}
+
+body[data-page] main :is(.site-card__media-tag, .site-card__meta-tag, .site-card__status-tag) :where(span, small) {
+    text-align: inherit;
+    text-align-last: inherit;
+}

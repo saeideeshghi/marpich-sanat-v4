@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "motion": {
+    "enabled": true,
+    "sharedImage": true,
+    "autoScroll": true,
+    "openDuration": 1360,
+    "closeDuration": 950,
+    "openDelay": 345,
+    "siblingsFade": 180,
+    "contentDelay": 200,
+    "contentDuration": 320,
+    "productsDelay": 390,
+    "productDuration": 420,
+    "stagger": 55,
+    "distance": 22,
+    "easing": "glide",
+    "entry": "up",
+    "sequence": "forward",
+    "heroHeight": 300,
+    "heroRadius": 14,
+    "opening": "top-right",
+    "cornerTravel": 24
+  }
+}

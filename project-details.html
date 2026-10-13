@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link id="site-foundation-styles" rel="stylesheet" href="/src/css/main.css" />
+        <link id="site-page-styles" rel="stylesheet" href="/src/css/entries/project-details.css" />
+        <meta
+            name="description"
+            content="مطالعه موردی پروژه گروه کارخانجات چرم مشهد؛ معرفی پروژه، چالش‌ها، راهکار مهندسی، محصولات به‌کاررفته و دستاوردهای اجرایی."
+        />
+        <title>گروه کارخانجات چرم مشهد | مارپیچ صنعت</title>
+    </head>
+
+    <body id="top" data-page="project-details" class="bg-page-bg text-text-dark">
+        <!-- Shared header stays outside hero stacking/clipping contexts. -->
+        <!-- @include header -->
+
+        <div
+            class="project-details__hero relative bg-brand-navy text-white site-hero"
+            data-site-hero
+            id="hero-project-details"
+        >
+            <div
+                class="project-details__hero-inner mx-auto w-full max-w-[82.5rem] px-4 sm:px-6 lg:px-8 site-hero__content site-frame"
+            >
+                <nav aria-label="مسیر صفحه" class="project-details__breadcrumb site-hero__eyebrow">
+                    <ol class="flex flex-wrap items-center gap-2">
+                        <li><a href="index.html">خانه</a></li>
+                        <li aria-hidden="true">/</li>
+                        <li><a href="projects.html">پروژه‌ها</a></li>
+                        <li aria-hidden="true">/</li>
+                        <li aria-current="page">چرم مشهد</li>
+                    </ol>
+                </nav>
+
+                <div class="project-details__hero-copy">
+                    <h1 class="site-hero__title">گروه کارخانجات چرم مشهد</h1>
+                    <p class="site-prose site-hero__description"
+                        >طراحی، ساخت و اجرای سیستم اگزاست صنعتی، اسکرابر و تهویه هوشمند سالن‌های دباغی و پرداخت</p
+                    >
+                </div>
+            </div>
+        </div>
+
+        <main class="project-details__surface">
+            <div class="project-details__container mx-auto w-full max-w-[82.5rem] px-4 sm:px-6 lg:px-8 site-frame">
+                <!-- Project summary is intentionally over the factory image. -->
+                <section class="project-details__summary" aria-label="اطلاعات اصلی پروژه">
+                    <div class="project-details__cover">
+                        <img
+                            src="/assets/images/projects/project-details/project-main.svg"
+                            alt="نمای سالن تولید گروه کارخانجات چرم مشهد"
+                        />
+
+                        <div class="project-details__meta-grid">
+                            <div class="project-details__meta-item">
+                                <span>نام پروژه</span>
+                                <strong>طرح توسعه چرم مشهد</strong>
+                            </div>
+                            <div class="project-details__meta-item">
+                                <span>نام کارفرما</span>
+                                <strong>چرم مشهد</strong>
+                            </div>
+                            <div class="project-details__meta-item">
+                                <span>صنعت</span>
+                                <strong>نساجی</strong>
+                            </div>
+                            <div class="project-details__meta-item">
+                                <span>محل اجرا</span>
+                                <strong>شهرک صنعتی چرمشهر</strong>
+                            </div>
+                            <div class="project-details__meta-item">
+                                <span>تاریخ اجرا</span>
+                                <strong>شهریور ۱۴۰۳</strong>
+                            </div>
+                            <div class="project-details__meta-item">
+                                <span>تاریخ بهره‌برداری</span>
+                                <strong>سه‌ماهه اول ۱۴۰۴</strong>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-details__section project-details__intro" aria-labelledby="project-intro-title">
+                    <h2 id="project-intro-title" class="project-details__section-title">معرفی پروژه</h2>
+                    <ul class="project-details__intro-list">
+                        <li>
+                            <strong>معرفی کلی پروژه:</strong>
+                            این پروژه شامل نوسازی و ارتقای جامع سیستم‌های انتقال هوا و دفع گازهای خورنده در سالن‌های
+                            اصلی دباغی چرم مشهد بود. شبکه‌ای پیچیده از فن‌های سانتریفیوژ ضداسید و کانال‌کشی‌های تخصصی
+                            برای این سایت طراحی و اجرا شد.
+                        </li>
+                        <li>
+                            <strong>هدف اجرای پروژه:</strong>
+                            تخلیه ایمن و استاندارد بخارات شیمیایی از جمله سولفید هیدروژن و آمونیاک، کنترل دقیق رطوبت
+                            سالن‌های خشک‌کن و تأمین هوای تازه
+                            <span dir="ltr">(Make-up Air)</span>
+                            برای پرسنل.
+                        </li>
+                    </ul>
+                </section>
+
+                <section
+                    class="project-details__section project-details__importance"
+                    aria-labelledby="project-importance-title"
+                >
+                    <h2 id="project-importance-title" class="project-details__section-title">میزان اهمیت</h2>
+                    <p class="site-prose">
+                        با توجه به ماهیت خورنده مواد در صنعت چرم، وجود یک سیستم تهویه قدرتمند نه‌تنها برای حفظ سلامت
+                        نیروی کار الزامی است، بلکه از استهلاک زودرس ماشین‌آلات گران‌قیمت تولیدی جلوگیری می‌کند.
+                    </p>
+                </section>
+
+                <section class="project-details__two-columns" aria-label="چالش‌ها و راهکار مهندسی پروژه">
+                    <article class="project-details__content-column">
+                        <h2
+                            class="project-details__section-title project-details__section-title--technical-accent-color"
+                        >
+                            چالش‌هایی که با آن روبه‌رو بودیم
+                        </h2>
+                        <p class="site-prose">
+                            کارفرما نیازمند یک سیستم قدرتمند و مقاوم برای جابه‌جایی حجم بالای هوای آلوده و اسیدی در
+                            سالن‌های دباغی بود؛ در حالی که با محدودیت‌های فضایی، خوردگی تجهیزات و الزامات سخت‌گیرانه
+                            بهره‌برداری روبه‌رو بودیم.
+                        </p>
+
+                        <ul class="project-details__bullet-list">
+                            <li>تخلیه هوای آلوده و اسیدی با ظرفیت بسیار بالا و کنترل دقیق دبی هوا.</li>
+                            <li>رفع مشکل خوردگی شدید تجهیزات، پروانه‌ها و الکتروموتورها و افزایش عمر سیستم.</li>
+                            <li>کاهش چشمگیر مصرف برق و حذف انتشار بوی نامطبوع در محیط کارخانه.</li>
+                            <li>نصب و اجرای کامل سیستم بدون ایجاد توقف در خط تولید و روند تولیدات مجموعه.</li>
+                            <li>غلبه بر محدودیت شدید فضای سقف سوله برای عبور داکت‌های قطور انتقال هوا.</li>
+                        </ul>
+                    </article>
+
+                    <article class="project-details__content-column">
+                        <h2
+                            class="project-details__section-title project-details__section-title--technical-accent-color"
+                        >
+                            راهکار مهندسی ارائه‌شده
+                        </h2>
+                        <p class="site-prose">
+                            ما یک سیستم سفارشی انتقال و تخلیه هوا را با بهره‌گیری از متریال‌های پیشرفته ضدخوردگی و طراحی
+                            آیرودینامیکی بهینه‌شده، مهندسی و تولید کردیم تا پاسخگوی دقیق‌ترین نیازهای این محیط صنعتی خشن
+                            باشد.
+                        </p>
+
+                        <ul class="project-details__check-list">
+                            <li>تحلیل و شبیه‌سازی جریان هوا با نرم‌افزارهای CFD جهت شناسایی و حذف نقاط کور.</li>
+                            <li>
+                                طراحی شبکه داکت با حداقل افت فشار و تعبیه هودهای موضعی
+                                <span dir="ltr">(Local Exhaust)</span>.
+                            </li>
+                            <li>
+                                تولید سفارشی فن‌های سانتریفیوژ با پوشش پیشرفته فایبرگلاس
+                                <span dir="ltr">(FRP)</span> و رزین وینیل‌استر.
+                            </li>
+                            <li>اجرای گالوانیزه‌شده عملیات نصب در بخش‌های مستعد خوردگی برای حفظ راندمان بلندمدت.</li>
+                            <li>استفاده از لرزه‌گیرهای سفارشی برای مهار ارتعاشات سازه حین کارکرد تجهیزات.</li>
+                        </ul>
+                    </article>
+                </section>
+
+                <section class="project-details__products" aria-labelledby="project-products-title">
+                    <div class="project-details__section-head">
+                        <h2 id="project-products-title" class="project-details__section-title">
+                            محصولات به‌کاررفته در پروژه
+                        </h2>
+                        <a class="project-details__all-products" href="products.html">
+                            <span>مشاهده همه محصولات</span>
+                            <span class="project-details__mini-arrow" aria-hidden="true"></span>
+                        </a>
+                    </div>
+
+                    <div class="project-details__products-grid site-card-grid">
+                        <article class="project-details__product-card site-card-surface site-card">
+                            <div class="project-details__product-media site-card__media">
+                                <img
+                                    src="/assets/images/projects/project-details/product-backward-fan.svg"
+                                    alt="اگزاست فن سانتریفیوژ بکوارد"
+                                    class="site-card__image"
+                                />
+                                <span class="project-details__product-media-tag site-card__media-tag">سانتریفیوژ</span>
+                            </div>
+                            <div class="project-details__product-body site-card__body">
+                                <h3 class="site-card__title">اگزاست فن سانتریفیوژ بکوارد</h3>
+                                <p class="site-prose site-card__description"
+                                    >طراحی‌شده برای جابه‌جایی حجم بالای هوای آلوده با راندمان بالا و عملکرد پایدار.</p
+                                >
+                                <div class="project-details__product-tags site-card__meta-row">
+                                    <span class="project-details__product-meta-tag site-card__meta-tag">دبی بالا</span
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >فشار متوسط</span
+                                    >
+                                </div>
+                                <div class="project-details__product-specs site-card__meta-row">
+                                    <span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >بالانس دقیق</span
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >مصرف بهینه</span
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >کارکرد پیوسته</span
+                                    >
+                                </div>
+                                <a class="project-details__product-link site-card__cta" href="product-details.html"
+                                    ><span class="site-card__cta-label">مشاهده جزئیات محصول </span
+                                    ><span aria-hidden="true">←</span></a
+                                >
+                            </div>
+                        </article>
+
+                        <article class="project-details__product-card site-card-surface site-card">
+                            <div class="project-details__product-media site-card__media">
+                                <img
+                                    src="/assets/images/projects/project-details/product-scrubber.svg"
+                                    alt="اسکرابر مرطوب بخارات اسیدی"
+                                    class="site-card__image"
+                                />
+                                <span class="project-details__product-media-tag site-card__media-tag">تصفیه هوا</span>
+                            </div>
+                            <div class="project-details__product-body site-card__body">
+                                <h3 class="site-card__title">اسکرابر مرطوب بخارات اسیدی</h3>
+                                <p class="site-prose site-card__description"
+                                    >برای جذب و کنترل بخارات شیمیایی و آلاینده‌های خورنده در فرآیندهای دباغی.</p
+                                >
+                                <div class="project-details__product-tags site-card__meta-row">
+                                    <span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >حذف آلاینده</span
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >بدنه مقاوم</span
+                                    >
+                                </div>
+                                <div class="project-details__product-specs site-card__meta-row">
+                                    <span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >راندمان بالا</span
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >مقاوم اسیدی</span
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >نگهداری آسان</span
+                                    >
+                                </div>
+                                <a class="project-details__product-link site-card__cta" href="product-details.html"
+                                    ><span class="site-card__cta-label">مشاهده جزئیات محصول </span
+                                    ><span aria-hidden="true">←</span></a
+                                >
+                            </div>
+                        </article>
+
+                        <article class="project-details__product-card site-card-surface site-card">
+                            <div class="project-details__product-media site-card__media">
+                                <img
+                                    src="/assets/images/projects/project-details/product-air-handler.svg"
+                                    alt="هواساز صنعتی رطوبت‌زن"
+                                    class="site-card__image"
+                                />
+                                <span class="project-details__product-media-tag site-card__media-tag">تهویه هوا</span>
+                            </div>
+                            <div class="project-details__product-body site-card__body">
+                                <h3 class="site-card__title">هواساز صنعتی رطوبت‌زن</h3>
+                                <p class="site-prose site-card__description"
+                                    >تأمین هوای تازه و کنترل رطوبت موردنیاز خطوط تولید و سالن‌های فرآیندی.</p
+                                >
+                                <div class="project-details__product-tags site-card__meta-row">
+                                    <span class="project-details__product-meta-tag site-card__meta-tag">هوای تازه</span
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >کنترل رطوبت</span
+                                    >
+                                </div>
+                                <div class="project-details__product-specs site-card__meta-row">
+                                    <span class="project-details__product-meta-tag site-card__meta-tag">کنترل دقیق</span
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >فیلتر صنعتی</span
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >راندمان بالا</span
+                                    >
+                                </div>
+                                <a class="project-details__product-link site-card__cta" href="product-details.html"
+                                    ><span class="site-card__cta-label">مشاهده جزئیات محصول </span
+                                    ><span aria-hidden="true">←</span></a
+                                >
+                            </div>
+                        </article>
+
+                        <article class="project-details__product-card site-card-surface site-card">
+                            <div class="project-details__product-media site-card__media">
+                                <img
+                                    src="/assets/images/projects/project-details/product-frp-fan.svg"
+                                    alt="فن سانتریفیوژ ضداسید FRP"
+                                    class="site-card__image"
+                                />
+                                <span class="project-details__product-media-tag site-card__media-tag">سانتریفیوژ</span>
+                            </div>
+                            <div class="project-details__product-body site-card__body">
+                                <h3 class="site-card__title">فن سانتریفیوژ ضداسید FRP</h3>
+                                <p class="site-prose site-card__description"
+                                    >مناسب محیط‌های خورنده با پوشش مقاوم شیمیایی برای افزایش طول عمر سیستم.</p
+                                >
+                                <div class="project-details__product-tags site-card__meta-row"
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag">FRP</span
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >ضد خوردگی</span
+                                    ></div
+                                >
+                                <div class="project-details__product-specs site-card__meta-row">
+                                    <span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >رزین وینیل‌استر</span
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >مقاومت اسیدی</span
+                                    ><span class="project-details__product-meta-tag site-card__meta-tag"
+                                        >سرویس صنعتی</span
+                                    >
+                                </div>
+                                <a class="project-details__product-link site-card__cta" href="product-details.html"
+                                    ><span class="site-card__cta-label">مشاهده جزئیات محصول </span
+                                    ><span aria-hidden="true">←</span></a
+                                >
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="project-details__technical" aria-labelledby="project-technical-title">
+                    <h2
+                        id="project-technical-title"
+                        class="project-details__section-title project-details__reference-heading"
+                        >مشخصات فنی پروژه</h2
+                    >
+
+                    <article class="details-card details-card--project">
+                        <div class="details-card__body details-card__body--project">
+                            <div class="details-table-wrap">
+                                <table class="details-table details-table--project">
+                                    <caption class="sr-only">جدول مشخصات فنی پروژه</caption>
+                                    <colgroup>
+                                        <col class="col-label" />
+                                        <col class="col-value" />
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">پارامتر فنی</th>
+                                            <th scope="col">مقدار / مشخصه</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>دبی کل هوادهی <span dir="ltr">(Q)</span></td>
+                                            <td dir="ltr">240,000 CFM</td>
+                                        </tr>
+                                        <tr>
+                                            <td>متریال شفت فن</td>
+                                            <td>استنلس استیل گرید <bdi dir="ltr">316L</bdi></td>
+                                        </tr>
+                                        <tr>
+                                            <td>پوشش حلزونی و پروانه</td>
+                                            <td>۵ لایه <bdi dir="ltr">FRP</bdi> + رزین وینیل‌استر</td>
+                                        </tr>
+                                        <tr>
+                                            <td>گرید بالانس دینامیکی</td>
+                                            <td><bdi dir="ltr">ISO1940</bdi> مطابق <bdi dir="ltr">G2.5</bdi></td>
+                                        </tr>
+                                        <tr>
+                                            <td>استاندارد تست آیرودینامیکی</td>
+                                            <td>مطابق <bdi dir="ltr">AMCA 210</bdi></td>
+                                        </tr>
+                                        <tr>
+                                            <td>سیستم کنترل دور موتور</td>
+                                            <td dir="ltr">VFD (Closed-loop / Gas Sensor Based)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>گازهای فرآیندی هدف</td>
+                                            <td dir="ltr">H2S, NH3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>متغیر کنترلی لوپ سرعت</td>
+                                            <td>فیدبک سنسورهای غلظت گاز</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <figure class="details-visual details-visual--project">
+                                <img
+                                    src="/assets/images/projects/project-details/system-diagram.png"
+                                    alt="شماتیک سیستم تهویه و اگزاست پروژه"
+                                />
+                            </figure>
+                        </div>
+
+                        <div class="details-card__note">
+                            <p class="project-details__reference-copy">
+                                <span class="details-card__note-bullet" aria-hidden="true">•</span>
+                                <span class="details-card__note-copy"
+                                    >عملکرد بر اساس شرایط استاندارد نام‌گذاری می‌باشد. برای محاسبات دقیق،
+                                    <a href="contact.html">با تیم مهندسی ما تماس بگیرید.</a></span
+                                >
+                            </p>
+                        </div>
+                    </article>
+                </section>
+
+                <section class="project-details__results" aria-labelledby="project-results-title">
+                    <h2
+                        id="project-results-title"
+                        class="project-details__section-title project-details__reference-heading"
+                        >دستاوردهای پروژه</h2
+                    >
+                    <div class="project-details__stats-grid">
+                        <article class="project-details__stat">
+                            <img
+                                class="project-details__stat-icon"
+                                src="/assets/images/projects/project-details/stat-maintenance.svg"
+                                alt=""
+                            />
+                            <strong>-۱۰۰٪</strong>
+                            <h3 class="project-details__stat-title">کاهش هزینه‌های نگهداری</h3>
+                            <p class="project-details__stat-description project-details__reference-copy"
+                                >کاهش استهلاک تجهیزات<br />و هزینهٔ تعمیرات خوردگی.</p
+                            >
+                        </article>
+                        <article class="project-details__stat">
+                            <img
+                                class="project-details__stat-icon"
+                                src="/assets/images/projects/project-details/stat-stability.svg"
+                                alt=""
+                            />
+                            <strong>۰٪</strong>
+                            <h3 class="project-details__stat-title">پایداری و اطمینان سیستم</h3>
+                            <p class="project-details__stat-description project-details__reference-copy"
+                                >کاهش خرابی تجهیزات<br />و توقف‌های سیستم تهویه.</p
+                            >
+                        </article>
+                        <article class="project-details__stat">
+                            <img
+                                class="project-details__stat-icon"
+                                src="/assets/images/projects/project-details/stat-growth.svg"
+                                alt=""
+                            />
+                            <strong>+۱۵٪</strong>
+                            <h3 class="project-details__stat-title">رشد خروجی خط تولید</h3>
+                            <p class="project-details__stat-description project-details__reference-copy"
+                                >خشک‌شدن سریع‌تر محصول<br />و ثبات شرایط خط تولید.</p
+                            >
+                        </article>
+                        <article class="project-details__stat">
+                            <img
+                                class="project-details__stat-icon"
+                                src="/assets/images/projects/project-details/stat-optimization.svg"
+                                alt=""
+                            />
+                            <strong>-۳۳٪</strong>
+                            <h3 class="project-details__stat-title">بهینه‌سازی مصرف برق</h3>
+                            <p class="project-details__stat-description project-details__reference-copy"
+                                >کاهش مصرف برق تجهیزات<br />با کنترل دور و طراحی بهینه.</p
+                            >
+                        </article>
+                        <article class="project-details__stat">
+                            <img
+                                class="project-details__stat-icon"
+                                src="/assets/images/projects/project-details/stat-safe-air.svg"
+                                alt=""
+                            />
+                            <strong>-۹۵٪</strong>
+                            <h3 class="project-details__stat-title">محیط کار پاک و ایمن</h3>
+                            <p class="project-details__stat-description project-details__reference-copy"
+                                >کاهش بخارات و بوی نامطبوع<br />و ایمنی بیشتر کارکنان.</p
+                            >
+                        </article>
+                    </div>
+                </section>
+
+                <section class="project-details__testimonial-section" aria-labelledby="project-testimonial-title">
+                    <h2
+                        id="project-testimonial-title"
+                        class="project-details__section-title project-details__section-title--center project-details__testimonial-title project-details__reference-heading"
+                    >
+                        دیدگاه کارفرما
+                    </h2>
+                    <div class="project-details__testimonial-kicker">
+                        <span></span>
+                        <p class="project-details__testimonial-kicker-copy project-details__reference-copy"
+                            >آنچه کارفرمایان این پروژه درباره همکاری با مارپیچ صنعت می‌گویند</p
+                        >
+                        <span></span>
+                    </div>
+                    <article class="project-details__testimonial">
+                        <span class="project-details__quote-icon top-[0px]" aria-hidden="true"
+                            ><i class="fa-solid fa-quote-right"></i
+                        ></span>
+                        <blockquote class="project-details__testimonial-body">
+                            در اجرای پروژه سیستم تهویه کارخانه چرم مشهد، تیم مارپیچ صنعت از مرحله طراحی تا راه‌اندازی،
+                            همکاری حرفه‌ای و منظمی با مجموعه ما داشت. کیفیت ساخت تجهیزات، دقت در اجرا و پایبندی به
+                            برنامه زمان‌بندی باعث شد سیستم بدون مشکل وارد مدار بهره‌برداری شود و عملکردی پایدار و
+                            قابل‌اعتماد داشته باشد. تجربه همکاری با مارپیچ صنعت برای ما رضایت‌بخش بود و این مجموعه
+                            توانست انتظارات فنی پروژه را به‌خوبی برآورده کند.
+                        </blockquote>
+                        <span class="project-details__testimonial-divider" aria-hidden="true"></span>
+                        <div class="project-details__testimonial-footer">
+                            <div class="project-details__testimonial-person">
+                                <strong class="project-details__testimonial-author">مرتضی موسوی رضایی</strong
+                                ><span>مدیر کارخانه چرم مشهد</span>
+                            </div>
+                            <div class="project-details__rating" aria-label="امتیاز پنج از پنج">★★★★★</div>
+                        </div>
+                    </article>
+                </section>
+
+                <div class="project-details__consultation-shell">
+                    <!-- @include catalog-consultation consultation -->
+                </div>
+            </div>
+        </main>
+
+        <!-- @include footer -->
+        <!-- @include mobile-menu -->
+        <!-- @include auth-modal -->
+        <script type="module" src="/src/js/pages/project-details.js"></script>
+    </body>
+</html>

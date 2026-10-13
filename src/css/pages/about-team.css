@@ -1,0 +1,38 @@
+/* The outer container controls placement; the frame controls cropping.
+ * Keeping the image inside a definite frame makes per-device heights reliable. */
+.about-team-wrap {
+    margin-inline: auto;
+    z-index: 2;
+}
+/* The team wrapper and story grid both use .site-frame. Keep their outer
+ * widths owned by site-layout.css so they share the same gutters and cap. */
+.about-team-media {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    aspect-ratio: 2.12 / 1;
+    /* Restore a substantial cover without changing the established width. An
+     * explicit height/fit saved in the Customizer still overrides this default. */
+    height: clamp(280px, min(54svh, 48vw, calc(100svh - 390px)), 628px);
+    overflow: hidden;
+    border-radius: 16px;
+    background: transparent;
+}
+.about-team-media__image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: none;
+    object-fit: cover;
+    object-position: 50% 8%;
+}
+@media (max-width: 639px) {
+    .about-team-media {
+        aspect-ratio: 16 / 9;
+        height: clamp(210px, 56vw, 320px);
+        border-radius: 10px;
+    }
+}

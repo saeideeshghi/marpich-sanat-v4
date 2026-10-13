@@ -1,0 +1,1281 @@
+{
+  "--about-background-color": {
+    "kind": "color",
+    "selectors": [".about-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--about-blue-color": {
+    "kind": "color",
+    "selectors": [".about-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--about-muted-text-color": {
+    "kind": "color",
+    "selectors": [".about-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--about-navy-color": {
+    "kind": "color",
+    "selectors": [".about-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--about-orange-color": {
+    "kind": "color",
+    "selectors": [".about-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--about-text-color": {
+    "kind": "color",
+    "selectors": [".about-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--air-handling-blue-color": {
+    "kind": "color",
+    "selectors": [".air-handling-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--air-handling-border-color": {
+    "kind": "color",
+    "selectors": [".air-handling-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--air-handling-card-background-color": {
+    "kind": "color",
+    "selectors": [".air-handling-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--air-handling-card-shadow": {
+    "kind": "shadow",
+    "selectors": [".air-handling-page"],
+    "editable": true,
+    "property": "box-shadow"
+  },
+  "--air-handling-muted-text-color": {
+    "kind": "color",
+    "selectors": [".air-handling-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--air-handling-navy-color": {
+    "kind": "color",
+    "selectors": [".air-handling-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--air-handling-orange-color": {
+    "kind": "color",
+    "selectors": [".air-handling-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--air-handling-page-background-color": {
+    "kind": "color",
+    "selectors": [".air-handling-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--air-handling-search-button-color": {
+    "kind": "color",
+    "selectors": [".air-handling-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--article-image-scale": {
+    "kind": "number",
+    "selectors": [".article-card__media img[src$=\".svg\"]"],
+    "editable": true,
+    "min": 0.1,
+    "max": 10,
+    "property": "line-height"
+  },
+  "--articles-blue-color": {
+    "kind": "color",
+    "selectors": [".articles-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--articles-navy-color": {
+    "kind": "color",
+    "selectors": [".articles-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--articles-orange-color": {
+    "kind": "color",
+    "selectors": [".articles-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--articles-page-bg": {
+    "kind": "color",
+    "selectors": [".articles-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--auth-muted-text-color": {
+    "kind": "color",
+    "selectors": [".auth-dialog"],
+    "editable": true,
+    "property": "color"
+  },
+  "--auth-surface-color": {
+    "kind": "color",
+    "selectors": [".auth-dialog"],
+    "editable": true,
+    "property": "color"
+  },
+  "--body-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--body-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--body-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--body-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--breakpoint-laptop": {
+    "kind": "length",
+    "selectors": [],
+    "editable": false,
+    "reason": "شرط media هنگام ساخت تولید می‌شود؛ بازهٔ دلخواه را از انتخاب اندازهٔ همین پنل تنظیم کن.",
+    "property": "width"
+  },
+  "--card-description-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"expertise\"] .expertise-page__card", "body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-description-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-description-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-description-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-description-line-height": {
+    "kind": "number",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "min": 0.1,
+    "max": 10,
+    "property": "line-height"
+  },
+  "--card-description-lines": {
+    "kind": "integer",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "min": 0,
+    "max": 100,
+    "property": "order"
+  },
+  "--card-link-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-link-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-link-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-link-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-media-tag-font-size": {
+    "kind": "length",
+    "selectors": [],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-meta-tag-font-size": {
+    "kind": "length",
+    "selectors": [],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-radius": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-radius-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-radius-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-tag-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-tag-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-tag-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-tag-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-title-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"expertise\"] .expertise-page__card", "body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-title-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-title-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-title-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--card-title-line-height": {
+    "kind": "number",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "min": 0.1,
+    "max": 10,
+    "property": "line-height"
+  },
+  "--color-brand-blue": {
+    "kind": "color",
+    "selectors": [],
+    "editable": true,
+    "property": "color"
+  },
+  "--color-brand-navy": {
+    "kind": "color",
+    "selectors": [],
+    "editable": true,
+    "property": "color"
+  },
+  "--color-brand-orange": {
+    "kind": "color",
+    "selectors": [],
+    "editable": true,
+    "property": "color"
+  },
+  "--color-footer-text": {
+    "kind": "color",
+    "selectors": [],
+    "editable": true,
+    "property": "color"
+  },
+  "--color-media-badge": {
+    "kind": "color",
+    "selectors": [],
+    "editable": true,
+    "property": "color"
+  },
+  "--color-page-bg": {
+    "kind": "color",
+    "selectors": [],
+    "editable": true,
+    "property": "color"
+  },
+  "--color-partners-bg": {
+    "kind": "color",
+    "selectors": [],
+    "editable": true,
+    "property": "color"
+  },
+  "--color-text-dark": {
+    "kind": "color",
+    "selectors": [],
+    "editable": true,
+    "property": "color"
+  },
+  "--color-text-white": {
+    "kind": "color",
+    "selectors": [],
+    "editable": true,
+    "property": "color"
+  },
+  "--contact-backdrop-min-height": {
+    "kind": "length",
+    "selectors": [".contact-hero"],
+    "editable": true,
+    "property": "width"
+  },
+  "--contact-intro-background": {
+    "kind": "length",
+    "selectors": [],
+    "editable": false,
+    "reason": "از ارتفاع متن تماس محاسبه می‌شود؛ ارتفاع زمینه را با contact-backdrop-min-height تنظیم کن.",
+    "property": "width"
+  },
+  "--container-site": {
+    "kind": "length",
+    "selectors": [],
+    "editable": true,
+    "property": "width"
+  },
+  "--content-card-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--content-card-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--content-card-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--content-card-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--details-section-gap": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--expertise-artwork-ratio": {
+    "kind": "ratio",
+    "selectors": [
+      ".expertise-page__card",
+      "body[data-page=\"expertise\"] #field-assessment",
+      "body[data-page=\"expertise\"] #advanced-production",
+      "body[data-page=\"expertise\"] #site-execution"
+    ],
+    "editable": true,
+    "property": "aspect-ratio"
+  },
+  "--expertise-image-height": {
+    "kind": "length",
+    "selectors": [".expertise-page__card", "body[data-page=\"expertise\"] #advanced-production"],
+    "editable": true,
+    "property": "width"
+  },
+  "--expertise-image-left": {
+    "kind": "length",
+    "selectors": [
+      ".expertise-page__card",
+      "body[data-page=\"expertise\"] #field-assessment",
+      "body[data-page=\"expertise\"] #advanced-production",
+      "body[data-page=\"expertise\"] #site-execution"
+    ],
+    "editable": true,
+    "property": "margin-left"
+  },
+  "--expertise-image-top": {
+    "kind": "length",
+    "selectors": [".expertise-page__card", "body[data-page=\"expertise\"] #advanced-production"],
+    "editable": true,
+    "property": "margin-left"
+  },
+  "--expertise-image-width": {
+    "kind": "length",
+    "selectors": [
+      ".expertise-page__card",
+      "body[data-page=\"expertise\"] #field-assessment",
+      "body[data-page=\"expertise\"] #advanced-production",
+      "body[data-page=\"expertise\"] #site-execution"
+    ],
+    "editable": true,
+    "property": "width"
+  },
+  "--font-peyda": {
+    "kind": "font",
+    "selectors": [],
+    "editable": true,
+    "property": "font-family"
+  },
+  "--form-control-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--header-fixed-backdrop-blur": {
+    "kind": "length",
+    "selectors": [".site-header"],
+    "editable": true,
+    "property": "width"
+  },
+  "--header-fixed-background-color": {
+    "kind": "color",
+    "selectors": [".site-header"],
+    "editable": true,
+    "property": "color"
+  },
+  "--header-fixed-background-opacity": {
+    "kind": "number",
+    "selectors": [".site-header"],
+    "editable": true,
+    "min": 0,
+    "max": 100,
+    "property": "line-height"
+  },
+  "--header-fixed-enabled": {
+    "kind": "integer",
+    "selectors": [".site-header"],
+    "editable": true,
+    "min": 0,
+    "max": 1,
+    "property": "order"
+  },
+  "--header-fixed-scroll-threshold": {
+    "kind": "length",
+    "selectors": [".site-header"],
+    "editable": true,
+    "property": "width"
+  },
+  "--header-fixed-shadow": {
+    "kind": "shadow",
+    "selectors": [".site-header"],
+    "editable": true,
+    "property": "box-shadow"
+  },
+  "--header-fixed-top": {
+    "kind": "length",
+    "selectors": [".site-header"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-content-padding-bottom": {
+    "kind": "length",
+    "selectors": ["body[data-page]", "body[data-page=\"about\"]", "body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-content-padding-top": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-content-padding-top-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]", "body[data-page=\"home\"]", "body[data-page=\"contact\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-content-padding-top-mobile": {
+    "kind": "length",
+    "selectors": [
+      "body[data-page]",
+      "body[data-page=\"contact\"]",
+      "body[data-page=\"project-details\"]",
+      "body[data-page=\"product-details\"]"
+    ],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-content-padding-top-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page]", "body[data-page=\"home\"]", "body[data-page=\"contact\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-description-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-description-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]", "body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-description-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page]", "body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-description-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page]", "body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-description-line-height": {
+    "kind": "number",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "min": 0.1,
+    "max": 10,
+    "property": "line-height"
+  },
+  "--hero-eyebrow-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-eyebrow-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]", "body[data-page=\"project-details\"]", "body[data-page=\"product-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-eyebrow-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page]", "body[data-page=\"project-details\"]", "body[data-page=\"product-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-eyebrow-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page]", "body[data-page=\"project-details\"]", "body[data-page=\"product-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-eyebrow-line-height": {
+    "kind": "number",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "min": 0.1,
+    "max": 10,
+    "property": "line-height"
+  },
+  "--hero-min-height": {
+    "kind": "length",
+    "selectors": [".site-hero[data-site-hero]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-min-height-desktop": {
+    "kind": "length",
+    "selectors": [
+      "#hero-index",
+      "#hero-projects",
+      "#hero-project-details",
+      "#hero-products",
+      "#hero-product-details",
+      "#hero-industries",
+      "#hero-industry-textile",
+      "#hero-air-handling",
+      "#hero-expertise",
+      "#hero-articles",
+      "#hero-about",
+      "#hero-contact"
+    ],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-min-height-mobile": {
+    "kind": "length",
+    "selectors": [
+      "#hero-index",
+      "#hero-projects",
+      "#hero-project-details",
+      "#hero-products",
+      "#hero-product-details",
+      "#hero-industries",
+      "#hero-industry-textile",
+      "#hero-air-handling",
+      "#hero-expertise",
+      "#hero-articles",
+      "#hero-about",
+      "#hero-contact"
+    ],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-min-height-tablet": {
+    "kind": "length",
+    "selectors": [
+      "#hero-index",
+      "#hero-projects",
+      "#hero-project-details",
+      "#hero-products",
+      "#hero-product-details",
+      "#hero-industries",
+      "#hero-industry-textile",
+      "#hero-air-handling",
+      "#hero-expertise",
+      "#hero-articles",
+      "#hero-about",
+      "#hero-contact"
+    ],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-search-backdrop-height": {
+    "kind": "length",
+    "selectors": [],
+    "editable": false,
+    "reason": "مرز زمینه به‌صورت خودکار تا نیمهٔ ارتفاع فرم جستجو محاسبه می‌شود؛ فاصلهٔ فرم را در استایل هیرو تغییر دهید.",
+    "property": "width"
+  },
+  "--hero-summary-overlap": {
+    "kind": "length",
+    "selectors": [],
+    "editable": false,
+    "reason": "فاصلهٔ ایمن از محتوای هیرو خودکار است؛ مقدار درخواستی را با hero-summary-overlap-preferred تنظیم کن.",
+    "property": "margin-left"
+  },
+  "--hero-summary-overlap-desktop": {
+    "kind": "length",
+    "selectors": [
+      "body[data-page]",
+      "body[data-page=\"about\"]",
+      "body[data-page=\"project-details\"]",
+      "body[data-page=\"product-details\"]",
+      "body[data-page=\"industry-textile\"]"
+    ],
+    "editable": true,
+    "property": "margin-left"
+  },
+  "--hero-summary-overlap-mobile": {
+    "kind": "length",
+    "selectors": [
+      "body[data-page]",
+      "body[data-page=\"about\"]",
+      "body[data-page=\"project-details\"]",
+      "body[data-page=\"product-details\"]",
+      "body[data-page=\"industry-textile\"]"
+    ],
+    "editable": true,
+    "property": "margin-left"
+  },
+  "--hero-summary-overlap-preferred": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "margin-left"
+  },
+  "--hero-summary-overlap-tablet": {
+    "kind": "length",
+    "selectors": [
+      "body[data-page]",
+      "body[data-page=\"about\"]",
+      "body[data-page=\"project-details\"]",
+      "body[data-page=\"product-details\"]",
+      "body[data-page=\"industry-textile\"]"
+    ],
+    "editable": true,
+    "property": "margin-left"
+  },
+  "--hero-title-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-title-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-title-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-title-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--hero-title-line-height": {
+    "kind": "number",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "min": 0.1,
+    "max": 10,
+    "property": "line-height"
+  },
+  "--home-hero-content-margin-top": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"home\"]"],
+    "editable": true,
+    "property": "margin-left"
+  },
+  "--icon-size": {
+    "kind": "length",
+    "selectors": [".home-process-steps", "body[data-page=\"home\"] .home-process-steps"],
+    "editable": true,
+    "property": "width"
+  },
+  "--industries-blue-color": {
+    "kind": "color",
+    "selectors": [".industries-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--industries-border-color": {
+    "kind": "color",
+    "selectors": [".industries-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--industries-card-background-color": {
+    "kind": "color",
+    "selectors": [".industries-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--industries-card-shadow": {
+    "kind": "shadow",
+    "selectors": [".industries-page"],
+    "editable": true,
+    "property": "box-shadow"
+  },
+  "--industries-muted-text-color": {
+    "kind": "color",
+    "selectors": [".industries-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--industries-navy-color": {
+    "kind": "color",
+    "selectors": [".industries-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--industries-orange-color": {
+    "kind": "color",
+    "selectors": [".industries-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--industries-page-background-color": {
+    "kind": "color",
+    "selectors": [".industries-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--industries-search-button-color": {
+    "kind": "color",
+    "selectors": [".industries-page"],
+    "editable": true,
+    "property": "color"
+  },
+  "--label-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--list-card-min-height": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--list-media-width": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--logo-max-width": {
+    "kind": "length",
+    "selectors": [".home-partners"],
+    "editable": true,
+    "property": "width"
+  },
+  "--mobile-order": {
+    "kind": "integer",
+    "selectors": [".projects-page__card"],
+    "editable": true,
+    "min": -100,
+    "max": 100,
+    "property": "order"
+  },
+  "--navigation-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--page-gutter": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--partners-logo-gap": {
+    "kind": "length",
+    "selectors": [".home-partners"],
+    "editable": true,
+    "property": "width"
+  },
+  "--partners-logo-height": {
+    "kind": "length",
+    "selectors": [".home-partners"],
+    "editable": true,
+    "property": "width"
+  },
+  "--partners-scroll-distance": {
+    "kind": "length",
+    "selectors": [".home-partners"],
+    "editable": false,
+    "reason": "مسافت برابر عرض واقعی لوگوهاست؛ تغییر دستی آن در حلقهٔ حرکت درز ایجاد می‌کند.",
+    "property": "width"
+  },
+  "--partners-scroll-duration": {
+    "kind": "length",
+    "selectors": [".home-partners"],
+    "editable": false,
+    "reason": "مدت حرکت از عرض نوار محاسبه می‌شود؛ این مقدار خروجی محاسبه است.",
+    "property": "width"
+  },
+  "--pcm-blue": {
+    "kind": "color",
+    "selectors": [".pcm-root"],
+    "editable": true,
+    "property": "color"
+  },
+  "--pcm-height": {
+    "kind": "length",
+    "selectors": [".pcm-root"],
+    "editable": false,
+    "reason": "از motion.heroHeight در src/data/product-motion/config.json تنظیم کن؛ موتور انیمیشن مقدار را هنگام راه‌اندازی و تغییر تنظیمات روی باکس انتخاب‌شده می‌نویسد.",
+    "property": "width"
+  },
+  "--pcm-ink": {
+    "kind": "color",
+    "selectors": [".pcm-root"],
+    "editable": true,
+    "property": "color"
+  },
+  "--pcm-orange": {
+    "kind": "color",
+    "selectors": [".pcm-root"],
+    "editable": true,
+    "property": "color"
+  },
+  "--pcm-radius": {
+    "kind": "length",
+    "selectors": [".pcm-root"],
+    "editable": false,
+    "reason": "از motion.heroRadius در src/data/product-motion/config.json تنظیم کن؛ موتور انیمیشن این مقدار را برای باکس انتخاب‌شده و لایهٔ متحرک هماهنگ می‌کند.",
+    "property": "width"
+  },
+  "--project-body-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-body-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-body-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-body-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-body-line-height": {
+    "kind": "number",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "min": 0.1,
+    "max": 10,
+    "property": "line-height"
+  },
+  "--project-cover-min-height": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-grid-gap": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-heading-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-heading-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-heading-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-heading-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-heading-line-height": {
+    "kind": "number",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "min": 0.1,
+    "max": 10,
+    "property": "line-height"
+  },
+  "--project-meta-columns": {
+    "kind": "integer",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "min": 1,
+    "max": 100,
+    "property": "order"
+  },
+  "--project-meta-label-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-meta-label-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-meta-label-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-meta-label-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-meta-padding": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-meta-value-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-meta-value-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-meta-value-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-meta-value-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-section-spacing": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-stat-icon-size": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-stat-value-size": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--project-stats-columns": {
+    "kind": "integer",
+    "selectors": ["body[data-page=\"project-details\"]"],
+    "editable": true,
+    "min": 1,
+    "max": 100,
+    "property": "order"
+  },
+  "--section-title-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--section-title-font-size-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--section-title-font-size-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--section-title-font-size-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--shadow-card": {
+    "kind": "shadow",
+    "selectors": [],
+    "editable": true,
+    "property": "box-shadow"
+  },
+  "--shadow-card-hover": {
+    "kind": "shadow",
+    "selectors": [],
+    "editable": true,
+    "property": "box-shadow"
+  },
+  "--shadow-cta": {
+    "kind": "shadow",
+    "selectors": [],
+    "editable": true,
+    "property": "box-shadow"
+  },
+  "--site-gutter": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--site-gutter-compact": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--site-gutter-desktop": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--site-gutter-mobile": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--site-gutter-tablet": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--site-layout-max-width": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--site-pattern-crop-height": {
+    "kind": "length",
+    "selectors": [
+      "body[data-page] :is(.products-hero, .industries-hero, .air-handling__hero, .articles-hero)",
+      ".contact-hero"
+    ],
+    "editable": true,
+    "property": "width"
+  },
+  "--site-pattern-scene-height": {
+    "kind": "length",
+    "selectors": [".site-pattern-layer--header"],
+    "editable": false,
+    "reason": "ارتفاع خروجی پترن است؛ از تب پترن ← ارتفاع مبنا تنظیمش کن.",
+    "property": "width"
+  },
+  "--table-cell-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"],\n    body[data-page=\"product-details\"]", "body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--table-cell-padding-block": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"],\n    body[data-page=\"product-details\"]", "body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--table-cell-padding-inline": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"],\n    body[data-page=\"product-details\"]", "body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--table-heading-font-size": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"],\n    body[data-page=\"product-details\"]", "body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--table-heading-padding-block": {
+    "kind": "length",
+    "selectors": ["body[data-page=\"project-details\"],\n    body[data-page=\"product-details\"]", "body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--table-note-padding-block": {
+    "kind": "length",
+    "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--technical-accent-color": {
+    "kind": "color",
+    "selectors": ["body[data-page]", "body[data-page=\"project-details\"] .project-details__technical"],
+    "editable": true,
+    "property": "color"
+  },
+  "--technical-background-color": {
+    "kind": "color",
+    "selectors": [
+      "body[data-page]",
+      "body[data-page=\"project-details\"]",
+      "body[data-page=\"project-details\"] .project-details__technical"
+    ],
+    "editable": true,
+    "property": "color"
+  },
+  "--technical-border-color": {
+    "kind": "color",
+    "selectors": ["body[data-page=\"project-details\"] .project-details__technical"],
+    "editable": true,
+    "property": "color"
+  },
+  "--technical-border-soft-color": {
+    "kind": "color",
+    "selectors": ["body[data-page]", "body[data-page=\"project-details\"] .project-details__technical"],
+    "editable": true,
+    "property": "color"
+  },
+  "--technical-border-strong-color": {
+    "kind": "color",
+    "selectors": ["body[data-page]", "body[data-page=\"project-details\"] .project-details__technical"],
+    "editable": true,
+    "property": "color"
+  },
+  "--technical-checkmark-color": {
+    "kind": "color",
+    "selectors": ["body[data-page]", "body[data-page=\"project-details\"] .project-details__technical"],
+    "editable": true,
+    "property": "color"
+  },
+  "--technical-text-color": {
+    "kind": "color",
+    "selectors": ["body[data-page]", "body[data-page=\"project-details\"] .project-details__technical"],
+    "editable": true,
+    "property": "color"
+  }
+}

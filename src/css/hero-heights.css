@@ -1,0 +1,92 @@
+/* EDIT HERO HEIGHTS HERE, using the ID of each page's hero.
+ * Desktop >= 1180px; tablet 640–1179px; mobile <= 639px.
+ * Heights remain minimums, so longer text/search forms stay visible.
+ * Font sizes and other spacing remain in type-settings.css. */
+
+/* index.html */
+#hero-index {
+    --hero-min-height-desktop: 44rem;
+    --hero-min-height-tablet: 44rem;
+    --hero-min-height-mobile: 44rem;
+}
+/* projects.html */
+#hero-projects {
+    --hero-min-height-desktop: 31rem;
+    --hero-min-height-tablet: 31rem;
+    --hero-min-height-mobile: 25svh;
+}
+/* project-details.html */
+#hero-project-details {
+    --hero-min-height-desktop: 31rem;
+    --hero-min-height-tablet: 31rem;
+    --hero-min-height-mobile: 24rem;
+}
+/* products.html */
+#hero-products {
+    --hero-min-height-desktop: 31rem;
+    --hero-min-height-tablet: 31rem;
+    --hero-min-height-mobile: 25svh;
+}
+/* product-details.html */
+#hero-product-details {
+    --hero-min-height-desktop: 31rem;
+    --hero-min-height-tablet: 31rem;
+    --hero-min-height-mobile: 26rem;
+}
+/* industries.html */
+#hero-industries {
+    --hero-min-height-desktop: 31rem;
+    --hero-min-height-tablet: 31rem;
+    --hero-min-height-mobile: 25svh;
+}
+/* industry-textile.html */
+#hero-industry-textile {
+    --hero-min-height-desktop: 31rem;
+    --hero-min-height-tablet: 31rem;
+    --hero-min-height-mobile: 25svh;
+}
+/* air-handling.html */
+#hero-air-handling {
+    --hero-min-height-desktop: 31rem;
+    --hero-min-height-tablet: 31rem;
+    --hero-min-height-mobile: 25svh;
+}
+/* expertise.html */
+#hero-expertise {
+    --hero-min-height-desktop: 31rem;
+    --hero-min-height-tablet: 31rem;
+    --hero-min-height-mobile: 25svh;
+}
+/* articles.html */
+#hero-articles {
+    --hero-min-height-desktop: 31rem;
+    --hero-min-height-tablet: 31rem;
+    --hero-min-height-mobile: 25svh;
+}
+/* about.html */
+#hero-about {
+    --hero-min-height-desktop: 26rem;
+    --hero-min-height-tablet: 26rem;
+    --hero-min-height-mobile: 25svh;
+}
+/* contact.html */
+#hero-contact {
+    --hero-min-height-desktop: 31rem;
+    --hero-min-height-tablet: 31rem;
+    --hero-min-height-mobile: 25svh;
+}
+
+/* Choose the value on the hero itself, where the ID overrides live. */
+.site-hero[data-site-hero] {
+    --hero-min-height: var(--hero-min-height-desktop, 31rem);
+}
+@media (min-width: 640px) and (max-width: 1179px) {
+    .site-hero[data-site-hero] {
+        --hero-min-height: var(--hero-min-height-tablet, 31rem);
+    }
+}
+@media (max-width: 639px) {
+    .site-hero[data-site-hero] {
+        --hero-min-height: var(--hero-min-height-mobile, 25svh);
+    }
+}

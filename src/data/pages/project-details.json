@@ -1,0 +1,20 @@
+{
+  "consultation": {
+    "id": "project-details-consultation",
+    "image": "/assets/images/projects/project-details/cta-custom-hvac.png",
+    "imageAlt": "نمونه طراحی سیستم تهویه سفارشی صنعتی",
+    "eyebrow": "مشاوره و همکاری",
+    "title": "به یک راهکار سفارشی در صنعت خود نیاز دارید؟",
+    "description": "تیم مهندسی ما در طراحی راهکارهای سفارشی تهویه مطبوع برای چالش‌های تخصصی صنعت شما تجربه دارد. همین امروز برای یک مشاوره رایگان با متخصصین ما صحبت کنید.",
+    "nameLabel": "نام و نام خانوادگی",
+    "namePlaceholder": "نام و نام خانوادگی",
+    "secondaryLabel": "نام شرکت",
+    "secondaryName": "company",
+    "secondaryType": "text",
+    "secondaryAutocomplete": "organization",
+    "secondaryPlaceholder": "نام شرکت",
+    "messageLabel": "شماره تماس یا ایمیل",
+    "messagePlaceholder": "شماره تماس یا ایمیل",
+    "submitText": "درخواست مشاوره رایگان"
+  }
+}

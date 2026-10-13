@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link id="site-foundation-styles" rel="stylesheet" href="/src/css/main.css" />
+        <link id="site-page-styles" rel="stylesheet" href="/src/css/entries/articles.css" />
+        <meta
+            name="description"
+            content="مقالات تخصصی مارپیچ صنعت درباره مهندسی تهویه صنعتی، انتقال هوا، تولید تجهیزات و اجرای پروژه‌های صنعتی"
+        />
+        <title>مقالات | مارپیچ صنعت</title>
+    </head>
+
+    <body data-page="articles" dir="rtl">
+        <!-- Shared header stays outside hero stacking/clipping contexts. -->
+        <!-- @include header -->
+
+        <div id="top" class="articles-page" data-articles-page>
+            <section
+                class="articles-hero site-hero"
+                aria-labelledby="articles-page-title"
+                data-site-hero
+                id="hero-articles"
+            >
+                <div class="articles-container site-hero__content site-frame">
+                    <div class="articles-hero__heading">
+                        <p class="articles-hero__eyebrow site-hero__eyebrow">مقالات</p>
+                        <h1 id="articles-page-title" class="articles-hero__title site-hero__title"
+                            >دانش مهندسی و بینش صنعتی</h1
+                        >
+                        <p class="articles-hero__description site-prose site-hero__description">
+                            تجربه‌ها و تحلیل‌های مارپیچ صنعت درباره تهویه، تولید تجهیزات و اجرای پروژه‌های مهندسی.
+                        </p>
+                    </div>
+
+                    <form class="articles-search" data-articles-search role="search">
+                        <div class="articles-search__field-row">
+                            <button type="submit" class="articles-search__submit" aria-label="جستجو در مقالات">
+                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                            </button>
+                            <input
+                                class="articles-search__input"
+                                data-articles-query
+                                type="search"
+                                name="query"
+                                autocomplete="off"
+                                placeholder="جستجو در مقالات، دانش فنی، استانداردها و تجربه‌های اجرایی..."
+                            />
+                        </div>
+
+                        <div class="articles-search__filters" aria-label="دسته‌بندی مقالات">
+                            <button class="articles-search__filter is-active" type="button" data-article-filter="all">
+                                همه
+                            </button>
+                            <button class="articles-search__filter" type="button" data-article-filter="ducting">
+                                کانال‌کشی
+                            </button>
+                            <button class="articles-search__filter" type="button" data-article-filter="production">
+                                تولید
+                            </button>
+                            <button class="articles-search__filter" type="button" data-article-filter="engineering">
+                                مهندسی
+                            </button>
+                            <button class="articles-search__filter" type="button" data-article-filter="hvac">
+                                تهویه صنعتی
+                            </button>
+                            <button class="articles-search__filter" type="button" data-article-filter="standards">
+                                استانداردها
+                            </button>
+                            <button class="articles-search__filter" type="button" data-article-filter="experience">
+                                تجربه پروژه
+                            </button>
+                            <button class="articles-search__more" type="button" data-articles-more-filters>
+                                همه مقاله‌ها
+                            </button>
+                        </div>
+                        <p class="sr-only" data-articles-search-status role="status"></p>
+                    </form>
+                </div>
+            </section>
+
+            <main class="articles-main">
+                <div class="articles-container site-frame">
+                    <div class="articles-catalog-head">
+                        <h2 class="articles-catalog-title">مقالات</h2>
+                        <div class="articles-view-switcher" aria-label="نوع نمایش مقالات">
+                            <button
+                                class="articles-view-switcher__button is-active"
+                                type="button"
+                                data-article-view="grid"
+                                aria-label="نمایش شبکه‌ای"
+                                aria-pressed="true"
+                            >
+                                <i class="fa-solid fa-table-cells" aria-hidden="true"></i>
+                            </button>
+                            <button
+                                class="articles-view-switcher__button"
+                                type="button"
+                                data-article-view="list"
+                                aria-label="نمایش فهرستی"
+                                aria-pressed="false"
+                            >
+                                <i class="fa-solid fa-list" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <section class="articles-grid site-card-grid" data-article-grid aria-label="فهرست مقالات">
+                        <article
+                            class="article-card site-card"
+                            data-article-card
+                            data-category="hvac engineering"
+                            data-search="طراحی صحیح کانال انتقال هوا اهمیت مهندسی تهویه صنعتی"
+                        >
+                            <div class="article-card__media site-card__media">
+                                <img
+                                    src="/assets/images/articles/article-air-transfer-design.svg"
+                                    alt="کانال‌های صنعتی انتقال هوا"
+                                    loading="eager"
+                                    class="site-card__image"
+                                />
+                                <span class="article-card__category site-card__media-tag">تهویه صنعتی</span>
+                            </div>
+                            <div class="article-card__body site-card__body">
+                                <h3 class="article-card__title site-card__title"
+                                    >چرا طراحی صحیح کانال‌های انتقال هوا اهمیت دارد؟</h3
+                                >
+                                <p class="article-card__description site-prose site-card__description">
+                                    طراحی شبکه کانال‌ها فقط انتخاب ابعاد نیست؛ افت فشار، سرعت جریان و عملکرد واقعی سیستم
+                                    از همین مرحله شکل می‌گیرد.
+                                </p>
+                                <div class="article-card__meta">
+                                    <span class="site-card__meta-tag">طراحی مهندسی</span
+                                    ><span class="site-card__meta-tag">انتقال هوا</span
+                                    ><span class="site-card__meta-tag">پروژه صنعتی</span>
+                                </div>
+                                <a class="article-card__link site-text-link site-card__cta" href="#"
+                                    ><span class="site-text-link__label site-card__cta-label">مشاهده مقاله</span
+                                    ><i class="fa-solid fa-arrow-left" aria-hidden="true"></i
+                                ></a>
+                            </div>
+                        </article>
+
+                        <article
+                            class="article-card site-card"
+                            data-article-card
+                            data-category="ducting standards"
+                            data-search="افت فشار کانال کشی محاسبه عملکرد واقعی استاندارد"
+                        >
+                            <div class="article-card__media site-card__media">
+                                <img
+                                    src="/assets/images/articles/article-pressure-drop.svg"
+                                    alt="کانال‌کشی صنعتی و افت فشار"
+                                    loading="eager"
+                                    class="site-card__image"
+                                />
+                                <span class="article-card__category site-card__media-tag">انتقال هوا</span>
+                            </div>
+                            <div class="article-card__body site-card__body">
+                                <h3 class="article-card__title site-card__title"
+                                    >افت فشار در کانال‌کشی؛ از محاسبه تا عملکرد واقعی</h3
+                                >
+                                <p class="article-card__description site-prose site-card__description">
+                                    بررسی رابطه ابعاد، مسیر، اتصالات و زبری سطح با افت فشار و مصرف انرژی در شبکه‌های
+                                    انتقال هوا.
+                                </p>
+                                <div class="article-card__meta"
+                                    ><span class="site-card__meta-tag">افت فشار</span
+                                    ><span class="site-card__meta-tag">کانال‌کشی</span
+                                    ><span class="site-card__meta-tag">HVAC</span></div
+                                >
+                                <a class="article-card__link site-text-link site-card__cta" href="#"
+                                    ><span class="site-text-link__label site-card__cta-label">مشاهده مقاله</span
+                                    ><i class="fa-solid fa-arrow-left" aria-hidden="true"></i
+                                ></a>
+                            </div>
+                        </article>
+
+                        <article
+                            class="article-card site-card"
+                            data-article-card
+                            data-category="engineering experience"
+                            data-search="نقشه اجرا محاسبات مهندسی پروژه تهویه"
+                        >
+                            <div class="article-card__media site-card__media">
+                                <img
+                                    src="/assets/images/articles/article-engineering-to-execution.svg"
+                                    alt="مهندس در حال بررسی تجهیزات صنعتی"
+                                    loading="lazy"
+                                    class="site-card__image"
+                                />
+                                <span class="article-card__category site-card__media-tag">مهندسی HVAC</span>
+                            </div>
+                            <div class="article-card__body site-card__body">
+                                <h3 class="article-card__title site-card__title"
+                                    >از نقشه تا اجرا؛ نقش محاسبات مهندسی در پروژه‌های تهویه</h3
+                                >
+                                <p class="article-card__description site-prose site-card__description">
+                                    یک سیستم موفق نتیجه اتصال درست طراحی، محاسبه، ساخت و اجرای دقیق در سایت پروژه است.
+                                </p>
+                                <div class="article-card__meta"
+                                    ><span class="site-card__meta-tag">محاسبات HVAC</span
+                                    ><span class="site-card__meta-tag">اجرای پروژه</span
+                                    ><span class="site-card__meta-tag">مهندسی</span></div
+                                >
+                                <a class="article-card__link site-text-link site-card__cta" href="#"
+                                    ><span class="site-text-link__label site-card__cta-label">مشاهده مقاله</span
+                                    ><i class="fa-solid fa-arrow-left" aria-hidden="true"></i
+                                ></a>
+                            </div>
+                        </article>
+
+                        <article
+                            class="article-card site-card"
+                            data-article-card
+                            data-category="hvac experience"
+                            data-search="نگهداری سیستم تهویه عملکرد پایدار تعمیرات پیشگیرانه"
+                        >
+                            <div class="article-card__media site-card__media">
+                                <img
+                                    src="/assets/images/articles/article-hvac-maintenance.svg"
+                                    alt="بررسی و نگهداری تجهیزات تهویه"
+                                    loading="lazy"
+                                    class="site-card__image"
+                                />
+                                <span class="article-card__category site-card__media-tag">نگهداری و بهره‌برداری</span>
+                            </div>
+                            <div class="article-card__body site-card__body">
+                                <h3 class="article-card__title site-card__title"
+                                    >نگهداری سیستم تهویه؛ بخش فراموش‌شده عملکرد پایدار</h3
+                                >
+                                <p class="article-card__description site-prose site-card__description">
+                                    نگهداری منظم، بالانس و پایش تجهیزات می‌تواند راندمان سیستم را حفظ و هزینه توقف را
+                                    کاهش دهد.
+                                </p>
+                                <div class="article-card__meta"
+                                    ><span class="site-card__meta-tag">نگهداری سیستم</span
+                                    ><span class="site-card__meta-tag">راندمان</span
+                                    ><span class="site-card__meta-tag">پشتیبانی فنی</span></div
+                                >
+                                <a class="article-card__link site-text-link site-card__cta" href="#"
+                                    ><span class="site-text-link__label site-card__cta-label">مشاهده مقاله</span
+                                    ><i class="fa-solid fa-arrow-left" aria-hidden="true"></i
+                                ></a>
+                            </div>
+                        </article>
+
+                        <article
+                            class="article-card site-card"
+                            data-article-card
+                            data-category="hvac engineering"
+                            data-search="طراحی سیستم تهویه فضاهای صنعتی تفاوت کارخانه"
+                        >
+                            <div class="article-card__media site-card__media">
+                                <img
+                                    src="/assets/images/articles/article-industrial-hvac-design.svg"
+                                    alt="فضای صنعتی مجهز به سیستم تهویه"
+                                    loading="lazy"
+                                    class="site-card__image"
+                                />
+                                <span class="article-card__category site-card__media-tag">تهویه صنعتی</span>
+                            </div>
+                            <div class="article-card__body site-card__body">
+                                <h3 class="article-card__title site-card__title"
+                                    >طراحی سیستم تهویه برای فضاهای صنعتی چه تفاوتی دارد؟</h3
+                                >
+                                <p class="article-card__description site-prose site-card__description">
+                                    نوع فرآیند، آلاینده‌ها، دما و الگوی بهره‌برداری باعث می‌شوند طراحی صنعتی با تهویه
+                                    معمول ساختمان متفاوت باشد.
+                                </p>
+                                <div class="article-card__meta"
+                                    ><span class="site-card__meta-tag">طراحی سیستم</span
+                                    ><span class="site-card__meta-tag">تهویه صنعتی</span
+                                    ><span class="site-card__meta-tag">فضای تولید</span></div
+                                >
+                                <a class="article-card__link site-text-link site-card__cta" href="#"
+                                    ><span class="site-text-link__label site-card__cta-label">مشاهده مقاله</span
+                                    ><i class="fa-solid fa-arrow-left" aria-hidden="true"></i
+                                ></a>
+                            </div>
+                        </article>
+
+                        <article
+                            class="article-card site-card"
+                            data-article-card
+                            data-category="ducting engineering"
+                            data-search="کانال اسپیرال چهارگوش انتخاب مقایسه مهندسی"
+                        >
+                            <div class="article-card__media site-card__media">
+                                <img
+                                    src="/assets/images/articles/article-spiral-vs-rectangular.svg"
+                                    alt="کانال اسپیرال و کانال چهارگوش"
+                                    loading="lazy"
+                                    class="site-card__image"
+                                />
+                                <span class="article-card__category site-card__media-tag">مهندسی تهویه</span>
+                            </div>
+                            <div class="article-card__body site-card__body">
+                                <h3 class="article-card__title site-card__title"
+                                    >کانال اسپیرال یا چهارگوش؛ کدام انتخاب بهتری است؟</h3
+                                >
+                                <p class="article-card__description site-prose site-card__description">
+                                    مقایسه دو راهکار متداول انتقال هوا از نظر فضا، افت فشار، سرعت نصب و محدودیت‌های
+                                    پروژه.
+                                </p>
+                                <div class="article-card__meta"
+                                    ><span class="site-card__meta-tag">طراحی مهندسی</span
+                                    ><span class="site-card__meta-tag">انتخاب کانال</span
+                                    ><span class="site-card__meta-tag">پروژه HVAC</span></div
+                                >
+                                <a class="article-card__link site-text-link site-card__cta" href="#"
+                                    ><span class="site-text-link__label site-card__cta-label">مشاهده مقاله</span
+                                    ><i class="fa-solid fa-arrow-left" aria-hidden="true"></i
+                                ></a>
+                            </div>
+                        </article>
+
+                        <article
+                            class="article-card site-card"
+                            data-article-card
+                            data-category="production engineering"
+                            data-search="انتخاب متریال کانال پروژه صنعتی گالوانیزه استیل آلومینیوم"
+                        >
+                            <div class="article-card__media site-card__media">
+                                <img
+                                    src="/assets/images/articles/article-duct-material.svg"
+                                    alt="تولید کانال در کارگاه صنعتی"
+                                    loading="lazy"
+                                    class="site-card__image"
+                                />
+                                <span class="article-card__category site-card__media-tag">تولید صنعتی</span>
+                            </div>
+                            <div class="article-card__body site-card__body">
+                                <h3 class="article-card__title site-card__title"
+                                    >چرا انتخاب متریال کانال در پروژه‌های صنعتی مهم است؟</h3
+                                >
+                                <p class="article-card__description site-prose site-card__description">
+                                    شرایط محیط، خوردگی، دما و الزامات بهداشتی تعیین می‌کنند کدام متریال برای شبکه انتقال
+                                    هوا مناسب‌تر است.
+                                </p>
+                                <div class="article-card__meta"
+                                    ><span class="site-card__meta-tag">متریال</span
+                                    ><span class="site-card__meta-tag">ساخت سفارشی</span
+                                    ><span class="site-card__meta-tag">طراحی صنعتی</span></div
+                                >
+                                <a class="article-card__link site-text-link site-card__cta" href="#"
+                                    ><span class="site-text-link__label site-card__cta-label">مشاهده مقاله</span
+                                    ><i class="fa-solid fa-arrow-left" aria-hidden="true"></i
+                                ></a>
+                            </div>
+                        </article>
+
+                        <article
+                            class="article-card site-card"
+                            data-article-card
+                            data-category="production experience"
+                            data-search="کیفیت ساخت عملکرد کانال انتقال هوا تولید و ساخت"
+                        >
+                            <div class="article-card__media site-card__media">
+                                <img
+                                    src="/assets/images/articles/article-manufacturing-quality.svg"
+                                    alt="کنترل کیفیت ساخت کانال صنعتی"
+                                    loading="lazy"
+                                    class="site-card__image"
+                                />
+                                <span class="article-card__category site-card__media-tag">تولید و ساخت</span>
+                            </div>
+                            <div class="article-card__body site-card__body">
+                                <h3 class="article-card__title site-card__title"
+                                    >چگونه کیفیت ساخت بر عملکرد کانال‌های انتقال هوا اثر می‌گذارد؟</h3
+                                >
+                                <p class="article-card__description site-prose site-card__description">
+                                    کیفیت اتصال، آب‌بندی و دقت ابعادی مستقیماً روی نشتی، صدا و عملکرد نهایی سیستم تأثیر
+                                    دارند.
+                                </p>
+                                <div class="article-card__meta"
+                                    ><span class="site-card__meta-tag">کیفیت ساخت</span
+                                    ><span class="site-card__meta-tag">انتقال هوا</span
+                                    ><span class="site-card__meta-tag">کنترل کیفیت</span></div
+                                >
+                                <a class="article-card__link site-text-link site-card__cta" href="#"
+                                    ><span class="site-text-link__label site-card__cta-label">مشاهده مقاله</span
+                                    ><i class="fa-solid fa-arrow-left" aria-hidden="true"></i
+                                ></a>
+                            </div>
+                        </article>
+
+                        <article
+                            class="article-card site-card"
+                            data-article-card
+                            data-category="production standards"
+                            data-search="تولید سفارشی تجهیزات راهکار استاندارد کافی نیست"
+                        >
+                            <div class="article-card__media site-card__media">
+                                <img
+                                    src="/assets/images/articles/article-custom-production.svg"
+                                    alt="تولید سفارشی تجهیزات تهویه"
+                                    loading="lazy"
+                                    class="site-card__image"
+                                />
+                                <span class="article-card__category site-card__media-tag">تولید صنعتی</span>
+                            </div>
+                            <div class="article-card__body site-card__body">
+                                <h3 class="article-card__title site-card__title"
+                                    >تولید سفارشی تجهیزات؛ وقتی راهکار استاندارد کافی نیست</h3
+                                >
+                                <p class="article-card__description site-prose site-card__description">
+                                    پروژه‌های خاص به ابعاد، متریال و جزئیاتی نیاز دارند که همیشه در محصولات آماده بازار
+                                    وجود ندارد.
+                                </p>
+                                <div class="article-card__meta"
+                                    ><span class="site-card__meta-tag">تولید سفارشی</span
+                                    ><span class="site-card__meta-tag">استاندارد ساخت</span
+                                    ><span class="site-card__meta-tag">پروژه خاص</span></div
+                                >
+                                <a class="article-card__link site-text-link site-card__cta" href="#"
+                                    ><span class="site-text-link__label site-card__cta-label">مشاهده مقاله</span
+                                    ><i class="fa-solid fa-arrow-left" aria-hidden="true"></i
+                                ></a>
+                            </div>
+                        </article>
+
+                        <article
+                            class="article-card site-card"
+                            data-article-card
+                            data-category="hvac engineering experience"
+                            data-search="پنج عامل انتخاب راهکار مناسب تهویه صنعتی"
+                        >
+                            <div class="article-card__media site-card__media">
+                                <img
+                                    src="/assets/images/articles/article-hvac-selection-factors.svg"
+                                    alt="مهندس در حال بررسی سیستم تهویه صنعتی"
+                                    loading="lazy"
+                                    class="site-card__image"
+                                />
+                                <span class="article-card__category site-card__media-tag">دانش مهندسی</span>
+                            </div>
+                            <div class="article-card__body site-card__body">
+                                <h3 class="article-card__title site-card__title"
+                                    >پنج عامل مؤثر بر انتخاب راهکار مناسب تهویه صنعتی</h3
+                                >
+                                <p class="article-card__description site-prose site-card__description">
+                                    نوع صنعت، فرآیند تولید، شرایط محیطی، ظرفیت واقعی و نگهداری پنج ورودی مهم برای یک
+                                    انتخاب قابل اتکا هستند.
+                                </p>
+                                <div class="article-card__meta"
+                                    ><span class="site-card__meta-tag">انتخاب سیستم</span
+                                    ><span class="site-card__meta-tag">HVAC</span
+                                    ><span class="site-card__meta-tag">مهندسی کاربردی</span></div
+                                >
+                                <a class="article-card__link site-text-link site-card__cta" href="#"
+                                    ><span class="site-text-link__label site-card__cta-label">مشاهده مقاله</span
+                                    ><i class="fa-solid fa-arrow-left" aria-hidden="true"></i
+                                ></a>
+                            </div>
+                        </article>
+                    </section>
+
+                    <div class="articles-empty" data-articles-empty hidden>
+                        مقاله‌ای با این فیلتر پیدا نشد. دسته‌بندی «همه» را انتخاب کنید یا عبارت جستجو را تغییر دهید.
+                    </div>
+
+                    <div class="articles-load-more">
+                        <button type="button" data-articles-load-more class="site-text-link">
+                            <span class="site-text-link__label">بارگذاری مقالات بیشتر</span>
+                            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                        </button>
+                        <p data-articles-load-status class="articles-load-status" hidden></p>
+                    </div>
+
+                    <!-- @include catalog-consultation consultation -->
+                </div>
+            </main>
+
+            <!-- @include footer -->
+        </div>
+
+        <!-- @include mobile-menu -->
+        <!-- @include auth-modal -->
+        <script type="module" src="/src/js/pages/articles.js"></script>
+    </body>
+</html>

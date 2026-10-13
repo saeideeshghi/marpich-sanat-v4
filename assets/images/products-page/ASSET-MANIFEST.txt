@@ -1,0 +1,27 @@
+Place the product page image assets in this directory using these exact names:
+
+Background / CTA
+- page-pattern.svg
+- consultation-system.png
+
+Featured categories
+- featured-air-handling-unit.png
+- featured-diffuser-insulation.png
+- featured-spiral-duct.png
+- featured-duct-fittings.png
+- featured-dust-collector.png
+- featured-installation-support.png
+
+Product cards
+- roof-centrifugal-fan.png
+- air-handling-unit.png
+- round-silencer.png
+- rectangular-silencer.png
+- spiral-duct-elbow.png
+- volume-control-damper.png
+- rooftop-package-unit.png
+- centrifugal-fan.png
+- fresh-air-louver.png
+- rectangular-flange.png
+- concentric-reducer.png
+- spiral-connector.png

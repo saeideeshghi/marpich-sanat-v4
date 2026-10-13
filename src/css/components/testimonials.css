@@ -1,0 +1,18 @@
+/* Shared interaction states; each page owns its testimonial layout. */
+[data-testimonials-track][data-slider-scrollable] {
+    touch-action: pan-y pinch-zoom;
+}
+
+[data-testimonials-track][data-slider-dragging] {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+    cursor: grabbing;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+@media (hover: hover) {
+    [data-testimonials-track][data-slider-scrollable]:not([data-slider-dragging]) {
+        cursor: grab;
+    }
+}

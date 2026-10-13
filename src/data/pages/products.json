@@ -1,0 +1,239 @@
+{
+  "search": {
+    "id": "product-search",
+    "title": "جستجوی پیشرفته محصولات",
+    "placeholder": "جستجو بر اساس مدل، شماره استاندارد یا مشخصات فنی...",
+    "filters": [
+      {
+        "name": "category",
+        "label": "دسته‌بندی محصول",
+        "options": [
+          {
+            "value": "",
+            "label": "دسته‌بندی / شکل"
+          },
+          {
+            "value": "fans",
+            "label": "فن‌ها"
+          },
+          {
+            "value": "ducts",
+            "label": "کانال‌ها و اتصالات"
+          },
+          {
+            "value": "air-handling",
+            "label": "هواسازها"
+          }
+        ]
+      },
+      {
+        "name": "material",
+        "label": "جنس محصول",
+        "options": [
+          {
+            "value": "",
+            "label": "متریال"
+          },
+          {
+            "value": "galvanized",
+            "label": "گالوانیزه"
+          },
+          {
+            "value": "aluminum",
+            "label": "آلومینیوم"
+          },
+          {
+            "value": "stainless",
+            "label": "استنلس استیل"
+          }
+        ]
+      },
+      {
+        "name": "dimensions",
+        "label": "ابعاد محصول",
+        "options": [
+          {
+            "value": "",
+            "label": "ابعاد / قطر"
+          },
+          {
+            "value": "small",
+            "label": "کوچک"
+          },
+          {
+            "value": "medium",
+            "label": "متوسط"
+          },
+          {
+            "value": "large",
+            "label": "بزرگ"
+          }
+        ]
+      },
+      {
+        "name": "pressure",
+        "label": "کلاس فشار",
+        "options": [
+          {
+            "value": "",
+            "label": "مشخصات / کلاس فشار"
+          },
+          {
+            "value": "low",
+            "label": "فشار پایین"
+          },
+          {
+            "value": "medium",
+            "label": "فشار متوسط"
+          },
+          {
+            "value": "high",
+            "label": "فشار بالا"
+          }
+        ]
+      }
+    ],
+    "chips": ["جنس فولاد ضدزنگ 316L", "ضخامت ۳ میلی‌متر", "فشار بالا"],
+    "variant": "products"
+  },
+  "consultation": {
+    "id": "products-consultation",
+    "eyebrow": "مشاوره مهندسی",
+    "title": "به یک راهکار سفارشی در صنعت خود نیاز دارید؟",
+    "description": "تیم مهندسی ما در طراحی راهکارهای سفارشی تهویه مطبوع برای نیازهای منحصربه‌فرد صنعتی تخصص دارد. همین امروز با مهندسان ما صحبت کنید.",
+    "image": "/assets/images/products-page/consultation-system.png",
+    "imageAlt": "اجزای سیستم تهویه صنعتی",
+    "nameLabel": "نام و نام خانوادگی",
+    "namePlaceholder": "نام و نام خانوادگی",
+    "secondaryLabel": "شماره تماس",
+    "secondaryName": "phone",
+    "secondaryType": "tel",
+    "secondaryAutocomplete": "tel",
+    "secondaryPlaceholder": "شماره تماس",
+    "messageLabel": "توضیح نیاز پروژه",
+    "messagePlaceholder": "نیاز خود را توضیح دهید",
+    "submitText": "درخواست راهکار سفارشی"
+  },
+  "products": [
+    {
+      "image": "/assets/images/products-page/roof-centrifugal-fan.png",
+      "alt": "فن سانتریفیوژ سقفی",
+      "category": "سانتریفیوژ",
+      "title": "فن سانتریفیوژ سقفی",
+      "description": "اگزاست‌فن سقفی صنعتی با صدای کم، مناسب تخلیه هوا در فضاهای اداری، تجاری و صنعتی",
+      "specs": ["دبی تا ۱۲٬۰۰۰", "موتور کم‌مصرف", "نصب سقفی"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول"
+    },
+    {
+      "image": "/assets/images/products-page/air-handling-unit.png",
+      "alt": "دستگاه هواساز",
+      "category": "هواساز مرکزی",
+      "title": "دستگاه هواساز",
+      "description": "واحد تهویه و تأمین هوای تازه با فیلتراسیون چندمرحله‌ای و ظرفیت متناسب با پروژه",
+      "specs": ["فیلتر چندمرحله‌ای", "بدنه دوجداره", "کنترل هوشمند"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول"
+    },
+    {
+      "image": "/assets/images/products-page/round-silencer.png",
+      "alt": "سایلنسر گرد",
+      "category": "کنترل صدا",
+      "title": "سایلنسر گرد",
+      "description": "کاهش صدای آیرودینامیکی در شبکه کانال اسپیرال با جذب صوت بالا و افت فشار کم",
+      "specs": ["افت فشار کم", "عایق آکوستیک", "ابعاد سفارشی"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول"
+    },
+    {
+      "image": "/assets/images/products-page/rectangular-silencer.png",
+      "alt": "سایلنسر چهارگوش",
+      "category": "کنترل صدا",
+      "title": "سایلنسر چهارگوش",
+      "description": "صداگیر صنعتی کانال‌های چهارگوش برای کنترل نویز هواساز و تجهیزات تهویه",
+      "specs": ["مناسب هواساز", "پره آکوستیک", "سایز سفارشی"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول"
+    },
+    {
+      "image": "/assets/images/products-page/spiral-duct-elbow.png",
+      "alt": "زانویی کانال اسپیرال",
+      "category": "اتصالات کانال",
+      "title": "زانویی کانال اسپیرال",
+      "description": "تغییر مسیر آیرودینامیکی جریان هوا در شبکه اسپیرال با مقاومت و افت اصطکاک کم",
+      "specs": ["زاویه‌های متنوع", "ورق گالوانیزه", "اتصال مطمئن"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول"
+    },
+    {
+      "image": "/assets/images/products-page/volume-control-damper.png",
+      "alt": "دمپر کنترل حجم",
+      "category": "کنترل حجم",
+      "title": "دمپر کنترل حجم",
+      "description": "بالانس دقیق و تنظیم حجم جریان هوا در کانال‌های چهارگوش با پره‌های مقابل",
+      "specs": ["پره مخالف", "دستی یا موتوری", "نشتی پایین"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول"
+    },
+    {
+      "image": "/assets/images/products-page/rooftop-package-unit.png",
+      "alt": "پکیج یونیت پشت‌بامی",
+      "category": "تهویه مطبوع",
+      "title": "پکیج یونیت پشت‌بامی",
+      "description": "سیستم یکپارچه سرمایش، گرمایش و تهویه با راندمان بالا، مناسب پروژه‌های تجاری",
+      "specs": ["نصب سریع", "راندمان بالا", "کنترل مرکزی"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول"
+    },
+    {
+      "image": "/assets/images/products-page/centrifugal-fan.png",
+      "alt": "فن سانتریفیوژ",
+      "category": "سیستم تخلیه",
+      "title": "فن سانتریفیوژ",
+      "description": "فن صنعتی پرفشار برای مکش، تخلیه و انتقال هوای آلوده در کاربری‌های سنگین",
+      "specs": ["فشار بالا", "بالانس دقیق", "کارکرد مداوم"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول"
+    },
+    {
+      "image": "/assets/images/products-page/fresh-air-louver.png",
+      "alt": "لوور هوای تازه",
+      "category": "ورود هوا",
+      "title": "لوور هوای تازه",
+      "description": "لوور مشبک تأمین هوای تازه با طراحی ضدباران و جلوگیری از ورود پرندگان",
+      "specs": ["توری محافظ", "افت فشار کم", "ضدباران"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول"
+    },
+    {
+      "image": "/assets/images/products-page/rectangular-flange.png",
+      "alt": "فلنج چهارگوش",
+      "category": "اتصالات کانال",
+      "title": "فلنج چهارگوش",
+      "description": "اتصال فلنجی مقاوم برای کانال‌های چهارگوش با آب‌بندی مناسب و مونتاژ سریع",
+      "specs": ["مونتاژ سریع", "گالوانیزه", "ابعاد متنوع"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول"
+    },
+    {
+      "image": "/assets/images/products-page/concentric-reducer.png",
+      "alt": "تبدیل هم‌مرکز",
+      "category": "اتصالات کانال",
+      "title": "تبدیل هم‌مرکز",
+      "description": "تغییر یکنواخت قطر کانال گرد با حفظ جریان هوا و کاهش صدای آیرودینامیکی",
+      "specs": ["افت فشار پایین", "اتصال استاندارد", "قطر سفارشی"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول"
+    },
+    {
+      "image": "/assets/images/products-page/spiral-connector.png",
+      "alt": "رابط اسپیرال",
+      "category": "اتصالات کانال",
+      "title": "رابط اسپیرال",
+      "description": "اتصال محکم، یکپارچه و آب‌بند قطعات کانال اسپیرال برای اجرای سریع شبکه تهویه",
+      "specs": ["نصب آسان", "آب‌بندی مناسب", "سایز متنوع"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول"
+    }
+  ]
+}

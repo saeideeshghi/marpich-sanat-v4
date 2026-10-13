@@ -1,0 +1,98 @@
+.site-linked-card {
+    position: relative;
+    isolation: isolate;
+}
+.site-linked-card > .site-card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+}
+.site-linked-card .site-card-action {
+    z-index: 2;
+}
+.site-linked-card .site-card-action--static {
+    position: relative;
+}
+.site-linked-card > .site-card-link:focus-visible {
+    outline-offset: -3px;
+}
+
+/* Limit the articles-style effect to content tiles and listing cards.
+ * The shared .site-card class also marks full-width panels and utility boxes. */
+body[data-page]
+    :is(
+        .home-expertise-grid > .site-card,
+        .home-projects-grid > .site-card,
+        .home-products-grid > .site-card,
+        .product-card,
+        .featured-card,
+        .projects-page__card,
+        .project-details__product-card,
+        .article-card,
+        .industry-feature,
+        .industry-textile__product-card,
+        .industry-textile__project-card,
+        .about-expertise-card
+    ) {
+    box-shadow: var(--shadow-card);
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+body[data-page]
+    :is(
+        .home-expertise-grid > .site-card,
+        .home-projects-grid > .site-card,
+        .home-products-grid > .site-card,
+        .product-card,
+        .featured-card,
+        .projects-page__card,
+        .project-details__product-card,
+        .article-card,
+        .industry-feature,
+        .industry-textile__product-card,
+        .industry-textile__project-card,
+        .about-expertise-card
+    ):is(:hover, :focus-within) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body[data-page]
+        :is(
+            .home-expertise-grid > .site-card,
+            .home-projects-grid > .site-card,
+            .home-products-grid > .site-card,
+            .product-card,
+            .featured-card,
+            .projects-page__card,
+            .project-details__product-card,
+            .article-card,
+            .industry-feature,
+            .industry-textile__product-card,
+            .industry-textile__project-card,
+            .about-expertise-card
+        ) {
+        transition: none;
+    }
+    body[data-page]
+        :is(
+            .home-expertise-grid > .site-card,
+            .home-projects-grid > .site-card,
+            .home-products-grid > .site-card,
+            .product-card,
+            .featured-card,
+            .projects-page__card,
+            .project-details__product-card,
+            .article-card,
+            .industry-feature,
+            .industry-textile__product-card,
+            .industry-textile__project-card,
+            .about-expertise-card
+        ):is(:hover, :focus-within) {
+        transform: none;
+    }
+}

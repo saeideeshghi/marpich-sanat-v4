@@ -1,0 +1,121 @@
+{
+  "search": {
+    "id": "product-search",
+    "title": "جستجوی پیشرفته صنایع",
+    "placeholder": "نام صنعت، نوع فعالیت یا مشخصات موردنظر را جستجو کنید...",
+    "filters": [
+      {
+        "name": "industry",
+        "label": "نوع صنعت",
+        "options": [
+          {
+            "value": "",
+            "label": "نوع صنعت"
+          },
+          {
+            "value": "textile",
+            "label": "نساجی"
+          },
+          {
+            "value": "healthcare",
+            "label": "بیمارستان و درمان"
+          },
+          {
+            "value": "pharma",
+            "label": "داروسازی"
+          },
+          {
+            "value": "laboratory",
+            "label": "آزمایشگاه"
+          }
+        ]
+      },
+      {
+        "name": "application",
+        "label": "فضای کاربردی",
+        "options": [
+          {
+            "value": "",
+            "label": "فضای کاربردی"
+          },
+          {
+            "value": "production",
+            "label": "فضای تولید"
+          },
+          {
+            "value": "cleanroom",
+            "label": "اتاق تمیز"
+          },
+          {
+            "value": "warehouse",
+            "label": "انبار و لجستیک"
+          }
+        ]
+      },
+      {
+        "name": "projectType",
+        "label": "نوع پروژه",
+        "options": [
+          {
+            "value": "",
+            "label": "نوع پروژه‌ها"
+          },
+          {
+            "value": "new",
+            "label": "پروژه جدید"
+          },
+          {
+            "value": "retrofit",
+            "label": "بازسازی و بهسازی"
+          },
+          {
+            "value": "optimization",
+            "label": "بهینه‌سازی"
+          }
+        ]
+      },
+      {
+        "name": "sensitivity",
+        "label": "سطح حساسیت محیط",
+        "options": [
+          {
+            "value": "",
+            "label": "سطح حساسیت محیط"
+          },
+          {
+            "value": "normal",
+            "label": "عادی"
+          },
+          {
+            "value": "controlled",
+            "label": "کنترل‌شده"
+          },
+          {
+            "value": "critical",
+            "label": "بحرانی / حساس"
+          }
+        ]
+      }
+    ],
+    "chips": ["تهویه و کنترل فشار مثبت", "کنترل رطوبت", "فضاهای عملیاتی"],
+    "variant": "industries"
+  },
+  "consultation": {
+    "id": "industries-consultation",
+    "eyebrow": "مشاوره مهندسی",
+    "title": "به یک راهکار سفارشی در صنعت خود نیاز دارید؟",
+    "description": "تیم مهندسی ما در طراحی راهکارهای سفارشی تهویه مطبوع برای چالش‌های منحصربه‌فرد صنعتی تخصص دارد. همین امروز با مهندسان ما صحبت کنید.",
+    "image": "/assets/images/products-page/consultation-system.png",
+    "imageAlt": "اجزای سیستم تهویه صنعتی",
+    "nameLabel": "نام و نام خانوادگی",
+    "namePlaceholder": "نام و نام خانوادگی",
+    "secondaryLabel": "نام شرکت",
+    "secondaryName": "company",
+    "secondaryType": "text",
+    "secondaryAutocomplete": "organization",
+    "secondaryPlaceholder": "نام شرکت",
+    "messageLabel": "توضیح نیاز پروژه",
+    "messagePlaceholder": "نیاز خود را توضیح دهید",
+    "submitText": "درخواست راهکار سفارشی"
+  }
+}

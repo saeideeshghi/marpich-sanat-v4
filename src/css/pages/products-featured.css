@@ -1,0 +1,240 @@
+/* Featured category mosaic only. Physical grid columns stay LTR; copy stays RTL.
+ * Typography is independent from the regular product catalogue's card tokens. */
+body[data-page="products"] .featured-products {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 2fr) minmax(0, 2.5fr);
+    grid-template-rows: repeat(3, minmax(200px, auto));
+    grid-template-areas:
+        "spiral spiral air"
+        "dust fitting air"
+        "dust support diffuser";
+    gap: 16px;
+    direction: ltr;
+}
+
+body[data-page="products"] .featured-card {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    border: 1px solid #e3e9f2;
+    border-radius: 12px;
+    background: #f8faff;
+    direction: rtl;
+    text-align: right;
+}
+body[data-page="products"] .featured-card--air {
+    grid-area: air;
+}
+body[data-page="products"] .featured-card--diffuser {
+    grid-area: diffuser;
+}
+body[data-page="products"] .featured-card--spiral {
+    grid-area: spiral;
+}
+body[data-page="products"] .featured-card--fitting {
+    grid-area: fitting;
+}
+body[data-page="products"] .featured-card--dust {
+    grid-area: dust;
+}
+body[data-page="products"] .featured-card--support {
+    grid-area: support;
+}
+
+body[data-page="products"] .featured-card__content {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-width: 0;
+    padding: 22px 22px 16px 8px;
+}
+body[data-page="products"] .featured-card__title {
+    margin: 0;
+    color: #0f172b;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+body[data-page="products"] .featured-card__description {
+    margin: 6px 0 0;
+    color: #28354b;
+    font-size: 13px;
+    line-height: 1.8;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+body[data-page="products"] .featured-card__count {
+    display: block;
+    margin-top: 10px;
+    color: #49a7f3;
+    direction: ltr;
+    text-align: right;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.1;
+}
+body[data-page="products"] .featured-card__count small {
+    display: block;
+    margin-top: 3px;
+    color: #4f5c72;
+    font-size: 11px;
+    line-height: 1.4;
+}
+body[data-page="products"] .featured-card__count::after {
+    display: block;
+    width: 27px;
+    height: 8px;
+    margin-top: 7px;
+    margin-left: auto;
+    background: url("/assets/icons/products/count-arrow.svg") center / contain no-repeat;
+    content: "";
+}
+body[data-page="products"] .featured-card__image-wrap {
+    position: relative;
+    flex: 0 0 44%;
+    min-width: 0;
+    min-height: 0;
+    margin: 12px 6px 12px 14px;
+}
+body[data-page="products"] .featured-card__image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Air handling and dust extraction are the two portrait cards. */
+body[data-page="products"] .featured-card--air,
+body[data-page="products"] .featured-card--dust {
+    flex-direction: column;
+}
+body[data-page="products"] :is(.featured-card--air, .featured-card--dust) .featured-card__content {
+    flex: 0 0 auto;
+    padding: 22px 24px 0;
+}
+body[data-page="products"] :is(.featured-card--air, .featured-card--dust) .featured-card__image-wrap {
+    flex: 1 1 auto;
+    min-height: 190px;
+    margin: 10px 24px 18px;
+}
+body[data-page="products"] .featured-card--air .featured-card__count {
+    position: absolute;
+    top: 100%;
+    right: 24px;
+    z-index: 2;
+}
+body[data-page="products"] .featured-card--air .featured-card__image-wrap {
+    min-height: 250px;
+    margin-top: 30px;
+}
+body[data-page="products"] :is(.featured-card--fitting, .featured-card--support) .featured-card__content {
+    padding: 20px 14px 14px 4px;
+}
+body[data-page="products"] :is(.featured-card--fitting, .featured-card--support) .featured-card__image-wrap {
+    flex-basis: 32%;
+    margin-left: 10px;
+}
+
+@media (max-width: 1179px) {
+    body[data-page="products"] .featured-products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: auto;
+        grid-template-areas:
+            "air air"
+            "diffuser diffuser"
+            "spiral spiral"
+            "fitting dust"
+            "support dust";
+        gap: 12px;
+    }
+    body[data-page="products"] .featured-card {
+        min-height: 176px;
+    }
+    body[data-page="products"] .featured-card--air {
+        min-height: 340px;
+    }
+    body[data-page="products"] .featured-card--dust {
+        min-height: 364px;
+    }
+    body[data-page="products"] .featured-card--air .featured-card__image-wrap {
+        min-height: 220px;
+    }
+    body[data-page="products"] .featured-card__title {
+        font-size: 16px;
+    }
+    body[data-page="products"] .featured-card__description {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 639px) {
+    body[data-page="products"] .featured-products {
+        gap: 8px;
+    }
+    body[data-page="products"] .featured-card {
+        min-height: 132px;
+        border-radius: 8px;
+    }
+    body[data-page="products"] .featured-card--air {
+        min-height: 228px;
+    }
+    body[data-page="products"] .featured-card--dust {
+        min-height: 388px;
+    }
+    body[data-page="products"] .featured-card--fitting,
+    body[data-page="products"] .featured-card--support {
+        min-height: 190px;
+    }
+    body[data-page="products"] .featured-card__content {
+        padding: 14px 12px 12px 4px;
+    }
+    body[data-page="products"] .featured-card__title {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    body[data-page="products"] .featured-card__description {
+        margin-top: 4px;
+        font-size: 12px;
+        line-height: 1.7;
+    }
+    body[data-page="products"] .featured-card__count {
+        margin-top: 7px;
+        font-size: 20px;
+    }
+    body[data-page="products"] .featured-card__count small {
+        font-size: 10px;
+    }
+    body[data-page="products"] .featured-card__count::after {
+        margin-top: 5px;
+    }
+    body[data-page="products"] .featured-card__image-wrap {
+        margin: 10px 4px 10px 8px;
+    }
+    body[data-page="products"] :is(.featured-card--air, .featured-card--dust) .featured-card__content {
+        padding: 14px 12px 0;
+    }
+    body[data-page="products"] :is(.featured-card--air, .featured-card--dust) .featured-card__image-wrap {
+        min-height: 170px;
+        margin: 10px 12px 12px;
+    }
+    body[data-page="products"] .featured-card--air .featured-card__count {
+        right: 12px;
+    }
+    body[data-page="products"] .featured-card--air .featured-card__image-wrap {
+        min-height: 130px;
+        margin-top: 30px;
+    }
+    body[data-page="products"] :is(.featured-card--fitting, .featured-card--support) .featured-card__content {
+        padding: 12px 8px 10px 2px;
+    }
+    body[data-page="products"] :is(.featured-card--fitting, .featured-card--support) .featured-card__image-wrap {
+        flex-basis: 30%;
+        margin-left: 6px;
+    }
+}

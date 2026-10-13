@@ -1,0 +1,45 @@
+{
+  "testimonials": {
+    "id": "testimonials-title",
+    "sectionClass": "projects-page__testimonials",
+    "titleClass": "projects-page__section-title",
+    "title": "نظرات مشتریان ما",
+    "subtitle": "آنچه مشتریان ما درباره همکاری با مارپیچ صنعت می‌گویند",
+    "cards": [
+      {
+        "quote": "سیستم تهویه‌ای که برای پروژه ما طراحی و اجرا شد، علاوه بر پاسخ‌گویی دقیق به نیاز فرایند، عملکرد پایدار و نگهداری ساده‌ای داشته است.",
+        "name": "مهندس علی کریمی",
+        "role": "مدیر پروژه"
+      },
+      {
+        "quote": "کیفیت ساخت، تحویل منظم و همراهی تیم فنی در زمان راه‌اندازی برای ما نقطه قوت اصلی این همکاری بود و نتیجه دقیقاً با انتظار پروژه هم‌خوانی داشت.",
+        "name": "مهندس فاطمه محمدی",
+        "role": "واحد فنی و بهره‌برداری"
+      },
+      {
+        "quote": "همکاری با مارپیچ صنعت در پروژه تهویه مجموعه، از مرحله طراحی تا اجرای نهایی منظم بود و تیم پروژه در برابر تغییرات اجرایی پاسخ‌گو و منعطف عمل کرد.",
+        "name": "مهندس امیر رضایی",
+        "role": "مدیر تأسیسات"
+      }
+    ],
+    "variant": "projects"
+  },
+  "consultation": {
+    "id": "projects-consultation",
+    "eyebrow": "مشاوره مهندسی",
+    "title": "به یک راهکار سفارشی در صنعت خود نیاز دارید؟",
+    "description": "تیم مهندسی ما در طراحی‌های سفارشی تهویه مطبوع برای چالش‌های منحصر‌به‌فرد صنعتی تخصص دارد. همین امروز با مهندسان ما صحبت کنید.",
+    "image": "/assets/images/projects/project-details/cta-custom-hvac.png",
+    "imageAlt": "راهکار سفارشی تهویه صنعتی",
+    "nameLabel": "نام و نام خانوادگی",
+    "namePlaceholder": "نام و نام خانوادگی",
+    "secondaryLabel": "نام شرکت",
+    "secondaryName": "company",
+    "secondaryType": "text",
+    "secondaryAutocomplete": "organization",
+    "secondaryPlaceholder": "نام شرکت",
+    "messageLabel": "شرح پروژه یا نیاز شما",
+    "messagePlaceholder": "شرح پروژه یا نیاز شما",
+    "submitText": "درخواست راهکار سفارشی"
+  }
+}

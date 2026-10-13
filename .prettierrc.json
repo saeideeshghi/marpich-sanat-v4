@@ -1,0 +1,12 @@
+{
+  "tabWidth": 4,
+  "printWidth": 120,
+  "singleQuote": false,
+  "trailingComma": "all",
+  "htmlWhitespaceSensitivity": "strict",
+  "endOfLine": "lf",
+  "overrides": [
+    { "files": "*.json", "options": { "tabWidth": 2 } },
+    { "files": "*.{yml,yaml}", "options": { "tabWidth": 2 } }
+  ]
+}

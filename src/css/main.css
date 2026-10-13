@@ -1,0 +1,23 @@
+/* Shared styles load in the HTML head before the ordered page stylesheet. */
+@import "tailwindcss" source("../");
+@import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
+@import "@fortawesome/fontawesome-free/css/solid.min.css";
+@import "@fortawesome/fontawesome-free/css/regular.min.css";
+@import "./tokens.css";
+@import "./fonts.css";
+@import "./base.css";
+@import "./components/site.css";
+@import "./components/card-effects.css";
+@import "./components/fixed-header.css";
+@import "./components/footer.css";
+@import "./components/pattern.css";
+@import "./components/auth.css";
+@import "./components/language.css";
+@import "./components/testimonials.css";
+
+/* Include utilities used by build-time HTML partials. */
+@source "../components";
+/* Scan authored pages only; generated dist/cache files are not CSS inputs. */
+@source "../../*.html";
+@source "../../tools/*.html";
+@source "../../docs/backend-handoff.html";

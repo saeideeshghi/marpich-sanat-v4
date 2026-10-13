@@ -1,0 +1,22 @@
+<!-- Shared template: testimonials-projects. Content values come from src/data/pages at build time. -->
+<section class="projects-page__testimonials testimonials site-testimonials" aria-labelledby="testimonials-title">
+    <div class="projects-page__container site-frame">
+        <div class="projects-page__testimonials-head">
+            <h2 id="testimonials-title" class="projects-page__section-title">{{title}}</h2>
+            <div class="projects-page__testimonials-subtitle">
+                <span aria-hidden="true"></span>
+                <p>{{subtitle}}</p>
+                <span aria-hidden="true"></span>
+            </div>
+        </div>
+
+        <div
+            class="projects-page__testimonials-track"
+            data-testimonials-track
+            tabindex="0"
+            aria-label="نظرات مشتریان؛ برای دیدن نظرهای دیگر روی موبایل بکشید"
+        >
+            {{{cards}}}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,47 @@
+/* EDIT GEOMETRY HERE.
+ * These values are shared by the logo, hero copy, content and footer.
+ * Desktop >=1180px; tablet 640–1179px; mobile <=639px.
+ * Keep type sizes in type-settings.css and per-hero heights in hero-heights.css.
+ */
+body[data-page] {
+    --site-layout-max-width: 1920px;
+    --site-gutter-desktop: clamp(40px, 4.45vw, 64px);
+    --site-gutter-tablet: 32px;
+    --site-gutter-mobile: 20px;
+    --site-gutter-compact: 16px;
+    --site-gutter: var(--site-gutter-desktop);
+
+    --card-radius-desktop: 16px;
+    --card-radius-mobile: 8px;
+    --card-radius: var(--card-radius-desktop);
+    --list-media-width: 240px;
+    --list-card-min-height: 190px;
+    --details-section-gap: 32px;
+
+    --table-cell-padding-block: 12px;
+    --table-cell-padding-inline: 14px;
+    --table-heading-padding-block: 20px;
+    --table-note-padding-block: 14px;
+
+    /* Compatibility for shared consultation components. */
+    --page-gutter: var(--site-gutter);
+}
+@media (min-width: 640px) and (max-width: 1179px) {
+    body[data-page] {
+        --site-gutter: var(--site-gutter-tablet);
+        --card-radius: var(--card-radius-mobile);
+    }
+}
+@media (max-width: 639px) {
+    body[data-page] {
+        --site-gutter: var(--site-gutter-mobile);
+        --card-radius: var(--card-radius-mobile);
+        --table-cell-padding-inline: 10px;
+        --details-section-gap: 24px;
+    }
+}
+@media (max-width: 359px) {
+    body[data-page] {
+        --site-gutter: var(--site-gutter-compact);
+    }
+}

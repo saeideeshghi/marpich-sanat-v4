@@ -1,0 +1,63 @@
+/* Shared navigation settings; each variable can be scoped to a page/range. */
+.site-header {
+    --header-fixed-enabled: 1;
+    --header-fixed-scroll-threshold: 600px;
+    --header-fixed-top: 0px;
+    --header-fixed-background-color: #0f172b;
+    --header-fixed-background-opacity: 96;
+    --header-fixed-backdrop-blur: 8px;
+    --header-fixed-shadow: 0 6px 24px #0f172b29;
+}
+body[data-page] .site-header[data-header-fixed="true"] {
+    position: fixed;
+    top: var(--header-fixed-top);
+    z-index: 100;
+    background-color: var(--header-fixed-background-color);
+    background-color: color-mix(
+        in srgb,
+        var(--header-fixed-background-color) calc(var(--header-fixed-background-opacity) * 1%),
+        transparent
+    );
+    backdrop-filter: blur(var(--header-fixed-backdrop-blur));
+    -webkit-backdrop-filter: blur(var(--header-fixed-backdrop-blur));
+    box-shadow: var(--header-fixed-shadow);
+    animation: site-header-enter 180ms ease-out backwards;
+}
+@keyframes site-header-enter {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Match the navigation's hamburger breakpoint. Keep the fixed header flush
+ * with the viewport, with breathing room inside its compact navigation row. */
+@media (max-width: 1179px) {
+    body[data-page] .site-header[data-header-fixed="true"] {
+        top: 0;
+    }
+    body[data-page] .site-header[data-header-fixed="true"] .site-header__mobile {
+        padding-block: 8px;
+        min-height: 80px;
+    }
+    body[data-page] .site-header__settings-measure {
+        height: 0;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    body[data-page] .site-header[data-header-fixed="true"] {
+        animation: none;
+    }
+}
+.site-header__settings-measure {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: max(0px, var(--header-fixed-scroll-threshold));
+    height: max(0px, var(--header-fixed-top));
+    overflow: hidden;
+    visibility: hidden;
+    pointer-events: none;
+}

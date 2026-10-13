@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link id="site-foundation-styles" rel="stylesheet" href="/src/css/main.css" />
+        <link id="site-page-styles" rel="stylesheet" href="/src/css/entries/air-handling.css" />
+        <meta
+            name="description"
+            content="محصولات هواساز و تجهیزات تهویه مطبوع صنعتی مارپیچ صنعت؛ هواساز صنعتی، هواساز هایژنیک، روف‌تاپ پکیج، ایرواشر و تجهیزات جانبی"
+        />
+        <title>محصولات هواساز | مارپیچ صنعت</title>
+    </head>
+
+    <body data-page="air-handling" dir="rtl">
+        <!-- Shared header stays outside hero stacking/clipping contexts. -->
+        <!-- @include header -->
+
+        <div id="top" class="air-handling-page" data-air-handling-page>
+            <!-- HERO / SHARED HEADER -->
+            <section
+                class="air-handling__hero site-hero"
+                aria-labelledby="air-handling-page-title"
+                data-site-hero
+                id="hero-air-handling"
+            >
+                <div class="site-container site-hero__content site-frame">
+                    <div class="air-handling__hero-heading">
+                        <p class="air-handling__eyebrow site-hero__eyebrow">دسته‌بندی محصولات تهویه صنعتی</p>
+                        <h1 id="air-handling-page-title" class="air-handling__title site-hero__title">
+                            تجهیزات مهندسی و تأسیسات یکپارچه
+                        </h1>
+                    </div>
+
+                    <!-- Advanced product search -->
+                    <!-- @include search-panel search -->
+                </div>
+            </section>
+
+            <main class="air-handling__main">
+                <div class="site-container site-frame">
+                    <!-- Category intro -->
+                    <section class="air-handling__intro" aria-labelledby="air-handling-intro-title">
+                        <div class="air-handling__intro-copy">
+                            <h2 id="air-handling-intro-title">تهویه مطبوع و هواسازها</h2>
+                            <p class="site-prose">
+                                سیستم‌های تهویه مطبوع صنعتی با بهره‌گیری از فناوری‌های پیشرفته، دما و جریان هوا را
+                                به‌صورت دقیق و یکپارچه کنترل می‌کنند. این تجهیزات با افزایش بهره‌وری انرژی، ایجاد شرایط
+                                محیطی پایدار و تأمین آسایش در فضاهای صنعتی و تجاری، عملکرد قابل اعتماد و بهینه ارائه
+                                می‌دهند.
+                            </p>
+                        </div>
+
+                        <div class="air-handling__intro-media" aria-hidden="true">
+                            <img
+                                src="/assets/images/products-page/featured-air-handling-unit.png"
+                                alt=""
+                                loading="eager"
+                            />
+                        </div>
+                    </section>
+
+                    <!-- Catalog -->
+                    <section class="air-handling__catalog" aria-labelledby="air-handling-products-title">
+                        <div class="air-handling__catalog-head">
+                            <h2 id="air-handling-products-title">همه محصولات هواساز</h2>
+
+                            <div class="view-switcher" aria-label="نوع نمایش محصولات">
+                                <button
+                                    type="button"
+                                    class="view-switcher__button is-active"
+                                    data-view="grid"
+                                    aria-label="نمایش شبکه‌ای"
+                                    aria-pressed="true"
+                                >
+                                    <i class="fa-solid fa-table-cells-large" aria-hidden="true"></i>
+                                </button>
+                                <button
+                                    type="button"
+                                    class="view-switcher__button"
+                                    data-view="list"
+                                    aria-label="نمایش فهرستی"
+                                    aria-pressed="false"
+                                >
+                                    <i class="fa-solid fa-list" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="air-handling__grid products-grid site-card-grid" data-product-grid>
+                            <!-- 01 -->
+                            <!-- @include product-cards products -->
+
+                            <!-- 02 -->
+
+                            <!-- 03 -->
+
+                            <!-- 04 -->
+
+                            <!-- 05 -->
+
+                            <!-- 06 -->
+
+                            <!-- 07 -->
+
+                            <!-- 08 -->
+
+                            <!-- 09 -->
+
+                            <!-- 10 -->
+
+                            <!-- 11 -->
+
+                            <!-- 12 -->
+                        </div>
+
+                        <div class="catalog-more">
+                            <button type="button" class="catalog-more__button site-text-link">
+                                <span class="site-text-link__label">بارگذاری محصولات بیشتر</span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </section>
+                    <!-- Shared catalog consultation CTA -->
+                    <!-- @include catalog-consultation consultation -->
+                </div>
+            </main>
+
+            <!-- @include footer -->
+        </div>
+
+        <!-- @include mobile-menu -->
+        <!-- @include auth-modal -->
+        <script type="module" src="/src/js/pages/air-handling.js"></script>
+    </body>
+</html>

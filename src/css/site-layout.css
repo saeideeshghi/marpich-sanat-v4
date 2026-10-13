@@ -1,0 +1,131 @@
+@import "./layout-settings.css";
+
+/* A frame is an OUTER content wrapper. Never nest two frames: inner grids
+ * keep width:100%. Above 1920px the content canvas stops growing, while section
+ * backgrounds remain full width. Normal desktop/tablet/mobile widths are intact. */
+body[data-page] .site-frame {
+    box-sizing: border-box;
+    width: calc(100% - 2 * var(--site-gutter));
+    max-width: calc(var(--site-layout-max-width) - 2 * var(--site-gutter));
+    margin-inline: auto;
+    padding-inline: 0;
+    min-width: 0;
+}
+body[data-page] :is(.site-header__desktop, .site-header__mobile) {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: var(--site-layout-max-width);
+    margin-inline: auto;
+    padding-inline: var(--site-gutter);
+}
+
+/* Customer logos are the intentional exception: the strip reaches the left
+ * viewport edge. The introductory copy keeps the same right gutter as the logo.
+ * Overflow is confined to the moving track, never the whole page. */
+body[data-page="home"] .home-partners__inner {
+    width: min(calc(100% - var(--site-gutter)), calc(var(--site-layout-max-width) - var(--site-gutter)));
+    max-width: none;
+    margin-left: 0;
+    margin-right: max(var(--site-gutter), calc((100% - var(--site-layout-max-width)) / 2 + var(--site-gutter)));
+    padding-inline: 0;
+}
+body[data-page="home"] .home-partners__viewport {
+    margin-left: 0;
+    padding-left: 0;
+    mask-image: none;
+}
+body[data-page="home"] .home-process-steps {
+    width: min(100%, var(--site-layout-max-width));
+    max-width: none;
+    margin-inline: auto;
+    padding-inline: 0;
+}
+/* Media outside content frames follows the same centered canvas. Full-width
+ * section colors remain on the host, so large screens keep a continuous surface. */
+body[data-page="about"] .about-gallery__media,
+body[data-page="home"] .hero-overlay {
+    width: min(100%, var(--site-layout-max-width));
+    margin-inline: auto;
+}
+@media (min-width: 1180px) {
+    body[data-page="home"] .hero-image,
+    body[data-page="about"] .about-main::before {
+        left: max(0px, calc((100% - var(--site-layout-max-width)) / 2));
+    }
+    body[data-page="about"] .about-main::after {
+        right: max(0px, calc((100% - var(--site-layout-max-width)) / 2));
+    }
+}
+@media (max-width: 1013px) {
+    body[data-page="home"] .home-process-step p {
+        display: none;
+    }
+}
+
+/* List view: a compact media column, with rows sized by their own content.
+ * Grid view retains its equal-height cards. Phone list/grid remains stacked.
+ */
+@media (min-width: 768px) {
+    body[data-page] main :is(.products-grid.is-list, .products-grid--list, .projects-page__grid.is-list) {
+        grid-auto-rows: auto;
+    }
+    body[data-page] main :is(.products-grid.is-list, .products-grid--list, .projects-page__grid.is-list) > article {
+        display: grid;
+        grid-template-columns: minmax(180px, var(--list-media-width)) minmax(0, 1fr);
+        min-height: var(--list-card-min-height);
+        direction: rtl;
+    }
+    body[data-page]
+        main
+        :is(.products-grid.is-list, .products-grid--list, .projects-page__grid.is-list)
+        :is(.product-card__media, .projects-page__card-media) {
+        width: 100%;
+        height: 100%;
+        min-height: var(--list-card-min-height);
+        aspect-ratio: auto;
+        border-radius: 0 var(--card-radius) var(--card-radius) 0;
+    }
+    body[data-page]
+        main
+        :is(.products-grid.is-list, .products-grid--list, .projects-page__grid.is-list)
+        :is(.product-card__body, .projects-page__card-body) {
+        min-height: 0;
+        padding: 16px 20px;
+    }
+    body[data-page]
+        main
+        :is(.products-grid.is-list, .products-grid--list, .projects-page__grid.is-list)
+        :is(.product-card__specs, .projects-page__card-meta) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    body[data-page]
+        main
+        :is(.products-grid.is-list, .products-grid--list, .projects-page__grid.is-list)
+        :is(.product-card__specs, .projects-page__card-meta)
+        > span {
+        flex: 0 1 auto;
+        min-width: 80px;
+    }
+}
+
+/* One field per row below 552px, including enhanced searchable selects. */
+/* Selected chips keep breathing room independently of page-level form rules. */
+body[data-page] .product-search__bottom {
+    padding-block: 12px 18px;
+}
+@media (max-width: 551px) {
+    body[data-page] .product-search__filters {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+    }
+    body[data-page] .product-search__filters > * {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+    }
+    body[data-page] .product-search__advanced {
+        grid-column: auto;
+    }
+}

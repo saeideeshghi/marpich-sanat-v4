@@ -1,0 +1,450 @@
+/* Shared image cards: equal rows and predictable media.
+ * Semantic title/description styles are owned by card-type.css.
+ * Below 560px one column leaves enough room for Persian titles and metadata.
+ * List mode stacks below 640px; wider screens retain the horizontal layout. */
+body[data-page]
+    main
+    :is(
+        .home-expertise-grid,
+        .home-projects-grid,
+        .home-products-grid,
+        .products-grid,
+        .projects-page__grid,
+        .articles-grid,
+        .about-expertise__grid,
+        .industry-textile__products-grid,
+        .industry-textile__projects-grid,
+        .project-details__products-grid
+    ) {
+    align-items: stretch;
+    grid-auto-rows: 1fr;
+}
+body[data-page]
+    main
+    :is(
+        .home-expertise-grid > article,
+        .home-projects-grid > article,
+        .home-products-grid > article,
+        .product-card,
+        .projects-page__card,
+        .article-card,
+        .about-expertise-card,
+        .industry-textile__product-card,
+        .industry-textile__project-card,
+        .project-details__product-card
+    ) {
+    min-width: 0;
+}
+body[data-page] main .about-expertise-card {
+    display: flex;
+    flex-direction: column;
+}
+body[data-page]
+    main
+    :is(
+        .product-card__body,
+        .projects-page__card-body,
+        .article-card__body,
+        .about-expertise-card__body,
+        .industry-textile__product-body,
+        .industry-textile__project-body,
+        .project-details__product-body
+    ) {
+    min-width: 0;
+    flex: 1;
+}
+body[data-page]
+    main
+    :is(
+        .product-card__spec,
+        .article-card__meta span,
+        .projects-page__card-meta span,
+        .industry-textile__product-specs span,
+        .industry-textile__project-meta span,
+        .project-details__product-specs span
+    ) {
+    min-width: 0;
+    height: auto;
+    min-height: 36px;
+    overflow: visible;
+    white-space: normal;
+    text-overflow: clip;
+    overflow-wrap: anywhere;
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 6px;
+}
+body[data-page]
+    main
+    :is(
+        .product-card__link,
+        .article-card__link,
+        .projects-page__card-link,
+        .about-card-link,
+        .industry-textile__card-link,
+        .project-details__product-link
+    ) {
+    max-width: 100%;
+    min-height: 44px;
+    margin-top: auto;
+    padding-top: 12px;
+    font-size: 14px;
+    line-height: 1.7;
+    white-space: normal;
+}
+body[data-page] main .article-card__meta {
+    margin-top: auto;
+    padding-top: 12px;
+}
+body[data-page] main .article-card__link {
+    margin-top: 4px;
+    padding-top: 4px;
+}
+
+@media (max-width: 1179px) {
+    body[data-page]
+        main
+        :is(
+            .home-expertise-grid,
+            .home-projects-grid,
+            .home-products-grid,
+            .products-grid,
+            .projects-page__grid,
+            .articles-grid,
+            .about-expertise__grid,
+            .industry-textile__products-grid,
+            .industry-textile__projects-grid,
+            .project-details__products-grid
+        ) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+    body[data-page] main :is(.home-expertise-grid, .home-projects-grid, .home-products-grid) > article {
+        display: flex;
+        flex-direction: column;
+    }
+    body[data-page]
+        main
+        :is(.home-expertise-grid, .home-projects-grid, .home-products-grid)
+        > article
+        > div:first-child,
+    body[data-page]
+        main
+        :is(
+            .product-card__media,
+            .projects-page__card-media,
+            .industry-textile__product-media,
+            .industry-textile__project-media,
+            .project-details__product-media
+        ) {
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 16 / 10;
+        flex: 0 0 auto;
+        border-radius: 8px 8px 0 0;
+    }
+    body[data-page] main .about-expertise-card__image {
+        height: auto;
+        aspect-ratio: 16 / 10;
+        flex: 0 0 auto;
+    }
+    body[data-page] main .article-card__media {
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+        flex: 0 0 auto;
+    }
+    body[data-page]
+        main
+        :is(.home-expertise-grid, .home-projects-grid, .home-products-grid)
+        > article
+        > div:first-child
+        > img,
+    body[data-page]
+        main
+        :is(
+            .product-card__image,
+            .projects-page__card-media > img,
+            .industry-textile__product-media img,
+            .industry-textile__project-media img,
+            .project-details__product-media img
+        ) {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    /* Keep the detail page's equipment presentation independent of catalogs. */
+    body[data-page="project-details"] main .project-details__product-media img {
+        object-fit: contain;
+        padding: 8px;
+    }
+    body[data-page]
+        main
+        :is(
+            .product-card__body,
+            .projects-page__card-body,
+            .article-card__body,
+            .about-expertise-card__body,
+            .industry-textile__product-body,
+            .industry-textile__project-body,
+            .project-details__product-body
+        ),
+    body[data-page]
+        main
+        :is(.home-expertise-grid, .home-projects-grid, .home-products-grid)
+        > article
+        > div:last-child {
+        min-height: 0;
+        padding: 16px;
+    }
+    body[data-page] main .home-products-grid > article > div:first-child > img {
+        position: absolute;
+        inset: 0;
+        object-fit: cover;
+        padding: 0;
+    }
+    body[data-page] main .home-expertise-grid .site-text-link {
+        margin-right: auto;
+    }
+    body[data-page]
+        main
+        :is(.home-product-category, .product-card__category, .article-card__category, .projects-page__card-category) {
+        width: auto;
+        max-width: calc(100% - 16px);
+        height: auto;
+        min-height: 28px;
+        padding: 4px 12px;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    body[data-page]
+        main
+        :is(
+            .industry-textile__product-body > p,
+            .industry-textile__project-body > p,
+            .project-details__product-body > p
+        ) {
+        margin-top: 8px;
+        color: #5a6677;
+    }
+    body[data-page] main :is(.industry-textile__product-tags, .project-details__product-tags) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 12px;
+    }
+    body[data-page] main .project-details__product-tags span {
+        border-radius: 5px;
+        background: #ece9e6;
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+    body[data-page] main :is(.projects-page__card-meta, .project-details__product-specs) {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+        margin-top: 12px;
+    }
+    body[data-page] main .project-details__product-specs span {
+        border: 1px solid #d9e1ea;
+        border-radius: 5px;
+    }
+    body[data-page] main .projects-page__card--desktop-only {
+        display: flex;
+    }
+    body[data-page]
+        main
+        :is(
+            .products-grid.is-list,
+            .products-grid.products-grid--list,
+            .projects-page__grid.is-list,
+            .articles-grid.is-list
+        ) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (min-width: 640px) and (max-width: 1179px) {
+    body[data-page]
+        main
+        :is(.products-grid.is-list, .products-grid.products-grid--list, .projects-page__grid.is-list)
+        > article {
+        grid-template-columns: minmax(200px, 34%) minmax(0, 1fr);
+    }
+    body[data-page] main .articles-grid.is-list > article {
+        display: grid;
+        direction: ltr;
+        grid-template-columns: minmax(0, 1fr) minmax(200px, 34%);
+    }
+    body[data-page] main .articles-grid.is-list .article-card__media {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    body[data-page] main .articles-grid.is-list .article-card__body {
+        grid-column: 1;
+        grid-row: 1;
+        direction: rtl;
+    }
+    body[data-page]
+        main
+        :is(
+            .products-grid.is-list,
+            .products-grid.products-grid--list,
+            .projects-page__grid.is-list,
+            .articles-grid.is-list
+        )
+        :is(.product-card__media, .projects-page__card-media, .article-card__media) {
+        height: 100%;
+        min-height: 220px;
+        aspect-ratio: auto;
+    }
+}
+@media (max-width: 639px) {
+    body[data-page]
+        main
+        :is(
+            .home-expertise-grid > article,
+            .home-projects-grid > article,
+            .home-products-grid > article,
+            .product-card,
+            .projects-page__card,
+            .article-card,
+            .about-expertise-card,
+            .industry-textile__product-card,
+            .industry-textile__project-card,
+            .project-details__product-card
+        ) {
+        border-radius: 8px;
+    }
+    body[data-page]
+        main
+        :is(
+            .products-grid.is-list,
+            .products-grid.products-grid--list,
+            .projects-page__grid.is-list,
+            .articles-grid.is-list
+        )
+        > article {
+        display: flex;
+        flex-direction: column;
+        direction: rtl;
+    }
+    body[data-page]
+        main
+        :is(
+            .products-grid.is-list,
+            .products-grid.products-grid--list,
+            .projects-page__grid.is-list,
+            .articles-grid.is-list
+        )
+        :is(.product-card__media, .projects-page__card-media, .article-card__media) {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 16 / 10;
+        flex: 0 0 auto;
+        border-radius: 8px 8px 0 0;
+    }
+    body[data-page] main .articles-grid.is-list .article-card__media {
+        aspect-ratio: 16 / 9;
+    }
+    /* Office map placement is owned by contact.css. */
+}
+@media (max-width: 559px) {
+    body[data-page]
+        main
+        :is(
+            .home-expertise-grid,
+            .home-projects-grid,
+            .home-products-grid,
+            .products-grid,
+            .projects-page__grid,
+            .articles-grid,
+            .about-expertise__grid,
+            .industry-textile__products-grid,
+            .industry-textile__projects-grid,
+            .project-details__products-grid
+        ) {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+}
+
+/* A single phone column needs no grid/list control. Keep both modes stacked
+ * when resizing from a desktop list view. */
+@media (max-width: 767px) {
+    body[data-page] :is(.projects-page__view-switch, .view-switcher, .articles-view-switcher) {
+        display: none;
+    }
+    body[data-page] main :is(.projects-page__grid, .products-grid, .articles-grid) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    body[data-page]
+        main
+        :is(
+            .projects-page__grid.is-list,
+            .products-grid.is-list,
+            .products-grid.products-grid--list,
+            .articles-grid.is-list
+        )
+        > article {
+        display: flex;
+        flex-direction: column;
+        direction: rtl;
+    }
+    body[data-page]
+        main
+        :is(
+            .projects-page__grid.is-list,
+            .products-grid.is-list,
+            .products-grid.products-grid--list,
+            .articles-grid.is-list
+        )
+        :is(.projects-page__card-media, .product-card__media, .article-card__media) {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 16 / 10;
+        flex: 0 0 auto;
+        border-radius: 8px 8px 0 0;
+    }
+    body[data-page] main .articles-grid.is-list .article-card__media {
+        aspect-ratio: 16 / 9;
+    }
+}
+
+/* Animate only card photographs: logos, icons and labels keep their size.
+ * Individual scale preserves existing flips and article image overscan. */
+body[data-page]
+    main
+    :is(
+        .home-expertise-grid > article > div:first-child > img,
+        .home-products-grid > article > div:first-child > img,
+        .product-card__image,
+        .article-card__media img,
+        .about-expertise-card__image,
+        .industry-textile__product-media img,
+        .industry-textile__project-media img,
+        .project-details__product-media img
+    ),
+body[data-page="home"] main .home-article__media > img {
+    transition:
+        scale 320ms ease,
+        transform 320ms ease,
+        filter 320ms ease;
+    backface-visibility: hidden;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    body[data-page] main :is(.home-expertise-grid, .home-products-grid) > article:hover > div:first-child > img,
+    body[data-page] main .product-card:not(.industry-card):hover .product-card__image,
+    body[data-page] main .article-card:hover .article-card__media img,
+    body[data-page] main .about-expertise-card:hover .about-expertise-card__image,
+    body[data-page] main .industry-textile__product-card:hover .industry-textile__product-media img,
+    body[data-page] main .industry-textile__project-card:hover .industry-textile__project-media img,
+    body[data-page] main .project-details__product-card:hover .project-details__product-media img,
+    body[data-page="home"] main .home-article__row:hover .home-article__media > img {
+        scale: 1.06;
+    }
+}

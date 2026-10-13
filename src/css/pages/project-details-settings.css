@@ -1,0 +1,60 @@
+/* EDIT PROJECT DETAILS HERE. All variables are scoped to this page.
+ * Card roles use the general defaults in type-settings.css.
+ * Body copy and metadata stay full-length and never receive a two-line clamp. */
+body[data-page="project-details"] {
+    --project-heading-font-size-desktop: 28px;
+    --project-heading-font-size-tablet: 26px;
+    --project-heading-font-size-mobile: 22px;
+    --project-body-font-size-desktop: 16px;
+    --project-body-font-size-tablet: 16px;
+    --project-body-font-size-mobile: 16px;
+    --project-meta-label-font-size-desktop: 14px;
+    --project-meta-label-font-size-tablet: 14px;
+    --project-meta-label-font-size-mobile: 12px;
+    --project-meta-value-font-size-desktop: 14px;
+    --project-meta-value-font-size-tablet: 14px;
+    --project-meta-value-font-size-mobile: 12px;
+    --project-body-line-height: 1.95;
+    --project-heading-line-height: 1.65;
+    --project-section-spacing: 32px;
+    --project-grid-gap: 24px;
+    --project-meta-columns: 6;
+    --project-meta-padding: 12px;
+    --project-cover-min-height: 250px;
+    --project-stats-columns: 5;
+    --project-stat-icon-size: 52px;
+    --project-stat-value-size: 28px;
+    --project-heading-font-size: var(--project-heading-font-size-desktop);
+    --project-body-font-size: var(--project-body-font-size-desktop);
+    --project-meta-label-font-size: var(--project-meta-label-font-size-desktop);
+    --project-meta-value-font-size: var(--project-meta-value-font-size-desktop);
+}
+@media (min-width: 640px) and (max-width: 1179px) {
+    body[data-page="project-details"] {
+        --project-heading-font-size: var(--project-heading-font-size-tablet);
+        --project-body-font-size: var(--project-body-font-size-tablet);
+        --project-meta-label-font-size: var(--project-meta-label-font-size-tablet);
+        --project-meta-value-font-size: var(--project-meta-value-font-size-tablet);
+        --project-cover-min-height: 250px;
+        --project-stats-columns: 3;
+    }
+}
+@media (min-width: 1181px) {
+    body[data-page="project-details"] {
+        --project-cover-min-height: 346px;
+    }
+}
+@media (max-width: 639px) {
+    body[data-page="project-details"] {
+        --project-heading-font-size: var(--project-heading-font-size-mobile);
+        --project-body-font-size: var(--project-body-font-size-mobile);
+        --project-meta-label-font-size: var(--project-meta-label-font-size-mobile);
+        --project-meta-value-font-size: var(--project-meta-value-font-size-mobile);
+        --project-section-spacing: 28px;
+        --project-grid-gap: 20px;
+        --project-meta-columns: 3;
+        --project-meta-padding: 7px;
+        --project-cover-min-height: 250px;
+        --project-stats-columns: 2;
+    }
+}

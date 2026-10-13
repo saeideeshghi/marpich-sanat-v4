@@ -1,0 +1,95 @@
+/* Scoped to the language disclosure; menu/card selectors are never reused. */
+.site-language {
+    position: relative;
+    width: fit-content;
+    direction: ltr;
+}
+.site-language__toggle {
+    display: inline-flex;
+    min-height: 38px;
+    align-items: center;
+    gap: 7px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.site-language__flag {
+    display: block;
+    flex: 0 0 19px;
+    width: 19px;
+    height: 19px;
+    object-fit: contain;
+}
+.site-language__chevron {
+    font-size: 7px;
+    transition: rotate 150ms ease;
+}
+.site-language__toggle[aria-expanded="true"] .site-language__chevron {
+    rotate: 180deg;
+}
+.site-language__menu,
+.site-language__status {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 60;
+    min-width: 156px;
+    max-width: calc(100vw - 32px);
+    border: 1px solid #c5c4d5;
+    border-radius: 8px;
+    background: #f5f8ff;
+    padding: 5px;
+    box-shadow: 0 12px 28px rgb(15 23 43 / 0.18);
+    color: #0f172b;
+}
+.site-language__option {
+    display: flex;
+    width: 100%;
+    min-height: 42px;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    padding: 7px 10px;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+}
+.site-language__option:hover,
+.site-language__option:focus-visible,
+.site-language__option[aria-current="true"] {
+    background: #e0dff5;
+    color: #2f75ab;
+}
+.site-language__status {
+    width: 240px;
+    margin: 0;
+    padding: 12px;
+    direction: rtl;
+    font-size: 14px;
+    text-align: right;
+}
+.site-language--mobile {
+    color: #0f172b;
+}
+.site-language--mobile .site-language__toggle {
+    min-height: 44px;
+    font-size: 18px;
+}
+.site-language--mobile .site-language__menu,
+.site-language--mobile .site-language__status {
+    top: auto;
+    bottom: calc(100% + 8px);
+    left: auto;
+    right: 0;
+}
+.site-language__toggle:focus-visible,
+.site-language__option:focus-visible {
+    outline: 2px solid #79b6ed;
+    outline-offset: 3px;
+}

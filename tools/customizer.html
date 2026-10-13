@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>تنظیم قالب | مارپیچ صنعت</title>
+    </head>
+    <body class="mps-customizer">
+        <header class="mps-topbar">
+            <div class="mps-brand"
+                ><span class="mps-brand__mark" aria-hidden="true">م</span
+                ><div><h1>تنظیم قالب</h1><p>مارپیچ صنعت · پیش‌نمایش همه صفحه‌ها</p></div></div
+            >
+            <div class="mps-topbar__actions">
+                <span id="save-state" class="mps-state">در حال بارگذاری</span>
+                <button id="undo" class="mps-button mps-button--quiet" title="برگشت · Ctrl+Z" disabled>برگشت</button>
+                <button id="redo" class="mps-button mps-button--quiet" title="جلو · Ctrl+Shift+Z" disabled>جلو</button>
+                <button id="open-preview" class="mps-button" disabled>پیش‌نمایش در تب جدید</button>
+                <button id="export" class="mps-button">دریافت فایل‌ها</button>
+                <button id="save" class="mps-button mps-button--primary" disabled>تأیید و ثبت در قالب</button>
+            </div>
+        </header>
+
+        <div class="mps-toolbar">
+            <label class="mps-page-picker"
+                >صفحه
+                <select id="page" aria-label="انتخاب صفحه"></select
+            ></label>
+            <div class="mps-devices" aria-label="اندازه پیش‌نمایش">
+                <button data-width="1440" data-device="desktop" aria-pressed="true">دسکتاپ</button>
+                <button data-width="820" data-device="tablet" aria-pressed="false">تبلت</button>
+                <button data-width="390" data-device="mobile" aria-pressed="false">موبایل</button>
+                <button data-width="320" data-device="compact" aria-pressed="false">۳۲۰</button>
+            </div>
+            <label class="mps-width"
+                >عرض <input id="width" type="number" min="240" max="7680" step="1" value="1440" />
+                <span>px</span></label
+            >
+            <button id="pick" class="mps-button mps-button--toggle" aria-pressed="true">انتخاب با کلیک: روشن</button>
+            <button id="compare" class="mps-button mps-button--quiet" aria-pressed="false">نمایش نسخه ثبت‌شده</button>
+            <div class="mps-zoom" aria-label="زوم پیش‌نمایش">
+                <button id="zoom-out" type="button" aria-label="کاهش زوم">−</button>
+                <label>زوم <input id="zoom" type="number" min="25" max="200" step="1" value="100" />٪</label>
+                <button id="zoom-in" type="button" aria-label="افزایش زوم">+</button>
+                <button id="zoom-fit" type="button" aria-pressed="true">جا شدن در قاب</button>
+            </div>
+            <span id="scale" class="mps-scale"></span>
+        </div>
+
+        <div class="mps-workspace">
+            <aside class="mps-sidebar" aria-label="تنظیمات استایل">
+                <div id="connection" class="mps-connection">در حال اتصال به قالب…</div>
+                <div class="mps-selector">
+                    <div class="mps-editor-tabs"
+                        ><button id="style-tab" aria-pressed="true">استایل بخش‌ها</button
+                        ><button id="pattern-tab" aria-pressed="false">پترن و انیمیشن</button
+                        ><button id="tokens-tab" aria-pressed="false">راهنمای متغیرها</button></div
+                    >
+                </div>
+                <div id="style-editor">
+                    <div class="mps-selector">
+                        <div class="mps-page-geometry">
+                            <span>اندازه‌های همین صفحه</span>
+                            <div
+                                ><button id="edit-page-header" class="mps-button">هدر</button
+                                ><button id="edit-page-hero" class="mps-button">هیرو</button
+                                ><button id="edit-fixed-header" class="mps-button">منوی ثابت</button></div
+                            >
+                            <p class="mps-help"
+                                >صفحه و بازهٔ عرض را انتخاب کن، سپس ارتفاع، عرض و فاصله‌ها را تنظیم کن. حداقل ارتفاع، جا
+                                برای متن بلند نگه می‌دارد.</p
+                            >
+                        </div>
+                        <div id="fixed-header-shortcuts" class="mps-page-geometry" hidden>
+                            <p class="mps-help"
+                                >صفحه، بازهٔ عرض و «اعمال روی» را انتخاب کن؛ ۰ برای آستانهٔ اسکرول یعنی ثابت از ابتدای
+                                صفحه. با این دکمه‌ها نتیجه را آزمایش کن.</p
+                            >
+                            <div
+                                ><button id="test-fixed-header" class="mps-button">آزمایش اسکرول</button
+                                ><button id="reset-header-scroll" class="mps-button">بازگشت بالا</button></div
+                            >
+                        </div>
+                        <div id="about-image-shortcuts" class="mps-page-geometry" hidden>
+                            <span>تصویر اصلی درباره ما</span>
+                            <details id="about-image-panel" class="mps-about-image" open>
+                                <summary>تنظیم سریع تصویر در هر اندازه</summary>
+                                <div id="about-image-controls"></div>
+                            </details>
+                            <div
+                                ><button id="edit-about-image" class="mps-button">تصویر و برش</button
+                                ><button id="edit-about-frame" class="mps-button">قاب و ارتفاع</button
+                                ><button id="edit-about-container" class="mps-button">عرض و جایگاه</button></div
+                            >
+                            <p class="mps-help"
+                                >اندازه یا بازه را انتخاب کن. در «تصویر و رنگ»، مسیر فایل یا URL تصویر را وارد کن؛ فایل
+                                محلی باید در assets باشد. جای تصویر را با دو درصد مثل 50% 30% تنظیم کن. برای برش، ارتفاع
+                                قاب و حالت cover را انتخاب کن.</p
+                            >
+                        </div>
+                        <label
+                            >بخش قابل ویرایش
+                            <select id="target"></select
+                        ></label>
+                        <label class="mps-help"
+                            >جست‌وجوی بخش<input id="target-search" type="search" placeholder="مثلاً تگ، فوتر یا مشاوره"
+                        /></label>
+                        <div class="mps-scope-row">
+                            <label
+                                >اعمال روی
+                                <select id="scope"
+                                    ><option value="page">همین صفحه</option
+                                    ><option value="global">همه صفحه‌ها</option></select
+                                ></label
+                            >
+                            <label
+                                >اندازه
+                                <select id="breakpoint"></select
+                            ></label>
+                        </div>
+                        <div class="mps-scope-row">
+                            <label
+                                >حالت المان
+                                <select id="element-state"></select
+                            ></label>
+                            <label class="mps-check"><input id="state-preview" type="checkbox" /> شبیه‌سازی حالت</label>
+                        </div>
+                        <p id="shared-scope-note" class="mps-help" hidden></p>
+                        <label id="unify-shared-label" class="mps-check" hidden
+                            ><input id="unify-shared" type="checkbox" />یکسان‌سازی تنظیمات اختصاصی همین جزء در این
+                            بازه</label
+                        >
+                        <div id="custom-range" hidden>
+                            <div class="mps-scope-row">
+                                <label
+                                    >از عرض (px)<input
+                                        id="range-min"
+                                        type="number"
+                                        min="0"
+                                        max="7680"
+                                        step="1"
+                                        value="360"
+                                        placeholder="0"
+                                /></label>
+                                <label
+                                    >تا عرض (px)<input
+                                        id="range-max"
+                                        type="number"
+                                        min="0"
+                                        max="7680"
+                                        step="1"
+                                        value="480"
+                                        placeholder="بدون سقف"
+                                /></label>
+                            </div>
+                            <div class="mps-range-actions"
+                                ><button type="button" data-range-width="min">مرز شروع</button
+                                ><button type="button" data-range-width="max">مرز پایان</button
+                                ><button type="button" data-range-width="outside">یک پیکسل بیرون</button></div
+                            >
+                        </div>
+                        <p id="range-status" class="mps-help" role="status"></p>
+                        <code id="selection-selector" class="mps-selector-code" dir="ltr"></code>
+                        <div id="selection-mode" hidden
+                            ><label class="mps-help"
+                                >جزء انتخاب‌شده را تغییر بده<select id="repeat-mode"
+                                    ><option value="exact">فقط همین المان</option
+                                    ><option value="component">همین جزء در باکس‌های تکراری</option></select
+                                ></label
+                            ></div
+                        >
+                        <label id="unify-label" class="mps-help" hidden
+                            ><input id="unify-repeats" type="checkbox" checked /> یکسان‌سازی مقدار ویرایش‌شده روی همهٔ
+                            موارد این صفحه</label
+                        >
+                        <p id="selection-label" class="mps-selection-label"></p>
+                        <div class="mps-selection-actions"
+                            ><button id="parent" class="mps-link" disabled>انتخاب والد</button
+                            ><button id="locate" class="mps-link">رفتن به بخش</button
+                            ><button id="similar" class="mps-link" hidden>موارد مشابه</button></div
+                        >
+                        <div id="selection-tree" class="mps-selection-tree" hidden>
+                            <p class="mps-help">مسیر بخش انتخاب‌شده</p
+                            ><div id="ancestors" class="mps-selection-path"></div>
+                            <p class="mps-help">اجزای داخل این بخش</p
+                            ><div id="children" class="mps-selection-path"></div>
+                        </div>
+                        <p id="match-count" class="mps-help"></p>
+                    </div>
+                    <div class="mps-control-toolbar"
+                        ><label
+                            >جست‌وجوی تنظیم
+                            <input id="property-search" type="search" placeholder="display، فاصله، grid…" /></label
+                        ><div class="mps-selection-actions"
+                            ><button id="copy-properties" class="mps-link" type="button">کپی تنظیمات</button
+                            ><button id="paste-properties" class="mps-link" type="button" disabled
+                                >چسباندن تنظیمات</button
+                            ></div
+                        ></div
+                    >
+                    <fieldset id="controls" class="mps-controls"></fieldset>
+                    <div class="mps-sidebar__footer">
+                        <p class="mps-help"
+                            >مقادیر فعلی از پیش‌نمایش خوانده می‌شوند. تغییر هر مقدار فقط در اندازه و محدوده انتخاب‌شده
+                            اعمال می‌شود. دکمه ↺ همان مقدار را به استایل پایه برمی‌گرداند.</p
+                        >
+                        <button id="reset-target" class="mps-button mps-button--full"
+                            >حذف تنظیمات این بخش در این اندازه</button
+                        >
+                        <details class="mps-extra"
+                            ><summary>تنظیمات و انتقال فایل</summary>
+                            <button id="discard" class="mps-button mps-button--full"
+                                >برگشت به آخرین نسخه ثبت‌شده</button
+                            >
+                            <button id="defaults" class="mps-button mps-button--full"
+                                >اندازه‌های پیشنهادی و راست‌چین</button
+                            >
+                            <label class="mps-button mps-button--full mps-import"
+                                >وارد کردن تنظیمات JSON<input
+                                    id="import"
+                                    type="file"
+                                    accept=".json,application/json"
+                                    hidden
+                            /></label>
+                        </details>
+                        <details class="mps-extra"
+                            ><summary>قانون‌های CSS <span id="rule-count"></span></summary
+                            ><label class="mps-help"
+                                >جست‌وجوی قانون<input
+                                    id="rule-search"
+                                    type="search"
+                                    placeholder="نام بخش یا صفحه" /></label
+                            ><div id="rules" class="mps-rules"></div
+                        ></details>
+                        <details class="mps-extra"
+                            ><summary>CSS قانون انتخاب‌شده</summary
+                            ><pre id="css-output" class="mps-css-output" dir="ltr"></pre>
+                        </details>
+                    </div>
+                </div>
+                <div id="pattern-editor" class="mps-selector mps-pattern-panel" hidden></div>
+                <section id="tokens-editor" class="mps-selector" aria-label="راهنمای متغیرهای طراحی" hidden>
+                    <p class="mps-help"
+                        >نام یا کاربرد را جست‌وجو کن؛ مقدار جدید را در همین تب اعمال کن. کادر سبز مقدار واقعی در صفحهٔ
+                        پیش‌نمایش و عرض انتخاب‌شده را نشان می‌دهد.</p
+                    >
+                    <a class="mps-link" href="./design-tokens.html" target="_blank" rel="noopener"
+                        >باز کردن صفحهٔ کامل راهنما ↗</a
+                    >
+                    <p class="mps-help"
+                        >قانون مستقیمِ یک المان می‌تواند بر متغیر مقدم باشد؛ مقدار متغیر و استایل نهایی المان را جدا
+                        بررسی کن.</p
+                    >
+                    <div id="tokens-reference" class="mps-token-reference"></div>
+                </section>
+            </aside>
+
+            <main class="mps-preview">
+                <div class="mps-preview__caption"
+                    ><span id="preview-caption">پیش‌نمایش</span><span>تغییرات تا تأیید، پیش‌نویس هستند</span></div
+                >
+                <div id="stage" class="mps-stage">
+                    <div id="frame-shell" class="mps-frame-shell">
+                        <iframe
+                            id="preview"
+                            title="پیش‌نمایش زنده قالب"
+                            sandbox="allow-scripts allow-same-origin"
+                            src="about:blank"
+                        ></iframe>
+                        <div
+                            class="mps-resize-handle mps-resize-handle--left"
+                            data-resize-side="left"
+                            role="separator"
+                            tabindex="0"
+                            aria-label="تغییر عرض پیش‌نمایش از سمت چپ"
+                            aria-orientation="vertical"
+                            aria-valuemin="240"
+                            aria-valuemax="7680"
+                            aria-valuenow="1440"
+                            title="بکش یا از کلیدهای جهت استفاده کن"
+                        ></div>
+                        <div
+                            class="mps-resize-handle mps-resize-handle--right"
+                            data-resize-side="right"
+                            role="separator"
+                            tabindex="0"
+                            aria-label="تغییر عرض پیش‌نمایش از سمت راست"
+                            aria-orientation="vertical"
+                            aria-valuemin="240"
+                            aria-valuemax="7680"
+                            aria-valuenow="1440"
+                            title="بکش یا از کلیدهای جهت استفاده کن"
+                        ></div>
+                    </div>
+                    <div id="loading" class="mps-loading">در حال بارگذاری صفحه…</div>
+                </div>
+                <div id="status" class="mps-status" role="status" aria-live="polite"
+                    >برای تنظیم یک متن یا باکس، روی آن در پیش‌نمایش کلیک کن.</div
+                >
+            </main>
+        </div>
+
+        <dialog id="confirm" class="mps-dialog" aria-labelledby="confirm-title">
+            <form method="dialog"><button class="mps-dialog__close" value="cancel" aria-label="بستن">×</button></form>
+            <span class="mps-dialog__eyebrow">ثبت نسخه قالب</span><h2 id="confirm-title">تغییرات را تأیید می‌کنی؟</h2>
+            <p id="confirm-summary"></p><ul id="confirm-pages"></ul><p id="confirm-mode" class="mps-help"></p>
+            <p id="save-error" class="mps-error" role="alert" hidden></p>
+            <div class="mps-dialog__actions"
+                ><button id="cancel-save" class="mps-button">ادامه ویرایش</button
+                ><button id="confirm-save" class="mps-button mps-button--primary">تأیید و ثبت</button></div
+            >
+        </dialog>
+        <script type="module" src="/src/js/customizer/editor.js"></script>
+    </body>
+</html>

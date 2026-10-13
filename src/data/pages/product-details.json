@@ -1,0 +1,20 @@
+{
+  "consultation": {
+    "id": "product-details-consultation",
+    "image": "/assets/images/product-details/custom-solution.png",
+    "imageAlt": "طراحی سفارشی سیستم تهویه مطبوع",
+    "eyebrow": "مشاوره مهندسی",
+    "title": "به یک راهکار سفارشی در صنعت خود نیاز دارید؟",
+    "description": "تیم مهندسی ما در طراحی‌های سفارشی تهویه مطبوع برای چالش‌های منحصربه‌فرد صنعتی تخصص دارد. همین امروز با مهندسان ما صحبت کنید.",
+    "nameLabel": "نام و نام خانوادگی",
+    "namePlaceholder": "نام و نام خانوادگی",
+    "secondaryLabel": "نام شرکت",
+    "secondaryName": "company",
+    "secondaryType": "text",
+    "secondaryAutocomplete": "organization",
+    "secondaryPlaceholder": "نام شرکت",
+    "messageLabel": "نیاز خود را توضیح دهید",
+    "messagePlaceholder": "نیاز خود را توضیح دهید",
+    "submitText": "درخواست راهکار سفارشی"
+  }
+}

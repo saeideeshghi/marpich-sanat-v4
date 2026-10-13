@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.cache/
+assets/
+fonts/
+public/
+package-lock.json
+src/data/patterns/
+src/data/customizer/settings.json
+src/css/template-overrides.css
+docs/backend-handoff.html

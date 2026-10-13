@@ -1,0 +1,18 @@
+<!-- Shared template: testimonials-industry-textile. Content values come from src/data/pages at build time. -->
+<section
+    class="industry-textile__testimonials testimonials site-testimonials"
+    aria-labelledby="industry-testimonials-title"
+>
+    <div class="industry-textile__testimonials-head">
+        <h2 id="industry-testimonials-title" class="industry-textile__section-title">{{title}}</h2>
+        <div class="industry-textile__testimonials-subtitle">
+            <span aria-hidden="true"></span>
+            <p>{{subtitle}}</p>
+            <span aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div class="industry-textile__testimonials-track" data-testimonials-track tabindex="0" aria-label="نظرات مشتریان">
+        {{{cards}}}
+    </div>
+</section>

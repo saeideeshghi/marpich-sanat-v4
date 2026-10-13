@@ -1,0 +1,185 @@
+<!-- Shared mobile-menu partial; edit here to update every page. -->
+<div
+    aria-hidden="true"
+    aria-label="منوی اصلی"
+    aria-modal="true"
+    class="mobile-menu hidden flex-col"
+    data-mobile-menu=""
+    id="mobile-menu"
+    role="dialog"
+    tabindex="-1"
+>
+    <div class="mobile-menu__header">
+        <div class="mobile-menu__brand" aria-label="مارپیچ صنعت" dir="ltr">MPS</div>
+        <div class="mobile-menu__actions">
+            <button aria-label="بستن منو" class="mobile-menu__close" data-menu-close="" type="button">
+                <i aria-hidden="true" class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+
+    <nav aria-label="منوی موبایل" class="mobile-menu__nav" dir="rtl">
+        <ul class="mobile-menu__list">
+            <li>
+                <a class="mobile-menu__link" data-menu-close="" data-nav="home" href="index.html">صفحه اصلی</a>
+            </li>
+
+            <li class="mobile-menu__group" data-mobile-submenu>
+                <button
+                    class="mobile-menu__group-toggle"
+                    data-mobile-submenu-toggle
+                    data-nav="expertise"
+                    type="button"
+                    aria-expanded="false"
+                >
+                    <span>حوزه‌های تخصصی</span>
+                    <i aria-hidden="true" class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="mobile-menu__submenu" data-mobile-submenu-panel hidden>
+                    <a href="expertise.html#field-assessment" data-menu-close="">ارزیابی میدانی و مشاوره تخصصی</a>
+                    <a href="expertise.html#engineering-design" data-menu-close="">مهندسی، طراحی و شبیه‌سازی</a>
+                    <a href="expertise.html#advanced-production" data-menu-close="">ساخت و تولید پیشرفته</a>
+                    <a href="expertise.html#site-execution" data-menu-close="">اجرای سایت و مدیریت پروژه</a>
+                    <a href="expertise.html#commissioning" data-menu-close="">تست، راه‌اندازی و پشتیبانی پایدار</a>
+                </div>
+            </li>
+
+            <li class="mobile-menu__group" data-mobile-submenu>
+                <button
+                    class="mobile-menu__group-toggle"
+                    data-mobile-submenu-toggle
+                    data-nav="industries"
+                    type="button"
+                    aria-expanded="false"
+                >
+                    <span>صنایع تحت پوشش</span>
+                    <i aria-hidden="true" class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="mobile-menu__submenu" data-mobile-submenu-panel hidden>
+                    <a href="industry-textile.html" data-menu-close="">نساجی</a>
+                    <a href="industries.html" data-menu-close="">کارخانجات داروسازی</a>
+                    <a href="industries.html" data-menu-close="">آزمایشگاه‌ها</a>
+                    <a href="industries.html" data-menu-close="">بیمارستان‌ها و مراکز درمانی</a>
+                    <a href="industries.html" data-menu-close="">صنایع پتروشیمی</a>
+                    <a class="mobile-menu__submenu-more" href="industries.html" data-menu-close="">مشاهده سایر صنایع</a>
+                </div>
+            </li>
+
+            <li class="mobile-menu__group" data-mobile-submenu>
+                <button
+                    class="mobile-menu__group-toggle"
+                    data-mobile-submenu-toggle
+                    data-nav="projects"
+                    type="button"
+                    aria-expanded="false"
+                >
+                    <span>پروژه‌ها</span>
+                    <i aria-hidden="true" class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="mobile-menu__submenu" data-mobile-submenu-panel hidden>
+                    <a href="projects.html" data-menu-close="">پروژه‌های اجرا شده</a>
+                    <a href="project-details.html" data-menu-close="">جزئیات پروژه نمونه</a>
+                </div>
+            </li>
+
+            <li class="mobile-menu__group" data-mobile-submenu>
+                <button
+                    class="mobile-menu__group-toggle"
+                    data-mobile-submenu-toggle
+                    data-nav="products"
+                    type="button"
+                    aria-expanded="false"
+                >
+                    <span>محصولات</span>
+                    <i aria-hidden="true" class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="mobile-menu__submenu" data-mobile-submenu-panel hidden>
+                    <a href="products.html#product-search" data-menu-close="">کانال / مقطع چهارگوش</a>
+                    <a href="products.html#product-search" data-menu-close="">کانال / لوله گرد و اسپیرال</a>
+                    <a href="products.html#product-search" data-menu-close="">اتصالات و تبدیل‌ها</a>
+                    <a href="products.html#product-search" data-menu-close="">دمپر و دریچه‌های تنظیم هوا</a>
+                    <a class="mobile-menu__submenu-more" href="products.html" data-menu-close="">مشاهده همه محصولات</a>
+                </div>
+            </li>
+
+            <li>
+                <a class="mobile-menu__link" data-menu-close="" data-nav="articles" href="articles.html">مقالات</a>
+            </li>
+            <li>
+                <a class="mobile-menu__link" data-menu-close="" data-nav="contact" href="contact.html">تماس با ما</a>
+            </li>
+            <li>
+                <a class="mobile-menu__link" data-menu-close="" data-nav="about" href="about.html">درباره ما</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="mobile-menu__footer">
+        <button
+            class="mobile-menu__auth"
+            data-auth-open="login"
+            aria-haspopup="dialog"
+            aria-controls="auth-modal"
+            type="button"
+        >
+            <i aria-hidden="true" class="fa-regular fa-user"></i>
+            <span>ورود / ثبت نام</span>
+        </button>
+
+        <a
+            class="mobile-menu__search"
+            aria-label="جستجوی محصولات"
+            href="products.html#product-search"
+            data-menu-close=""
+        >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                <path d="m15.5 15.5 5 5" stroke-linecap="round"></path>
+            </svg>
+            <span>جست‌وجو</span>
+        </a>
+
+        <div class="site-language site-language--mobile" data-language-selector>
+            <button
+                class="site-language__toggle"
+                type="button"
+                aria-label="تغییر زبان"
+                aria-expanded="false"
+                aria-controls="language-menu-mobile"
+                data-language-toggle
+            >
+                <span>FA</span>
+                <i aria-hidden="true" class="site-language__chevron fa-solid fa-chevron-down"></i>
+                <img class="site-language__flag" src="/assets/icons/flags/iran-circle.svg" alt="" />
+            </button>
+            <div
+                class="site-language__menu"
+                id="language-menu-mobile"
+                aria-label="زبان‌های سایت"
+                data-language-menu
+                hidden
+            >
+                <button class="site-language__option" type="button" data-language-option="fa" aria-current="true">
+                    <img class="site-language__flag" src="/assets/icons/flags/iran-circle.svg" alt="" /><span
+                        lang="fa"
+                        dir="rtl"
+                        >فارسی</span
+                    ><span class="ml-auto">FA</span>
+                </button>
+                <button class="site-language__option" type="button" data-language-option="en">
+                    <img class="site-language__flag" src="/assets/icons/flags/usa-circle.svg" alt="" /><span lang="en"
+                        >English</span
+                    ><span class="ml-auto">EN</span>
+                </button>
+                <button class="site-language__option" type="button" data-language-option="ar">
+                    <img class="site-language__flag" src="/assets/icons/flags/saudi-arabia-circle.svg" alt="" /><span
+                        lang="ar"
+                        dir="rtl"
+                        >العربية</span
+                    ><span class="ml-auto">AR</span>
+                </button>
+            </div>
+            <p class="site-language__status" role="status" data-language-status hidden></p>
+        </div>
+    </div>
+</div>

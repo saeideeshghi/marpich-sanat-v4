@@ -1,0 +1,669 @@
+/* Wide product cards keep their two actions together instead of stretching
+ * the space between them. Smaller breakpoints retain their current layout. */
+@media (min-width: 1475px) {
+    body[data-page="home"] #products .home-products-actions {
+        justify-content: center;
+        column-gap: 20px;
+    }
+    body[data-page="home"] #products .home-products-actions a:last-child {
+        justify-self: start;
+    }
+}
+
+/* Home Hero: the supplied artwork has a transparent lower edge.
+ * A definite height and 15% vertical overscan keep that edge outside the canvas.
+ * Tablet/mobile use wider text columns; the photograph remains on the left. */
+.hero-shell {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    height: clamp(580px, 48.82vw, 780px);
+    overflow: hidden;
+    background: #0f172b;
+    color: #fff;
+}
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    height: 115%;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+    object-position: left top;
+    pointer-events: none;
+    user-select: none;
+}
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgb(15 23 43 / 0.08) 24%,
+        rgb(15 23 43 / 0.72) 40%,
+        rgb(15 23 43 / 0.96) 54%,
+        #0f172b 68%
+    );
+    pointer-events: none;
+}
+.hero-content-wrapper {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    width: min(100% - 120px, 1680px);
+    height: 100%;
+    margin-inline: auto;
+    padding-top: 76px;
+    align-items: center;
+}
+.hero-content {
+    width: min(61%, 740px);
+    margin-left: auto;
+    direction: rtl;
+    text-align: right;
+    margin-top: var(--home-hero-content-margin-top, 105px);
+}
+.hero-content .home-hero-eyebrow {
+    font-size: var(--hero-eyebrow-font-size);
+    line-height: 1.6;
+}
+.hero-content .home-hero-title {
+    font-size: var(--hero-title-font-size);
+    line-height: 1.65;
+    text-wrap: wrap;
+}
+.hero-content .home-hero-description {
+    max-width: 700px;
+    margin-top: 20px;
+    font-size: var(--hero-description-font-size);
+    line-height: 1.95;
+}
+.hero-content .home-hero-divider {
+    width: 64px;
+    margin-top: 24px;
+}
+
+/* RTL grid keeps the approved primary/outline order. Button content stays in
+ * normal flow so Persian labels can grow with font size or browser zoom. */
+.home-hero-actions {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 32px;
+    gap: 10px;
+    direction: rtl;
+}
+.home-hero-action {
+    position: relative;
+    display: flex;
+    height: auto;
+    min-height: 48px;
+    min-width: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.home-hero-action > span {
+    position: static;
+    min-width: 0;
+    white-space: normal;
+}
+.home-hero-action > img {
+    position: static;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+.home-hero-action--primary {
+    background: linear-gradient(90deg, #f76e11 0%, #f08000 100%);
+}
+.home-hero-action--secondary {
+    background: transparent;
+    border: 0;
+}
+.home-hero-action--secondary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, rgb(101 177 245 / 46%), #65b1f5 60%, rgb(101 177 245 / 75%));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+@media (min-width: 1180px) {
+    .home-hero-actions {
+        grid-template-columns: 240px 180px;
+        width: max-content;
+        gap: 16px;
+    }
+    .home-hero-action--primary {
+        padding-inline: 24px;
+    }
+}
+@media (min-width: 640px) and (max-width: 1179px) {
+    .hero-shell {
+        height: 660px;
+    }
+    .hero-image {
+        left: -14vw;
+    }
+    .hero-content-wrapper {
+        width: calc(100% - 88px);
+        padding-top: 144px;
+    }
+    .hero-content {
+        width: min(100%, 740px);
+    }
+    .hero-overlay {
+        background: linear-gradient(
+            90deg,
+            rgb(15 23 43 / 0.05),
+            rgb(15 23 43 / 0.4) 25%,
+            rgb(15 23 43 / 0.86) 48%,
+            #0f172b 72%
+        );
+    }
+    .hero-content .home-hero-eyebrow {
+        font-size: var(--hero-eyebrow-font-size);
+    }
+    .hero-content .home-hero-title {
+        font-size: var(--hero-title-font-size);
+        line-height: 1.6;
+    }
+    .home-hero-title__ending {
+        display: block;
+    }
+    .hero-content .home-hero-description {
+        font-size: var(--hero-description-font-size);
+    }
+    .home-hero-actions {
+        width: min(100%, 540px);
+        max-width: 540px;
+        margin-top: 24px;
+        grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+        gap: 20px;
+    }
+    .home-hero-action {
+        min-height: 56px;
+        padding-inline: 22px;
+        font-size: 17px;
+    }
+    .home-hero-action > span {
+        white-space: nowrap;
+    }
+}
+@media (min-width: 900px) and (max-width: 1179px) {
+    .hero-content {
+        width: 76%;
+    }
+}
+@media (max-width: 639px) {
+    .hero-shell {
+        height: max(660px, 90svh);
+        max-height: 800px;
+    }
+    .hero-image {
+        height: 108%;
+        left: -22%;
+    }
+    .hero-overlay {
+        background: linear-gradient(
+            90deg,
+            rgb(15 23 43 / 0.42),
+            rgb(15 23 43 / 0.78) 35%,
+            rgb(15 23 43 / 0.94) 68%,
+            #0f172b
+        );
+    }
+    .hero-content-wrapper {
+        width: calc(100% - 40px);
+        padding-top: 76px;
+    }
+    .hero-content {
+        width: 100%;
+    }
+    .hero-content .home-hero-eyebrow {
+        font-size: var(--hero-eyebrow-font-size);
+    }
+    .hero-content .home-hero-title {
+        font-size: var(--hero-title-font-size);
+        line-height: 1.6;
+    }
+    .hero-content .home-hero-description {
+        margin-top: 18px;
+        font-size: var(--hero-description-font-size);
+        line-height: 1.95;
+    }
+    .hero-content .home-hero-divider {
+        margin-top: 18px;
+        width: 48px;
+    }
+    .home-hero-actions {
+        margin-top: 26px;
+        gap: 10px;
+    }
+    .home-hero-action {
+        min-height: 52px;
+        padding: 10px;
+        font-size: 14px;
+        gap: 8px;
+    }
+    .home-hero-action > img {
+        width: 18px;
+        height: 18px;
+    }
+}
+@media (max-width: 359px) {
+    .hero-shell {
+        height: max(740px, 95svh);
+    }
+    .hero-content-wrapper {
+        width: calc(100% - 32px);
+    }
+    .home-hero-actions {
+        grid-template-columns: 1fr;
+    }
+    .home-hero-action {
+        justify-content: center;
+        gap: 24px;
+    }
+}
+
+/* Intrinsic logo widths avoid empty stretched tiles. Every loop group includes
+ * its trailing gap; JS measures that exact width and supplies enough copies. */
+.home-partners {
+    --partners-logo-height: 80px;
+    --logo-max-width: 150px;
+    --partners-logo-gap: 45px;
+    --partners-scroll-duration: 48s;
+    --partners-scroll-distance: 0px;
+    background: #d3eaff;
+}
+.home-partners__inner {
+    width: min(100% - 40px, 1320px);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-block: 22px;
+}
+.home-partners__separator {
+    display: block;
+    width: 1px;
+    height: 83px;
+    flex: 0 0 1px;
+    object-fit: fill;
+}
+.home-partners__title {
+    flex: 0 0 190px;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.85;
+}
+.home-partners__title span,
+.home-partners__title strong {
+    display: block;
+}
+.home-partners__viewport {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    direction: ltr;
+}
+.home-partners__track {
+    display: flex;
+    width: max-content;
+    animation: partner-flow var(--partners-scroll-duration) linear infinite;
+}
+.home-partners__logos {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: var(--partners-logo-gap);
+    margin: 0;
+    padding: 0 var(--partners-logo-gap) 0 0;
+    list-style: none;
+    direction: rtl;
+}
+.home-partners__item {
+    width: auto;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.home-partners__logos img {
+    width: auto;
+    max-width: var(--logo-max-width);
+    height: var(--partners-logo-height);
+    object-fit: contain;
+}
+@media (hover: hover) {
+    .home-partners:hover .home-partners__track {
+        animation-play-state: paused !important;
+    }
+}
+@keyframes partner-flow {
+    to {
+        transform: translateX(calc(-1 * var(--partners-scroll-distance)));
+    }
+}
+.home-partners--static .home-partners__track {
+    width: 100%;
+    animation: none;
+}
+.home-partners--static .home-partners__logos {
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+}
+.home-partners--static .home-partners__logos[aria-hidden="true"] {
+    display: none;
+}
+@media (max-width: 639px) {
+    .home-partners {
+        --partners-logo-height: 56px;
+        --logo-max-width: 110px;
+        --partners-logo-gap: 8px;
+    }
+    .home-partners__inner {
+        width: calc(100% - 24px);
+        gap: 10px;
+        padding-block: 16px;
+    }
+    .home-partners__title {
+        flex-basis: 96px;
+        font-size: 11px;
+    }
+    .home-partners__separator {
+        height: 64px;
+    }
+}
+@media (min-width: 640px) and (max-width: 1179px) {
+    .home-partners {
+        --partners-logo-height: 72px;
+        --logo-max-width: 132px;
+        --partners-logo-gap: 10px;
+    }
+}
+@media (min-width: 1600px) {
+    .home-partners {
+        --partners-logo-height: 88px;
+        --logo-max-width: 168px;
+    }
+    .home-partners__inner {
+        width: min(100% - 120px, 1680px);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .home-partners__track {
+        width: 100%;
+        animation: none;
+    }
+    .home-partners__logos {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+        row-gap: 16px;
+    }
+    .home-partners__logos[aria-hidden="true"] {
+        display: none;
+    }
+}
+
+/* Use the supplied arrow assets; their heads retain the authored proportions. */
+.home-process-steps {
+    --icon-size: 64px;
+    margin: 0 auto;
+    padding: 30px 24px;
+    width: min(100%, 1320px);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    direction: rtl;
+    list-style: none;
+}
+.home-process-step {
+    position: relative;
+    min-width: 0;
+    justify-self: stretch;
+    text-align: center;
+    text-align-last: center;
+    padding-inline: 8px;
+}
+.home-process-icon {
+    display: block;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    margin-inline: auto;
+    object-fit: contain;
+}
+.home-process-step h3 {
+    margin: 16px 0 0;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.7;
+    text-align: center;
+    text-align-last: center;
+}
+.home-process-step p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: center;
+    text-align-last: center;
+}
+body[data-page="home"] .home-process-step > :is(h3, p) {
+    text-align: center;
+    text-align-last: center;
+}
+.home-process-arrow {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: calc(var(--icon-size) / 2);
+    left: -50%;
+    width: 100%;
+    height: 12px;
+    padding-inline: calc(var(--icon-size) / 2 + 18px);
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+.home-process-arrow img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+@media (max-width: 639px) {
+    .home-process-steps {
+        --icon-size: 34px;
+        width: 100%;
+        padding: 22px 10px;
+    }
+    .home-process-step {
+        padding-inline: 3px;
+    }
+    .home-process-step h3 {
+        margin-top: 14px;
+        font-size: 10.5px;
+        line-height: 1.65;
+    }
+    .home-process-step p {
+        display: none;
+    }
+    .home-process-arrow {
+        height: 6px;
+        padding-inline: calc(var(--icon-size) / 2 + 5px);
+    }
+    .home-process-arrow img {
+        height: 6px;
+    }
+}
+@media (min-width: 1600px) {
+    .home-process-steps {
+        width: min(100% - 120px, 1680px);
+    }
+}
+
+/* The whole Why Marpich section is one link; both layouts share its destination. */
+.home-why__link {
+    display: block;
+    color: inherit;
+}
+.home-why__link:focus-visible {
+    outline-offset: -4px;
+}
+.home-why__desktop > div:first-child img {
+    min-height: 372px;
+}
+.home-why__desktop img[src*="/stats/"] {
+    width: 46px;
+    height: 46px;
+}
+@media (max-width: 1179px) {
+    .home-why__desktop {
+        display: none;
+    }
+    .home-why__mobile {
+        display: block;
+        padding-block: 32px 36px;
+    }
+    .home-why__stats {
+        min-height: 150px;
+        padding-block: 24px;
+    }
+    .home-why__stat > img {
+        width: 44px;
+        height: 44px;
+    }
+    .home-why__stat strong {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+    .home-why__stat span {
+        white-space: normal;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+}
+@media (min-width: 1180px) {
+    .home-why__desktop {
+        display: flex;
+    }
+    .home-why__mobile {
+        display: none;
+    }
+}
+@media (max-width: 639px) {
+    .home-why__stats {
+        min-height: 172px;
+        padding: 24px 8px;
+    }
+    .home-why__stat {
+        flex-direction: column;
+        gap: 12px;
+        padding-inline: 4px;
+        text-align: center;
+    }
+    .home-why__stat > img {
+        width: 38px;
+        height: 38px;
+    }
+    .home-why__stat strong {
+        font-size: 24px;
+    }
+    .home-why__stat span {
+        font-size: 14px;
+    }
+
+    /* Keep the full paragraph in the DOM; show a two-line excerpt on phones. */
+    body[data-page="home"] main .home-article__row {
+        grid-template-columns: clamp(104px, 30vw, 140px) minmax(0, 1fr) 44px;
+        gap: 8px;
+        padding-block: 16px;
+    }
+    .home-article__media {
+        aspect-ratio: 1.15;
+    }
+    .home-article__media > img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    body[data-page="home"] main .home-article__description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .home-article__row > a {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+@media (max-width: 359px) {
+    body[data-page="home"] main .home-article__row {
+        grid-template-columns: 96px minmax(0, 1fr) 44px;
+    }
+}
+
+/* A slightly wider photograph without stretching the source pixels. */
+@media (min-width: 640px) and (max-width: 1023px) {
+    body[data-page="home"] main .home-article__row {
+        grid-template-columns: 155px minmax(0, 1fr) 28px;
+    }
+}
+@media (min-width: 1024px) {
+    body[data-page="home"] main .home-article__row {
+        grid-template-columns: 190px minmax(0, 1fr) 115px;
+    }
+}
+
+/* Company-logo hover uses the original blur/dim treatment, without extra copy. */
+.home-project__client-logo {
+    width: min(140px, 70%);
+    height: 80px;
+    object-fit: contain;
+}
+
+/* Preserve the full service note in the DOM/title while keeping card rows short. */
+body[data-page="home"] .home-project__services {
+    display: block;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+body[data-page="home"] .home-why__accent {
+    display: block;
+    width: 64px;
+    height: 2px;
+    margin-top: 10px;
+    background: linear-gradient(to left, #f76e11 0%, #f76e11 70%, transparent 100%);
+    opacity: 1;
+}
+
+.home-project__client-logo[src$=".svg"] {
+    filter: brightness(0) invert(1);
+}

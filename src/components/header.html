@@ -1,0 +1,234 @@
+<!-- Shared header partial; edit here to update every page. -->
+<header class="absolute inset-x-0 top-0 z-40 w-full text-white site-header">
+    <!-- DESKTOP / LAPTOP HEADER >= 1180px -->
+    <div
+        class="hidden h-[82px] w-full items-center px-[clamp(40px,4.45vw,64px)] min-[1180px]:flex site-header__desktop"
+    >
+        <!-- BRAND -->
+        <a aria-label="صفحه اصلی مارپیچ صنعت" class="flex shrink-0 items-center gap-[8px]" href="index.html">
+            <img src="/assets/logos/LOGO.svg" alt="" width="134" height="52" class="site-header__logo" />
+        </a>
+
+        <!-- DESKTOP NAVIGATION -->
+        <nav aria-label="منوی اصلی" class="mr-[clamp(22px,2.4vw,42px)] shrink-0 site-navigation">
+            <ul
+                class="flex items-center gap-[clamp(11px,1.15vw,22px)] whitespace-nowrap text-[14px] font-medium min-[1280px]:text-[14px]"
+            >
+                <li>
+                    <a
+                        class="site-nav-link flex items-center gap-[6px] py-3 text-white/90 transition-colors hover:text-brand-blue"
+                        data-nav="home"
+                        href="index.html"
+                    >
+                        صفحه اصلی
+                    </a>
+                </li>
+
+                <li class="site-nav-item site-nav-item--dropdown">
+                    <a
+                        class="site-nav-link flex items-center gap-[6px] py-3 text-white/90 transition-colors hover:text-brand-blue"
+                        data-nav="projects"
+                        href="projects.html"
+                    >
+                        <span>پروژه‌ها</span>
+                        <i aria-hidden="true" class="fa-solid fa-chevron-down pt-[3px] text-[6px] leading-none"></i>
+                    </a>
+                    <div class="site-nav-dropdown site-nav-dropdown--compact" aria-label="زیرمنوی پروژه‌ها">
+                        <a href="projects.html">پروژه‌های اجرا شده</a>
+                        <a href="project-details.html">جزئیات پروژه نمونه</a>
+                        <a href="projects.html">مشاهده همه پروژه‌ها</a>
+                    </div>
+                </li>
+
+                <li class="site-nav-item site-nav-item--dropdown">
+                    <a
+                        class="site-nav-link flex items-center gap-[6px] py-3 text-white/90 transition-colors hover:text-brand-blue"
+                        data-nav="expertise"
+                        href="expertise.html"
+                    >
+                        <span>حوزه‌های تخصصی</span>
+                        <i aria-hidden="true" class="fa-solid fa-chevron-down pt-[3px] text-[6px] leading-none"></i>
+                    </a>
+                    <div class="site-nav-dropdown" aria-label="زیرمنوی حوزه‌های تخصصی">
+                        <a href="expertise.html#field-assessment">ارزیابی میدانی و مشاوره تخصصی</a>
+                        <a href="expertise.html#engineering-design">مهندسی، طراحی و شبیه‌سازی</a>
+                        <a href="expertise.html#advanced-production">ساخت و تولید پیشرفته</a>
+                        <a href="expertise.html#site-execution">اجرای سایت و مدیریت پروژه</a>
+                        <a href="expertise.html#commissioning">تست، راه‌اندازی و پشتیبانی پایدار</a>
+                    </div>
+                </li>
+
+                <li class="site-nav-item site-nav-item--dropdown site-nav-item--products">
+                    <a
+                        class="site-nav-link flex items-center gap-[6px] py-3 text-white/90 transition-colors hover:text-brand-blue"
+                        data-nav="products"
+                        href="products.html"
+                    >
+                        <span>محصولات</span>
+                        <i aria-hidden="true" class="fa-solid fa-chevron-down pt-[3px] text-[6px] leading-none"></i>
+                    </a>
+                    <div class="site-nav-dropdown site-nav-dropdown--products" aria-label="زیرمنوی محصولات">
+                        <a href="products.html#product-search">کانال / مقطع چهارگوش</a>
+                        <a href="products.html#product-search">کانال / لوله گرد و اسپیرال</a>
+                        <a href="products.html#product-search">مقطع بیضی تخت</a>
+                        <a href="products.html#product-search">اتصالات و تبدیل‌ها</a>
+                        <a href="products.html#product-search">زانو و سه راهی</a>
+                        <a href="products.html#product-search">دمپر و دریچه‌های تنظیم هوا</a>
+                        <a href="products.html#product-search">هود و تجهیزات جمع‌آوری غبار</a>
+                        <a class="site-nav-dropdown__more" href="products.html">سایر محصولات</a>
+                    </div>
+                </li>
+
+                <li class="site-nav-item site-nav-item--dropdown site-nav-item--industries">
+                    <a
+                        class="site-nav-link flex items-center gap-[6px] py-3 text-white/90 transition-colors hover:text-brand-blue"
+                        data-nav="industries"
+                        href="industries.html"
+                    >
+                        <span>صنایع تحت پوشش</span>
+                        <i aria-hidden="true" class="fa-solid fa-chevron-down pt-[3px] text-[6px] leading-none"></i>
+                    </a>
+                    <div class="site-nav-dropdown site-nav-dropdown--industries" aria-label="زیرمنوی صنایع">
+                        <a href="industry-textile.html"><span class="site-nav-dropdown__dot"></span>نساجی</a>
+                        <a href="industries.html"><span class="site-nav-dropdown__dot"></span>کارخانجات داروسازی</a>
+                        <a href="industries.html"><span class="site-nav-dropdown__dot"></span>آزمایشگاه‌ها</a>
+                        <a href="industries.html"
+                            ><span class="site-nav-dropdown__dot"></span>بیمارستان‌ها و مراکز درمانی</a
+                        >
+                        <a href="industries.html"><span class="site-nav-dropdown__dot"></span>صنایع پتروشیمی</a>
+                        <a class="site-nav-dropdown__more" href="industries.html">مشاهده سایر صنایع</a>
+                    </div>
+                </li>
+
+                <li>
+                    <a
+                        class="site-nav-link flex items-center gap-[6px] py-3 text-white/90 transition-colors hover:text-brand-blue"
+                        data-nav="articles"
+                        href="articles.html"
+                    >
+                        مقالات
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        class="site-nav-link flex items-center gap-[6px] py-3 text-white/90 transition-colors hover:text-brand-blue"
+                        data-nav="about"
+                        href="about.html"
+                    >
+                        درباره ما
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        class="site-nav-link flex items-center gap-[6px] py-3 text-white/90 transition-colors hover:text-brand-blue"
+                        data-nav="contact"
+                        href="contact.html"
+                    >
+                        تماس با ما
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- DESKTOP UTILITIES -->
+        <div class="mr-auto flex shrink-0 items-center gap-[10px] min-[1280px]:gap-[13px] [direction:ltr]">
+            <button
+                class="site-header__auth flex h-[38px] w-[143px] shrink-0 items-center justify-center gap-[8px] rounded-[4px] bg-[rgba(15,23,43,0.4)] px-2 text-[14px] font-medium text-white transition-colors hover:bg-[rgba(15,23,43,0.52)] min-[1280px]:w-[143px] min-[1280px]:text-[14px] [direction:ltr] site-glass"
+                data-auth-open="login"
+                aria-haspopup="dialog"
+                aria-controls="auth-modal"
+                type="button"
+            >
+                <i aria-hidden="true" class="fa-regular fa-user text-[16px] min-[1280px]:text-[17px]"></i>
+                <span class="[direction:rtl]">ورود / ثبت نام</span>
+            </button>
+
+            <div class="site-language" data-language-selector>
+                <button
+                    class="site-language__toggle"
+                    type="button"
+                    aria-label="تغییر زبان"
+                    aria-expanded="false"
+                    aria-controls="language-menu-desktop"
+                    data-language-toggle
+                >
+                    <span>FA</span>
+                    <i aria-hidden="true" class="site-language__chevron fa-solid fa-chevron-down"></i>
+                    <img class="site-language__flag" src="/assets/icons/flags/iran-circle.svg" alt="" />
+                </button>
+                <div
+                    class="site-language__menu"
+                    id="language-menu-desktop"
+                    aria-label="زبان‌های سایت"
+                    data-language-menu
+                    hidden
+                >
+                    <button class="site-language__option" type="button" data-language-option="fa" aria-current="true">
+                        <img class="site-language__flag" src="/assets/icons/flags/iran-circle.svg" alt="" /><span
+                            lang="fa"
+                            dir="rtl"
+                            >فارسی</span
+                        ><span class="ml-auto">FA</span>
+                    </button>
+                    <button class="site-language__option" type="button" data-language-option="en">
+                        <img class="site-language__flag" src="/assets/icons/flags/usa-circle.svg" alt="" /><span
+                            lang="en"
+                            >English</span
+                        ><span class="ml-auto">EN</span>
+                    </button>
+                    <button class="site-language__option" type="button" data-language-option="ar">
+                        <img
+                            class="site-language__flag"
+                            src="/assets/icons/flags/saudi-arabia-circle.svg"
+                            alt=""
+                        /><span lang="ar" dir="rtl">العربية</span><span class="ml-auto">AR</span>
+                    </button>
+                </div>
+                <p class="site-language__status" role="status" data-language-status hidden></p>
+            </div>
+
+            <span
+                aria-hidden="true"
+                class="block h-[43px] w-px shrink-0 bg-[linear-gradient(180deg,#BDC6CF_0%,#6481C9_51%,#797A7C_100%)]"
+            ></span>
+
+            <a
+                aria-label="جستجو"
+                class="flex size-9 items-center justify-center transition-opacity hover:opacity-75"
+                data-menu-close=""
+                href="products.html#product-search"
+            >
+                <img alt="" class="h-[19px] w-[19px] object-contain" src="/assets/icons/ui/search.svg" />
+            </a>
+        </div>
+    </div>
+
+    <!-- MOBILE HEADER < 1180px -->
+    <div
+        class="flex w-full items-center justify-between px-4 pt-[50px] sm:px-6 md:px-8 min-[1180px]:hidden site-header__mobile"
+    >
+        <a
+            aria-label="صفحه اصلی مارپیچ صنعت"
+            class="flex shrink-0 items-center gap-[8px] sm:gap-[9px]"
+            dir="ltr"
+            href="index.html"
+        >
+            <img src="/assets/logos/logo-symbol-left.svg" alt="" width="134" height="52" class="site-header__logo" />
+        </a>
+
+        <button
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="باز کردن منو"
+            class="flex size-[42px] shrink-0 flex-col items-center justify-center gap-[6px] sm:size-[44px]"
+            data-menu-open=""
+            type="button"
+        >
+            <span class="block h-[2px] w-[28px] rounded-full bg-white"></span>
+            <span class="block h-[2px] w-[28px] rounded-full bg-white"></span>
+            <span class="block h-[2px] w-[28px] rounded-full bg-white"></span>
+        </button>
+    </div>
+</header>

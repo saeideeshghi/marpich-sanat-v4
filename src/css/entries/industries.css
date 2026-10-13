@@ -1,0 +1,5 @@
+/* Head-loaded page styles. Preserve the established cascade order. */
+@import "../pages/industries.css";
+@import "../components/content-flow.css";
+@import "../components/catalog.css";
+@import "../responsive.css";

@@ -1,0 +1,24 @@
+<!-- Shared template: partners. Content values come from src/data/pages at build time. -->
+<section class="home-partners" data-partners aria-label="شرکت‌های همراه مارپیچ صنعت">
+    <div class="home-partners__inner">
+        <p class="home-partners__title"><strong>همراه پروژه‌های صنعتی</strong><span>از طراحی تا اجرا</span></p>
+        <img
+            class="home-partners__separator"
+            src="/assets/icons/ui/partners-separator.png"
+            alt=""
+            width="1"
+            height="83"
+            aria-hidden="true"
+        />
+        <div class="home-partners__viewport" data-partner-viewport>
+            <div class="home-partners__track" data-partner-track>
+                <ul class="home-partners__logos" data-partner-group aria-label="گزیده مشتریان"
+                    >{{{logos}}}</ul
+                >
+                <ul class="home-partners__logos" aria-hidden="true"
+                    >{{{logos}}}</ul
+                >
+            </div>
+        </div>
+    </div>
+</section>

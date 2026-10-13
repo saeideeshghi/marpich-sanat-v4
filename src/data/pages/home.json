@@ -1,0 +1,62 @@
+{
+  "consultation": {
+    "id": "consultation",
+    "variant": "home",
+    "title": "از تعریف نیاز تا",
+    "accent": "راهکارهای اختصاصی",
+    "description": "برای هماهنگی جزئیات فنی و بررسی بهترین راهکار برای پروژه‌تان، با تیم مهندسی ما در ارتباط باشید.",
+    "benefits": "✓ پاسخ‌دهی کمتر از ۲۴ ساعت ✓ بررسی تخصصی و اجرا ✓ پشتیبانی از همان جلسه اول"
+  },
+  "partners": {
+    "logos": [
+      {
+        "image": "/assets/logos/partners/partner-01.svg",
+        "name": "شرکت همراه 1",
+        "width": 115,
+        "height": 37
+      },
+      {
+        "image": "/assets/logos/partners/partner-02.svg",
+        "name": "شرکت همراه 2",
+        "width": 182,
+        "height": 81
+      },
+      {
+        "image": "/assets/logos/partners/partner-03.svg",
+        "name": "شرکت همراه 3",
+        "width": 113,
+        "height": 65
+      },
+      {
+        "image": "/assets/logos/partners/partner-04.svg",
+        "name": "شرکت همراه 4",
+        "width": 88,
+        "height": 78
+      },
+      {
+        "image": "/assets/logos/partners/partner-05.svg",
+        "name": "شرکت همراه 5",
+        "width": 102,
+        "height": 65
+      },
+      {
+        "image": "/assets/logos/partners/partner-06.svg",
+        "name": "شرکت همراه 6",
+        "width": 70,
+        "height": 70
+      },
+      {
+        "image": "/assets/logos/partners/partner-07.svg",
+        "name": "شرکت همراه 7",
+        "width": 82,
+        "height": 65
+      },
+      {
+        "image": "/assets/logos/partners/partner-08.svg",
+        "name": "شرکت همراه 8",
+        "width": 125,
+        "height": 67
+      }
+    ]
+  }
+}

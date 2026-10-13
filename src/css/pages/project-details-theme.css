@@ -1,0 +1,964 @@
+/* Project summary, technical table, achievements and employer quote.
+ * Imported after responsive.css to preserve the approved page geometry.
+ * Every shared prototype selector is scoped to this project page. */
+
+/* Current page integration: retain safe overlap below the existing hero copy.
+ * Grid item positions and illustration positioning come from the prototype. */
+body[data-page="project-details"] .project-details__technical :is(.details-table-wrap, .details-visual) {
+    order: 0;
+    grid-area: auto;
+}
+body[data-page="project-details"] .project-details__technical .details-card__body {
+    grid-template-rows: none;
+    grid-template-areas: none;
+}
+body[data-page="project-details"] .project-details__technical .details-visual {
+    position: static;
+    min-height: 0;
+}
+body[data-page="project-details"] .project-details__technical .details-visual img {
+    position: static;
+    inset: auto;
+}
+body[data-page="project-details"] .project-details__technical .details-card__note {
+    padding-inline: 0;
+}
+body[data-page="project-details"] .project-details__testimonial-kicker-copy {
+    font-size: inherit;
+    line-height: inherit;
+}
+body[data-page="project-details"] .project-details__summary {
+    position: relative;
+    z-index: 5;
+    margin-top: -150px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: var(--shadow-card);
+}
+
+body[data-page="project-details"] .project-details__cover {
+    position: relative;
+    width: 100%;
+    height: var(--project-cover-min-height);
+    overflow: hidden;
+    border-radius: inherit;
+    background: #e9edf3;
+}
+
+body[data-page="project-details"] .project-details__cover > img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+body[data-page="project-details"] .project-details__cover::after {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(
+        180deg,
+        #f5f8ff 18.6%,
+        rgb(247 249 255 / 0.9) 29.78%,
+        rgb(249 251 255 / 0.8) 42%,
+        rgb(250 252 255 / 0.6) 52.12%,
+        rgb(252 253 255 / 0.4) 65.87%,
+        rgb(253 254 255 / 0.2) 81.25%,
+        rgb(255 255 255 / 0) 100%
+    );
+}
+
+body[data-page="project-details"] .project-details__meta-grid {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    height: 82px;
+    background:
+        linear-gradient(90deg, #f2f6ff 0%, #79b6ed 51%, #f2f6ff 100%) center / 100% 1px no-repeat,
+        linear-gradient(180deg, #f2f6ff 0%, #79b6ed 51%, #f2f6ff 100%) 33.333% center / 1px 100% no-repeat,
+        linear-gradient(180deg, #f2f6ff 0%, #79b6ed 51%, #f2f6ff 100%) 66.666% center / 1px 100% no-repeat;
+}
+
+body[data-page="project-details"] .project-details__meta-item {
+    display: grid;
+    align-content: center;
+    min-width: 0;
+    padding: 5px 5px 4px;
+    border: 0;
+    text-align: center;
+}
+
+body[data-page="project-details"] .project-details__meta-item span,
+body[data-page="project-details"] .project-details__meta-item strong {
+    display: block;
+    min-width: 0;
+}
+
+body[data-page="project-details"] .project-details__meta-item span {
+    color: var(--color-brand-blue);
+    font-size: 7.5px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+body[data-page="project-details"] .project-details__meta-item strong {
+    margin-top: 3px;
+    overflow: hidden;
+    color: var(--color-text-dark);
+    font-size: 7.5px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+body[data-page="project-details"] .project-details__technical,
+body[data-page="project-details"] .project-details__results,
+body[data-page="project-details"] .project-details__testimonial-section {
+    position: relative;
+    z-index: 1;
+}
+body[data-page="project-details"] .project-details__technical {
+    padding-top: 40px;
+}
+
+body[data-page="project-details"] .project-details__technical > .project-details__section-title {
+    margin-bottom: 13px;
+}
+body[data-page="project-details"] .project-details__results {
+    padding-top: 36px;
+}
+
+body[data-page="project-details"] .project-details__results > .project-details__section-title {
+    margin-bottom: 22px;
+}
+
+body[data-page="project-details"] .project-details__stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 12px;
+}
+
+body[data-page="project-details"] .project-details__stat {
+    min-width: 0;
+    text-align: center;
+}
+
+body[data-page="project-details"] .project-details__stat:last-child {
+    grid-column: 1 / -1;
+    width: min(190px, 100%);
+    justify-self: center;
+}
+
+body[data-page="project-details"] .project-details__stat-icon {
+    display: block;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+body[data-page="project-details"] .project-details__stat strong {
+    display: block;
+    margin-top: 7px;
+    color: var(--color-brand-orange);
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+body[data-page="project-details"] .project-details__stat h3 {
+    margin-top: 4px;
+    color: var(--color-text-dark);
+    font-size: 8.8px;
+    font-weight: 800;
+    line-height: 1.7;
+}
+
+body[data-page="project-details"] .project-details__stat p {
+    margin-top: 4px;
+    color: rgb(71 85 105);
+    font-size: 7.5px;
+    line-height: 1.9;
+}
+body[data-page="project-details"] .project-details__testimonial-section {
+    padding-top: 40px;
+}
+
+body[data-page="project-details"] .project-details__testimonial-kicker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 7px;
+    color: rgb(100 116 139);
+    font-size: 8px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+body[data-page="project-details"] .project-details__testimonial-kicker span {
+    width: 28px;
+    height: 1px;
+    background: rgb(247 110 17 / 0.46);
+}
+
+body[data-page="project-details"] .project-details__testimonial {
+    position: relative;
+    margin-top: 17px;
+    padding: 31px 0 10px;
+    border: 0;
+    direction: rtl;
+}
+body[data-page="project-details"] .project-details__testimonial-divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 16px;
+    background: linear-gradient(90deg, #f2f6ff 0%, #79b6ed 51%, #f2f6ff 100%);
+    pointer-events: none;
+}
+
+body[data-page="project-details"] .project-details__quote-icon {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    display: block;
+    color: var(--color-brand-blue);
+    font-size: 26px;
+    line-height: 1;
+}
+
+body[data-page="project-details"] .project-details__testimonial blockquote {
+    margin: 0;
+    padding-right: 0;
+    color: rgb(71 85 105);
+    font-size: 8.8px;
+    line-height: 2.15;
+    text-align: right;
+}
+
+body[data-page="project-details"] .project-details__testimonial-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 14px;
+    direction: rtl;
+}
+
+body[data-page="project-details"] .project-details__testimonial-person {
+    min-width: 0;
+    text-align: right;
+}
+
+body[data-page="project-details"] .project-details__testimonial-person strong {
+    display: block;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+body[data-page="project-details"] .project-details__testimonial-person span {
+    display: block;
+    margin-top: 2px;
+    color: rgb(100 116 139);
+    font-size: 7.7px;
+}
+
+body[data-page="project-details"] .project-details__rating {
+    flex: 0 0 auto;
+    color: #f5be19;
+    font-size: 10px;
+    letter-spacing: 1px;
+    direction: ltr;
+    white-space: nowrap;
+}
+@media (min-width: 48rem) {
+    body[data-page="project-details"] .project-details__summary {
+        margin-top: -142px;
+        border-radius: 12px;
+    }
+
+    body[data-page="project-details"] .project-details__meta-grid {
+        height: 80px;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        background:
+            linear-gradient(180deg, #f2f6ff 0%, #79b6ed 51%, #f2f6ff 100%) 16.666% center / 1px 100% no-repeat,
+            linear-gradient(180deg, #f2f6ff 0%, #79b6ed 51%, #f2f6ff 100%) 33.333% center / 1px 100% no-repeat,
+            linear-gradient(180deg, #f2f6ff 0%, #79b6ed 51%, #f2f6ff 100%) 50% center / 1px 100% no-repeat,
+            linear-gradient(180deg, #f2f6ff 0%, #79b6ed 51%, #f2f6ff 100%) 66.666% center / 1px 100% no-repeat,
+            linear-gradient(180deg, #f2f6ff 0%, #79b6ed 51%, #f2f6ff 100%) 83.333% center / 1px 100% no-repeat;
+    }
+
+    body[data-page="project-details"] .project-details__meta-item {
+        padding: 8px 5px;
+    }
+
+    body[data-page="project-details"] .project-details__meta-item span,
+    body[data-page="project-details"] .project-details__meta-item strong {
+        font-size: 9px;
+    }
+
+    body[data-page="project-details"] .project-details__stats-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    body[data-page="project-details"] .project-details__stat:last-child {
+        grid-column: auto;
+        width: auto;
+    }
+
+    body[data-page="project-details"] .project-details__stat-icon {
+        width: 58px;
+        height: 58px;
+    }
+
+    body[data-page="project-details"] .project-details__stat strong {
+        font-size: 20px;
+    }
+
+    body[data-page="project-details"] .project-details__stat h3 {
+        font-size: 10px;
+    }
+
+    body[data-page="project-details"] .project-details__stat p {
+        font-size: 8px;
+    }
+
+    body[data-page="project-details"] .project-details__testimonial blockquote {
+        font-size: 10px;
+    }
+}
+@media (min-width: 73.75rem) {
+    body[data-page="project-details"] .project-details__summary {
+        margin-top: -144px;
+        border-radius: 16px;
+    }
+
+    body[data-page="project-details"] .project-details__meta-grid {
+        height: 88px;
+    }
+
+    body[data-page="project-details"] .project-details__meta-item {
+        padding: 13px 8px;
+    }
+
+    body[data-page="project-details"] .project-details__meta-item span {
+        font-size: 11px;
+    }
+
+    body[data-page="project-details"] .project-details__meta-item strong {
+        margin-top: 5px;
+        font-size: 11px;
+    }
+
+    body[data-page="project-details"] .project-details__technical {
+        padding-top: 58px;
+    }
+
+    body[data-page="project-details"] .project-details__technical > .project-details__section-title {
+        margin-bottom: 18px;
+    }
+
+    body[data-page="project-details"] .project-details__results {
+        padding-top: 50px;
+    }
+
+    body[data-page="project-details"] .project-details__results > .project-details__section-title {
+        margin-bottom: 31px;
+    }
+
+    body[data-page="project-details"] .project-details__stats-grid {
+        gap: 26px;
+    }
+
+    body[data-page="project-details"] .project-details__stat-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    body[data-page="project-details"] .project-details__stat strong {
+        margin-top: 10px;
+        font-size: 25px;
+    }
+
+    body[data-page="project-details"] .project-details__stat h3 {
+        margin-top: 5px;
+        font-size: 12px;
+    }
+
+    body[data-page="project-details"] .project-details__stat p {
+        margin-top: 5px;
+        font-size: 9.5px;
+        line-height: 1.95;
+    }
+
+    body[data-page="project-details"] .project-details__testimonial-section {
+        padding-top: 55px;
+    }
+
+    body[data-page="project-details"] .project-details__testimonial-kicker {
+        gap: 16px;
+        margin-top: 10px;
+        font-size: 10px;
+    }
+
+    body[data-page="project-details"] .project-details__testimonial-kicker span {
+        width: 40px;
+    }
+
+    body[data-page="project-details"] .project-details__testimonial {
+        margin-top: 20px;
+        padding: 40px 4px 13px;
+    }
+
+    body[data-page="project-details"] .project-details__quote-icon {
+        top: 10px;
+        right: 0;
+        font-size: 34px;
+    }
+
+    body[data-page="project-details"] .project-details__testimonial blockquote {
+        font-size: 12px;
+        line-height: 2.2;
+    }
+
+    body[data-page="project-details"] .project-details__testimonial-footer {
+        margin-top: 18px;
+    }
+
+    body[data-page="project-details"] .project-details__testimonial-person strong {
+        font-size: 11px;
+    }
+
+    body[data-page="project-details"] .project-details__testimonial-person span {
+        font-size: 9px;
+    }
+
+    body[data-page="project-details"] .project-details__rating {
+        font-size: 12px;
+    }
+}
+
+body[data-page="project-details"] .project-details__specs-table tbody tr:not(:last-child) > * {
+    border-bottom: 1px solid rgb(15 23 43 / 0.24);
+}
+
+body[data-page="project-details"] .project-details__reference-heading {
+    margin: 0;
+    color: var(--color-text-dark);
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.55;
+}
+@media (min-width: 48rem) {
+    body[data-page="project-details"] .project-details__reference-heading {
+        font-size: 22px;
+    }
+}
+@media (min-width: 73.75rem) {
+    body[data-page="project-details"] .project-details__reference-heading {
+        font-size: 27px;
+    }
+}
+
+/* =========================================================
+   Technical tables — exact approved prototype styles
+   Source of truth: the user-approved standalone prototype.
+   The HTML on both detail pages uses these exact prototype classes
+   so there is no translation layer that can drift visually.
+   ========================================================= */
+
+body[data-page="project-details"] .project-details__technical {
+    --technical-text-color: #0f172b;
+    --technical-background-color: #ecf0f8;
+    --technical-border-color: rgba(15, 23, 43, 0.2);
+    --technical-border-soft-color: rgba(15, 23, 43, 0.14);
+    --technical-border-strong-color: rgba(15, 23, 43, 0.78);
+    --technical-accent-color: #ff7a24;
+    --technical-checkmark-color: #55a9f0;
+}
+
+body[data-page="project-details"] .project-details__technical .details-card {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--technical-border-strong-color);
+    border-radius: 16px;
+    background: var(--technical-background-color);
+}
+
+body[data-page="project-details"] .project-details__technical .details-card--project,
+body[data-page="project-details"] .project-details__technical .details-card--product {
+    aspect-ratio: 1312 / 488;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) minmax(56px, auto);
+}
+
+body[data-page="project-details"] .project-details__technical .details-card__body {
+    display: grid;
+    direction: ltr;
+    min-height: 0;
+}
+
+body[data-page="project-details"] .project-details__technical .details-card__body--project {
+    grid-template-columns: 46.05% 53.95%;
+}
+
+body[data-page="project-details"] .project-details__technical .details-card__body--product {
+    grid-template-columns: 33.69% 23.61% 42.7%;
+}
+
+body[data-page="project-details"] .project-details__technical .details-table-wrap {
+    min-width: 0;
+    height: 100%;
+    border-right: 1px solid var(--technical-border-strong-color);
+}
+
+body[data-page="project-details"] .project-details__technical .details-table {
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    direction: rtl;
+    color: var(--technical-text-color);
+}
+
+body[data-page="project-details"] .project-details__technical .details-table col.col-label {
+    width: 40%;
+}
+body[data-page="project-details"] .project-details__technical .details-table col.col-value {
+    width: 60%;
+}
+body[data-page="project-details"] .project-details__technical .details-table--product col.col-label {
+    width: 41.6%;
+}
+body[data-page="project-details"] .project-details__technical .details-table--product col.col-value {
+    width: 58.4%;
+}
+
+/* Horizontal row dividers — CSS only.
+   The reference line is a very thin 1px stroke with softly tapered ends. */
+body[data-page="project-details"] .project-details__technical .details-table thead tr,
+body[data-page="project-details"] .project-details__technical .details-table tbody tr:not(:last-child) {
+    background-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(15, 23, 43, 0.58) 2.5%,
+        #0f172b 9%,
+        #0f172b 91%,
+        rgba(15, 23, 43, 0.58) 97.5%,
+        transparent 100%
+    );
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: calc(100% - 22px) 1px;
+}
+
+body[data-page="project-details"] .project-details__technical .details-table th,
+body[data-page="project-details"] .project-details__technical .details-table td {
+    padding: 5px 14px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: clamp(11px, 1.02vw, 15px);
+    font-weight: 400;
+    line-height: 1.55;
+    background: transparent;
+}
+
+body[data-page="project-details"] .project-details__technical .details-table thead tr {
+    height: 64px;
+}
+
+body[data-page="project-details"] .project-details__technical .details-table thead th {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-weight: 700;
+    font-size: clamp(11px, 1vw, 14px);
+}
+
+body[data-page="project-details"] .project-details__technical .details-table th + th,
+body[data-page="project-details"] .project-details__technical .details-table td + td {
+    border-right: 1px solid var(--technical-border-strong-color);
+}
+
+body[data-page="project-details"] .project-details__technical .details-visual {
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+body[data-page="project-details"] .project-details__technical .details-visual img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+body[data-page="project-details"] .project-details__technical .details-visual--project {
+    padding: 18px 30px 14px 26px;
+}
+
+body[data-page="project-details"] .project-details__technical .details-visual--project img {
+    width: 89%;
+    max-height: 94%;
+}
+
+body[data-page="project-details"] .project-details__technical .details-visual--product {
+    padding: 20px 28px 14px 8px;
+}
+
+body[data-page="project-details"] .project-details__technical .details-visual--product img {
+    width: 94%;
+    max-height: 96%;
+}
+
+body[data-page="project-details"] .project-details__technical .extras-panel {
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    direction: rtl;
+    padding: 0 12px;
+}
+
+body[data-page="project-details"] .project-details__technical .extras-panel__content {
+    width: min(100%, 272px);
+    transform: translateY(-3%);
+}
+
+body[data-page="project-details"] .project-details__technical .extras-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+body[data-page="project-details"] .project-details__technical .extras-title span {
+    /* CSS reconstruction of the 38×1px reference Line 52 — placed below the title. */
+    order: 2;
+    width: 38px;
+    height: 1px;
+    flex: 0 0 1px;
+    background: #79b6ed;
+    clip-path: polygon(0 31.25%, 100% 0, 100% 100%, 0 68.75%);
+}
+
+body[data-page="project-details"] .project-details__technical .extras-title h3 {
+    order: 1;
+    margin: 0;
+    font-size: clamp(17px, 1.65vw, 24px);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+body[data-page="project-details"] .project-details__technical .extras-panel ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+body[data-page="project-details"] .project-details__technical .extras-panel li {
+    position: relative;
+    margin: 0 0 12px;
+    padding-right: 26px;
+    font-size: clamp(11px, 1vw, 15px);
+    line-height: 1.85;
+}
+
+body[data-page="project-details"] .project-details__technical .extras-panel li::before {
+    content: "✓";
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--technical-checkmark-color);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+body[data-page="project-details"] .project-details__technical .details-card__note {
+    position: relative;
+    min-width: 0;
+    margin-inline: 14px;
+    display: flex;
+    align-items: center;
+    direction: rtl;
+}
+
+/* Full-width divider above the footer note — CSS only. */
+body[data-page="project-details"] .project-details__technical .details-card__note::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(15, 23, 43, 0.62) 1.5%,
+        #0f172b 6%,
+        #0f172b 94%,
+        rgba(15, 23, 43, 0.62) 98.5%,
+        transparent 100%
+    );
+}
+
+body[data-page="project-details"] .project-details__technical .details-card__note p {
+    width: 100%;
+    margin: 0;
+    padding: 10px 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    text-align: right;
+    font-size: clamp(10px, 0.95vw, 13.5px);
+    line-height: 1.7;
+}
+
+body[data-page="project-details"] .project-details__technical .details-card__note-bullet {
+    flex: 0 0 auto;
+    align-self: baseline;
+    font-size: 16px;
+    line-height: 1;
+    padding-top: 3px;
+}
+
+body[data-page="project-details"] .project-details__technical .details-card__note-copy {
+    min-width: 0;
+}
+
+body[data-page="project-details"] .project-details__technical .details-card__note a {
+    color: var(--technical-accent-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 500;
+}
+
+@media (max-width: 1180px) and (min-width: 901px) {
+    body[data-page="project-details"] .project-details__technical .details-table thead tr {
+        height: 56px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-table thead th {
+        padding-top: 11px;
+        padding-bottom: 11px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-card__note p {
+        font-size: 10.5px;
+        gap: 6px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .extras-panel__content {
+        width: min(100%, 240px);
+    }
+}
+
+@media (max-width: 900px) {
+    body[data-page="project-details"] .project-details__technical .details-card--project,
+    body[data-page="project-details"] .project-details__technical .details-card--product {
+        aspect-ratio: auto;
+        display: block;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-card__body--project,
+    body[data-page="project-details"] .project-details__technical .details-card__body--product {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-table-wrap {
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--technical-border-strong-color);
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-table thead tr,
+    body[data-page="project-details"] .project-details__technical .details-table tbody tr:not(:last-child) {
+        background-size: calc(100% - 18px) 1px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-table th,
+    body[data-page="project-details"] .project-details__technical .details-table td {
+        padding: 14px 10px;
+        font-size: 13px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-table thead tr {
+        height: auto;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-table thead th {
+        padding-top: 17px;
+        padding-bottom: 17px;
+        font-size: 13px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .extras-panel {
+        min-height: 250px;
+        border-bottom: 1px solid var(--technical-border-soft-color);
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-visual {
+        min-height: 300px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-visual--project,
+    body[data-page="project-details"] .project-details__technical .details-visual--product {
+        padding: 20px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-card__note {
+        min-height: 64px;
+        padding-block: 8px 10px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-card__note p {
+        align-items: flex-start;
+        flex-wrap: nowrap;
+        white-space: normal;
+        gap: 7px;
+        padding: 10px 4px 2px;
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-card__note-copy {
+        display: block;
+        flex: 1 1 auto;
+    }
+}
+
+@media (max-width: 520px) {
+    body[data-page="project-details"] .project-details__technical .details-card {
+        border-radius: 10px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-table th,
+    body[data-page="project-details"] .project-details__technical .details-table td {
+        padding-inline: 8px;
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-table thead th {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        font-size: 12.5px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .extras-panel {
+        min-height: 230px;
+        padding-inline: 20px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .extras-panel__content {
+        width: 100%;
+        max-width: 280px;
+        transform: none;
+    }
+
+    body[data-page="project-details"] .project-details__technical .extras-title {
+        margin-bottom: 20px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .extras-title h3 {
+        font-size: 20px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .extras-panel li {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-visual {
+        min-height: 0;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-visual--project,
+    body[data-page="project-details"] .project-details__technical .details-visual--product {
+        padding: 22px 14px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-visual--project img,
+    body[data-page="project-details"] .project-details__technical .details-visual--product img {
+        width: 100%;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-card__note {
+        min-height: 72px;
+        margin-inline: 10px;
+        padding-block: 8px 10px;
+    }
+
+    body[data-page="project-details"] .project-details__technical .details-card__note p {
+        font-size: 11px;
+        line-height: 1.9;
+    }
+}
+
+/* Keep the reference proportions while allowing wrapped table rows to fit. */
+@media (min-width: 901px) and (max-width: 1179px) {
+    body[data-page="project-details"] .project-details__technical .details-card--project {
+        aspect-ratio: auto;
+        grid-template-rows: auto minmax(56px, auto);
+    }
+}
+
+body[data-page="project-details"] .project-details__summary {
+    margin-top: calc(-1 * var(--hero-summary-overlap, 144px));
+}
+
+/* Descriptive copy uses the page's 16px setting at every viewport. Keep
+ * table labels, headings and numeric results at their established sizes. */
+body[data-page="project-details"] main p.site-prose,
+body[data-page="project-details"] .project-details__stat p,
+body[data-page="project-details"] .project-details__testimonial-kicker-copy,
+body[data-page="project-details"] .project-details__testimonial blockquote,
+body[data-page="project-details"] .project-details__technical .details-card__note p,
+body[data-page="project-details"] .project-details__technical .extras-panel li {
+    font-size: var(--project-body-font-size);
+}
+
+/* Each gray tag grows from its content width to share the full row. Flex
+ * wrapping lets a remaining tag fill the following row without truncation. */
+body[data-page="project-details"] main .project-details__product-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+body[data-page="project-details"] main .project-details__product-tags > .project-details__product-meta-tag {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    background-color: #ece9e6;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+@media (min-width: 1181px) {
+    body[data-page="project-details"] .project-details__summary {
+        /* Retain the measured hero overlap and lift this summary 15px more. */
+        margin-top: calc(-1 * var(--hero-summary-overlap, 144px) - 15px);
+    }
+}

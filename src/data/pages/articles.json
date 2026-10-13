@@ -1,0 +1,20 @@
+{
+  "consultation": {
+    "id": "articles-consultation",
+    "eyebrow": "مشاوره مهندسی",
+    "title": "به یک راهکار سفارشی در صنعت خود نیاز دارید؟",
+    "description": "تیم مهندسی ما در طراحی راهکارهای سفارشی تهویه مطبوع برای چالش‌های منحصربه‌فرد صنعتی تخصص دارد. همین امروز برای بررسی نیاز پروژه با متخصصین ما صحبت کنید.",
+    "image": "/assets/images/products-page/consultation-system.png",
+    "imageAlt": "اجزای سیستم تهویه صنعتی",
+    "nameLabel": "نام و نام خانوادگی",
+    "namePlaceholder": "نام و نام خانوادگی",
+    "secondaryLabel": "نام شرکت",
+    "secondaryName": "company",
+    "secondaryType": "text",
+    "secondaryAutocomplete": "organization",
+    "secondaryPlaceholder": "نام شرکت",
+    "messageLabel": "توضیح نیاز پروژه",
+    "messagePlaceholder": "نیاز خود را توضیح دهید",
+    "submitText": "درخواست راهکار سفارشی"
+  }
+}

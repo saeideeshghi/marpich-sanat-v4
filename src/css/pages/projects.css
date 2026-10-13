@@ -1,0 +1,775 @@
+/* Page-specific geometry; shared type and card roles remain in shared components and type-settings.css. */
+.projects-page,
+.projects-page__hero-wrap {
+    direction: rtl;
+    text-align: right;
+}
+
+.projects-page {
+    overflow: clip;
+    background: var(--color-page-bg, #f4f7fc);
+    color: var(--color-text-dark, #0f172b);
+}
+
+.projects-page__container {
+    width: min(calc(100% - 3rem), 73.75rem);
+    margin-inline: auto;
+}
+
+/* ---------------------------------------------
+ * Hero
+ * Shared animated header pattern is mounted by site-pattern.js.
+ * --------------------------------------------- */
+.projects-page__hero-wrap {
+    position: relative;
+    background: var(--color-brand-navy, #0f172b);
+}
+
+.projects-page__hero {
+    min-height: 31rem;
+    display: flex;
+    align-items: flex-start;
+    padding: 11rem 0 5rem;
+}
+
+.projects-page__hero-content {
+    width: min(100%, 48rem);
+    /* Keep the hero information block on the right like the reference. */
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+}
+
+.projects-page__eyebrow {
+    margin: 0;
+    color: var(--color-brand-blue, #79b6ed);
+    font-size: var(--hero-eyebrow-font-size);
+    font-weight: 600;
+}
+
+.projects-page__eyebrow-line {
+    display: block;
+    width: 3.1rem;
+    height: 0.125rem;
+    margin-top: 0.8rem;
+    background: var(--color-brand-orange, #f76e11);
+}
+
+.projects-page__hero-title {
+    margin: 1.6rem 0 0;
+    color: #fff;
+    /* font-size: var(--hero-title-font-size);
+     */
+    font-size: var(--hero-title-font-size);
+    line-height: 1.55;
+    font-weight: 800;
+}
+
+.projects-page__hero-description {
+    max-width: 42rem;
+    margin: 1rem 0 0;
+    color: rgb(255 255 255 / 0.82);
+    font-size: var(--hero-description-font-size);
+    line-height: 2;
+}
+
+/* ---------------------------------------------
+ * Project cards
+ * --------------------------------------------- */
+.projects-page__catalog {
+    position: relative;
+    padding: 3.35rem 0 2.65rem;
+}
+
+.projects-page__catalog::before,
+.projects-page__testimonials::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.24;
+    background:
+        linear-gradient(
+            82deg,
+            transparent 0 7%,
+            rgb(121 182 237 / 0.12) 7.15%,
+            transparent 7.3% 14%,
+            rgb(121 182 237 / 0.09) 14.15%,
+            transparent 14.3% 86%,
+            rgb(121 182 237 / 0.08) 86.15%,
+            transparent 86.3%
+        ),
+        linear-gradient(
+            98deg,
+            transparent 0 10%,
+            rgb(247 110 17 / 0.05) 10.1%,
+            transparent 10.2% 90%,
+            rgb(121 182 237 / 0.06) 90.1%,
+            transparent 90.2%
+        );
+}
+
+.projects-page__catalog > .projects-page__container,
+.projects-page__testimonials > .projects-page__container {
+    position: relative;
+    z-index: 1;
+}
+
+.projects-page__catalog-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.55rem;
+}
+
+.projects-page__section-title {
+    margin: 0;
+    color: var(--color-text-dark, #0f172b);
+    font-size: max(14px, clamp(1.7rem, 2.4vw, 2.15rem));
+    line-height: 1.45;
+    font-weight: 800;
+}
+
+.projects-page__view-switch {
+    display: inline-flex;
+    gap: 0.45rem;
+}
+
+.projects-page__view-button {
+    width: 2.75rem;
+    height: 2.75rem;
+    display: grid;
+    place-items: center;
+    border: 1px solid #8bc2f1;
+    border-radius: 0.45rem;
+    background: transparent;
+    color: #6eb1eb;
+    font-size: 1rem;
+    transition: 160ms ease;
+}
+
+.projects-page__view-button:hover,
+.projects-page__view-button:focus-visible {
+    border-color: #5ba9ea;
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(121 182 237 / 0.18);
+}
+
+.projects-page__view-button.is-active {
+    background: #69afe9;
+    border-color: #69afe9;
+    color: #fff;
+}
+
+.projects-page__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.projects-page__card {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.projects-page__card:hover {
+    transform: translateY(-0.18rem);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.projects-page__card-media {
+    position: relative;
+    aspect-ratio: 1.48 / 1;
+    overflow: hidden;
+    background: #dce6ef;
+}
+
+.projects-page__card-media > img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition:
+        transform 300ms ease,
+        filter 300ms ease;
+}
+
+/* Match the home project's centered overlay, blur and darkened photograph. */
+.projects-page__card-brand {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgb(15 23 43 / 0.2);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    pointer-events: none;
+}
+body[data-page] main .projects-page__card-brand img {
+    width: 110px;
+    height: 44px;
+    object-fit: contain;
+}
+.projects-page__card-brand > * {
+    transform: translateY(8px);
+    transition: transform 300ms ease;
+}
+.projects-page__card-brand-label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.8;
+}
+.projects-page__card:focus-within .projects-page__card-media > img {
+    transform: scale(1.02);
+    filter: blur(2px) brightness(0.65);
+}
+.projects-page__card:focus-within .projects-page__card-brand {
+    opacity: 1;
+}
+.projects-page__card:focus-within .projects-page__card-brand > * {
+    transform: none;
+}
+@media (hover: hover) {
+    .projects-page__card:hover .projects-page__card-media > img {
+        transform: scale(1.02);
+        filter: blur(2px) brightness(0.65);
+    }
+    .projects-page__card:hover .projects-page__card-brand {
+        opacity: 1;
+    }
+    .projects-page__card:hover .projects-page__card-brand > * {
+        transform: none;
+    }
+}
+
+.projects-page__card-category {
+    position: absolute;
+    right: 0;
+    bottom: 0.7rem;
+    min-width: 7.25rem;
+    padding: 0.32rem 0.65rem;
+    border-radius: 0.25rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background: var(--color-media-badge);
+    color: #fff;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25;
+}
+
+.projects-page__card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem 0.85rem;
+}
+
+.projects-page__card-title {
+    margin: 0;
+    color: #10182a;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    font-weight: 800;
+}
+
+.projects-page__card-description {
+    display: block;
+    overflow: hidden;
+    margin: 0.65rem 0 0;
+    color: #39445a;
+    font-size: 0.875rem;
+    line-height: 1.85;
+}
+
+/* Keep a three-line slot on every project card. lh follows the actual type,
+ * including customizer font overrides. Page geometry must survive regenerated
+ * template-overrides.css; main adds specificity to the existing role rule. */
+body[data-page="projects"]
+    main
+    .projects-page__card
+    > div.projects-page__card-body
+    > p.projects-page__card-description:not([hidden]) {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+    height: 3lh !important;
+    min-height: 3lh !important;
+    max-height: 3lh !important;
+    overflow: hidden !important;
+}
+
+/* Size badges from their text, then share each row's remaining width.
+ * A badge that wraps onto its own row expands to the full card width. */
+body[data-page="projects"] main .projects-page__card .projects-page__card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.85rem;
+}
+
+body[data-page="projects"] main .projects-page__card .projects-page__card-meta > span {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0.36rem 0.625rem;
+    overflow: hidden;
+    border: 1px solid #d9e3ef;
+    border-radius: 0.45rem;
+    background: #f8fafc;
+    color: #526076;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.projects-page__card-link {
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: auto;
+    margin-inline-start: auto;
+    padding-top: 0.9rem;
+    color: #68afe9;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+}
+
+.projects-page__card-link:hover,
+.projects-page__card-link:focus-visible {
+    color: #408fd3;
+    outline: none;
+}
+
+/* Optional list mode from the reference controls */
+.projects-page__grid.is-list {
+    grid-template-columns: 1fr;
+}
+
+.projects-page__grid.is-list .projects-page__card {
+    display: grid;
+    grid-template-columns: minmax(18rem, 30%) minmax(0, 1fr);
+}
+
+.projects-page__grid.is-list .projects-page__card-media {
+    aspect-ratio: auto;
+    min-height: 13rem;
+    border-radius: 0 9px 9px 0;
+}
+
+.projects-page__grid.is-list .projects-page__card-body {
+    padding: 1.2rem 1.3rem 1rem;
+}
+
+/* ---------------------------------------------
+ * Testimonials
+ * --------------------------------------------- */
+.projects-page__testimonials {
+    position: relative;
+    padding: 1.2rem 0 2.3rem;
+}
+
+.projects-page__testimonials-head {
+    text-align: center;
+}
+
+@media (max-width: 1000px) {
+    body[data-page="projects"] #testimonials-title,
+    body[data-page="projects"] .projects-page__testimonials-subtitle p {
+        text-align: center !important;
+        text-align-last: center !important;
+    }
+}
+
+.projects-page__testimonials-subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.15rem;
+    margin-top: 0.35rem;
+}
+
+/* This rule must also win when Vite extracts shared CSS before page CSS. */
+body[data-page="projects"] .projects-page__testimonials-subtitle p {
+    max-width: 100%;
+    white-space: normal;
+    text-wrap: wrap;
+    overflow-wrap: break-word;
+}
+
+.projects-page__testimonials-subtitle p {
+    margin: 0;
+    color: #7b8798;
+    font-size: 0.875rem;
+}
+
+.projects-page__testimonials-subtitle span {
+    width: 3.5rem;
+    height: 1px;
+    background: #f3aa7f;
+}
+
+.projects-page__testimonials-track {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.15rem;
+    margin-top: 1.6rem;
+}
+
+.projects-page__testimonial-card {
+    min-width: 0;
+    min-height: 13.9rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 1.45rem 1.55rem 1.15rem;
+    border: 1px solid rgb(15 23 43 / 0.05);
+    border-radius: 0.8rem;
+    background: #fff;
+    box-shadow: var(--shadow-card);
+}
+
+.projects-page__quote {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    color: #70b7f0;
+    font-size: 1.65rem;
+}
+
+.projects-page__testimonial-card > p {
+    margin: 2.15rem 0 0;
+    color: #445066;
+    font-size: 0.875rem;
+    line-height: 2;
+}
+
+.projects-page__testimonial-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1.1rem;
+    border-top: 1px solid #e5e5eb;
+}
+
+.projects-page__testimonial-footer > div:first-child {
+    display: grid;
+    gap: 0.2rem;
+}
+
+.projects-page__testimonial-footer strong {
+    color: #182238;
+    font-size: 0.875rem;
+}
+
+.projects-page__testimonial-footer span {
+    color: #8992a1;
+    font-size: 0.875rem;
+}
+
+.projects-page__rating {
+    direction: ltr;
+    display: flex;
+    gap: 0.12rem;
+    color: #ffb000;
+    font-size: 0.875rem;
+}
+
+/* ---------------------------------------------
+ * Consultation CTA
+ * Shared catalog-consultation component provides the visual/form styling.
+ * --------------------------------------------- */
+.projects-page__consultation {
+    padding: 0.25rem 0 3.35rem;
+}
+
+/* ---------------------------------------------
+ * Responsive
+ * --------------------------------------------- */
+@media (max-width: 73.74rem) {
+    .projects-page__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 63.99rem) {
+    .projects-page__container {
+        width: min(calc(100% - 2rem), 46rem);
+    }
+
+    .projects-page__hero {
+        min-height: 32rem;
+        padding: 10.5rem 0 4rem;
+    }
+
+    .projects-page__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.8rem;
+    }
+
+    .projects-page__grid.is-list .projects-page__card {
+        grid-template-columns: minmax(12rem, 35%) minmax(0, 1fr);
+    }
+
+    .projects-page__testimonials-track {
+        direction: ltr;
+        display: flex;
+        gap: 0.9rem;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        padding: 0.15rem 0 0.45rem;
+    }
+
+    .projects-page__testimonials-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    .projects-page__testimonial-card {
+        direction: rtl;
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+    }
+}
+
+@media (max-width: 39.99rem) {
+    .projects-page__container {
+        width: calc(100% - 1.75rem);
+    }
+
+    .projects-page__hero {
+        min-height: max(36rem, 31svh);
+        padding: max(10.5rem, 24svh) 0 3rem;
+    }
+
+    .projects-page__hero-content {
+        width: 100%;
+    }
+
+    .projects-page__eyebrow {
+        font-size: var(--hero-eyebrow-font-size);
+    }
+
+    .projects-page__eyebrow-line {
+        width: 2.45rem;
+        margin-top: 0.6rem;
+    }
+
+    .projects-page__hero-title {
+        margin-top: 1.15rem;
+        font-size: var(--hero-title-font-size);
+        line-height: 1.8;
+    }
+
+    .projects-page__hero-description {
+        margin-top: 0.55rem;
+        font-size: var(--hero-description-font-size);
+        line-height: 2;
+    }
+
+    .projects-page__catalog {
+        padding: 1.15rem 0 1.8rem;
+    }
+
+    .projects-page__catalog-head {
+        margin-bottom: 0.8rem;
+    }
+
+    .projects-page__section-title {
+        font-size: 1.18rem;
+    }
+
+    .projects-page__view-button {
+        width: 2.15rem;
+        height: 2.15rem;
+        border-radius: 0.35rem;
+        font-size: 0.875rem;
+    }
+
+    .projects-page__grid {
+        gap: 0.52rem;
+    }
+
+    .projects-page__card {
+        order: var(--mobile-order);
+    }
+
+    .projects-page__card--desktop-only {
+        display: none;
+    }
+
+    .projects-page__card-media {
+        aspect-ratio: 1.5 / 1;
+    }
+
+    .projects-page__card-category {
+        bottom: 0.45rem;
+        min-width: 4.7rem;
+        padding: 0.24rem 0.4rem;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+    }
+
+    .projects-page__card-body {
+        padding: 0.55rem 0.52rem 0.52rem;
+    }
+
+    .projects-page__card-title {
+        font-size: 0.875rem;
+        line-height: 1.65;
+    }
+
+    .projects-page__card-description {
+        margin-top: 0.3rem;
+        font-size: 0.875rem;
+        line-height: 1.8;
+    }
+
+    .projects-page__card-meta {
+        display: none;
+    }
+
+    .projects-page__card-link {
+        gap: 0.2rem;
+        padding-top: 0.42rem;
+        font-size: 0.875rem;
+    }
+
+    .projects-page__grid.is-list {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-page__grid.is-list .projects-page__card {
+        display: grid;
+        grid-template-columns: 42% 58%;
+    }
+
+    .projects-page__grid.is-list .projects-page__card-media {
+        min-height: 100%;
+        border-radius: 0 6px 6px 0;
+    }
+
+    .projects-page__testimonials {
+        padding: 0.8rem 0 1.45rem;
+    }
+
+    .projects-page__testimonials-head .projects-page__section-title {
+        font-size: 1.15rem;
+    }
+
+    .projects-page__testimonials-subtitle {
+        gap: 0.6rem;
+        margin-top: 0.3rem;
+    }
+
+    .projects-page__testimonials-subtitle p {
+        font-size: 0.875rem;
+        white-space: nowrap;
+    }
+
+    .projects-page__testimonials-subtitle span {
+        width: 1.8rem;
+    }
+
+    .projects-page__testimonials-track {
+        margin-top: 0.9rem;
+    }
+
+    .projects-page__testimonial-card {
+        min-height: 13rem;
+        padding: 1.15rem 1rem 0.9rem;
+        border-radius: 0.65rem;
+    }
+
+    .projects-page__quote {
+        top: 0.8rem;
+        right: 1rem;
+        font-size: 1.4rem;
+    }
+
+    .projects-page__testimonial-card > p {
+        margin-top: 1.85rem;
+        font-size: 0.875rem;
+        line-height: 2;
+    }
+
+    .projects-page__testimonial-footer strong {
+        font-size: 0.875rem;
+    }
+
+    .projects-page__testimonial-footer span {
+        font-size: 0.875rem;
+    }
+
+    .projects-page__rating {
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 22rem) {
+    .projects-page__container {
+        width: calc(100% - 1.25rem);
+    }
+
+    .projects-page__hero-title {
+        font-size: var(--hero-title-font-size);
+    }
+
+    .projects-page__card-title {
+        font-size: 0.875rem;
+    }
+
+    .projects-page__card-description {
+        font-size: 0.875rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .projects-page__card,
+    .projects-page__testimonials-track {
+        scroll-behavior: auto;
+        transition: none;
+    }
+}
+
+/* Give author metadata its own row so stars cannot squeeze the full name. */
+@media (max-width: 1179px) {
+    body[data-page="projects"] .projects-page__testimonial-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    body[data-page="projects"] .projects-page__testimonial-footer > div:first-child {
+        width: 100%;
+        min-width: 0;
+    }
+    body[data-page="projects"] .projects-page__testimonial-footer strong {
+        display: block;
+        white-space: nowrap;
+        overflow: visible;
+        text-overflow: clip;
+    }
+    body[data-page="projects"] .projects-page__rating {
+        align-self: flex-end;
+    }
+}

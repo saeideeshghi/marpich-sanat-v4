@@ -1,0 +1,497 @@
+<!-- Shared auth-modal partial; edit here to update every page. -->
+<dialog class="auth-dialog" id="auth-modal" data-auth-modal aria-labelledby="auth-title-login" dir="rtl">
+    <div class="auth-card" data-auth-card>
+        <button class="auth-close" type="button" data-auth-close aria-label="بستن پنجره">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="m6 6 12 12M6 18 18 6" />
+            </svg>
+        </button>
+        <section data-auth-panel="login">
+            <div class="auth-icon auth-icon--login" aria-hidden="true">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M10 4H5v16h5M20 12H9m5-5-5 5 5 5" />
+                </svg>
+            </div>
+            <h2 class="auth-title" id="auth-title-login" tabindex="-1">ورود به حساب کاربری</h2>
+
+            <form data-auth-form="login" novalidate>
+                <div class="auth-field">
+                    <label class="sr-only" for="auth-login-identity">شماره موبایل یا ایمیل سازمانی</label>
+                    <input
+                        class="auth-input"
+                        id="auth-login-identity"
+                        name="identifier"
+                        type="text"
+                        placeholder="شماره موبایل یا ایمیل سازمانی"
+                        autocomplete="username"
+                        required
+                        aria-describedby="auth-login-identity-error"
+                        maxlength="254"
+                        spellcheck="false"
+                        autocapitalize="none"
+                        data-identifier
+                    />
+
+                    <p class="auth-field-error" id="auth-login-identity-error" hidden></p>
+                </div>
+                <div class="auth-field">
+                    <label class="sr-only" for="auth-login-password">رمز عبور</label>
+                    <input
+                        class="auth-input"
+                        id="auth-login-password"
+                        name="password"
+                        type="password"
+                        placeholder="رمز عبور"
+                        autocomplete="current-password"
+                        required
+                        aria-describedby="auth-login-password-error"
+                    />
+                    <button
+                        class="auth-password-toggle"
+                        type="button"
+                        data-password-toggle="auth-login-password"
+                        aria-label="نمایش رمز عبور"
+                        aria-pressed="false"
+                        aria-controls="auth-login-password"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            aria-hidden="true"
+                        >
+                            <path d="M3 3 21 21" data-eye-slash />
+                            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </button>
+                    <p class="auth-field-error" id="auth-login-password-error" hidden></p>
+                </div>
+                <div class="auth-actions">
+                    <button class="auth-button auth-button--outline" type="button" data-login-otp>
+                        ورود با رمز یک‌بارمصرف
+                    </button>
+                    <button class="auth-button auth-button--primary" type="submit">ورود</button>
+                </div>
+                <div class="auth-options">
+                    <label class="auth-remember"
+                        ><input type="checkbox" name="remember" checked /> مرا به خاطر بسپار</label
+                    ><button class="auth-link auth-link--blue" type="button" data-auth-view="forgot">
+                        رمز عبورم را فراموش کرده‌ام
+                    </button>
+                </div>
+            </form>
+            <p class="auth-footer">
+                هنوز ثبت‌نام نکرده‌اید؟
+                <button class="auth-link" type="button" data-auth-view="register">حساب جدید بسازید</button>
+            </p>
+        </section>
+        <section data-auth-panel="register" hidden>
+            <div class="auth-icon auth-icon--register" aria-hidden="true">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <circle cx="12" cy="7" r="4" />
+                    <path d="M4 21v-3a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v3" />
+                </svg>
+            </div>
+            <h2 class="auth-title" id="auth-title-register" tabindex="-1">ایجاد حساب کاربری</h2>
+            <p class="auth-subtitle">برای استفاده از امکانات پنل، یک حساب کاربری بسازید.</p>
+            <form data-auth-form="register" novalidate>
+                <div class="auth-field">
+                    <label class="sr-only" for="auth-register-name">نام و نام خانوادگی</label>
+                    <input
+                        class="auth-input"
+                        id="auth-register-name"
+                        name="fullName"
+                        type="text"
+                        placeholder="نام و نام خانوادگی"
+                        autocomplete="name"
+                        required
+                        aria-describedby="auth-register-name-error"
+                        minlength="2"
+                        maxlength="100"
+                    />
+
+                    <p class="auth-field-error" id="auth-register-name-error" hidden></p>
+                </div>
+                <div class="auth-field">
+                    <label class="sr-only" for="auth-register-identity">آدرس ایمیل یا شمارهٔ همراه</label>
+                    <input
+                        class="auth-input"
+                        id="auth-register-identity"
+                        name="identifier"
+                        type="text"
+                        placeholder="آدرس ایمیل یا شمارهٔ همراه"
+                        autocomplete="username"
+                        required
+                        aria-describedby="auth-register-identity-error"
+                        maxlength="254"
+                        spellcheck="false"
+                        autocapitalize="none"
+                        data-identifier
+                    />
+
+                    <p class="auth-field-error" id="auth-register-identity-error" hidden></p>
+                </div>
+                <div class="auth-field">
+                    <label class="sr-only" for="auth-register-password">رمز عبور</label>
+                    <input
+                        class="auth-input"
+                        id="auth-register-password"
+                        name="password"
+                        type="password"
+                        placeholder="رمز عبور"
+                        autocomplete="new-password"
+                        required
+                        aria-describedby="auth-register-password-error"
+                        minlength="8"
+                    />
+                    <button
+                        class="auth-password-toggle"
+                        type="button"
+                        data-password-toggle="auth-register-password"
+                        aria-label="نمایش رمز عبور"
+                        aria-pressed="false"
+                        aria-controls="auth-register-password"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            aria-hidden="true"
+                        >
+                            <path d="M3 3 21 21" data-eye-slash />
+                            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </button>
+                    <p class="auth-field-error" id="auth-register-password-error" hidden></p>
+                </div>
+                <div class="auth-field">
+                    <label class="sr-only" for="auth-register-confirm">تکرار رمز عبور</label>
+                    <input
+                        class="auth-input"
+                        id="auth-register-confirm"
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="تکرار رمز عبور"
+                        autocomplete="new-password"
+                        required
+                        aria-describedby="auth-register-confirm-error"
+                        minlength="8"
+                    />
+                    <button
+                        class="auth-password-toggle"
+                        type="button"
+                        data-password-toggle="auth-register-confirm"
+                        aria-label="نمایش تکرار رمز عبور"
+                        aria-pressed="false"
+                        aria-controls="auth-register-confirm"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            aria-hidden="true"
+                        >
+                            <path d="M3 3 21 21" data-eye-slash />
+                            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </button>
+                    <p class="auth-field-error" id="auth-register-confirm-error" hidden></p>
+                </div>
+                <button class="auth-button auth-button--primary" type="submit">ثبت نام</button>
+            </form>
+            <p class="auth-footer">
+                قبلاً ثبت‌نام کرده‌اید؟
+                <button class="auth-link" type="button" data-auth-view="login">وارد شوید.</button>
+            </p>
+        </section>
+        <section data-auth-panel="forgot" hidden>
+            <h2 class="auth-title" id="auth-title-forgot" tabindex="-1">رمز عبور خود را فراموش کرده‌اید؟</h2>
+
+            <form data-auth-form="forgot" novalidate>
+                <div class="auth-field">
+                    <label class="sr-only" for="auth-forgot-identity">شماره موبایل یا ایمیل</label>
+                    <input
+                        class="auth-input"
+                        id="auth-forgot-identity"
+                        name="identifier"
+                        type="text"
+                        placeholder="شماره موبایل یا ایمیل"
+                        autocomplete="username"
+                        required
+                        aria-describedby="auth-forgot-identity-error"
+                        maxlength="254"
+                        spellcheck="false"
+                        autocapitalize="none"
+                        data-identifier
+                    />
+
+                    <p class="auth-field-error" id="auth-forgot-identity-error" hidden></p>
+                </div>
+                <button class="auth-button auth-button--primary" type="submit">دریافت کد تأیید</button>
+            </form>
+        </section>
+        <section data-auth-panel="request" hidden>
+            <div class="auth-icon auth-icon--otp" aria-hidden="true">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path fill="currentColor" stroke="none" d="m12 1 10 4v7c0 7-10 12-10 12S2 19 2 12V5Z" />
+                    <g stroke="var(--auth-surface-color)" stroke-width="1.8">
+                        <path d="M9 12V9a3 3 0 0 1 6 0v3" />
+                        <rect x="8" y="12" width="8" height="7" rx="1" fill="var(--auth-surface-color)" />
+                        <path stroke="var(--color-brand-blue)" d="M12 14v3" />
+                    </g>
+                </svg>
+            </div>
+            <h2 class="auth-title" id="auth-title-request" tabindex="-1">ورود با رمز یک‌بارمصرف</h2>
+
+            <form data-auth-form="request" novalidate>
+                <div class="auth-field">
+                    <label class="sr-only" for="auth-request-identity">شماره موبایل یا ایمیل</label>
+                    <input
+                        class="auth-input"
+                        id="auth-request-identity"
+                        name="identifier"
+                        type="text"
+                        placeholder="شماره موبایل یا ایمیل"
+                        autocomplete="username"
+                        required
+                        aria-describedby="auth-request-identity-error"
+                        maxlength="254"
+                        spellcheck="false"
+                        autocapitalize="none"
+                        data-identifier
+                    />
+
+                    <p class="auth-field-error" id="auth-request-identity-error" hidden></p>
+                </div>
+                <button class="auth-button auth-button--primary" type="submit">دریافت کد تأیید</button>
+            </form>
+            <p class="auth-footer">
+                <button class="auth-link" type="button" data-auth-view="login">ورود با رمز عبور</button>
+            </p>
+        </section>
+        <section data-auth-panel="otp" hidden>
+            <div class="auth-icon auth-icon--otp" aria-hidden="true">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path fill="currentColor" stroke="none" d="m12 1 10 4v7c0 7-10 12-10 12S2 19 2 12V5Z" />
+                    <g stroke="var(--auth-surface-color)" stroke-width="1.8">
+                        <path d="M9 12V9a3 3 0 0 1 6 0v3" />
+                        <rect x="8" y="12" width="8" height="7" rx="1" fill="var(--auth-surface-color)" />
+                        <path stroke="var(--color-brand-blue)" d="M12 14v3" />
+                    </g>
+                </svg>
+            </div>
+            <h2 class="auth-title" id="auth-title-otp" tabindex="-1">ورود با رمز یک‌بارمصرف</h2>
+
+            <form data-auth-form="otp" novalidate>
+                <p class="auth-subtitle auth-code-description" data-code-description></p>
+                <p class="auth-edit">
+                    شماره یا ایمیل اشتباه است؟
+                    <button class="auth-link" type="button" data-edit-identity>ویرایش کنید.</button>
+                </p>
+                <fieldset class="auth-otp-group">
+                    <legend class="sr-only">کد تأیید شش‌رقمی</legend>
+                    <div class="auth-otp-inputs" dir="ltr">
+                        <input
+                            class="auth-otp-input"
+                            name="digit0"
+                            type="text"
+                            inputmode="numeric"
+                            autocomplete="one-time-code"
+                            pattern="[0-9]"
+                            aria-label="رقم 1 کد تأیید"
+                            aria-describedby="auth-code-error"
+                            data-otp-digit
+                        /><input
+                            class="auth-otp-input"
+                            name="digit1"
+                            type="text"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            pattern="[0-9]"
+                            aria-label="رقم 2 کد تأیید"
+                            aria-describedby="auth-code-error"
+                            data-otp-digit
+                        /><input
+                            class="auth-otp-input"
+                            name="digit2"
+                            type="text"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            pattern="[0-9]"
+                            aria-label="رقم 3 کد تأیید"
+                            aria-describedby="auth-code-error"
+                            data-otp-digit
+                        /><input
+                            class="auth-otp-input"
+                            name="digit3"
+                            type="text"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            pattern="[0-9]"
+                            aria-label="رقم 4 کد تأیید"
+                            aria-describedby="auth-code-error"
+                            data-otp-digit
+                        /><input
+                            class="auth-otp-input"
+                            name="digit4"
+                            type="text"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            pattern="[0-9]"
+                            aria-label="رقم 5 کد تأیید"
+                            aria-describedby="auth-code-error"
+                            data-otp-digit
+                        /><input
+                            class="auth-otp-input"
+                            name="digit5"
+                            type="text"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            pattern="[0-9]"
+                            aria-label="رقم 6 کد تأیید"
+                            aria-describedby="auth-code-error"
+                            data-otp-digit
+                        />
+                    </div>
+                    <p class="auth-field-error" id="auth-code-error" hidden></p>
+                </fieldset>
+                <button class="auth-button auth-button--primary" type="submit">
+                    <span data-code-submit>ورود</span>
+                </button>
+                <p class="auth-footer auth-resend">
+                    کد را دریافت نکردید؟
+                    <button class="auth-link" type="button" data-resend disabled>ارسال مجدد</button>
+                </p>
+            </form>
+        </section>
+        <section data-auth-panel="reset" hidden>
+            <div class="auth-icon auth-icon--otp" aria-hidden="true">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path fill="currentColor" stroke="none" d="m12 1 10 4v7c0 7-10 12-10 12S2 19 2 12V5Z" />
+                    <g stroke="var(--auth-surface-color)" stroke-width="1.8">
+                        <path d="M9 12V9a3 3 0 0 1 6 0v3" />
+                        <rect x="8" y="12" width="8" height="7" rx="1" fill="var(--auth-surface-color)" />
+                        <path stroke="var(--color-brand-blue)" d="M12 14v3" />
+                    </g>
+                </svg>
+            </div>
+            <h2 class="auth-title" id="auth-title-reset" tabindex="-1">انتخاب رمز عبور جدید</h2>
+
+            <form data-auth-form="reset" novalidate>
+                <div class="auth-field">
+                    <label class="sr-only" for="auth-reset-password">رمز عبور جدید</label>
+                    <input
+                        class="auth-input"
+                        id="auth-reset-password"
+                        name="password"
+                        type="password"
+                        placeholder="رمز عبور جدید"
+                        autocomplete="new-password"
+                        required
+                        aria-describedby="auth-reset-password-error"
+                        minlength="8"
+                    />
+                    <button
+                        class="auth-password-toggle"
+                        type="button"
+                        data-password-toggle="auth-reset-password"
+                        aria-label="نمایش رمز عبور جدید"
+                        aria-pressed="false"
+                        aria-controls="auth-reset-password"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            aria-hidden="true"
+                        >
+                            <path d="M3 3 21 21" data-eye-slash />
+                            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </button>
+                    <p class="auth-field-error" id="auth-reset-password-error" hidden></p>
+                </div>
+                <div class="auth-field">
+                    <label class="sr-only" for="auth-reset-confirm">تکرار رمز عبور جدید</label>
+                    <input
+                        class="auth-input"
+                        id="auth-reset-confirm"
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="تکرار رمز عبور جدید"
+                        autocomplete="new-password"
+                        required
+                        aria-describedby="auth-reset-confirm-error"
+                        minlength="8"
+                    />
+                    <button
+                        class="auth-password-toggle"
+                        type="button"
+                        data-password-toggle="auth-reset-confirm"
+                        aria-label="نمایش تکرار رمز عبور جدید"
+                        aria-pressed="false"
+                        aria-controls="auth-reset-confirm"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            aria-hidden="true"
+                        >
+                            <path d="M3 3 21 21" data-eye-slash />
+                            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </button>
+                    <p class="auth-field-error" id="auth-reset-confirm-error" hidden></p>
+                </div>
+                <button class="auth-button auth-button--primary" type="submit">ذخیره رمز عبور</button>
+            </form>
+        </section>
+        <p class="auth-status" data-auth-status role="status" aria-live="polite" aria-atomic="true" hidden></p>
+    </div>
+</dialog>

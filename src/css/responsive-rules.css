@@ -1,0 +1,224 @@
+/* Final shared responsive layer, imported after each page stylesheet.
+ * Keep prose readable; change the available layout instead of shrinking type.
+ * Page-specific artwork and the approved technical-table structure stay local. */
+body {
+    font-size: var(--body-font-size, 16px);
+    line-height: 1.85;
+}
+body[data-page] :is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), select, textarea) {
+    font-size: var(--form-control-font-size);
+}
+body[data-page] :is(p.site-prose, .industry-textile__faq-answer) {
+    font-size: var(--body-font-size);
+    line-height: 1.95;
+    text-align: right;
+    word-break: normal;
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+}
+body[data-page] main :is(h1, h2, h3, h4, p, li, dd, a, button) {
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+body[data-page] :is(.product-search__select, .product-search__advanced, .product-search__clear) {
+    min-height: 44px;
+    font-size: 14px;
+    line-height: 1.65;
+}
+body[data-page] .filter-chip {
+    min-height: 32px;
+    height: auto;
+}
+body[data-page] .filter-chip span {
+    white-space: normal;
+}
+body[data-page] :is(.view-switcher__button, .projects-page__view-button, .articles-view-switcher__button) {
+    min-height: 44px;
+    min-width: 44px;
+}
+body[data-page] .product-search__dropdown-toggle {
+    min-height: 44px;
+    font-size: 14px;
+}
+body[data-page] .product-search__dropdown-option {
+    min-height: 44px;
+    font-size: 14px;
+}
+body[data-page] [data-consultation] input {
+    min-height: 48px;
+    text-align: right;
+}
+body[data-page] [data-consultation] input::placeholder {
+    text-align: right;
+}
+body[data-page] [data-consultation] h2 {
+    line-height: 1.7;
+}
+.site-header__logo {
+    display: block;
+    width: 134px;
+    height: 52px;
+    object-fit: contain;
+}
+.site-header__mobile {
+    padding-top: 50px;
+}
+.site-header__mobile .site-header__logo {
+    width: 142px;
+    height: auto;
+}
+
+@media (min-width: 640px) and (max-width: 1179px) {
+    .site-header__mobile {
+        padding-inline: 32px;
+        padding-top: 54px;
+    }
+    .site-header__mobile .site-header__logo {
+        width: 160px;
+    }
+    body[data-page="home"] .site-header__mobile {
+        padding-inline: 44px;
+        padding-top: 86px;
+    }
+    body[data-page="home"] .site-header__mobile .site-header__logo {
+        width: 170px;
+    }
+    body[data-page="home"] [data-menu-open] {
+        width: 56px;
+        height: 56px;
+        gap: 10px;
+    }
+    body[data-page="home"] [data-menu-open] span {
+        width: 50px;
+        height: 4px;
+        border-radius: 0;
+    }
+}
+@media (max-width: 1179px) {
+    body[data-page]
+        form
+        :is(
+            input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+            select:not(.product-search__select--native)
+        ) {
+        min-height: 48px;
+    }
+    body[data-page] .product-search__dropdown-toggle {
+        min-height: 48px;
+    }
+    body[data-page] form textarea {
+        min-height: 112px;
+    }
+}
+@media (max-width: 639px) {
+    body[data-page] main p {
+        font-size: var(--body-font-size);
+        line-height: 1.9;
+    }
+    body[data-page] main h2 {
+        font-size: var(--section-title-font-size);
+        line-height: 1.6;
+    }
+    body[data-page] main h3 {
+        font-size: var(--content-card-font-size);
+        line-height: 1.7;
+    }
+    body[data-page] :is(p.site-prose, .industry-textile__faq-answer) {
+        font-size: var(--body-font-size);
+        line-height: 1.95;
+        text-align: right;
+        text-align-last: auto;
+    }
+    body[data-page] main :is(.site-text-link, .about-card-link, .industry-textile__card-link) {
+        font-size: 14px;
+        min-height: 40px;
+    }
+    body[data-page] .product-search__filters {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+    body[data-page] .product-search__select {
+        width: 100%;
+        min-height: 48px;
+        font-size: 14px;
+    }
+    body[data-page] .product-search__advanced {
+        grid-column: 1 / -1;
+        min-height: 44px;
+    }
+    body[data-page] .product-search__bottom {
+        height: auto;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    body[data-page] .product-search__chips {
+        flex-wrap: wrap;
+    }
+    body[data-page] .product-search__clear {
+        margin-right: auto;
+    }
+    body[data-page="home"] .home-process-steps {
+        --icon-size: 48px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 16px;
+        padding: 24px 12px;
+    }
+    body[data-page="home"] .home-process-step h3 {
+        font-size: 16px;
+        margin-top: 12px;
+    }
+    body[data-page="home"] .home-process-step p {
+        display: none;
+    }
+    body[data-page="home"] .home-process-step:nth-child(2n) .home-process-arrow {
+        display: none;
+    }
+    body[data-page="home"] .home-process-arrow {
+        /* Half of the 16px column gap belongs on each side of the connector. */
+        left: calc(-50% - 8px);
+        padding-inline: calc(var(--icon-size) / 2 + 12px);
+    }
+    body[data-page="home"] .home-partners__title {
+        font-size: 14px;
+        flex-basis: 112px;
+    }
+    body[data-page="about"] .about-certificate-card {
+        height: auto;
+        min-height: 240px;
+    }
+    body[data-page="contact"] .contact-benefits__grid h3 {
+        font-size: 16px;
+    }
+    body[data-page] .product-details__quick-spec-item {
+        align-items: flex-start;
+        min-height: 72px;
+        line-height: 1.8;
+    }
+    body[data-page] .product-details__quick-spec-icon {
+        margin-top: 3px;
+    }
+    body[data-page] .product-details__download-button {
+        padding: 10px 12px;
+        gap: 8px;
+        justify-content: space-between;
+    }
+    body[data-page] .product-details__download-button img {
+        position: static;
+        transform: none;
+        flex: 0 0 20px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

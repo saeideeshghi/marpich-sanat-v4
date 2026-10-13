@@ -1,0 +1,75 @@
+/* ========================================
+   Peyda Font Family
+======================================== */
+
+@font-face {
+    font-family: "Peyda";
+    src: url("/fonts/Peyda-Thin[@fontbazi].woff2") format("woff2");
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Peyda";
+    src: url("/fonts/peyda-extralight[@fontbazi].woff2") format("woff2");
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Peyda";
+    src: url("/fonts/peyda-light[@fontbazi].woff2") format("woff2");
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Peyda";
+    src: url("/fonts/Peyda-Regular[@fontbazi].woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Peyda";
+    src: url("/fonts/Peyda-Medium[@fontbazi].woff2") format("woff2");
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Peyda";
+    src: url("/fonts/Peyda-SemiBold[@fontbazi].woff2") format("woff2");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Peyda";
+    src: url("/fonts/Peyda-Bold[@fontbazi].woff2") format("woff2");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Peyda";
+    src: url("/fonts/Peyda-ExtraBold[@fontbazi].woff2") format("woff2");
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Peyda";
+    src: url("/fonts/Peyda-Black[@fontbazi].woff2") format("woff2");
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+}

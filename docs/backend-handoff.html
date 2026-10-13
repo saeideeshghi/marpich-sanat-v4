@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>مارپیچ صنعت V3 | معماری و راهنمای Backend</title>
+<style>
+:root{--navy:#0f172b;--blue:#79b6ed;--orange:#f76e11;--line:#dde5ef;--muted:#59667c;--paper:#fff}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;background:#f3f6fb;color:var(--navy);font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:2}a{color:#24618d;text-decoration:none}a:hover{text-decoration:underline}button{font:inherit}header{background:var(--navy);color:#fff;position:relative;overflow:hidden}.cover{max-width:1380px;margin:auto;padding:44px 36px 40px}.brand{display:flex;gap:12px;align-items:center}.mark{display:grid;place-items:center;flex:none;width:44px;height:44px;border:1px solid #54729a;border-radius:12px;font-weight:bold;font-size:27px;color:var(--blue)}.eyebrow{color:#b9d5f4;font-size:12px}.cover h1{font-size:clamp(25px,3vw,38px);margin:24px 0 12px;line-height:1.65}.cover p{max-width:800px;color:#d8e3f0;margin:0}.cover-meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}.pill{border:1px solid #466383;border-radius:8px;padding:4px 11px;font-size:12px;background:#17243a}.pill--accent{border-color:#e29661;color:#ffd6b9}.cover button{margin-top:22px;border:0;border-radius:9px;background:#deecfb;color:#102c49;padding:9px 16px;cursor:pointer}.layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:28px;max-width:1380px;margin:28px auto;padding:0 28px 55px}nav{position:sticky;top:22px;align-self:start;max-height:calc(100vh - 44px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 16px;scrollbar-width:thin}nav h3{margin:0 0 10px;font-size:15px}nav .group{font-size:12px;color:#6d7b90;margin:15px 0 7px;border-top:1px solid #e4ebf3;padding-top:10px}nav a{display:block;font-size:12px;line-height:1.8;padding:6px 7px;border-radius:7px;color:#24344d}nav a:hover{background:#eef5ff;text-decoration:none;color:#1d639a}.document{min-width:0}.guide-part{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 32px;margin-bottom:24px}.part-label{font-size:12px;font-weight:bold;color:#b44a00;background:#fff0e4;border:1px solid #f5d3b6;border-radius:8px;padding:8px 12px;margin-bottom:20px}.guide-part h2{display:flex;gap:9px;align-items:baseline;font-size:21px;line-height:1.7;margin:42px 0 16px;padding-top:18px;border-top:1px solid var(--line);scroll-margin-top:24px}.section-dot{flex:none;background:var(--orange);width:7px;height:17px;border-radius:3px;position:relative;top:2px}.guide-part h3{font-size:17px;margin-top:26px}.guide-part p{margin:12px 0;color:#23354e;text-align:right}.guide-part ul{padding-right:24px}.guide-part li{margin:8px 0}.table-scroll{width:100%;overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:10px}table{width:100%;border-collapse:collapse;line-height:1.85;font-size:13px}th{background:#eaf3fc;color:#163e66;font-weight:bold;text-align:right;padding:12px 13px;vertical-align:top}td{border-top:1px solid var(--line);padding:11px 13px;vertical-align:top;overflow-wrap:break-word}tr:nth-child(even) td{background:#fbfcff}th:first-child{min-width:110px}pre{direction:ltr;text-align:left;unicode-bidi:isolate;white-space:pre;overflow:auto;background:#0f172b;color:#e2edf9;border-radius:11px;padding:19px 21px;font:12.5px/1.85 Consolas,monospace;margin:18px 0;tab-size:4}code{font-family:Consolas,monospace;direction:ltr;unicode-bidi:isolate}p code,td code,li code{background:#eef3f8;border-radius:4px;padding:1px 4px;font-size:12px}blockquote{border-right:3px solid var(--blue);padding:5px 14px;background:#f4f8fe;margin:16px 0}.footer{font-size:12px;color:var(--muted);padding:6px 8px}.footer a{font-weight:bold}.backtop{display:inline-block;padding:4px 0}.document img{max-width:100%}@media(max-width:1050px){.layout{grid-template-columns:230px minmax(0,1fr);gap:18px;padding-inline:18px}.guide-part{padding:23px}nav{padding:15px 12px}}@media(max-width:760px){.cover{padding:27px 20px}.layout{display:block;margin-top:18px;padding-inline:12px}nav{position:static;max-height:none;margin-bottom:16px}nav a{display:inline-block;vertical-align:top;width:49%}.guide-part{padding:18px 16px}.guide-part h2{font-size:18px}.guide-part p{font-size:14px}table{font-size:12px}.table-scroll th,.table-scroll td{padding:10px}pre{font-size:11.5px;padding:14px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{body{background:#fff;font-size:10pt}header{background:#fff!important;color:#000;border-bottom:2px solid #0f172b}.cover{padding:16px 0}.cover p,.eyebrow{color:#333}.cover h1{font-size:24pt}.cover button,nav,.backtop{display:none}.pill{color:#333;border-color:#888;background:#fff}.layout{display:block;padding:0;margin:15px 0}.guide-part{border:0;padding:0;border-radius:0}.part-label{border:0;background:#eee}.guide-part h2{font-size:15pt;break-after:avoid}.guide-part p{color:#111}.table-scroll{overflow:visible}table{font-size:9pt}tr{break-inside:avoid}pre{white-space:pre-wrap;overflow:visible;color:#111;background:#f2f2f2;font-size:8pt;overflow-wrap:anywhere}.footer{font-size:8pt}a{color:#111}@page{margin:16mm}}
+</style></head><body>
+<header id="top"><div class="cover"><div class="brand"><span class="mark">م</span><div><strong>مارپیچ صنعت · V3</strong><div class="eyebrow">راهنمای فنی تحویل و ادامهٔ توسعه</div></div></div><h1>از ساختار Frontend تا اتصال Backend</h1><p>نقشهٔ فایل‌ها و ۱۲ صفحه، روش ویرایش تصویر درباره ما، قراردادهای موجود فرم و Auth، طراحی CMS و مراحل انتقال به ASP.NET Core؛ براساس سورس همین نسخه.</p><div class="cover-meta"><span class="pill">۱۲ صفحهٔ فارسی و RTL</span><span class="pill">Vite + Tailwind CSS</span><span class="pill">HTML / CSS / JavaScript</span><span class="pill pill--accent">Backend: قرارداد و برنامهٔ پیاده‌سازی</span></div><button onclick="window.print()" type="button">چاپ یا ذخیره به PDF</button></div></header>
+<div class="layout"><nav aria-label="فهرست راهنما"><h3>فهرست راهنما</h3><div class="group">معماری و نگهداری کد</div><a href="#chapter-1">۱. اجرا، ویرایش و خروجی</a><a href="#chapter-2">۲. مسیر پردازش صفحه</a><a href="#chapter-3">۳. نقشهٔ پوشه‌ها و مسئولیت فایل‌ها</a><a href="#chapter-4">۴. نقشهٔ صفحات و دادهٔ مورد نیاز</a><a href="#chapter-5">۵. اجزای مشترک و رفتار JavaScript</a><a href="#chapter-6">۶. قرارداد ریسپانسیو و ترتیب استایل</a><a href="#chapter-7">۷. تنظیم جدید تصویر درباره ما</a><a href="#chapter-8">۸. منابع تنظیمات و نکات نگهداری</a><a href="#chapter-9">۹. موارد باقی‌مانده و کنترل تحویل</a><div class="group">اتصال Backend</div><a href="#chapter-10">۱۰. روش پیشنهادی مهاجرت</a><a href="#chapter-11">۱۱. نگاشت HTML به Razor</a><a href="#chapter-12">۱۲. اتصال Vite و Manifest به ASP.NET</a><a href="#chapter-13">۱۳. داده و مدل CMS پیشنهادی</a><a href="#chapter-14">۱۴. فرم‌های درخواست و قرارداد اتصال</a><a href="#chapter-15">۱۵. Auth و Session موجود در Frontend</a><a href="#chapter-16">۱۶. جستجو، فیلتر و Pagination</a><a href="#chapter-17">۱۷. انتقال تصویر، گالری و تنظیمات قالب به CMS</a><a href="#chapter-18">۱۸. پنل مدیریت مورد نیاز</a><a href="#chapter-19">۱۹. انتشار، آزمون پذیرش و ترتیب تحویل</a><a href="#chapter-20">۲۰. منابع فنی</a></nav><main class="document"><section class="guide-part" id="architecture"><div class="part-label">بخش اول · معماری و کد</div><p>این سند برای نسخهٔ اصلاح‌شدهٔ صفحهٔ درباره ما تهیه شده است. پروژه یک Frontend چندصفحه‌ای فارسی و RTL است؛ هر صفحه HTML و ورودی JavaScript مستقل دارد. پردازش HTML، Tailwind و خروجی انتشار با Vite انجام می‌شود. پایگاه داده، ارسال واقعی فرم‌ها و پنل مدیریت محتوا هنوز در این بسته پیاده‌سازی نشده‌اند.</p>
+<h2 id="chapter-1"><span class="section-dot"></span>۱. اجرا، ویرایش و خروجی</h2>
+<p>Node.js حداقل 22.12.0 لازم است. دستورات را در پوشه‌ای اجرا کنید که package.json قرار دارد:</p>
+<pre><code class="language-powershell">npm ci
+npm run dev
+</code></pre>
+<p>فایل‌های HTML خام را با دوبار کلیک یا Live Server اجرا نکنید؛ includeهای مشترک و CSS باید از مسیر Vite پردازش شوند. برای کاستومایزر:</p>
+<pre><code class="language-powershell">npm run customize
+</code></pre>
+<p>ویرایشگر در مسیر /tools/customizer.html باز می‌شود. در ویندوز CUSTOMIZE.cmd همین کار را انجام می‌دهد.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>دستور</th>
+<th>کاربرد</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>npm run check</td>
+<td>کنترل ساختار ۱۲ صفحه، کامپوننت‌ها، قراردادهای رفتار و تنظیمات</td>
+</tr>
+<tr>
+<td>npm run format:check</td>
+<td>کنترل یکدستی قالب کد</td>
+</tr>
+<tr>
+<td>npm run check:assets</td>
+<td>گزارش تصاویر و فونت‌های مفقود در سورس</td>
+</tr>
+<tr>
+<td>npm run build</td>
+<td>ساخت با Base برابر / برای اجرای معمولی یا Backend</td>
+</tr>
+<tr>
+<td>npm run build:pages</td>
+<td>ساخت با پیشوند مخزن GitHub و کنترل لینک‌های خروجی</td>
+</tr>
+<tr>
+<td>npm run preview:pages</td>
+<td>اجرای محلی آخرین خروجی Pages</td>
+</tr>
+<tr>
+<td>npm run publish:github</td>
+<td>Check، Build، Commit و Push طبق تنظیمات مخزن</td>
+</tr>
+<tr>
+<td>npm run tokens:refresh</td>
+<td>به‌روزرسانی قرارداد متغیرهای طراحی بعد از تغییر تعریف متغیرها</td>
+</tr>
+</tbody></table></div>
+<p>پوشه‌های تصاویر و فونت‌های پروژهٔ فعلی را هنگام جایگزینی این ZIP نگه دارید. این تحویل سورس است؛ node_modules، dist، فایل‌های حجیم تصاویر و فایل‌های آزمایشی در آن قرار نمی‌گیرند. خروجی Build بعد از اضافه‌بودن Assetهای واقعی ساخته می‌شود.</p>
+<h2 id="chapter-2"><span class="section-dot"></span>۲. مسیر پردازش صفحه</h2>
+<p>فهرست صفحات در build/pages.js ثبت شده است. Vite هر فایل HTML ریشه را می‌خواند؛ build/html-partials.js کامپوننت‌های مشترک و دادهٔ JSON همان صفحه را جایگزین includeها می‌کند. سپس Vite ورودی JS و دو لینک CSS در head را پردازش می‌کند؛ استایل‌ها به اجرای JS وابسته نیستند. پلاگین کاستومایزر CSS تنظیمات ذخیره‌شده را به خروجی اضافه می‌کند.</p>
+<pre><code class="language-html">&lt;!-- @include header --&gt;
+&lt;!-- @include product-cards products --&gt;
+&lt;!-- @include footer --&gt;
+</code></pre>
+<p>این عبارت‌ها دستور Build هستند. مرورگر یا ASP.NET Core آن‌ها را به‌صورت مستقیم اجرا نمی‌کند. کامپوننت بدون کلید، مثل header، از src/components خوانده می‌شود؛ کامپوننت دارای کلید، مثل products، داده را از src/data/pages/products.json می‌گیرد. build/components.js متن و URLهای این داده‌ها را بررسی و Escape می‌کند.</p>
+<p>همهٔ محتوای صفحه داخل JSON نیست. مثلاً تاریخچهٔ درباره ما، بخش‌هایی از جزئیات پروژه، کارت‌های صنایع و کارت‌های مقاله هنوز در HTML ریشه نوشته شده‌اند. برای مهاجرت به CMS، هم HTML و هم JSONهای مرتبط باید بررسی شوند.</p>
+<h2 id="chapter-3"><span class="section-dot"></span>۳. نقشهٔ پوشه‌ها و مسئولیت فایل‌ها</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>مسیر</th>
+<th>مسئولیت و نکتهٔ نگهداری</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*.html در ریشه</td>
+<td>ساختار اصلی صفحه، عنوان، توضیح SEO، includeها و ورودی JS</td>
+</tr>
+<tr>
+<td>src/components</td>
+<td>قالب‌های مشترک Header، Footer، Menu، Auth و اجزای محتوایی</td>
+</tr>
+<tr>
+<td>src/data/pages</td>
+<td>دادهٔ اجزای مشترک هر صفحه؛ این فایل‌ها در زمان Build مصرف می‌شوند</td>
+</tr>
+<tr>
+<td>src/js/pages</td>
+<td>ورودی مستقل هر صفحه؛ Import استایل‌ها و اجرای رفتار همان صفحه</td>
+</tr>
+<tr>
+<td>src/js/main.js</td>
+<td>initSite؛ راه‌اندازی رفتارهای مشترک و اعلام site:ready</td>
+</tr>
+<tr>
+<td>src/js/components</td>
+<td>رفتار منو، فرم‌ها، کاتالوگ، FAQ، پترن، تصویر و منوی ثابت</td>
+</tr>
+<tr>
+<td>src/js/services/auth-api.js</td>
+<td>مرز ارتباط UI ورود با Backend و مدیریت پاسخ‌های API</td>
+</tr>
+<tr>
+<td>src/js/utils/search-text.js</td>
+<td>یکسان‌سازی حروف و اعداد فارسی/عربی برای جستجو</td>
+</tr>
+<tr>
+<td>src/css/main.css</td>
+<td>پایهٔ Tailwind، فونت‌ها و Import اجزای مشترک</td>
+</tr>
+<tr>
+<td>src/css/components</td>
+<td>قواعد مشترک کارت، Hero، Header، Footer، Badge و فرم</td>
+</tr>
+<tr>
+<td>src/css/pages</td>
+<td>هندسه و ظاهر اختصاصی هر صفحه</td>
+</tr>
+<tr>
+<td>src/css/responsive.css</td>
+<td>قواعد ریسپانسیو موجود؛ ترتیب Import آن را حفظ کنید</td>
+</tr>
+<tr>
+<td>src/css/type-settings.css</td>
+<td>نقش‌های تایپوگرافی مشترک، متن و کارت</td>
+</tr>
+<tr>
+<td>src/css/hero-heights.css</td>
+<td>ارتفاع Heroها براساس ID هر صفحه</td>
+</tr>
+<tr>
+<td>src/css/pages/about-team.css</td>
+<td>قاب، تصویر و عرض بخش تیم در درباره ما</td>
+</tr>
+<tr>
+<td>src/js/customizer</td>
+<td>انتخاب المان، کنترل‌ها، مدل قوانین، تاریخچه، پترن و Export</td>
+</tr>
+<tr>
+<td>src/data/customizer/settings.json</td>
+<td>منبع اصلی تنظیمات تأییدشدهٔ Customizer</td>
+</tr>
+<tr>
+<td>src/data/customizer/token-contract.json</td>
+<td>قرارداد متغیرهای قابل‌ویرایش؛ خروجی ابزار Refresh</td>
+</tr>
+<tr>
+<td>src/data/patterns</td>
+<td>هندسه و تنظیمات پترن‌های Header و Footer</td>
+</tr>
+<tr>
+<td>src/css/template-overrides.css</td>
+<td>CSS تولیدشده از settings؛ دستی ویرایش نشود</td>
+</tr>
+<tr>
+<td>tools/customizer.html</td>
+<td>رابط ویرایش قالب و پیش‌نمایش صفحات</td>
+</tr>
+<tr>
+<td>tools/design-tokens.html</td>
+<td>فهرست کاربرد و محل تعریف متغیرها</td>
+</tr>
+<tr>
+<td>build</td>
+<td>ترکیب HTML، مسیر Asset، تولید CSS تنظیمات و Manifest</td>
+</tr>
+<tr>
+<td>scripts</td>
+<td>بررسی‌ها، آماده‌سازی مخزن، انتشار و پاکسازی فایل‌های قدیمی</td>
+</tr>
+<tr>
+<td>assets و fonts در ریشه</td>
+<td>فایل‌های موجود در نسخهٔ اولیه؛ هنگام Build کپی می‌شوند</td>
+</tr>
+<tr>
+<td>public</td>
+<td>فایل‌های استاتیک بومی پروژه؛ در صورت مسیر یکسان نسبت به ریشه اولویت دارند</td>
+</tr>
+<tr>
+<td>.cache/static-public</td>
+<td>پوشهٔ موقت ساخته‌شده از Assetها؛ منبع قابل‌ویرایش نیست</td>
+</tr>
+<tr>
+<td>dist</td>
+<td>خروجی نهایی Build؛ سورس را از این پوشه ویرایش نکنید</td>
+</tr>
+<tr>
+<td>.github/workflows/pages.yml</td>
+<td>نصب، Check، ساخت Pages و Deploy بعد از Push به main</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>راهنمای معماری و تحویل به تیم Backend</td>
+</tr>
+</tbody></table></div>
+<h2 id="chapter-4"><span class="section-dot"></span>۴. نقشهٔ صفحات و دادهٔ مورد نیاز</h2>
+<p>نام صفحه در body[data-page]، فایل JSON و registry مشترک باید هماهنگ بماند. home نام داخلی index.html است؛ سایر نام‌ها با نام فایل HTML هم‌خوان‌اند.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>HTML / نام صفحه</th>
+<th>بخش‌های اصلی</th>
+<th>منبع فعلی و نیاز Backend</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>index.html / home</td>
+<td>Hero، محصولات، حوزه‌ها، مشتریان، پروژه‌ها، مقالات و مشاوره</td>
+<td>HTML + home.json برای مشتریان و مشاوره؛ HomePageViewModel برای محتوا</td>
+</tr>
+<tr>
+<td>products.html / products</td>
+<td>جستجو، کارت‌های محصول، تغییر نمایش و فرم</td>
+<td>products.json دارای search، products و consultation؛ Query و Pagination واقعی لازم است</td>
+</tr>
+<tr>
+<td>product-details.html / product-details</td>
+<td>معرفی، مشخصات، جدول فنی، دانلود و مشاوره</td>
+<td>HTML + JSON فرم؛ محصول باید با slug و روابط خوانده شود</td>
+</tr>
+<tr>
+<td>air-handling.html / air-handling</td>
+<td>دستهٔ هواساز، جستجو، محصولات و فرم</td>
+<td>JSON جستجو و محصولات؛ صفحهٔ دسته با فیلتر محدودشده به آن دسته</td>
+</tr>
+<tr>
+<td>industries.html / industries</td>
+<td>صنایع تحت پوشش، فیلتر و فرم</td>
+<td>HTML کارت‌ها + JSON جستجو و فرم؛ Industry و محتوا از CMS</td>
+</tr>
+<tr>
+<td>industry-textile.html / industry-textile</td>
+<td>معرفی صنعت، کاربردها، محصولات، پروژه، نظرات و FAQ</td>
+<td>HTML + JSON نظرات، FAQ و فرم؛ روابط Industry با Product و Project</td>
+</tr>
+<tr>
+<td>projects.html / projects</td>
+<td>پروژه‌های شاخص، نظرات و فرم</td>
+<td>HTML کارت‌ها + JSON نظرات و فرم؛ ProjectListViewModel</td>
+</tr>
+<tr>
+<td>project-details.html / project-details</td>
+<td>معرفی، اطلاعات پروژه، جدول، دستاورد، دیدگاه و محصولات</td>
+<td>HTML + JSON فرم؛ ProjectDetailsViewModel با محصولات مرتبط</td>
+</tr>
+<tr>
+<td>about.html / about</td>
+<td>تصویر تیم، تاریخچه، تخصص، مدیریت، گالری و گواهینامه</td>
+<td>HTML + JSON فرم + تنظیمات تصویر؛ AboutPageViewModel</td>
+</tr>
+<tr>
+<td>contact.html / contact</td>
+<td>دو دفتر، کارخانه، RFQ، همکاری و مزایا</td>
+<td>HTML + contact.js؛ اطلاعات تماس از CMS و RFQ از سرویس دریافت درخواست</td>
+</tr>
+<tr>
+<td>expertise.html / expertise</td>
+<td>حوزهٔ تخصص، خدمات و مشاوره</td>
+<td>HTML + JSON فرم؛ ExpertiseDetailsViewModel</td>
+</tr>
+<tr>
+<td>articles.html / articles</td>
+<td>جستجو، دسته‌ها، کارت‌ها، Grid/List و فرم</td>
+<td>کارت‌های HTML + JSON فرم؛ ArticleListViewModel و صفحهٔ جزئیات مقاله لازم است</td>
+</tr>
+</tbody></table></div>
+<p>صفحهٔ جزئیات مقاله در registry فعلی نیست. اگر مقاله از CMS منتشر می‌شود، مسیر و View آن نیز باید توسط Backend ساخته شود؛ تغییر لینک کارت به یک URL واقعی به‌تنهایی صفحهٔ جدید ایجاد نمی‌کند.</p>
+<h2 id="chapter-5"><span class="section-dot"></span>۵. اجزای مشترک و رفتار JavaScript</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>جزء</th>
+<th>فایل اصلی</th>
+<th>قرارداد قابل حفظ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Header و Footer</td>
+<td>src/components/header.html و footer.html</td>
+<td>لینک‌ها، کلاس‌ها و aria-current؛ دادهٔ مشترک از CMS</td>
+</tr>
+<tr>
+<td>منوی کوچک</td>
+<td>mobile-menu.html و menu.js</td>
+<td>data-menu-open، data-menu-close و data-mobile-menu؛ مدیریت Focus و Escape</td>
+</tr>
+<tr>
+<td>منوی ثابت</td>
+<td>fixed-header.js</td>
+<td>تنظیمات زمان اسکرول و متغیرهای Header؛ پیش‌فرض فعلی در تنظیمات قالب</td>
+</tr>
+<tr>
+<td>انتخاب زبان</td>
+<td>language.js</td>
+<td>کنترل UI آماده است؛ ترجمه و مسیر زبان واقعی هنوز لازم است</td>
+</tr>
+<tr>
+<td>ورود و OTP</td>
+<td>auth-modal.html، auth.js و auth-api.js</td>
+<td>Hookهای data-auth-*، پنج API موجود و رویداد auth:success</td>
+</tr>
+<tr>
+<td>فرم مشترک</td>
+<td>consultation.html و catalog-consultation.html</td>
+<td>name فیلدها، data-pending-form و رویداد consultation:submit</td>
+</tr>
+<tr>
+<td>همگام‌سازی فرم</td>
+<td>consultation.js</td>
+<td>انتقال مقدار فیلد هم‌نام بین فرم‌های Desktop/Mobile؛ فایل منتقل نمی‌شود</td>
+</tr>
+<tr>
+<td>RFQ تماس</td>
+<td>contact.js</td>
+<td>رویداد rfq:submit با form و formData؛ انتخاب نوع همکاری و کنترل فایل</td>
+</tr>
+<tr>
+<td>کاتالوگ</td>
+<td>catalog.js و searchable-select.js</td>
+<td>Grid/List، چیپ فیلتر، Select جستجوشونده و رویداد catalog:search</td>
+</tr>
+<tr>
+<td>مقاله</td>
+<td>src/js/pages/articles.js</td>
+<td>فیلتر محلی کارت‌های موجود و تغییر Grid/List؛ Pagination سروری وجود ندارد</td>
+</tr>
+<tr>
+<td>FAQ</td>
+<td>faq.html، faq-item.html و accordion.js</td>
+<td>ID یکتا، aria-expanded و باز/بسته‌شدن آیتم</td>
+</tr>
+<tr>
+<td>نظرات</td>
+<td>testimonials.js و templateهای مربوط</td>
+<td>Scroll و دکمه‌ها، مستقل از منبع داده</td>
+</tr>
+<tr>
+<td>جدول فنی</td>
+<td>فایل‌های details در src/css/components و JS مربوط</td>
+<td>ساختار سلول‌ها و Hookهای جدول؛ داده و دانلود واقعی از Backend</td>
+</tr>
+<tr>
+<td>پترن‌ها</td>
+<td>site-pattern.js و src/data/patterns</td>
+<td>مدل مستقل Header/Footer و تنظیمات هر دستگاه</td>
+</tr>
+<tr>
+<td>تصویر درباره ما</td>
+<td>customizer-image.js و image-source.js</td>
+<td>انتخاب منبع با عرض صفحه، Base مناسب و Fallback تصویر اولیه</td>
+</tr>
+<tr>
+<td>تنظیمات قالب</td>
+<td>template-style.js</td>
+<td>بارگذاری CSS تأییدشده و پیش‌نمایش موقت</td>
+</tr>
+</tbody></table></div>
+<p>برای تغییر محتوای یک کامپوننت، ابتدا دادهٔ همان صفحه را تغییر دهید. برای تغییر هندسهٔ یک صفحه، فایل CSS اختصاصی آن را ویرایش کنید. تغییر کلاس عمومی site-card روی باکس معرفی، فرم یا قسمت‌های دیگر نیز اثر می‌گذارد؛ قوانین Hover جدید باید به نوع مشخص کارت محدود شوند.</p>
+<h2 id="chapter-6"><span class="section-dot"></span>۶. قرارداد ریسپانسیو و ترتیب استایل</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>بازه</th>
+<th>عرض</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>موبایل</td>
+<td>تا 639px</td>
+</tr>
+<tr>
+<td>تبلت</td>
+<td>از 640 تا 1179px</td>
+</tr>
+<tr>
+<td>دسکتاپ</td>
+<td>از 1180px</td>
+</tr>
+<tr>
+<td>موبایل کوچک در Customizer</td>
+<td>تا 450px؛ زیرمجموعهٔ موبایل</td>
+</tr>
+<tr>
+<td>بازهٔ دلخواه</td>
+<td>Min/Max شامل خود مرزها</td>
+</tr>
+</tbody></table></div>
+<p>head صفحه ابتدا main.css و سپس CSS ورودی در src/css/entries را لینک می‌کند. ترتیب CSS اختصاصی، content-flow و responsive.css در همین ورودی حفظ می‌شود. درباره ما، about-team.css را بعد از لایهٔ ریسپانسیو وارد می‌کند تا هندسهٔ قاب مستقل بماند. در خروجی، template-overrides.css بعد از CSSهای اصلی بارگذاری می‌شود. قوانین ذخیره‌شده از !important استفاده می‌کنند؛ تغییر فایل پایه ممکن است زیر یک تنظیم ذخیره‌شده دیده نشود.</p>
+<p>body[data-page] محدودهٔ امن تغییرات اختصاصی است. کلاس CSS را برای ظاهر و data-* را برای رفتار نگه دارید. برای تغییر یک بخش از یک صفحه، قانون را روی همان صفحه و بخش بنویسید؛ Header، Footer و فرم‌های مشترک را بدون بررسی سایر مصرف‌کننده‌ها تغییر ندهید.</p>
+<h2 id="chapter-7"><span class="section-dot"></span>۷. تنظیم جدید تصویر درباره ما</h2>
+<p>در Customizer، صفحهٔ «درباره ما» را انتخاب کنید. زیر «تصویر اصلی درباره ما»، پنل «تنظیم سریع تصویر در هر اندازه» قرار دارد. ابتدا همهٔ اندازه‌ها یا یکی از دسکتاپ، تبلت و موبایل را انتخاب کنید؛ هر فیلد پس از پایان ویرایش یا تغییر انتخاب اعمال می‌شود.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>کنترل سریع</th>
+<th>رفتار</th>
+<th>مقصد تنظیم</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>فایل تصویر</td>
+<td>مسیر /assets/... یا URL کامل؛ امکان فایل متفاوت برای هر اندازه</td>
+<td>about-image / image-source</td>
+</tr>
+<tr>
+<td>عرض بخش</td>
+<td>درصد، مقدار px یا عدد ساده به معنی درصد</td>
+<td>about-image-container / width</td>
+</tr>
+<tr>
+<td>حداکثر عرض</td>
+<td>عدد px یا none</td>
+<td>about-image-container / max-width</td>
+</tr>
+<tr>
+<td>ارتفاع قاب</td>
+<td>عدد px یا auto</td>
+<td>about-image-frame / height</td>
+</tr>
+<tr>
+<td>نسبت قاب</td>
+<td>مثلاً 16 / 9؛ در ارتفاع auto اندازهٔ قاب را تعیین می‌کند</td>
+<td>about-image-frame / aspect-ratio</td>
+</tr>
+<tr>
+<td>نمایش تصویر</td>
+<td>contain برای نمایش کامل؛ cover برای پرکردن و برش قاب</td>
+<td>about-image / object-fit</td>
+</tr>
+<tr>
+<td>جای تصویر</td>
+<td>دو درصد، ابتدا افقی سپس عمودی؛ مثلاً 50% 30%</td>
+<td>about-image / object-position</td>
+</tr>
+<tr>
+<td>زوم تصویر</td>
+<td>100 برای حالت عادی، 110 برای بزرگ‌نمایی ده درصد</td>
+<td>about-image / scale</td>
+</tr>
+<tr>
+<td>گردی قاب</td>
+<td>مقدار px</td>
+<td>about-image-frame / border-radius</td>
+</tr>
+</tbody></table></div>
+<p>مثال شروع تنظیم: در موبایل ارتفاع 220px و نسبت 16 / 9، در تبلت ارتفاع 340px و در دسکتاپ ارتفاع 500px را امتحان کنید؛ این‌ها مثال‌اند و به‌صورت پیش‌فرض در این تحویل ثبت نشده‌اند. در cover جای تصویر را با درصدها تنظیم کنید تا صورت‌ها یا بخش مهم تصویر از قاب خارج نشوند. با contain تمام تصویر حفظ می‌شود و ممکن است بخشی از قاب خالی بماند.</p>
+<p>فیلد خالی یا دکمهٔ ↺، فقط Override همان کنترل در همان اندازه را حذف می‌کند. Placeholder نتیجهٔ فعلی مرورگر است؛ اگر فیلد خالی است، مقدار از استایل پایه یا قانون عمومی به ارث می‌رسد. تنظیم همهٔ اندازه‌ها پایهٔ مشترک می‌سازد؛ تنظیم دستگاه، موبایل کوچک یا بازهٔ دلخواه می‌تواند روی آن مقدم شود. هر Min/Max اضافی را در انتخابگر عمومی «اندازه» تنظیم کنید.</p>
+<p>ورودی مسیر، فایل را Upload نمی‌کند. ابتدا تصویر را در assets/images/about یا public/assets/images/about کپی کنید و سپس مسیر عمومی /assets/images/about/... را وارد کنید. در Pages پیشوند نام مخزن خودکار افزوده می‌شود. اگر فایل جدید لود نشود، تصویر اصلی about-team.svg نمایش داده می‌شود و پنل پیام خطا نشان می‌دهد.</p>
+<p>فایل src/js/customizer/about-image-controls.js فقط یک رابط ساده روی همان مدل قوانین موجود است. مسیر Preview، Undo/Redo، Compare، Save و Export عوض نشده است. قوانین جدید همیشه به about محدود و مستقل از انتخاب عمومی «همه صفحه‌ها» هستند.</p>
+<p>برای ذخیرهٔ واقعی در اجرای محلی، «تأیید و ثبت در قالب» را بزنید. روی Pages دسترسی نوشتن سورس وجود ندارد؛ ZIP تنظیمات را بگیرید، فایل‌های آن را کنار سورس جایگزین و دوباره Build/Publish کنید. ذخیرهٔ پیش‌نویس در مرورگر انتشار سایت محسوب نمی‌شود.</p>
+<p>گالری درباره ما با Hover یا Focus لینک، فقط تصویر پس‌زمینه را 6% بزرگ می‌کند؛ لایهٔ Fade و متن ثابت می‌مانند. این رفتار برای دستگاه دارای Hover و اشاره‌گر دقیق فعال است. درخواست کاهش حرکت، انیمیشن را حذف یا طبق لایهٔ مشترک تقریباً فوری می‌کند. هندسهٔ اصلاح‌شدهٔ SVG گالری حفظ شده است.</p>
+<h2 id="chapter-8"><span class="section-dot"></span>۸. منابع تنظیمات و نکات نگهداری</h2>
+<p>build/customizer.js در Dev درخواست __customizer/settings را با Token همان نشست و Revision فایل کنترل می‌کند؛ ذخیره با Revision قدیمی رد می‌شود. این Endpoint ابزار توسعه است و API آمادهٔ پنل مدیریت Production نیست.</p>
+<p>هنگام Build، CSS و settings.json در assets/customizer خروجی داده می‌شوند. فقط در about.html، JSON منابع تصویر در script با ID برابر mps-image-sources قرار می‌گیرد. customizer-image.js با Resize، منبع متناسب با عرض جدید را انتخاب می‌کند. در انتقال به Razor، هم CSS و هم این JSON باید حفظ یا با مدل CMS جایگزین شوند.</p>
+<p>کلید اصلی قوانین شامل صفحه، Target، Breakpoint، حالت و در صورت وجود Range است. normalizeConfig و normalizeProperty قرارداد ورودی مشترک مرورگر و سرور توسعه‌اند. Export شامل تنظیمات، CSS تولیدی و دو فایل پترن است. CSS تولیدی را بدون تغییر settings ویرایش نکنید؛ Build بعدی آن را بازسازی می‌کند.</p>
+<h2 id="chapter-9"><span class="section-dot"></span>۹. موارد باقی‌مانده و کنترل تحویل</h2>
+<ul>
+<li>۱۱۴ لینک Placeholder در صفحات وجود دارد؛ مقصد CMS، مقاله، دانلود یا گالری باید برای هرکدام مشخص شود.</li>
+<li>فرم‌های درخواست و RFQ ذخیره یا ارسال واقعی ندارند؛ Backend باید نتیجهٔ قطعی ثبت را به UI برگرداند.</li>
+<li>API ورود در حالت Production تا پیکربندی غیرفعال است؛ OTP نمونه فقط در Dev استفاده می‌شود.</li>
+<li>جستجوی مقاله روی کارت‌های موجود محلی است؛ Load More و فیلتر کاتالوگ به سرویس واقعی نیاز دارند.</li>
+<li>پنل CMS، مدیریت رسانه، ترجمه، مدیریت درخواست‌ها و Session سمت سرور خارج از این Frontend هستند.</li>
+</ul>
+<p>پس از تغییرات، Check، Format و Build را اجرا کنید. با Assetهای کامل، check:assets را هم اجرا کنید. مرزهای 639/640 و 1179/1180، متن فارسی بلند، جدول فنی، منوی باز، صفحهٔ تماس و Hover کارت‌ها را بررسی کنید. تغییرات این تحویل به CSS درباره ما، UI کاستومایزر و مستندات محدود شده‌اند؛ تنظیمات قبلی و فایل‌های سایر صفحات حفظ می‌شوند.</p>
+</section><section class="guide-part" id="backend"><div class="part-label">بخش دوم · اتصال Backend</div><p>این سند قرارداد اتصال به همین سورس را توضیح می‌دهد. مسیرهای CMS و درخواست‌ها در بخش‌های پیشنهادی هنوز پیاده‌سازی نشده‌اند. فقط قرارداد پنج عملیات auth در Frontend موجود است. پیشنهاد اجرایی، ASP.NET Core MVC/Razor با رندر سمت سرور و APIهای هم‌دامنه برای فرم‌ها و Auth است؛ نسخهٔ Framework و پایگاه داده با تیم Backend تعیین شود.</p>
+<h2 id="chapter-10"><span class="section-dot"></span>۱۰. روش پیشنهادی مهاجرت</h2>
+<p>صفحات عمومی با Razor از دیتابیس رندر شوند؛ فایل‌های CSS و JS فعلی برای نمایش و تعامل باقی بمانند. این روش به همین ساختار چندصفحه‌ای نزدیک است و مسیرها، SEO، خطای 404 و لینک محتوای واقعی را در اختیار Backend قرار می‌دهد.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>مرحله</th>
+<th>کار مشخص</th>
+<th>معیار تحویل</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>۱. پوسته</td>
+<td>Build معمولی Vite، انتقال Assetها، Layout و Partialهای مشترک</td>
+<td>Home و About با همان ظاهر در ASP.NET باز شوند</td>
+</tr>
+<tr>
+<td>۲. محتوای خواندنی</td>
+<td>یک Product و یک Project با slug، ViewModel و روابط</td>
+<td>صفحهٔ جزئیات واقعی و 404 برای slug نامعتبر</td>
+</tr>
+<tr>
+<td>۳. درخواست</td>
+<td>Consultation و RFQ، ذخیره و پاسخ دارای requestId</td>
+<td>درخواست واقعی در پنل مدیر دیده شود</td>
+</tr>
+<tr>
+<td>۴. Auth</td>
+<td>Session، OTP، Register و Password Reset با سرویس واقعی</td>
+<td>ورود و خروج واقعی و خطاهای قابل‌نمایش</td>
+</tr>
+<tr>
+<td>۵. CMS و جستجو</td>
+<td>فهرست‌ها، فیلتر، Pagination، محتوا و Media</td>
+<td>URL فیلتر قابل اشتراک و مدیریت محتوای صفحات</td>
+</tr>
+<tr>
+<td>۶. انتشار</td>
+<td>لینک‌های نهایی، SEO، Assetهای کامل و کنترل ریسپانسیو</td>
+<td>محیط Staging تأیید و سپس Production منتشر شود</td>
+</tr>
+</tbody></table></div>
+<p>پروژهٔ Frontend فعلی را مرجع طراحی نگه دارید. ابتدا یک صفحهٔ کامل را با Assetهای ساخته‌شده منتقل کنید و پس از تطبیق ظاهر، بقیه را تبدیل کنید. بازنویسی هم‌زمان CSS و مدل محتوا در مرحلهٔ اول، تشخیص علت اختلاف ظاهر را سخت می‌کند.</p>
+<h2 id="chapter-11"><span class="section-dot"></span>۱۱. نگاشت HTML به Razor</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>فایل فعلی</th>
+<th>مقصد پیشنهادی</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>src/components/header.html</td>
+<td>Views/Shared/_Header.cshtml</td>
+</tr>
+<tr>
+<td>src/components/mobile-menu.html</td>
+<td>Views/Shared/_MobileMenu.cshtml</td>
+</tr>
+<tr>
+<td>src/components/footer.html</td>
+<td>Views/Shared/_Footer.cshtml</td>
+</tr>
+<tr>
+<td>src/components/auth-modal.html</td>
+<td>Views/Shared/_AuthModal.cshtml</td>
+</tr>
+<tr>
+<td>consultation.html و catalog-consultation.html</td>
+<td>Partial یا ViewComponent با ViewModel مخصوص فرم</td>
+</tr>
+<tr>
+<td>product-card.html</td>
+<td>_ProductCard.cshtml با ProductCardViewModel</td>
+</tr>
+<tr>
+<td>faq و testimonial templateها</td>
+<td>Partialهای حلقه‌ای با ID یکتا</td>
+</tr>
+<tr>
+<td>فایل‌های HTML ریشه</td>
+<td>View هر Controller؛ Layout مشترک Head و Footer را نگه دارد</td>
+</tr>
+</tbody></table></div>
+<p>_Layout.cshtml شامل lang=&quot;fa&quot;، dir=&quot;rtl&quot;، Metadata، Header، Menu، Auth، RenderBody و فایل‌های صفحه است. body[data-page] را از نام داخلی صفحه مقداردهی کنید؛ مثلاً About با about و صفحهٔ اصلی با home. مقدار activeNav را براساس registry فعلی یا مدل Navigation حفظ کنید.</p>
+<p>مثال پوستهٔ سادهٔ About؛ Model و AssetResolver در این مثال قرارداد پیشنهادی‌اند و باید در Backend نوشته شوند:</p>
+<pre><code class="language-cshtml">&lt;body class=&quot;about-page&quot; data-page=&quot;about&quot;&gt;
+    &lt;partial name=&quot;_Header&quot; model=&quot;Model.Navigation&quot; /&gt;
+    &lt;partial name=&quot;_MobileMenu&quot; model=&quot;Model.Navigation&quot; /&gt;
+    @RenderBody()
+    &lt;partial name=&quot;_Footer&quot; model=&quot;Model.Footer&quot; /&gt;
+    &lt;partial name=&quot;_AuthModal&quot; /&gt;
+&lt;/body&gt;
+</code></pre>
+<p>برای پرهیز از تکرار body، این ساختار در Layout قرار می‌گیرد و View فقط محتوای داخل صفحه را می‌نویسد. نام همهٔ Classها، data-*های رفتاری، نام فیلد فرم و IDهای وابسته به aria را حفظ کنید. هر کامپوننت تکراری، مثل FAQ، ID اختصاصی دریافت کند.</p>
+<p>متن معمولی را با خروجی Escapeشدهٔ Razor رندر کنید. برای Rich Text، HTML را در Backend با Allowlist پاک‌سازی کنید؛ Html.Raw برای متن ورودی بدون Sanitization مناسب نیست. URL تصویر، دانلود و لینک نیز جدا از Escape متن اعتبارسنجی شود.</p>
+<h2 id="chapter-12"><span class="section-dot"></span>۱۲. اتصال Vite و Manifest به ASP.NET</h2>
+<p>برای Backend از npm run build استفاده کنید؛ build:pages برای پیشوند مخزن GitHub است. خروجی Manifest در dist/.vite/manifest.json قرار دارد. Registry فعلی entryهای HTML مثل about.html و products.html را ثبت می‌کند؛ قبل از خواندن Manifest، وجود کلید همان صفحه را کنترل کنید.</p>
+<p>۱. محتوای assets، fonts و سایر فایل‌های عمومی خروجی را با همان مسیرها به wwwroot منتقل کنید. نسخهٔ Manifest را کنار برنامه و دور از ویرایش کاربر نگه دارید.</p>
+<p>۲. AssetResolver برای صفحه، file و css ورودی و css تمام imports آن را بازگشتی بخواند؛ فایل CSS هر چانک مشترک نیز لازم است. نام Hash فایل‌ها را در View ثابت ننویسید.</p>
+<p>۳. CSSهای صفحه و وابستگی‌ها را بدون تکرار درج کنید. لینک ثابت assets/customizer/template-overrides.css را پس از آن‌ها قرار دهید تا Overrideها حفظ شوند. سپس script نوع module برای file ورودی اضافه شود. modulepreload برای imports اختیاری است.</p>
+<p>۴. Assetها و Manifest را در یک Release منتقل کنید؛ HTML یا Manifest جدید کنار فایل‌های قبلیِ حذف‌شده می‌تواند 404 بسازد. در زمان Deploy، قابلیت نمایش خطا یا بررسی نبود entry را در AssetResolver قرار دهید.</p>
+<p>CSS اولیه در نسخهٔ فعلی دو لینک مستقیم در head دارد: src/css/main.css و src/css/entries/&lt;page&gt;.css. نام و ترتیب CSSهای هش‌دار را از HTML ساخته‌شدهٔ همان صفحه و Manifest واقعی استخراج کنید؛ تنها دنبال‌کردن importهای JS برای جمع‌آوری CSS کافی نیست. لینک‌های CSS را در head بگذارید و بارگذاری آن‌ها را به JavaScript نسپارید.</p>
+<pre><code class="language-cshtml">@foreach (var css in Model.PageAssets.Css)
+{
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;@Url.Content(&quot;~/&quot; + css)&quot; /&gt;
+}
+&lt;link id=&quot;mps-template-overrides&quot;
+      rel=&quot;stylesheet&quot;
+      href=&quot;@Url.Content(&quot;~/assets/customizer/template-overrides.css&quot;)?v=@Model.TemplateRevision&quot; /&gt;
+&lt;script type=&quot;module&quot; src=&quot;@Url.Content(&quot;~/&quot; + Model.PageAssets.Script)&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>این قطعه، ایدهٔ رندر Assetهای حل‌شده را نشان می‌دهد؛ PageAssets باید از Manifest واقعی ساخته شود. چند Import از CSS یک صفحه را با حدس‌زدن نام main.css جایگزین نکنید. ظاهر اشتباه با وجود JS سالم می‌تواند از جاافتادن CSS چانک مشترک یا بارگذاری Overrideها در ترتیب نادرست باشد.</p>
+<p>اگر Dev Backend و Vite روی Origin جدا اجرا می‌شوند، Origin مجاز و Proxy فایل‌های استاتیک را مشخص کنید. برای شروع ساده‌تر، Build Frontend را در Staging ASP.NET سرو کنید و بعد HMR را اضافه کنید.</p>
+<h2 id="chapter-13"><span class="section-dot"></span>۱۳. داده و مدل CMS پیشنهادی</h2>
+<p>این جدول طرح پیشنهادی دیتابیس است، نه مدل پیاده‌شده در بسته. برای هر محتوای منتشرشونده، Slug یکتا، وضعیت پیش‌نویس/انتشار، تاریخ و فیلدهای SEO نگه دارید؛ ViewModelهای Public را از Entity داخلی جدا کنید.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>مدل</th>
+<th>فیلدهای اصلی و رابطه</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SiteSettings</td>
+<td>نام شرکت، تلفن‌ها، شبکه‌ها، Footer، Navigation و تنظیمات عمومی</td>
+</tr>
+<tr>
+<td>MediaAsset</td>
+<td>مسیر عمومی، نوع، اندازه، Alt، عرض/ارتفاع و وضعیت تأیید</td>
+</tr>
+<tr>
+<td>ProductCategory</td>
+<td>نام، slug، توضیح، Hero و ترتیب نمایش</td>
+</tr>
+<tr>
+<td>Product</td>
+<td>نام، slug، خلاصه، توضیح، تصاویر، Category، وضعیت و دیتاشیت</td>
+</tr>
+<tr>
+<td>ProductSpecification</td>
+<td>ProductId، گروه، نام، مقدار، واحد و ترتیب؛ ساختار جدول از داده</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>عنوان، slug، خلاصه، صنعت، مشتری، مکان، تاریخ، تصاویر و دستاوردها</td>
+</tr>
+<tr>
+<td>ProjectProduct</td>
+<td>ProjectId، ProductId و ترتیب؛ رابطهٔ چندبه‌چند پروژه و محصول</td>
+</tr>
+<tr>
+<td>Industry</td>
+<td>نام، slug، توضیح، تصویر، کاربردها و محتوا</td>
+</tr>
+<tr>
+<td>ProductIndustry و ProjectIndustry</td>
+<td>روابط مرتبط برای پیشنهاد محصول و پروژه در صفحهٔ صنعت</td>
+</tr>
+<tr>
+<td>Expertise</td>
+<td>عنوان، slug، توضیحات، تصویر، خدمت‌ها و بخش‌های مرتبط</td>
+</tr>
+<tr>
+<td>Article و ArticleCategory</td>
+<td>عنوان، slug، خلاصه، متن پاک‌سازی‌شده، تصویر، دسته، نویسنده و تاریخ</td>
+</tr>
+<tr>
+<td>Testimonial</td>
+<td>نام، سمت/شرکت، متن، تصویر و ارتباط اختیاری با Project یا Industry</td>
+</tr>
+<tr>
+<td>FaqItem</td>
+<td>پرسش، پاسخ، محدودهٔ صفحه و ترتیب</td>
+</tr>
+<tr>
+<td>AboutPage و TimelineItem</td>
+<td>متن‌ها، مدیریت، تصویر تیم، تاریخچه، گواهینامه و گالری</td>
+</tr>
+<tr>
+<td>ContactBranch</td>
+<td>دفتر تهران، دفتر مشهد و کارخانه؛ آدرس، تلفن، نقشه و ترتیب</td>
+</tr>
+<tr>
+<td>ConsultationRequest</td>
+<td>نام، شرکت/تماس موجود، پیام، صفحهٔ مبدا، زمان، وضعیت و کد رهگیری</td>
+</tr>
+<tr>
+<td>RfqRequest و RequestAttachment</td>
+<td>دادهٔ RFQ، فایل اختیاری، وضعیت و اپراتور رسیدگی</td>
+</tr>
+<tr>
+<td>TemplateVersion</td>
+<td>تنظیمات تأییدشده، CSS تولیدی، Revision و سابقهٔ انتشار</td>
+</tr>
+</tbody></table></div>
+<p>از ابتدا Gallery یا Timeline را به جدول نامحدود Generic بدون قرارداد تبدیل نکنید. مدل ساده و روشن برای بخش‌های فعلی کافی است؛ بخش‌بندی پیشرفتهٔ Page Builder را پس از نیاز واقعی اضافه کنید.</p>
+<p>برای Preview مدیر، پیش‌نویس را از مسیر جدا و دسترسی‌دار نشان دهید. Query عمومی فقط محتوای منتشرشده را برگرداند. در Viewهای لیستی تعداد نتایج و ترتیب ثابت تعریف شود. Table فنی و دستاوردهای پروژه در ViewModel داده‌ای قرار گیرند؛ CSS جدول فعلی حفظ شود.</p>
+<h2 id="chapter-14"><span class="section-dot"></span>۱۴. فرم‌های درخواست و قرارداد اتصال</h2>
+<p>سه شکل فرم در سورس وجود دارد و نام فیلدها یکسان نیست. Normalize داده را در Adapter یا DTO سرور انجام دهید؛ فیلدهایی را که در یک فرم نیستند بدون تغییر UI اجباری نکنید.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>فرم</th>
+<th>فیلدهای فعلی</th>
+<th>رویداد فعلی</th>
+<th>API پیشنهادی</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Consultation مشترک Home/About/Expertise</td>
+<td>name، email، description</td>
+<td>consultation:submit؛ detail شامل form و formData</td>
+<td>POST /api/consultations</td>
+</tr>
+<tr>
+<td>Consultation کاتالوگ و صفحات دیگر</td>
+<td>fullName، company یا phone، message</td>
+<td>همان consultation:submit</td>
+<td>POST /api/consultations</td>
+</tr>
+<tr>
+<td>RFQ تماس</td>
+<td>fullName، company، phone، email، branch، requestType، description، attachment</td>
+<td>rfq:submit؛ detail شامل form و formData</td>
+<td>POST /api/rfq</td>
+</tr>
+</tbody></table></div>
+<p>در فرم محصولات، فیلد دوم phone است؛ در بیشتر فرم‌های دیگر company است. قرارداد پیشنهادی Consultation می‌تواند fullName، email، phone، company، message و sourcePage داشته باشد؛ فقط فیلدهای واقعاً موجود هر فرم را ارسال کنید. name را به fullName و description را به message نگاشت کنید. sourcePage را برای گزارش ثبت کنید و برای تصمیم امنیتی قابل‌اعتماد فرض نکنید.</p>
+<p>branch فعلی tehran و mashhad است. requestType شامل consultation، rfq، partnership و support است؛ کلیک همکاری گزینه‌های employment و installer-partnership را هم اضافه می‌کند. کارخانه کارت اطلاعات تماس است و در Dropdown فعلی گزینهٔ branch جدا ندارد.</p>
+<p>ثبت موفق باید بعد از ذخیرهٔ قطعی، پاسخ واقعی بدهد:</p>
+<pre><code class="language-json">{
+    &quot;ok&quot;: true,
+    &quot;requestId&quot;: &quot;REQ-2026-00125&quot;,
+    &quot;message&quot;: &quot;درخواست ثبت شد.&quot;
+}
+</code></pre>
+<p>برای Validation پاسخ 400 یا 422 با خطاهای فیلدی، برای حجم غیرمجاز 413، برای تعداد تلاش زیاد 429 و برای خطای سرویس 5xx در نظر بگیرید. انتخاب استاندارد نهایی با تیم Backend است؛ Adapter باید آن را به پیام فارسی و وضعیت مشخص فرم تبدیل کند.</p>
+<p>رویداد Cancelable را پیش از اولین await با preventDefault تصاحب کنید، وگرنه پیام «سرویس فعال نیست» هم اجرا می‌شود. مثال زیر اسکلت اتصال است و در سورس فعال نشده؛ سرویس API و UI خطا باید طبق قرارداد نهایی نوشته شوند:</p>
+<pre><code class="language-javascript">const endpoints = {
+    &quot;consultation:submit&quot;: &quot;/api/consultations&quot;,
+    &quot;rfq:submit&quot;: &quot;/api/rfq&quot;,
+};
+
+for (const [eventName, endpoint] of Object.entries(endpoints)) {
+    document.addEventListener(eventName, (event) =&gt; {
+        event.preventDefault(); // Must run synchronously.
+        void submitRequest(endpoint, eventName, event.detail);
+    });
+}
+
+async function submitRequest(endpoint, eventName, { form, formData }) {
+    if (form.dataset.submitting === &quot;true&quot;) return;
+    const status =
+        form.querySelector(&quot;[data-form-status], [data-pending-status]&quot;) ||
+        Object.assign(document.createElement(&quot;p&quot;), { role: &quot;status&quot; });
+    if (!status.isConnected) form.append(status);
+    status.hidden = false;
+    status.classList.remove(&quot;hidden&quot;);
+    const submit = form.querySelector(&quot;[type=submit]&quot;);
+    const wasDisabled = submit?.disabled;
+    form.dataset.submitting = &quot;true&quot;;
+    if (submit) submit.disabled = true;
+    status.textContent = &quot;در حال ثبت…&quot;;
+
+    if (eventName === &quot;consultation:submit&quot;) {
+        if (formData.has(&quot;name&quot;)) {
+            formData.set(&quot;fullName&quot;, formData.get(&quot;name&quot;));
+            formData.delete(&quot;name&quot;);
+        }
+        if (formData.has(&quot;description&quot;)) {
+            formData.set(&quot;message&quot;, formData.get(&quot;description&quot;));
+            formData.delete(&quot;description&quot;);
+        }
+    }
+    formData.set(&quot;sourcePage&quot;, document.body.dataset.page || &quot;&quot;);
+    const csrf = document.querySelector(&#39;meta[name=&quot;csrf-token&quot;]&#39;)?.content;
+    try {
+        const response = await fetch(endpoint, {
+            method: &quot;POST&quot;,
+            credentials: &quot;same-origin&quot;,
+            headers: csrf ? { &quot;X-CSRF-TOKEN&quot;: csrf } : {},
+            body: formData, // Let the browser set the multipart boundary.
+            signal: AbortSignal.timeout(15000),
+        });
+        const data = await response.json().catch(() =&gt; null);
+        if (!response.ok || data?.ok !== true || !data.requestId)
+            throw new Error(data?.message || &quot;ثبت انجام نشد؛ دوباره تلاش کنید.&quot;);
+        status.textContent = `ثبت شد؛ کد رهگیری: ${data.requestId}`;
+    } catch (error) {
+        status.textContent =
+            error.name === &quot;TimeoutError&quot;
+                ? &quot;زمان پاسخ تمام شد؛ وضعیت ثبت را پیش از ارسال مجدد بررسی کنید.&quot;
+                : error.message || &quot;ارتباط برقرار نشد.&quot;;
+    } finally {
+        delete form.dataset.submitting;
+        if (submit) submit.disabled = wasDisabled;
+    }
+}
+</code></pre>
+<p>برای جلوگیری از ثبت دو درخواست در Retry شبکه، IdempotencyKey برای هر تلاش منطقی تعریف کنید و سمت سرور تکرار همان کلید را به همان requestId برگردانید. اعلان به اپراتور می‌تواند بعد از Commit دیتابیس اجرا شود؛ خرابی ایمیل یا SMS نباید باعث گزارش شکست یک درخواست ذخیره‌شده و ثبت مجدد شود.</p>
+<p>آپلود RFQ در Frontend اختیاری است و pdf، dwg، doc و docx تا 20 MiB را می‌پذیرد. Backend نیز اندازه و نوع فایل را بررسی کند، نام ذخیره را خودش بسازد و فایل را با نام ارسالی کاربر در wwwroot عمومی ذخیره نکند. دسترسی دانلود پیوست فقط برای صاحب درخواست یا اپراتور مجاز باشد. برای ارسال Multipart، نام property فایل DTO باید attachment باشد یا Binding آن صریح تنظیم شود.</p>
+<h2 id="chapter-15"><span class="section-dot"></span>۱۵. Auth و Session موجود در Frontend</h2>
+<p>auth-api.js درخواست‌ها را به Base پیش‌فرض /api/auth با POST JSON و credentials برابر same-origin می‌فرستد. برای اتصال واقعی، قبل از Build این مقادیر تنظیم شوند:</p>
+<pre><code class="language-dotenv">VITE_AUTH_MODE=api
+VITE_AUTH_API_BASE=/api/auth
+</code></pre>
+<p>VITE_ها در Bundle مرورگر قرار می‌گیرند؛ کلید سرویس SMS و سایر Secretها باید فقط در Backend باشند. حالت Preview فقط در Dev و با OTP برابر 123456 فعال است؛ Production چنین ورود آزمایشی ندارد.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>مسیر موجود در Adapter</th>
+<th>Payload فعلی</th>
+<th>پاسخ موفق مورد انتظار</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>POST /api/auth/login</td>
+<td>identifier، password، remember</td>
+<td>ok: true؛ user اختیاری؛ Session Cookie واقعی</td>
+</tr>
+<tr>
+<td>POST /api/auth/register</td>
+<td>fullName، identifier، password، confirmPassword</td>
+<td>ok: true، challengeId و retryAfter</td>
+</tr>
+<tr>
+<td>POST /api/auth/request-code</td>
+<td>identifier، purpose و گاهی challengeId</td>
+<td>ok: true، challengeId و retryAfter</td>
+</tr>
+<tr>
+<td>POST /api/auth/verify-code</td>
+<td>identifier، challengeId، purpose، code، remember</td>
+<td>ok: true؛ برای reset حتماً resetToken؛ برای ورود Session واقعی</td>
+</tr>
+<tr>
+<td>POST /api/auth/reset-password</td>
+<td>resetToken و password</td>
+<td>ok: true؛ Token یک‌بارمصرف باطل شود</td>
+</tr>
+</tbody></table></div>
+<p>purpose یکی از login، register یا reset است. OTP شش‌رقمی است. Backend باید Challenge را به identifier و purpose متصل کند، انقضا و سقف تلاش داشته باشد و پیامک/ایمیل واقعی بفرستد. پاسخ 429 همراه Retry-After از UI پشتیبانی می‌شود؛ سایر خطاها از message خوانده می‌شوند.</p>
+<p>ورود را روی Cookie با HttpOnly، Secure و سیاست مناسب SameSite نگه دارید و از سازوکار استاندارد Identity یا سرویس Auth تیم استفاده کنید. در درخواست‌های تغییردهندهٔ داده با Cookie، Antiforgery سمت سرور لازم است. نام Header را با Adapter یکسان کنید:</p>
+<pre><code class="language-csharp">builder.Services.AddAntiforgery(options =&gt;
+{
+    options.HeaderName = &quot;X-CSRF-TOKEN&quot;;
+});
+</code></pre>
+<p>توکن معتبر باید توسط Backend تولید و در meta با name برابر csrf-token رندر شود؛ صرف اضافه‌کردن یک رشته به Meta امنیت ایجاد نمی‌کند. Backend درخواست‌ها را با همان توکن اعتبارسنجی کند. پاسخ خطا نیز بدون افشای وجود حساب مشخص باشد.</p>
+<p>logout و خواندن وضعیت کاربر در Adapter فعلی وجود ندارند؛ POST /api/auth/logout و GET /api/auth/me و UI متناسب باید جداگانه اضافه شوند. فرانت‌اند فعلی توکن Session را در localStorage ذخیره نمی‌کند. auth:success بعد از پاسخ واقعی برای به‌روزرسانی UI منتشر می‌شود؛ View یا Header هنوز باید وضعیت کاربر را از سرویس معتبر بگیرد.</p>
+<h2 id="chapter-16"><span class="section-dot"></span>۱۶. جستجو، فیلتر و Pagination</h2>
+<p>catalog:search از فرم جستجوی کاتالوگ منتشر می‌شود؛ detail یک Object تخت از فیلدهای فرم است، نه detail.formData. Listener باید همان لحظه preventDefault کند. انتخاب Select و حذف Chip در وضعیت فعلی فقط UI را تغییر می‌دهد و درخواست سروری ایجاد نمی‌کند.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>صفحه</th>
+<th>کلیدهای فعلی فیلتر</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>محصولات</td>
+<td>query، category، material، dimensions، pressure</td>
+</tr>
+<tr>
+<td>هواساز</td>
+<td>query، category، material، dimensions، pressure</td>
+</tr>
+<tr>
+<td>صنایع</td>
+<td>query، industry، application، projectType، sensitivity</td>
+</tr>
+</tbody></table></div>
+<p>برای نسخهٔ Razor، Form GET و URL دارای QueryString پیشنهاد می‌شود؛ مثلاً /products?category=fans&amp;material=galvanized&amp;page=2. فیلترها و page در URL بمانند تا Refresh، Back و اشتراک لینک نتیجهٔ یکسان داشته باشند. اندازهٔ صفحه و Sort در Backend محدود و معتبر شوند.</p>
+<p>API پیشنهادی فهرست‌ها، مانند GET /api/products یا GET /api/projects، در صورت نیاز به AJAX باید items، totalCount، page و pageSize را برگرداند. SSR برای شروع نیاز به API مجزای هر فهرست ندارد؛ Controller همان Query Service را مصرف می‌کند. QueryService باید normalization فارسی/عربی، وضعیت انتشار و فیلترهای مجاز را اعمال کند.</p>
+<p>جستجوی articles.js اکنون فقط کارت‌های موجود در DOM را فیلتر می‌کند. رویداد articles:search در این نسخه تعریف نشده و Load More تنها پیام نمایشی دارد. برای جستجوی سروری، این Module باید به دادهٔ واقعی یا مسیر GET متصل شود؛ افزودن کارت‌های جدید بعد از init بدون اصلاح فهرست داخلی cards، به‌تنهایی کافی نیست.</p>
+<h2 id="chapter-17"><span class="section-dot"></span>۱۷. انتقال تصویر، گالری و تنظیمات قالب به CMS</h2>
+<p>در مرحلهٔ اول، settings.json و پترن‌ها فایل‌های نسخه‌شدهٔ Frontend بمانند و با Build منتشر شوند. ابزار Customizer Dev را به‌عنوان پنل Admin عمومی روی Production در نظر نگیرید؛ Endpoint آن در Build استاتیک وجود ندارد.</p>
+<p>برای حفظ رفتار فعلی تصویر About در Razor، script JSON با ID برابر mps-image-sources را فقط در صفحهٔ About تولید کنید. دادهٔ آن لیست تنظیمات منبعِ تصویر با breakpoint و در صورت نیاز range است:</p>
+<pre><code class="language-html">&lt;script id=&quot;mps-image-sources&quot; type=&quot;application/json&quot;&gt;
+    [
+        { &quot;breakpoint&quot;: &quot;desktop&quot;, &quot;source&quot;: &quot;/assets/images/about/team-desktop.webp&quot; },
+        { &quot;breakpoint&quot;: &quot;tablet&quot;, &quot;source&quot;: &quot;/assets/images/about/team-tablet.webp&quot; },
+        { &quot;breakpoint&quot;: &quot;mobile&quot;, &quot;source&quot;: &quot;/assets/images/about/team-mobile.webp&quot; }
+    ]
+&lt;/script&gt;
+</code></pre>
+<p>اندازه‌ها و برش از template-overrides.css می‌آیند؛ JSON بالا فقط منبع تصویر را تعیین می‌کند. JSON را با Serializer امن رندر کنید، نه با چسباندن رشتهٔ ورودی کاربر داخل script. تصویر اولیه و کلاس about-team-media__image برای Fallback حفظ شوند.</p>
+<p>در مرحلهٔ دوم، CMS می‌تواند MediaAsset جدا برای Desktop/Tablet/Mobile، تنظیم قاب و TemplateVersion داشته باشد. ورودی‌ها با همان قراردادهای Frontend اعتبارسنجی شوند، Preview از Publish جدا باشد و Revision برای تداخل ویرایش کنترل شود. پس از تأیید، CSS و JSON منتشرشده را به‌صورت هماهنگ و Cache-versioned عرضه کنید.</p>
+<p>گالری About در نسخهٔ فعلی یک SVG ترکیبی است، نه Grid تصاویر با Modal. Zoom این تحویل روی همان Asset انجام می‌شود. اگر گالری واقعی لازم است، مدل GalleryItem، مسیر/Modal نمایش و لینک «مشاهده تصاویر» باید جدا ساخته شوند؛ لینک فعلی Placeholder است.</p>
+<h2 id="chapter-18"><span class="section-dot"></span>۱۸. پنل مدیریت مورد نیاز</h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>ماژول مدیر</th>
+<th>قابلیت حداقلی</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>محتوا</td>
+<td>CRUD محصولات، پروژه‌ها، صنایع، تخصص‌ها، مقاله‌ها و صفحهٔ درباره ما</td>
+</tr>
+<tr>
+<td>رسانه</td>
+<td>Upload تصویر و دیتاشیت، Alt، جایگزینی فایل و مدیریت اندازه‌های About</td>
+</tr>
+<tr>
+<td>تماس</td>
+<td>ویرایش دفترها/کارخانه و راه‌های ارتباطی</td>
+</tr>
+<tr>
+<td>درخواست‌ها</td>
+<td>وضعیت جدید/درحال‌بررسی/بسته، یادداشت داخلی، اپراتور و فایل پیوست</td>
+</tr>
+<tr>
+<td>حساب‌ها</td>
+<td>نقش Admin/Editor/Operator و کنترل دسترسی هر عملیات</td>
+</tr>
+<tr>
+<td>انتشار</td>
+<td>Preview پیش‌نویس، Publish، Revision و تاریخچهٔ تغییر</td>
+</tr>
+<tr>
+<td>قالب</td>
+<td>در صورت نیاز مرحلهٔ دوم؛ ذخیرهٔ امن تنظیمات و انتشار هماهنگ</td>
+</tr>
+</tbody></table></div>
+<p>نام Roleها پیشنهاد است. مجوزها باید سمت سرور بررسی شوند؛ مخفی‌کردن یک دکمه در UI مجوز دسترسی ایجاد نمی‌کند. دادهٔ درخواست و پیوست از محتوای عمومی CMS جدا نگه داشته شود.</p>
+<h2 id="chapter-19"><span class="section-dot"></span>۱۹. انتشار، آزمون پذیرش و ترتیب تحویل</h2>
+<p>GitHub Pages فقط Frontend استاتیک این پروژه را اجرا می‌کند. ASP.NET Core و دیتابیس به میزبان Backend نیاز دارند. در مرحلهٔ اتصال، Frontend و API روی دامنهٔ یکسان یا تنظیم مشخص Reverse Proxy منتشر شوند؛ cross-origin بدون تغییر Adapter و قرارداد Cookie به‌صورت خودکار کار نمی‌کند.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>کنترل</th>
+<th>نتیجهٔ مورد انتظار</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Asset و Manifest</td>
+<td>CSS/JS/Image/Font بدون 404؛ چانک مشترک و Overrideها حاضر باشند</td>
+</tr>
+<tr>
+<td>About و Customizer</td>
+<td>تصویر و اندازهٔ مستقل هر دستگاه، ذخیره، بازخوانی، Export و Fallback درست</td>
+</tr>
+<tr>
+<td>صفحات جزئیات</td>
+<td>slug واقعی، SEO درست، 404 معتبر و روابط محصول/پروژه</td>
+</tr>
+<tr>
+<td>فرم</td>
+<td>Validation واقعی، ثبت در DB، requestId، جلوگیری از تکرار و خطای شبکه</td>
+</tr>
+<tr>
+<td>فایل</td>
+<td>نوع/اندازه در سرور، ذخیرهٔ غیرعمومی و Download مجاز</td>
+</tr>
+<tr>
+<td>Auth</td>
+<td>OTP واقعی، انقضا، 429، Session، Reset، CSRF و Logout</td>
+</tr>
+<tr>
+<td>فهرست‌ها</td>
+<td>فیلتر URL، Pagination، نتایج صفر و Back/Refresh هماهنگ</td>
+</tr>
+<tr>
+<td>ریسپانسیو</td>
+<td>320، 390، 639/640، 820، 1179/1180 و 1440px؛ متن فارسی بلند</td>
+</tr>
+<tr>
+<td>محتوا</td>
+<td>حذف مقصدهای #، لینک دانلود واقعی و صفحهٔ جزئیات مقاله</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>دسترسی Role، Audit تغییر و انتشار پیش‌نویس</td>
+</tr>
+</tbody></table></div>
+<p>تیم Backend ابتدا Architecture را بخواند، سپس پوسته و یک ProductDetails واقعی را تحویل دهد. بعد Consultation/RFQ را وصل کند تا مسیر تجاری سایت فعال شود؛ سپس Auth و CMS کامل‌تر را انجام دهد. پیاده‌سازی Backend، دیتابیس و اتصال API در این تحویل انجام نشده؛ این سند مشخصات و مسیر اجرایی آن است.</p>
+<h2 id="chapter-20"><span class="section-dot"></span>۲۰. منابع فنی</h2>
+<p>مرجع ساختار، نام فیلدها، eventها و فایل‌ها، سورس همین بسته است. نگاشت MVC، مدیریت Asset، اعتبارسنجی و دریافت فایل براساس مستندات رسمی زیر تنظیم شده‌اند؛ نمونه‌کدهای این راهنما باید با تنظیمات پروژهٔ Backend تطبیق داده شوند.</p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/views/layout?view=aspnetcore-10.0">Layout در ASP.NET Core</a></li>
+<li><a href="https://vite.dev/guide/backend-integration.html">اتصال Vite به Backend و Manifest</a></li>
+<li><a href="https://learn.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-10.0">Antiforgery در ASP.NET Core</a></li>
+<li><a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/models/validation?view=aspnetcore-10.0">Model Validation در ASP.NET Core</a></li>
+<li><a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/models/file-uploads?view=aspnetcore-10.0">دریافت فایل در ASP.NET Core</a></li>
+<li><a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/static-files?view=aspnetcore-10.0">فایل‌های استاتیک در ASP.NET Core</a></li>
+<li><a href="https://learn.microsoft.com/en-us/ef/core/modeling/relationships/many-to-many">روابط چندبه‌چند EF Core</a></li>
+</ul>
+</section><div class="footer">نسخهٔ راهنما: ۱۰ اکتبر ۲۰۲۶ · مثال‌های Backend قرارداد پیشنهادی هستند و در Frontend فعال نشده‌اند.<br><a class="backtop" href="#top">بازگشت به ابتدای سند</a></div></main></div></body></html>

@@ -1,0 +1,2194 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "page": "*",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "hero-eyebrow"
+      },
+      "properties": {
+        "text-align": "right",
+        "direction": "rtl"
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "hero-title"
+      },
+      "properties": {
+        "text-align": "right",
+        "direction": "rtl"
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "section-title"
+      },
+      "properties": {
+        "text-align": "right",
+        "direction": "rtl"
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "card-title"
+      },
+      "properties": {
+        "text-align": "right",
+        "direction": "rtl"
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "card-cta"
+      },
+      "properties": {
+        "text-align": "right",
+        "direction": "rtl"
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "card-media-tag"
+      },
+      "properties": {
+        "text-align": "center",
+        "direction": "rtl"
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "card-meta-tag"
+      },
+      "properties": {
+        "text-align": "center",
+        "direction": "rtl",
+        "padding-top": 8
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "card-status-tag"
+      },
+      "properties": {
+        "text-align": "center",
+        "direction": "rtl"
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "footer-title"
+      },
+      "properties": {
+        "text-align": "right",
+        "direction": "rtl"
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "body-text"
+      },
+      "properties": {
+        "text-align": "justify",
+        "text-align-last": "right",
+        "direction": "rtl"
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "hero-description"
+      },
+      "properties": {
+        "text-align": "right",
+        "text-align-last": "right",
+        "direction": "rtl"
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "card-description"
+      },
+      "properties": {
+        "text-align": "justify",
+        "text-align-last": "right",
+        "direction": "rtl",
+        "description-lines": 2
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "role",
+        "key": "card-title"
+      },
+      "properties": {
+        "font-size": 17
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "role",
+        "key": "card-description"
+      },
+      "properties": {
+        "font-size": 14
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "role",
+        "key": "card-title"
+      },
+      "properties": {
+        "font-size": 17
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "role",
+        "key": "card-description"
+      },
+      "properties": {
+        "font-size": 14
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "role",
+        "key": "card-title"
+      },
+      "properties": {
+        "font-size": 20
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "role",
+        "key": "card-description"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "role",
+        "key": "card-cta"
+      },
+      "properties": {
+        "font-size": 12
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "role",
+        "key": "card-media-tag"
+      },
+      "properties": {
+        "font-size": 10
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "role",
+        "key": "card-meta-tag"
+      },
+      "properties": {
+        "font-size": 10
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "role",
+        "key": "card-status-tag"
+      },
+      "properties": {
+        "font-size": 10
+      }
+    },
+    {
+      "page": "expertise",
+      "breakpoint": "compact",
+      "target": {
+        "kind": "role",
+        "key": "card-title"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "expertise",
+      "breakpoint": "compact",
+      "target": {
+        "kind": "role",
+        "key": "card-description"
+      },
+      "properties": {
+        "font-size": 14
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "role",
+        "key": "product-summary-title"
+      },
+      "properties": {
+        "font-size": 17
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "role",
+        "key": "product-summary-description"
+      },
+      "properties": {
+        "font-size": 14
+      }
+    },
+    {
+      "page": "project-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "role",
+        "key": "project-product-title"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "project-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "role",
+        "key": "project-product-description"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "product-summary-description"
+      },
+      "properties": {
+        "description-lines": 0
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-hero-title",
+        "label": "عنوان اصلی · شریک مهندسی شما در سیستم‌های تول"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-hero-description",
+        "label": "متن · مارپیچ صنعت نوین پویا با دو دهه "
+      },
+      "properties": {
+        "font-size": 15
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-hero-action--primary > span.whitespace-nowrap",
+        "label": "متن / آیکون · درخواست مشاوره مهندسی"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-hero-action--secondary > span.whitespace-nowrap",
+        "label": "متن / آیکون · مشاهده محصولات"
+      },
+      "properties": {
+        "font-size": 12
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".home-partners__item > img",
+        "label": "باکس‌های تکراری · تصویر · شرکت همراه 6"
+      },
+      "properties": {
+        "padding-top": 5
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-partners__title > strong",
+        "label": "متن ضخیم · همراه پروژه‌های صنعتی"
+      },
+      "properties": {
+        "font-size": 12
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".site-frame",
+        "label": "باکس‌های تکراری · قاب · حوزه‌های تخصصی مشاهده همه حوزه‌ه"
+      },
+      "properties": {
+        "font-size": 15
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-expertise-grid > article.site-card-shadow:nth-of-type(1) > div:nth-of-type(2) > h3.site-card__title",
+        "label": "عنوان باکس · مشاوره فنی و پشتیبانی راهبردی"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-expertise-grid > article.site-card-shadow:nth-of-type(2) > div:nth-of-type(2) > h3.site-card__title",
+        "label": "عنوان باکس · محاسبات فنی و طراحی"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-expertise-grid > article.site-card-shadow:nth-of-type(3) > div:nth-of-type(2) > h3.site-card__title",
+        "label": "عنوان باکس · تولید سفارشی بدون محدودیت"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-projects-grid > article.site-card-shadow:nth-of-type(1) > div:nth-of-type(2) > h3.site-card__title",
+        "label": "عنوان باکس · ایران شیشه تکنولوژی"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-projects-grid > article.site-card-shadow:nth-of-type(2) > div:nth-of-type(2) > h3.site-card__title",
+        "label": "عنوان باکس · سرزمین موج‌های آبی مشهد"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-projects-grid > article.site-card-shadow:nth-of-type(3) > div:nth-of-type(2) > h3.site-card__title",
+        "label": "عنوان باکس · عطرین نخ قم"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-projects-grid > article.site-card-shadow:nth-of-type(4) > div:nth-of-type(2) > h3.site-card__title",
+        "label": "عنوان باکس · ترام چاپ"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-process-steps > li.home-process-step:nth-of-type(2)",
+        "label": "آیتم · تولید سفارشی ساخت مهندسی قطعات ب"
+      },
+      "properties": {
+        "text-align": "center"
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-process-steps > li.home-process-step:nth-of-type(2) > h3",
+        "label": "عنوان باکس · تولید سفارشی"
+      },
+      "properties": {
+        "text-align-last": "center",
+        "font-size": 14
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-process-steps > li.home-process-step:nth-of-type(3) > h3",
+        "label": "عنوان باکس · نصب و راه‌اندازی"
+      },
+      "properties": {
+        "text-align-last": "center",
+        "font-size": 14
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-process-steps > li.home-process-step:nth-of-type(4) > h3",
+        "label": "عنوان باکس · بهینه‌سازی و پشتیبانی تخصصی"
+      },
+      "properties": {
+        "font-size": 14,
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-process-steps > li.home-process-step:nth-of-type(1) > h3",
+        "label": "عنوان باکس · مشاوره و طراحی مهندسی"
+      },
+      "properties": {
+        "font-size": 14,
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-products-grid > article.site-card-shadow:nth-of-type(1) > div:nth-of-type(2) > h3.site-card__title",
+        "label": "عنوان باکس · دستگاه تولید هوا"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-products-grid > article.site-card-shadow:nth-of-type(2) > div:nth-of-type(2) > h3.site-card__title",
+        "label": "عنوان باکس · فن سانتریفیوژ حلزونی"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-products-grid > article.site-card-shadow:nth-of-type(3) > div:nth-of-type(2) > h3.site-card__title",
+        "label": "عنوان باکس · تبدیل گرد به هم مرکز"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".home-products-grid > article.site-card-shadow:nth-of-type(4) > div:nth-of-type(2) > h3.site-card__title",
+        "label": "عنوان باکس · دمپر دستی گرد"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#articles > div.site-frame > div:nth-of-type(1) > h2 > span:nth-of-type(1)",
+        "label": "متن / آیکون · مقالات فنی"
+      },
+      "properties": {
+        "font-size": 22
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#articles > div.site-frame > div:nth-of-type(2) > article:nth-of-type(1) > div.home-article__row:nth-of-type(1) > div:nth-of-type(2) > h3.site-card__title > span:nth-of-type(1)",
+        "label": "متن / آیکون · عایق‌کاری کانال؛ چرا اهمیت دارد؟"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".home-article__row > div.home-article__media:nth-of-type(1) > img",
+        "label": "باکس‌های تکراری · تصویر · اهمیت طراحی صحیح کانال"
+      },
+      "properties": {
+        "align-self": "center"
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".home-article__row > div:nth-of-type(2) > h3.site-card__title",
+        "label": "باکس‌های تکراری · عنوان باکس · عایق‌کاری کانال؛ چرا اهمیت دارد؟"
+      },
+      "properties": {
+        "font-size": 14
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".home-article__row > div:nth-of-type(2) > p.home-article__description",
+        "label": "باکس‌های تکراری · متن · بررسی نکات کلیدی در طراحی و عایق"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".site-card-shadow > div:nth-of-type(2) > h3.site-card__title",
+        "label": "باکس‌های تکراری · عنوان باکس · دستگاه تولید هوا"
+      },
+      "properties": {
+        "font-size": 20
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".site-card-shadow > div:nth-of-type(2) > p.site-prose",
+        "label": "باکس‌های تکراری · متن · دستگاه صنعتی کامل برای تولید و ا"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "element",
+        "selector": ".home-hero-title",
+        "label": "عنوان اصلی · شریک مهندسی شما در سیستم‌های تول"
+      },
+      "properties": {
+        "font-size": 35
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "element",
+        "selector": ".home-hero-eyebrow",
+        "label": "متن · از طراحی تا پشتیبانی"
+      },
+      "properties": {
+        "font-size": 22
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".home-process-step > h3",
+        "label": "باکس‌های تکراری · عنوان باکس · مشاوره و طراحی مهندسی"
+      },
+      "properties": {
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "component",
+        "selector": ".home-process-step > h3",
+        "label": "باکس‌های تکراری · عنوان باکس · نصب و راه‌اندازی"
+      },
+      "properties": {
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "component",
+        "selector": ".home-process-step > p",
+        "label": "باکس‌های تکراری · متن · ساخت مهندسی قطعات با ظرفیت نامحد"
+      },
+      "properties": {
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "element",
+        "selector": ".home-process-steps > li.home-process-step:nth-of-type(1) > p",
+        "label": "متن · تحلیل دقیق نیاز و تدوین نقشه راه"
+      },
+      "properties": {
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "element",
+        "selector": ".home-process-steps > li.home-process-step:nth-of-type(1)",
+        "label": "آیتم · مشاوره و طراحی مهندسی تحلیل دقیق"
+      },
+      "properties": {
+        "text-align-last": "center",
+        "align-items": "center"
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "component",
+        "selector": ".home-process-step",
+        "label": "باکس‌های تکراری · آیتم · مشاوره و طراحی مهندسی تحلیل دقیق"
+      },
+      "properties": {
+        "justify-self": "stretch"
+      }
+    },
+    {
+      "page": "products",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#products-page-title",
+        "label": "عنوان اصلی · تجهیزات مهندسی و تأسیسات یکپارچه"
+      },
+      "properties": {
+        "font-size": 22
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".site-card-shadow > div:nth-of-type(2) > p.site-prose",
+        "label": "باکس‌های تکراری · متن · ارائه تحلیل‌های مهندسی، مشاوره ص"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "products",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".product-card > div.product-card__body:nth-of-type(2) > h3.product-card__title",
+        "label": "باکس‌های تکراری · عنوان باکس · فن سانتریفیوژ سقفی"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "products",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".product-card > div.product-card__body:nth-of-type(2) > p.product-card__description",
+        "label": "باکس‌های تکراری · متن · اگزاست‌فن سقفی صنعتی با صدای کم،"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "products",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".product-card > div.product-card__body:nth-of-type(2) > h3.product-card__title",
+        "label": "باکس‌های تکراری · عنوان باکس · فن سانتریفیوژ سقفی"
+      },
+      "properties": {
+        "font-size": 20
+      }
+    },
+    {
+      "page": "products",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".product-card > div.product-card__body:nth-of-type(2) > p.product-card__description",
+        "label": "باکس‌های تکراری · متن · اگزاست‌فن سقفی صنعتی با صدای کم،"
+      },
+      "properties": {
+        "font-size": 15
+      }
+    },
+    {
+      "page": "products",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#products-consultation-title",
+        "label": "عنوان بخش · به یک راهکار سفارشی در صنعت خود "
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "products",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".site-footer__brand",
+        "label": "قاب · مارپیچ صنعت نوین پویا شریک مهندس"
+      },
+      "properties": {
+        "font-size": 15
+      }
+    },
+    {
+      "page": "products",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "element",
+        "selector": "#products-consultation",
+        "label": "بخش · مشاوره مهندسی به یک راهکار سفارش"
+      },
+      "properties": {
+        "justify-self": "center"
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".product-details__quick-spec-item > span",
+        "label": "باکس‌های تکراری · متن / آیکون · زمان تحویل: ۴ تا ۶ هفته کاری"
+      },
+      "properties": {
+        "font-size": 10
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".product-details__download-button > span.site-card__cta-label",
+        "label": "متن / آیکون · دانلود دیتاشیت فنی"
+      },
+      "properties": {
+        "font-size": 12
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".product-details__cad-button > span.site-card__cta-label",
+        "label": "متن / آیکون · درخواست فایل CAD"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".product-details__download-button > img",
+        "label": "تصویر"
+      },
+      "properties": {
+        "height": 20
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".extras-panel",
+        "label": "قاب · امکانات مازاد فیلتر هوا سیستم با"
+      },
+      "properties": {
+        "font-size": 15
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".extras-panel__content > ul > li:nth-of-type(3)",
+        "label": "آیتم · رطوبت‌زن (همیودیفایر) و کنترل رط"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".extras-panel__content > ul > li:nth-of-type(1)",
+        "label": "آیتم · فیلتر هوا"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".extras-panel__content > ul > li:nth-of-type(4)",
+        "label": "آیتم · سیستم ضدعفونی UV-C"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".extras-panel__content > ul > li:nth-of-type(2)",
+        "label": "آیتم · سیستم بازیافت انرژی"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#product-details-consultation-title",
+        "label": "عنوان بخش · به یک راهکار سفارشی در صنعت خود "
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "element",
+        "selector": ".catalog-consultation__accent",
+        "label": "متن / آیکون"
+      },
+      "properties": {
+        "text-align": "right"
+      }
+    },
+    {
+      "page": "product-details",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "element",
+        "selector": ".product-details__breadcrumb",
+        "label": "المان · مسیر صفحه"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "component",
+        "selector": ".benefit-item",
+        "label": "باکس‌های تکراری · باکس · پاسخگویی حداکثر طی یک روز کاری ا"
+      },
+      "properties": {
+        "justify-self": "center",
+        "align-items": "center"
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "component",
+        "selector": ".benefit-item > p.site-prose",
+        "label": "باکس‌های تکراری · متن · امنیت داده‌های شما در اولویت تعه"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".benefit-item",
+        "label": "باکس‌های تکراری · باکس · پاسخگویی حداکثر طی یک روز کاری ا"
+      },
+      "properties": {
+        "align-items": "center",
+        "justify-self": "center"
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".benefit-item > p.site-prose",
+        "label": "باکس‌های تکراری · متن · امنیت داده‌های شما در اولویت تعه"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".benefit-item",
+        "label": "باکس‌های تکراری · باکس · پاسخگویی حداکثر طی یک روز کاری ا"
+      },
+      "properties": {
+        "align-items": "center"
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".benefit-item > h3.site-card__title",
+        "label": "باکس‌های تکراری · عنوان باکس · پاسخگویی حداکثر طی یک روز کاری"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".benefit-item > p.site-prose",
+        "label": "باکس‌های تکراری · متن · احترام به زمان شما با فرآیندهای "
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#contact-title",
+        "label": "عنوان اصلی · در کنار شما برای ارائه راهکارهای"
+      },
+      "properties": {
+        "font-size": 20
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".contact-branches > article.branch-card:nth-of-type(1) > div > div:nth-of-type(2) > a.contact-whatsapp:nth-of-type(1) > span.site-card__cta-label",
+        "label": "متن / آیکون · گفت‌وگو در واتساپ"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".contact-branches > article.branch-card:nth-of-type(2) > div > div:nth-of-type(2) > a.contact-whatsapp:nth-of-type(1) > span.site-card__cta-label",
+        "label": "متن / آیکون · گفت‌وگو در واتساپ"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".contact-branches > article.branch-card:nth-of-type(2) > div > p.branch-card__address",
+        "label": "متن · مشهد، کیلومتر ۲۵ جاده آسیایی، شه"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".contact-branches > article.branch-card:nth-of-type(1) > div > p.branch-card__address",
+        "label": "متن · تهران، بلوار میرداماد، خیابان شر"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "element",
+        "selector": "#contact-title",
+        "label": "عنوان اصلی · در کنار شما برای ارائه راهکارهای"
+      },
+      "properties": {
+        "font-size": 33
+      }
+    },
+    {
+      "page": "project-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".project-details__breadcrumb > ol",
+        "label": "المان · خانه / پروژه‌ها / چرم مشهد"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "project-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".project-details__product-card > div.project-details__product-body:nth-of-type(2) > h3.site-card__title",
+        "label": "باکس‌های تکراری · عنوان باکس · اگزاست فن سانتریفیوژ بکوارد"
+      },
+      "properties": {
+        "font-size": 11
+      }
+    },
+    {
+      "page": "project-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".project-details__product-card > div.project-details__product-body:nth-of-type(2) > p.site-prose",
+        "label": "باکس‌های تکراری · متن · طراحی‌شده برای جابه‌جایی حجم بال"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "project-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".project-details__product-card > div.project-details__product-body:nth-of-type(2) > div.project-details__product-specs:nth-of-type(2) > span.site-card__meta-tag:nth-of-type(1)",
+        "label": "باکس‌های تکراری · متن / آیکون · بالانس دقیق"
+      },
+      "properties": {
+        "font-size": 10
+      }
+    },
+    {
+      "page": "project-details",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".project-details__product-card > div.project-details__product-body:nth-of-type(2) > a.project-details__product-link > span.site-card__cta-label:nth-of-type(1)",
+        "label": "باکس‌های تکراری · متن / آیکون · مشاهده جزئیات محصول"
+      },
+      "properties": {
+        "font-size": 11
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "component",
+        "selector": ".about-expertise-card > div.about-expertise-card__body:nth-of-type(2) > p.site-prose",
+        "label": "باکس‌های تکراری · متن · ارائه راهکارهای مهندسی متناسب با"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".about-expertise-card > div.about-expertise-card__body:nth-of-type(2) > h3.site-card__title",
+        "label": "باکس‌های تکراری · عنوان باکس · مشاوره فنی و پشتیبانی راهبردی"
+      },
+      "properties": {
+        "font-size": 20
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".about-expertise-card > div.about-expertise-card__body:nth-of-type(2) > p.site-prose",
+        "label": "باکس‌های تکراری · متن · تولید دقیق و منعطف بر اساس نقشه،"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "element",
+        "selector": ".about-gallery__content > p.site-prose",
+        "label": "متن · روایتی تصویری از پروژه‌ها، محصول"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "element",
+        "selector": "#about-gallery-title",
+        "label": "عنوان بخش · گالری تصاویر"
+      },
+      "properties": {
+        "font-size": 28
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "element",
+        "selector": ".site-consultation__copy > h2",
+        "label": "عنوان بخش · از تعریف نیاز تا راهکارهای اختصا"
+      },
+      "properties": {
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".about-hero__description",
+        "label": "متن · دانش و تجربه‌ی دو دهه فعالیت، در"
+      },
+      "properties": {
+        "font-size": 15
+      }
+    },
+    {
+      "page": "projects",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".projects-page__hero-description",
+        "label": "متن · مروری بر پروژه‌های شاخصی که با ط"
+      },
+      "properties": {
+        "font-size": 15
+      }
+    },
+    {
+      "page": "projects",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#projects-page-title",
+        "label": "عنوان اصلی · پروژه‌های اجرا شده و دستاوردهای "
+      },
+      "properties": {
+        "font-size": 25
+      }
+    },
+    {
+      "page": "projects",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".projects-page__card > div.projects-page__card-body:nth-of-type(2) > p.projects-page__card-description",
+        "label": "باکس‌های تکراری · متن · طراحی و اجرای سیستم‌های تهویه و "
+      },
+      "properties": {
+        "font-size": 14
+      }
+    },
+    {
+      "page": "projects",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#projects-consultation-title",
+        "label": "عنوان بخش · به یک راهکار سفارشی در صنعت خود "
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "projects",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".projects-page__card > div.projects-page__card-body:nth-of-type(2) > h3.projects-page__card-title",
+        "label": "باکس‌های تکراری · عنوان باکس · چرم مشهد"
+      },
+      "properties": {
+        "font-size": 20
+      }
+    },
+    {
+      "page": "projects",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".projects-page__card > div.projects-page__card-body:nth-of-type(2) > p.projects-page__card-description",
+        "label": "باکس‌های تکراری · متن · کنترل و انتقال هوای سالن‌های چاپ"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "industry-textile",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "element",
+        "selector": ".industry-textile__breadcrumb",
+        "label": "المان · مسیر صفحه"
+      },
+      "properties": {
+        "font-size": 22
+      }
+    },
+    {
+      "page": "industry-textile",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".industry-textile__product-card > div.industry-textile__product-body:nth-of-type(2) > p.site-prose",
+        "label": "باکس‌های تکراری · متن · مناسب تخلیه هوای آلوده و پرزدار "
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "industry-textile",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".industry-textile__breadcrumb",
+        "label": "المان · مسیر صفحه"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "industry-textile",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#industry-textile-title",
+        "label": "عنوان اصلی · راهکارها و تاسیسات یکپارچه در صن"
+      },
+      "properties": {
+        "font-size": 21
+      }
+    },
+    {
+      "page": "industry-textile",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".site-hero__description",
+        "label": "متن · کنترل دقیق دما، رطوبت و گرد و غب"
+      },
+      "properties": {
+        "font-size": 15
+      }
+    },
+    {
+      "page": "industry-textile",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".industry-textile__summary-item > strong",
+        "label": "باکس‌های تکراری · متن ضخیم · ایرواشر صنعتی، سیستم‌های غبارگیر"
+      },
+      "properties": {
+        "font-size": 9
+      }
+    },
+    {
+      "page": "industry-textile",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".industry-textile__summary-item > span",
+        "label": "باکس‌های تکراری · متن / آیکون · مزیت رقابتی ما"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "industry-textile",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".industry-textile__product-card > div.industry-textile__product-body:nth-of-type(2) > p.site-prose",
+        "label": "باکس‌های تکراری · متن · مناسب تخلیه هوای آلوده و پرزدار "
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "industry-textile",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".industry-textile__project-card > div.industry-textile__project-body:nth-of-type(2) > p.site-prose",
+        "label": "باکس‌های تکراری · متن · طراحی و بهینه‌سازی تهویه سالن تو"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "industry-textile",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".industry-textile__faq-answer",
+        "label": "باکس‌های تکراری · قاب · رطوبت پایین باعث خشکی الیاف، افز"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "expertise",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#expertise-page-title",
+        "label": "عنوان اصلی · از ایده تا بهره برداری، در کنار "
+      },
+      "properties": {
+        "font-size": 22
+      }
+    },
+    {
+      "page": "expertise",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".site-hero__description",
+        "label": "متن · تیم متخصص مارپیچ صنعت در تمام مر"
+      },
+      "properties": {
+        "font-size": 15
+      }
+    },
+    {
+      "page": "expertise",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".site-hero__eyebrow",
+        "label": "متن · حوزه های تخصص ما"
+      },
+      "properties": {
+        "font-size": 19
+      }
+    },
+    {
+      "page": "expertise",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".expertise-page__card > div.expertise-page__media:nth-of-type(1) > div.expertise-page__media-content:nth-of-type(2) > h2.expertise-page__card-title",
+        "label": "باکس‌های تکراری · عنوان بخش · تست، راه‌اندازی و پشتیبانی پایدا"
+      },
+      "properties": {
+        "font-weight": "600",
+        "font-size": 15
+      }
+    },
+    {
+      "page": "expertise",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".expertise-page__card > div.expertise-page__media:nth-of-type(1) > div.expertise-page__media-content:nth-of-type(2) > h2.expertise-page__card-title",
+        "label": "باکس‌های تکراری · عنوان بخش · اجرای سایت و مدیریت پروژه"
+      },
+      "properties": {
+        "font-weight": "600"
+      }
+    },
+    {
+      "page": "expertise",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "element",
+        "selector": ".site-consultation__copy",
+        "label": "قاب · از تعریف نیاز تا راهکارهای اختصا"
+      },
+      "properties": {
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "expertise",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "component",
+        "selector": ".expertise-page__card > div.expertise-page__media:nth-of-type(1) > div.expertise-page__media-content:nth-of-type(2) > h2.expertise-page__card-title",
+        "label": "باکس‌های تکراری · عنوان بخش · تست، راه‌اندازی و پشتیبانی پایدا"
+      },
+      "properties": {
+        "font-weight": "500"
+      }
+    },
+    {
+      "page": "air-handling",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#air-handling-page-title",
+        "label": "عنوان اصلی · تجهیزات مهندسی و تأسیسات یکپارچه"
+      },
+      "properties": {
+        "font-size": 23
+      }
+    },
+    {
+      "page": "air-handling",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".air-handling__eyebrow",
+        "label": "متن · دسته‌بندی محصولات تهویه صنعتی"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "air-handling",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".product-card > div.product-card__body:nth-of-type(2) > p.product-card__description",
+        "label": "باکس‌های تکراری · متن · واحد تهویه و تأمین هوای تازه برا"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "air-handling",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".product-card > div.product-card__body:nth-of-type(2) > h3.product-card__title",
+        "label": "باکس‌های تکراری · عنوان باکس · دستگاه هواساز صنعتی"
+      },
+      "properties": {
+        "font-size": 20
+      }
+    },
+    {
+      "page": "air-handling",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".product-card > div.product-card__body:nth-of-type(2) > p.product-card__description",
+        "label": "باکس‌های تکراری · متن · واحد تهویه و تأمین هوای تازه برا"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "element",
+        "selector": ".industries-hero__eyebrow",
+        "label": "متن · دسته‌بندی محصولات مرتبط با هر صن"
+      },
+      "properties": {
+        "font-size": 25
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "element",
+        "selector": "#industries-page-title",
+        "label": "عنوان اصلی · تجهیزات مهندسی و تأسیسات یکپارچه"
+      },
+      "properties": {
+        "font-size": 35
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".industry-card > div.industry-card__body:nth-of-type(2) > p.product-card__description",
+        "label": "باکس‌های تکراری · متن · راهکارهای HVAC برای سالن‌های تول"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "tablet",
+      "target": {
+        "kind": "component",
+        "selector": ".industry-card > div.industry-card__body:nth-of-type(2) > h3.product-card__title",
+        "label": "باکس‌های تکراری · عنوان باکس · صنعت خودرو"
+      },
+      "properties": {
+        "font-size": 20
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#industries-page-title",
+        "label": "عنوان اصلی · تجهیزات مهندسی و تأسیسات یکپارچه"
+      },
+      "properties": {
+        "font-size": 21
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".industries-hero__eyebrow",
+        "label": "متن · دسته‌بندی محصولات مرتبط با هر صن"
+      },
+      "properties": {
+        "font-size": 18
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".industry-feature > div.industry-feature__content:nth-of-type(2) > h2.site-card__title",
+        "label": "باکس‌های تکراری · عنوان بخش · نساجی"
+      },
+      "properties": {
+        "font-size": 15
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".industry-feature > div.industry-feature__content:nth-of-type(2) > p.site-prose",
+        "label": "باکس‌های تکراری · متن · راهکارهای تخصصی تهویه و کنترل شر"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".industry-feature__content--dark > h2.site-card__title",
+        "label": "عنوان بخش · سایر صنایع"
+      },
+      "properties": {
+        "font-size": 15
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".industry-feature__content--dark > p.site-prose",
+        "label": "متن · صنعت خود را پیدا نکردید؟ تیم مهن"
+      },
+      "properties": {
+        "font-size": 13
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".industry-feature > div.industry-feature__content:nth-of-type(2) > a.industry-feature__link > span.site-text-link__label",
+        "label": "باکس‌های تکراری · متن / آیکون · بررسی راهکارهای این صنعت"
+      },
+      "properties": {
+        "font-size": 10
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".industry-feature__link--dark > span.site-text-link__label",
+        "label": "متن / آیکون · مشاهده همه صنایع"
+      },
+      "properties": {
+        "font-size": 10
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".industry-card > div.industry-card__body:nth-of-type(2) > p.product-card__description",
+        "label": "باکس‌های تکراری · متن · راهکارهای HVAC برای سالن‌های تول"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "industries",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#industries-consultation-title",
+        "label": "عنوان بخش · به یک راهکار سفارشی در صنعت خود "
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "articles",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": ".articles-hero__description",
+        "label": "متن · مقالات، تحلیل‌ها و تجربیات فنی م"
+      },
+      "properties": {
+        "font-size": 15
+      }
+    },
+    {
+      "page": "articles",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".article-card > div.article-card__body:nth-of-type(2) > p.article-card__description",
+        "label": "باکس‌های تکراری · متن · طراحی شبکه کانال‌ها فقط انتخاب ا"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "articles",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "component",
+        "selector": ".article-card > div.article-card__body:nth-of-type(2) > h3.article-card__title",
+        "label": "باکس‌های تکراری · عنوان باکس · چرا طراحی صحیح کانال‌های انتقال "
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "articles",
+      "breakpoint": "mobile",
+      "target": {
+        "kind": "element",
+        "selector": "#articles-consultation-title",
+        "label": "عنوان بخش · به یک راهکار سفارشی در صنعت خود "
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "desktop",
+      "target": {
+        "kind": "element",
+        "selector": ".home-hero-description",
+        "label": "متن · مارپیچ صنعت نوین پویا با دو دهه "
+      },
+      "properties": {
+        "font-size": 20
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "all",
+      "target": {
+        "kind": "component",
+        "selector": ".home-projects-grid > article.site-card > div.site-card__body > p.site-card__description",
+        "label": "توضیحات کارت‌های پروژه‌های شاخص"
+      },
+      "properties": {
+        "description-lines": 3
+      }
+    },
+    {
+      "page": "projects",
+      "breakpoint": "all",
+      "target": {
+        "kind": "component",
+        "selector": ".projects-page__card > div.projects-page__card-body > p.projects-page__card-description",
+        "label": "توضیحات کارت‌های پروژه‌ها"
+      },
+      "properties": {
+        "description-lines": 3
+      }
+    },
+    {
+      "page": "projects",
+      "breakpoint": "all",
+      "target": {
+        "kind": "element",
+        "selector": "#testimonials-title",
+        "label": "عنوان نظرات مشتریان"
+      },
+      "properties": {
+        "text-align": "center",
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "industry-textile",
+      "breakpoint": "all",
+      "target": {
+        "kind": "element",
+        "selector": "#industry-testimonials-title",
+        "label": "عنوان نظرات مشتریان نساجی"
+      },
+      "properties": {
+        "text-align": "center",
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "all",
+      "target": {
+        "kind": "element",
+        "selector": ".about-certificate-card__caption > span",
+        "label": "زیرعنوان گواهینامه"
+      },
+      "properties": {
+        "text-align": "center",
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "all",
+      "target": {
+        "kind": "element",
+        "selector": ".about-certificate-card__caption > strong.site-card__title",
+        "label": "عنوان گواهینامه"
+      },
+      "properties": {
+        "text-align": "center",
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "all",
+      "target": {
+        "kind": "element",
+        "selector": ".about-certificate-card__caption > p.site-card__description",
+        "label": "توضیح گواهینامه"
+      },
+      "properties": {
+        "text-align": "center",
+        "text-align-last": "center",
+        "description-lines": 0
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "range",
+      "target": {
+        "kind": "element",
+        "selector": ".about-gallery__content > p.site-prose",
+        "label": "توضیح گالری در موبایل"
+      },
+      "properties": {
+        "font-size": 12
+      },
+      "range": {
+        "min": 0,
+        "max": 767
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "range",
+      "target": {
+        "kind": "element",
+        "selector": ".about-certificate-card__caption > p.site-card__description",
+        "label": "توضیح گواهینامه در موبایل"
+      },
+      "properties": {
+        "font-size": 12
+      },
+      "range": {
+        "min": 0,
+        "max": 767
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "all",
+      "target": {
+        "kind": "element",
+        "selector": ".about-story__intro > p.about-story__text.site-prose",
+        "label": "توضیح مسیر توسعه"
+      },
+      "properties": {
+        "font-size": 14
+      }
+    },
+    {
+      "page": "about",
+      "breakpoint": "all",
+      "target": {
+        "kind": "element",
+        "selector": ".about-timeline__body > p.site-prose",
+        "label": "توضیح مراحل تاریخچه"
+      },
+      "properties": {
+        "font-size": 14
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "all",
+      "target": {
+        "kind": "component",
+        "selector": ".home-process-step > h3",
+        "label": "وسط‌چینی متن مراحل همکاری"
+      },
+      "properties": {
+        "text-align": "center",
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "home",
+      "breakpoint": "all",
+      "target": {
+        "kind": "component",
+        "selector": ".home-process-step > p",
+        "label": "وسط‌چینی متن مراحل همکاری"
+      },
+      "properties": {
+        "text-align": "center",
+        "text-align-last": "center"
+      }
+    },
+    {
+      "page": "project-details",
+      "breakpoint": "all",
+      "target": {
+        "kind": "component",
+        "selector": ".project-details__product-card > .project-details__product-body > p.site-card__description",
+        "label": "توضیحات محصولات استفاده‌شده در پروژه"
+      },
+      "properties": {
+        "font-size": 16
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "all",
+      "range": {
+        "min": 1181,
+        "max": null
+      },
+      "target": {
+        "kind": "component",
+        "selector": ".branch-card__address",
+        "label": "آدرس تمام دفترها و کارخانه"
+      },
+      "properties": {
+        "font-size": 12
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "all",
+      "range": {
+        "min": 1180,
+        "max": 1382
+      },
+      "target": {
+        "kind": "component",
+        "selector": ".contact-benefits > .contact-benefits__grid > .benefit-item > h3.site-card__title",
+        "label": "عنوان مزایای همکاری در عرض میانی دسکتاپ"
+      },
+      "properties": {
+        "font-size": 14
+      }
+    },
+    {
+      "page": "contact",
+      "breakpoint": "all",
+      "range": {
+        "min": 1180,
+        "max": 1382
+      },
+      "target": {
+        "kind": "component",
+        "selector": ".contact-benefits > .contact-benefits__grid > .benefit-item > p.site-prose",
+        "label": "توضیحات مزایای همکاری در عرض میانی دسکتاپ"
+      },
+      "properties": {
+        "font-size": 14
+      }
+    },
+    {
+      "page": "expertise",
+      "breakpoint": "all",
+      "target": {
+        "kind": "role",
+        "key": "card-description"
+      },
+      "properties": {
+        "description-lines": 3,
+        "text-align": "justify",
+        "text-align-last": "right"
+      }
+    },
+    {
+      "page": "project-details",
+      "breakpoint": "all",
+      "target": {
+        "kind": "element",
+        "selector": ".project-details__stat > p.project-details__stat-description",
+        "label": "توضیحات دستاوردهای پروژه"
+      },
+      "properties": {
+        "description-lines": 2
+      }
+    },
+    {
+      "page": "*",
+      "breakpoint": "range",
+      "range": {
+        "min": 1025,
+        "max": 1480
+      },
+      "target": {
+        "kind": "component",
+        "selector": ".catalog-consultation__title",
+        "label": "عنوان CTA تصویری · بازهٔ ۱۰۲۵ تا ۱۴۸۰"
+      },
+      "properties": {
+        "font-size": 22
+      }
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+/* Shared hero geometry and semantic type roles.
+ * Artwork and page colors stay in each page stylesheet.
+ * Do not add font sizes to page hero rules; edit ../type-settings.css instead. */
+body[data-page] .site-hero {
+    position: relative;
+    z-index: 0;
+    isolation: isolate;
+    height: auto;
+    min-height: var(--hero-min-height);
+    max-height: none;
+    padding-block: 0;
+}
+body[data-page] .site-hero .site-hero__content {
+    position: relative;
+    z-index: 1;
+    display: block;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding-block: var(--hero-content-padding-top) var(--hero-content-padding-bottom);
+}
+body[data-page] .site-hero .site-hero__eyebrow {
+    margin-block: 0 10px;
+    font-size: var(--hero-eyebrow-font-size);
+    line-height: var(--hero-eyebrow-line-height);
+}
+body[data-page] .site-hero .site-hero__title {
+    margin-block: 12px 0;
+    font-size: var(--hero-title-font-size);
+    line-height: var(--hero-title-line-height);
+    text-wrap: wrap;
+}
+body[data-page] .site-hero .site-hero__description {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin-block: 16px 0;
+    font-size: var(--hero-description-font-size);
+    line-height: var(--hero-description-line-height);
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+}
+body[data-page] .site-hero :is(.projects-page__hero-content, .expertise-page__hero > div) {
+    width: 100%;
+    max-width: none;
+}
+body[data-page]
+    .site-hero
+    :is(.products-hero__heading, .industries-hero__heading, .air-handling__hero-heading, .articles-hero__heading) {
+    padding-top: 0;
+}
+body[data-page] .site-hero :is(.product-search, .articles-search) {
+    margin-top: 60px;
+}
+/* Search panels cross the canvas exactly at their midpoint. The shared hero
+ * module measures their actual height after wrapping, filtering and resizing. */
+body[data-page] :is(.products-hero, .industries-hero, .air-handling__hero, .articles-hero) {
+    --site-pattern-crop-height: var(--hero-search-backdrop-height, 100%);
+}
+body[data-page] :is(.products-hero, .industries-hero, .air-handling__hero, .articles-hero)::before {
+    height: var(--hero-search-backdrop-height, 100%);
+}
+
+/* Home keeps its image and gradient within its own canvas; the header is a
+ * direct body child, so this clipping cannot cut off navigation dropdowns. */
+body[data-page="home"] .hero-shell {
+    overflow: hidden;
+}
+body[data-page="home"] .hero-content-wrapper {
+    min-height: var(--hero-min-height);
+}
+body[data-page="home"] .hero-content {
+    width: min(100%, 920px);
+}
+
+/* Overlapping summaries remain below the title even as the new type wraps. */
+body[data-page="product-details"] main > .product-details__summary {
+    translate: none;
+    transform: translateY(calc(-1 * var(--hero-summary-overlap, 0px)));
+    margin-bottom: calc(-1 * var(--hero-summary-overlap, 0px));
+}
+body[data-page="about"] .about-team-wrap {
+    transform: translateY(calc(-1 * var(--hero-summary-overlap, 0px)));
+    margin-bottom: calc(-1 * var(--hero-summary-overlap, 0px));
+}
+body[data-page] :is(.project-details__summary, .industry-textile__summary) {
+    margin-top: calc(-1 * var(--hero-summary-overlap, 0px));
+}

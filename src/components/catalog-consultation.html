@@ -1,0 +1,49 @@
+<!-- Shared template: catalog-consultation. Content values come from src/data/pages at build time. -->
+<section class="catalog-consultation" id="{{id}}" aria-labelledby="{{id}}-title">
+    <div class="catalog-consultation__visual">
+        <img src="{{image}}" alt="{{imageAlt}}" class="catalog-consultation__image" loading="lazy" />
+    </div>
+
+    <div class="catalog-consultation__content">
+        <p class="catalog-consultation__eyebrow">{{eyebrow}}</p>
+        <h2 id="{{id}}-title" class="catalog-consultation__title">{{title}}</h2>
+        <p class="catalog-consultation__description site-prose">{{description}}</p>
+        <span class="catalog-consultation__accent" aria-hidden="true"></span>
+
+        <form class="catalog-consultation__form" data-pending-form>
+            <label class="sr-only" for="{{id}}-name">{{nameLabel}}</label>
+            <input
+                id="{{id}}-name"
+                name="fullName"
+                type="text"
+                autocomplete="name"
+                class="catalog-consultation__field"
+                placeholder="{{namePlaceholder}}"
+            />
+
+            <label class="sr-only" for="{{id}}-secondary">{{secondaryLabel}}</label>
+            <input
+                id="{{id}}-secondary"
+                name="{{secondaryName}}"
+                type="{{secondaryType}}"
+                autocomplete="{{secondaryAutocomplete}}"
+                class="catalog-consultation__field"
+                placeholder="{{secondaryPlaceholder}}"
+            />
+
+            <label class="sr-only" for="{{id}}-message">{{messageLabel}}</label>
+            <input
+                id="{{id}}-message"
+                name="message"
+                type="text"
+                class="catalog-consultation__field catalog-consultation__field--wide"
+                placeholder="{{messagePlaceholder}}"
+            />
+
+            <button type="submit" class="catalog-consultation__submit">
+                <span>{{submitText}}</span>
+                <img src="/assets/icons/catalog/consultation-arrow-left.svg" alt="" aria-hidden="true" />
+            </button>
+        </form>
+    </div>
+</section>

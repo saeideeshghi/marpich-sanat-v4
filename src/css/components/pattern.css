@@ -1,0 +1,88 @@
+/* Shared decorative layer for the approved Pattern Studio export.
+ * The site host supplies its own background/content. The inner stage keeps the
+ * exported 430px/404px scene geometry intact so the pattern is not stretched.
+ */
+.site-pattern-host {
+    position: relative;
+    isolation: isolate;
+}
+
+.site-pattern-layer {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.site-pattern-stage {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 100%;
+    max-width: var(--site-layout-max-width, 1920px);
+    transform: translateX(-50%);
+    overflow: visible;
+    pointer-events: none;
+}
+
+.site-pattern-graphic {
+    position: absolute;
+    pointer-events: none;
+}
+
+.site-pattern-graphic > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-pattern-layer {
+        contain: paint;
+    }
+}
+
+/* All internal-page headers share the same authored canvas, including About/Contact. */
+.site-pattern-layer--header {
+    bottom: auto;
+    height: min(var(--site-pattern-scene-height, 430px), var(--site-pattern-crop-height, 100%));
+    /* Short intro surfaces fade the wave before the light page starts. */
+    mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 36px), transparent 100%);
+}
+@media (max-width: 639px) {
+    .site-pattern-layer--header {
+        --site-pattern-scene-height: 404px;
+    }
+}
+
+/* Use the whole dark backdrop in this range; the renderer centers its artwork
+ * vertically without moving any content or changing the footer stage. */
+@media (min-width: 675px) and (max-width: 1180px) {
+    .site-pattern-layer--header {
+        height: var(--site-pattern-crop-height, 100%);
+    }
+}
+
+/* Static page artwork retains the uploaded SVG's own 8% opacity. Coordinates
+ * are shared across surfaces; no glow, filter, animation or content wrappers. */
+.site-page-background-host {
+    isolation: isolate;
+}
+body[data-page] .site-page-background-layer {
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+    contain: strict;
+    pointer-events: none;
+    user-select: none;
+    background-image: url("/assets/decorations/page-pattern.svg");
+    background-repeat: no-repeat;
+}
+
+/* The shared artwork replaces the About-only sketched waves once mounted. */
+body[data-page="about"] .about-main.site-page-background-host::before,
+body[data-page="about"] .about-main.site-page-background-host::after {
+    display: none;
+}

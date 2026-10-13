@@ -1,0 +1,21 @@
+@theme {
+    --font-peyda: "Peyda", Tahoma, Arial, sans-serif;
+
+    --color-brand-navy: #0f172b;
+    --color-brand-blue: #79b6ed;
+    --color-brand-orange: #f76e11;
+    --color-text-dark: #0f172b;
+    --color-text-white: #ffffff;
+    --color-footer-text: #ecf0f8;
+    --color-page-bg: #f4f7fc;
+    --color-partners-bg: #d3eaff;
+
+    --container-site: 82.5rem;
+    --breakpoint-laptop: 73.75rem;
+
+    --shadow-card: 0 0px 10px rgb(15 23 43 / 0.08);
+    --shadow-card-hover: 0 11px 25px rgb(15 23 43 / 0.11);
+    --shadow-cta: 0 8px 24px rgb(0 0 0 / 0.18);
+
+    --color-media-badge: #79b6ed;
+}

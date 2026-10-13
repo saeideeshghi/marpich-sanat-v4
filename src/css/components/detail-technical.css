@@ -1,0 +1,293 @@
+/* Technical cards retain the approved column order, borders and CSS dividers.
+ * Rows and the footer note grow with content: no fixed aspect ratio can squeeze
+ * table padding or push the final rows under the note.
+ * Edit padding in layout-settings.css and sizes in type-settings.css.
+ */
+body[data-page] {
+    --technical-text-color: #0f172b;
+    --technical-background-color: #ecf0f8;
+    --technical-border-soft-color: rgb(15 23 43 / 0.14);
+    --technical-border-strong-color: rgb(15 23 43 / 0.78);
+    --technical-accent-color: #ff7a24;
+    --technical-checkmark-color: #55a9f0;
+}
+body[data-page="project-details"] {
+    --technical-background-color: var(--color-page-bg, #f4f7fc);
+}
+.details-card {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--technical-border-strong-color);
+    border-radius: var(--card-radius);
+    background: var(--technical-background-color);
+}
+.details-card--project,
+.details-card--product {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+.details-card__body {
+    display: grid;
+    min-width: 0;
+    direction: ltr;
+    align-items: stretch;
+}
+.details-card__body--project {
+    grid-template-columns: minmax(0, 46.05%) minmax(0, 53.95%);
+}
+.details-card__body--product {
+    grid-template-columns: minmax(0, 33.69%) minmax(0, 23.61%) minmax(0, 42.7%);
+}
+.details-table-wrap {
+    min-width: 0;
+    border-right: 1px solid var(--technical-border-strong-color);
+}
+.details-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    direction: rtl;
+    color: var(--technical-text-color);
+}
+.details-table col.col-label {
+    width: 40%;
+}
+.details-table col.col-value {
+    width: 60%;
+}
+.details-table--product col.col-label {
+    width: 41.6%;
+}
+.details-table--product col.col-value {
+    width: 58.4%;
+}
+/* One-pixel tapered horizontal separators. */
+.details-table thead tr,
+.details-table tbody tr:not(:last-child) {
+    background-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgb(15 23 43 / 0.58) 2.5%,
+        #0f172b 9%,
+        #0f172b 91%,
+        rgb(15 23 43 / 0.58) 97.5%,
+        transparent 100%
+    );
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: calc(100% - 22px) 1px;
+}
+.details-table :is(th, td) {
+    padding: var(--table-cell-padding-block) var(--table-cell-padding-inline);
+    font-size: var(--table-cell-font-size);
+    font-weight: 400;
+    line-height: 1.8;
+    text-align: center;
+    vertical-align: middle;
+    overflow-wrap: anywhere;
+    background: transparent;
+}
+.details-table thead th {
+    padding-block: var(--table-heading-padding-block);
+    font-size: var(--table-heading-font-size);
+    font-weight: 700;
+}
+.details-table th + th,
+.details-table td + td {
+    border-right: 1px solid var(--technical-border-strong-color);
+}
+.details-visual {
+    position: relative;
+    min-width: 0;
+    min-height: 320px;
+    overflow: hidden;
+}
+/* Bound the illustration to the figure so its intrinsic dimensions cannot
+ * stretch the table. Contain preserves all technical drawing information. */
+.details-visual img {
+    position: absolute;
+    inset: 24px;
+    display: block;
+    width: calc(100% - 48px);
+    height: calc(100% - 48px);
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+}
+.extras-panel {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    direction: rtl;
+}
+.extras-panel__content {
+    width: min(100%, 272px);
+}
+.extras-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+.extras-title h3 {
+    order: 1;
+    margin: 0;
+    font-size: var(--section-title-font-size);
+    font-weight: 600;
+    line-height: 1.5;
+}
+.extras-title span {
+    order: 2;
+    width: 38px;
+    height: 1px;
+    background: #79b6ed;
+    clip-path: polygon(0 31.25%, 100% 0, 100% 100%, 0 68.75%);
+}
+.extras-panel ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.extras-panel li {
+    position: relative;
+    margin-bottom: 12px;
+    padding-right: 26px;
+    font-size: var(--table-cell-font-size);
+    line-height: 1.85;
+}
+.extras-panel li::before {
+    content: "✓";
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--technical-checkmark-color);
+    font-size: 18px;
+    font-weight: 700;
+}
+.details-card__note {
+    position: relative;
+    min-width: 0;
+    margin-inline: 14px;
+    direction: rtl;
+}
+.details-card__note::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgb(15 23 43 / 0.62) 1.5%,
+        #0f172b 6%,
+        #0f172b 94%,
+        rgb(15 23 43 / 0.62) 98.5%,
+        transparent 100%
+    );
+}
+.details-card__note p {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 0;
+    padding: var(--table-note-padding-block) 4px;
+    font-size: var(--table-cell-font-size);
+    line-height: 1.9;
+    text-align: right;
+}
+.details-card__note-bullet {
+    flex: 0 0 auto;
+}
+.details-card__note-copy {
+    min-width: 0;
+}
+.details-card__note a {
+    color: var(--technical-accent-color);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+@media (max-width: 900px) {
+    .details-card__body--project,
+    .details-card__body--product {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    /* Diagram first on narrow screens; desktop column order stays authored. */
+    .details-card__body > .details-visual {
+        grid-row: 1;
+        border-bottom: 1px solid var(--technical-border-soft-color);
+    }
+    .details-card__body--project > .details-table-wrap {
+        grid-row: 2;
+    }
+    .details-card__body--product > .extras-panel {
+        grid-row: 2;
+    }
+    .details-card__body--product > .details-table-wrap {
+        grid-row: 3;
+    }
+    .details-table-wrap {
+        border-right: 0;
+        border-bottom: 1px solid var(--technical-border-strong-color);
+    }
+    .extras-panel {
+        border-bottom: 1px solid var(--technical-border-soft-color);
+        justify-content: flex-start;
+        padding: 20px 16px;
+    }
+    .extras-panel__content {
+        width: 100%;
+    }
+    .extras-panel ul {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 12px;
+    }
+    .extras-panel li {
+        margin-bottom: 0;
+    }
+    .extras-title {
+        margin-bottom: 16px;
+    }
+    .extras-title h3 {
+        font-size: 18px;
+    }
+    .details-visual {
+        min-height: 280px;
+    }
+}
+@media (max-width: 520px) {
+    body[data-page="project-details"],
+    body[data-page="product-details"] {
+        --table-cell-padding-block: 10px;
+        --table-cell-padding-inline: 8px;
+        --table-heading-padding-block: 12px;
+        --table-cell-font-size: 13px;
+        --table-heading-font-size: 14px;
+    }
+    .details-table col.col-label {
+        width: 42%;
+    }
+    .details-table col.col-value {
+        width: 58%;
+    }
+    .details-table :is(th, td) {
+        line-height: 1.9;
+        overflow-wrap: break-word;
+    }
+    .details-card__note {
+        margin-inline: 10px;
+    }
+    .details-visual {
+        min-height: 240px;
+    }
+    .details-visual img {
+        inset: 16px;
+        width: calc(100% - 32px);
+        height: calc(100% - 32px);
+    }
+}

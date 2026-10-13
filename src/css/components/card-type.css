@@ -1,0 +1,76 @@
+/* Shared presentation-card typography.
+ * Edit sizes and the description line limit in ../type-settings.css.
+ * Roles are present in HTML/templates, so they also work without JavaScript.
+ * Geometry, CTA placement and existing non-desktop CTA sizes stay page-owned. */
+body[data-page] .site-card {
+    min-width: 0;
+}
+body[data-page] .site-card .site-card__title {
+    font-size: var(--card-title-font-size);
+    line-height: var(--card-title-line-height);
+    text-align: right;
+    overflow-wrap: break-word;
+}
+body[data-page] .site-card .site-card__description:not([hidden]) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--card-description-lines);
+    line-clamp: var(--card-description-lines);
+    height: auto;
+    min-height: 0;
+    max-height: calc(
+        var(--card-description-font-size) * var(--card-description-line-height) * var(--card-description-lines)
+    );
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: var(--card-description-font-size);
+    line-height: var(--card-description-line-height);
+    text-align: justify;
+    text-align-last: right;
+    text-justify: inter-word;
+    text-wrap: wrap;
+    overflow-wrap: break-word;
+}
+body[data-page] .site-card .site-card__cta {
+    max-width: 100%;
+    text-decoration: none;
+}
+/* Only the text receives the underline; arrows/icons remain separate. */
+body[data-page] .site-card .site-card__cta > .site-card__cta-label {
+    border-bottom: 0;
+    text-decoration: none;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+}
+@media (hover: hover) {
+    body[data-page] .site-card .site-card__cta:hover > .site-card__cta-label {
+        text-decoration: underline;
+    }
+}
+body[data-page] .site-card .site-card__cta:focus-visible > .site-card__cta-label {
+    text-decoration: underline;
+}
+body[data-page] .site-card .site-card__cta {
+    font-size: var(--card-link-font-size);
+}
+body[data-page] .site-card .site-card__cta > .site-card__cta-label {
+    font-size: inherit;
+}
+/* Independent roles prevent metadata padding from moving image labels. */
+body[data-page] .site-card :is(.site-card__media-tag, .site-card__meta-tag, .site-card__status-tag) {
+    font-size: var(--card-tag-font-size);
+    line-height: 1.7;
+}
+body[data-page] .site-card .site-card__media-tag {
+    font-size: var(--card-media-tag-font-size, var(--card-tag-font-size));
+}
+body[data-page] .site-card .site-card__meta-tag {
+    padding-top: 8px;
+    font-size: var(--card-meta-tag-font-size, var(--card-tag-font-size));
+}
+body[data-page]
+    .site-card
+    :is(.site-card__media-tag, .site-card__meta-tag, .site-card__status-tag)
+    :where(small, span) {
+    font-size: inherit;
+}

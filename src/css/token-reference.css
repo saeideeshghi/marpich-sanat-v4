@@ -1,0 +1,400 @@
+/* Tool-only styles. No website entry imports this stylesheet. */
+.mps-token-page {
+    margin: 0;
+    color: #18324a;
+    background: #f0f4f8;
+    font:
+        15px/1.9 "Peyda",
+        Tahoma,
+        Arial,
+        sans-serif;
+}
+.mps-token-page *,
+.mps-token-reference * {
+    box-sizing: border-box;
+}
+.mps-token-page [hidden],
+.mps-token-reference [hidden] {
+    display: none !important;
+}
+.mps-token-page button,
+.mps-token-page input,
+.mps-token-page select {
+    font: inherit;
+}
+.mps-token-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px max(24px, calc((100% - 1180px) / 2));
+    color: #d8e7f4;
+    background: #14273e;
+    font-size: 13px;
+}
+.mps-token-header a {
+    color: #fff;
+    text-decoration: none;
+}
+.mps-token-main {
+    width: min(1180px, calc(100% - 48px));
+    margin: 40px auto;
+}
+.mps-token-intro {
+    padding: 36px;
+    border: 1px solid #dce5ed;
+    border-radius: 18px;
+    background: #fff;
+}
+.mps-token-eyebrow {
+    color: #327494;
+    font-size: 13px;
+}
+.mps-token-intro h1 {
+    margin: 6px 0 14px;
+    font-size: clamp(24px, 3.5vw, 36px);
+    line-height: 1.5;
+}
+.mps-token-intro > p {
+    margin: 0;
+    max-width: 820px;
+    color: #5c7083;
+}
+.mps-token-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 28px;
+}
+.mps-token-stats > div {
+    padding: 16px 20px;
+    border-radius: 10px;
+    background: #f2f7fb;
+}
+.mps-token-stats strong {
+    display: block;
+    color: #1c6788;
+    font-size: 30px;
+    line-height: 1.3;
+}
+.mps-token-stats span {
+    font-size: 12px;
+    color: #61788d;
+}
+.mps-token-guide {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 28px 0;
+}
+.mps-token-guide > div {
+    padding-inline-start: 16px;
+    border-inline-start: 2px solid #ef9c6f;
+}
+.mps-token-guide strong {
+    font-size: 14px;
+}
+.mps-token-guide p {
+    margin: 5px 0 0;
+    color: #607489;
+    font-size: 12px;
+}
+.mps-token-reference {
+    min-width: 0;
+    font-size: 13px;
+    line-height: 1.85;
+}
+.mps-token-edit-scope {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 14px;
+    border: 1px solid #cfdae5;
+    border-radius: 8px;
+    background: #f5f9fc;
+}
+.mps-token-edit-scope label,
+.mps-token-edit label {
+    display: grid;
+    gap: 5px;
+    min-width: 0;
+    font-size: 11px;
+}
+.mps-token-edit-scope input,
+.mps-token-edit-scope select,
+.mps-token-edit input {
+    min-width: 0;
+    width: 100%;
+    border: 1px solid #cbd9e5;
+    border-radius: 6px;
+    padding: 7px 8px;
+    font: inherit;
+    color: #29465f;
+    background: #fff;
+}
+.mps-token-edit-scope > p,
+.mps-token-edit-range {
+    grid-column: 1 / -1;
+}
+.mps-token-edit-range {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+.mps-token-edit {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #dce6ed;
+}
+.mps-token-edit input.mps-token-color {
+    margin-top: 8px;
+    width: 56px;
+    height: 32px;
+    padding: 2px;
+}
+.mps-token-edit-status {
+    color: #2e6b51;
+    font-size: 11px;
+}
+.mps-token-edit-status[data-error="true"] {
+    color: #a32832;
+}
+.mps-token-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.mps-token-filters input[type="search"],
+.mps-token-filters select {
+    min-width: 0;
+    min-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #cfdae5;
+    border-radius: 8px;
+    color: #29465f;
+    background: #fff;
+}
+.mps-token-filters input[type="search"] {
+    flex: 1 1 280px;
+    width: 100%;
+}
+.mps-token-filters select {
+    flex: 0 1 180px;
+    max-width: 100%;
+}
+.mps-token-current-page {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #586e83;
+    font-size: 12px;
+}
+.mps-token-current-page input {
+    width: 16px;
+    height: 16px;
+    min-height: 16px;
+}
+.mps-token-count {
+    color: #60768b;
+    font-size: 12px;
+    margin: 14px 0;
+}
+.mps-token-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 12px;
+}
+.mps-token-card {
+    min-width: 0;
+    border: 1px solid #d5e0ea;
+    border-radius: 10px;
+    background: #fff;
+    overflow: hidden;
+}
+.mps-token-card > summary {
+    padding: 14px 16px;
+    cursor: pointer;
+}
+.mps-token-card > summary strong {
+    margin-inline-start: 4px;
+    font-size: 13px;
+}
+.mps-token-card code {
+    display: block;
+    direction: ltr;
+    text-align: left;
+    font:
+        11px/1.75 ui-monospace,
+        monospace;
+    overflow-wrap: anywhere;
+}
+.mps-token-card > summary code {
+    margin-top: 4px;
+    color: #63788b;
+}
+.mps-token-card[open] > summary {
+    border-bottom: 1px solid #e2eaf1;
+    background: #f7fafc;
+}
+.mps-token-card__body {
+    padding: 14px 16px;
+}
+.mps-token-card__body p {
+    margin: 12px 0;
+}
+.mps-token-card__body h3 {
+    margin: 16px 0 10px;
+    font-size: 12px;
+}
+.mps-token-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.mps-token-badges span {
+    padding: 2px 7px;
+    border-radius: 5px;
+    color: #477089;
+    background: #edf5fa;
+    font-size: 10px;
+}
+.mps-token-note {
+    color: #697d90;
+    font-size: 11px;
+}
+.mps-token-value {
+    display: grid;
+    gap: 5px;
+    padding: 10px 12px;
+    border-radius: 7px;
+    background: #edf8f2;
+    color: #2e6b51;
+}
+.mps-token-value span,
+.mps-token-value small {
+    font-size: 10px;
+    overflow-wrap: anywhere;
+}
+.mps-token-value code {
+    font-size: 13px;
+    color: #24624a;
+}
+.mps-token-family,
+.mps-token-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin: 12px 0;
+}
+.mps-token-family span {
+    font-size: 11px;
+    color: #758496;
+}
+.mps-token-family button,
+.mps-token-actions button,
+.mps-token-actions a {
+    border: 1px solid #d5e2ec;
+    border-radius: 6px;
+    padding: 4px 8px;
+    color: #276582;
+    background: #f3f8fc;
+    cursor: pointer;
+    font: inherit;
+    font-size: 11px;
+    text-decoration: none;
+}
+.mps-token-source {
+    display: grid;
+    gap: 3px;
+    margin-bottom: 8px;
+    padding: 9px 11px;
+    border-radius: 6px;
+    background: #f3f6f9;
+}
+.mps-token-source code {
+    color: #5d7387;
+}
+.mps-token-source .mps-token-source__value {
+    color: #174c71;
+    font-weight: 700;
+}
+.mps-token-usages {
+    margin-top: 14px;
+}
+.mps-token-usages > summary {
+    margin-bottom: 8px;
+    color: #426f89;
+    cursor: pointer;
+    font-size: 11px;
+}
+.mps-token-empty {
+    padding: 24px;
+    border: 1px dashed #c9d6e2;
+    border-radius: 10px;
+    color: #678095;
+}
+.mps-token-footer {
+    padding: 24px;
+    text-align: center;
+    color: #6b8092;
+    font-size: 11px;
+}
+.mps-token-reference :focus-visible,
+.mps-token-page :focus-visible {
+    outline: 2px solid #267eaa;
+    outline-offset: 3px;
+}
+.mps-sidebar .mps-token-list {
+    grid-template-columns: 1fr;
+}
+.mps-sidebar .mps-token-filters {
+    gap: 8px;
+}
+.mps-sidebar .mps-token-filters input[type="search"] {
+    flex-basis: 100%;
+}
+.mps-sidebar .mps-token-filters select {
+    flex: 1 1 100%;
+}
+.mps-sidebar .mps-token-current-page {
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+}
+.mps-sidebar .mps-token-count {
+    margin-top: 10px;
+}
+@media (max-width: 700px) {
+    .mps-token-main {
+        width: calc(100% - 24px);
+        margin: 24px auto;
+    }
+    .mps-token-header {
+        padding-inline: 16px;
+        font-size: 11px;
+    }
+    .mps-token-intro {
+        padding: 24px 18px;
+    }
+    .mps-token-guide,
+    .mps-token-list {
+        grid-template-columns: 1fr;
+    }
+    .mps-token-guide {
+        gap: 18px;
+    }
+    .mps-token-stats {
+        gap: 6px;
+    }
+    .mps-token-stats > div {
+        padding: 12px 8px;
+    }
+    .mps-token-stats strong {
+        font-size: 25px;
+    }
+    .mps-token-stats span {
+        font-size: 10px;
+    }
+}

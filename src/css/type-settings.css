@@ -1,0 +1,154 @@
+/* EDIT SIZES HERE.
+ * Mobile <= 639px; tablet 640–1179px; desktop >= 1180px.
+ * Values ending in -desktop/-tablet/-mobile are inputs. The active variables
+ * below switch at the breakpoints; page styles consume them without hardcoding.
+ * Hero heights are configured by ID in hero-heights.css. */
+body[data-page] {
+    --hero-eyebrow-font-size-desktop: 28px;
+    --hero-eyebrow-font-size-tablet: 20px;
+    --hero-eyebrow-font-size-mobile: 20px;
+    --hero-title-font-size-desktop: 42px;
+    --hero-title-font-size-tablet: 38px;
+    --hero-title-font-size-mobile: 25px;
+    --hero-description-font-size-desktop: 22px;
+    --hero-description-font-size-tablet: 18px;
+    --hero-description-font-size-mobile: 18px;
+    --hero-content-padding-top-desktop: 164px;
+    --hero-content-padding-top-tablet: 168px;
+    --hero-content-padding-top-mobile: 156px;
+    --hero-content-padding-bottom: 40px;
+    --hero-summary-overlap-desktop: 0px;
+    --hero-summary-overlap-tablet: 0px;
+    --hero-summary-overlap-mobile: 0px;
+    --hero-eyebrow-line-height: 1.5;
+    --hero-title-line-height: 1.4;
+    --hero-description-line-height: 1.55;
+    /* Card roles are independent from hero/section typography. */
+    --card-title-font-size-desktop: 17px;
+    --card-title-font-size-tablet: 17px;
+    --card-title-font-size-mobile: 20px;
+    --card-description-font-size-desktop: 14px;
+    --card-description-font-size-tablet: 14px;
+    --card-description-font-size-mobile: 18px;
+    --card-link-font-size-desktop: 12px;
+    --card-link-font-size-tablet: 14px;
+    --card-link-font-size-mobile: 14px;
+    --card-tag-font-size-desktop: 10px;
+    --card-tag-font-size-tablet: 10px;
+    --card-tag-font-size-mobile: 10px;
+    --card-description-lines: 2;
+    --card-title-line-height: 1.7;
+    --card-description-line-height: 1.85;
+    --body-font-size-desktop: 16px;
+    --body-font-size-tablet: 16px;
+    --body-font-size-mobile: 15px;
+    --content-card-font-size-desktop: 18px;
+    --content-card-font-size-tablet: 17px;
+    --content-card-font-size-mobile: 16px;
+    --section-title-font-size-desktop: 28px;
+    --section-title-font-size-tablet: 26px;
+    --section-title-font-size-mobile: 22px;
+    --form-control-font-size: 16px;
+    --label-font-size: 14px;
+    --navigation-font-size: 14px;
+    --table-cell-font-size: 14px;
+    --table-heading-font-size: 14px;
+}
+
+/* PAGE OVERRIDES: add only the values that differ from the shared defaults.
+ * Example: body[data-page="projects"] { --hero-title-font-size-desktop: 44px; }
+ * Set all page overrides here, above the breakpoint resolvers. */
+body[data-page="home"] {
+    --hero-content-padding-top-desktop: 120px;
+    --hero-content-padding-top-tablet: 192px;
+    /* Preserve the owner's extra top margin; height lives in hero-heights.css. */
+    --home-hero-content-margin-top: 105px;
+}
+body[data-page="contact"] {
+    --hero-content-padding-top-desktop: 156px;
+    --hero-content-padding-top-tablet: 180px;
+    --hero-content-padding-top-mobile: 172px;
+}
+body[data-page="about"] {
+    --hero-content-padding-bottom: 56px;
+    --hero-summary-overlap-desktop: 64px;
+    --hero-summary-overlap-tablet: 64px;
+    --hero-summary-overlap-mobile: 32px;
+}
+body[data-page="project-details"] {
+    --hero-eyebrow-font-size-desktop: 14px;
+    --hero-eyebrow-font-size-tablet: 14px;
+    --hero-eyebrow-font-size-mobile: 14px;
+    --hero-description-font-size-desktop: 18px;
+    --hero-description-font-size-tablet: 16px;
+    --hero-description-font-size-mobile: 14px;
+    --hero-content-padding-top-mobile: 148px;
+    --hero-content-padding-bottom: 100px;
+    --hero-summary-overlap-desktop: 150px;
+    --hero-summary-overlap-tablet: 142px;
+    --hero-summary-overlap-mobile: 144px;
+}
+body[data-page="product-details"] {
+    --hero-eyebrow-font-size-desktop: 14px;
+    --hero-eyebrow-font-size-tablet: 14px;
+    --hero-eyebrow-font-size-mobile: 14px;
+    --hero-content-padding-top-mobile: 168px;
+    --hero-summary-overlap-desktop: 210px;
+    --hero-summary-overlap-tablet: 176px;
+    --hero-summary-overlap-mobile: 140px;
+}
+body[data-page="industry-textile"] {
+    --hero-summary-overlap-desktop: 9.2rem;
+    --hero-summary-overlap-tablet: 8rem;
+    --hero-summary-overlap-mobile: 12.2rem;
+}
+
+body[data-page] {
+    --hero-eyebrow-font-size: var(--hero-eyebrow-font-size-desktop);
+    --hero-title-font-size: var(--hero-title-font-size-desktop);
+    --hero-description-font-size: var(--hero-description-font-size-desktop);
+    --hero-content-padding-top: var(--hero-content-padding-top-desktop);
+    --hero-summary-overlap-preferred: var(--hero-summary-overlap-desktop);
+    --card-title-font-size: var(--card-title-font-size-desktop);
+    --card-description-font-size: var(--card-description-font-size-desktop);
+    --card-link-font-size: var(--card-link-font-size-desktop);
+    --card-tag-font-size: var(--card-tag-font-size-desktop);
+    --body-font-size: var(--body-font-size-desktop);
+    --content-card-font-size: var(--content-card-font-size-desktop);
+    --section-title-font-size: var(--section-title-font-size-desktop);
+}
+@media (min-width: 640px) and (max-width: 1179px) {
+    body[data-page] {
+        --hero-eyebrow-font-size: var(--hero-eyebrow-font-size-tablet);
+        --hero-title-font-size: var(--hero-title-font-size-tablet);
+        --hero-description-font-size: var(--hero-description-font-size-tablet);
+        --hero-content-padding-top: var(--hero-content-padding-top-tablet);
+        --hero-summary-overlap-preferred: var(--hero-summary-overlap-tablet);
+        --card-title-font-size: var(--card-title-font-size-tablet);
+        --card-description-font-size: var(--card-description-font-size-tablet);
+        --card-link-font-size: var(--card-link-font-size-tablet);
+        --card-tag-font-size: var(--card-tag-font-size-tablet);
+        --body-font-size: var(--body-font-size-tablet);
+        --content-card-font-size: var(--content-card-font-size-tablet);
+        --section-title-font-size: var(--section-title-font-size-tablet);
+    }
+}
+@media (max-width: 639px) {
+    body[data-page] {
+        --hero-eyebrow-font-size: var(--hero-eyebrow-font-size-mobile);
+        --hero-title-font-size: var(--hero-title-font-size-mobile);
+        --hero-description-font-size: var(--hero-description-font-size-mobile);
+        --hero-content-padding-top: var(--hero-content-padding-top-mobile);
+        --hero-summary-overlap-preferred: var(--hero-summary-overlap-mobile);
+        --card-title-font-size: var(--card-title-font-size-mobile);
+        --card-description-font-size: var(--card-description-font-size-mobile);
+        --card-link-font-size: var(--card-link-font-size-mobile);
+        --card-tag-font-size: var(--card-tag-font-size-mobile);
+        --body-font-size: var(--body-font-size-mobile);
+        --content-card-font-size: var(--content-card-font-size-mobile);
+        --section-title-font-size: var(--section-title-font-size-mobile);
+    }
+    body[data-page="about"] {
+        --hero-content-padding-bottom: 40px;
+    }
+}

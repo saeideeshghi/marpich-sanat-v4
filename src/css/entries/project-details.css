@@ -1,0 +1,6 @@
+/* Head-loaded page styles. Preserve the established cascade order. */
+@import "../pages/project-details.css";
+@import "../components/content-flow.css";
+@import "../components/detail-technical.css";
+@import "../responsive.css";
+@import "../pages/project-details-theme.css";

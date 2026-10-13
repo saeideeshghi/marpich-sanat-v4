@@ -1,0 +1,19 @@
+<!-- Shared template: product-card. Content values come from src/data/pages at build time. -->
+<article class="product-card site-card">
+    <div class="product-card__media site-card__media">
+        <img src="{{image}}" alt="{{alt}}" class="product-card__image site-card__image" loading="{{loading}}" />
+        <span class="product-card__category site-card__media-tag">{{category}}</span>
+        <span class="product-card__badge" aria-hidden="true">
+            <i class="fa-regular fa-file-pdf"></i>
+        </span>
+    </div>
+    <div class="product-card__body site-card__body">
+        <h3 class="product-card__title site-card__title">{{title}}</h3>
+        <p class="product-card__description site-prose site-card__description">{{description}}</p>
+        <div class="product-card__specs site-card__meta-row">{{{specs}}}</div>
+        <a href="{{href}}" class="product-card__link site-text-link site-card__cta">
+            <span class="site-text-link__label site-card__cta-label">{{linkText}}</span>
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        </a>
+    </div>
+</article>

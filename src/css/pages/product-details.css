@@ -1,0 +1,245 @@
+/* Page-specific geometry; shared type and card roles remain in shared components and type-settings.css. */
+@import "../components/catalog.css";
+
+/* Product details page-specific refinements. */
+
+/* Shared inner-page breadcrumb color. */
+.product-details__breadcrumb,
+.product-details__breadcrumb a,
+.product-details__breadcrumb span,
+.product-details__breadcrumb i {
+    color: #79b6ed !important;
+}
+
+[data-product-image] {
+    transition: transform 250ms ease;
+}
+
+/* Upper 2×2 information box.
+   The Figma divider shape is recreated in CSS: darkest at the center and
+   softly tapered toward both ends, so no divider SVG assets are required. */
+.product-details__quick-specs {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: hidden;
+    border: 1px solid #0f172b;
+    border-radius: 12px;
+    color: #28344b;
+    direction: rtl;
+    font-size: 14px;
+}
+
+.product-details__quick-specs::before,
+.product-details__quick-specs::after {
+    position: absolute;
+    z-index: 2;
+    content: "";
+    pointer-events: none;
+}
+
+/* Horizontal Figma-style tapered divider. */
+.product-details__quick-specs::before {
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        rgb(15 23 43 / 0) 0%,
+        rgb(15 23 43 / 0.4) 12%,
+        #0f172b 50%,
+        rgb(15 23 43 / 0.4) 88%,
+        rgb(15 23 43 / 0) 100%
+    );
+}
+
+/* Vertical Figma-style tapered divider. */
+.product-details__quick-specs::after {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(
+        180deg,
+        rgb(15 23 43 / 0) 0%,
+        rgb(15 23 43 / 0.4) 12%,
+        #0f172b 50%,
+        rgb(15 23 43 / 0.4) 88%,
+        rgb(15 23 43 / 0) 100%
+    );
+}
+
+.product-details__quick-spec-item {
+    display: flex;
+    min-width: 0;
+    min-height: 52px;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    direction: rtl;
+    text-align: right;
+}
+
+.product-details__quick-spec-icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    object-fit: contain;
+}
+
+/* The exact Figma SVGs can overwrite these five files later without any
+   HTML/CSS change: delivery, standards, warranty, support and download. */
+.product-details__download-button {
+    position: relative;
+    display: flex;
+    min-height: 42px;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #f76e11 0%, #f4824c 100%);
+    padding: 0 48px 0 12px;
+    color: #fff;
+    direction: rtl;
+    text-align: right;
+    font-size: 14px;
+    font-weight: 500;
+    transition: filter 180ms ease;
+}
+
+.product-details__download-button:hover {
+    filter: brightness(1.05);
+}
+
+.product-details__download-button img {
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+    object-fit: contain;
+}
+
+/* Shared catalog CTA is the single source of truth for the lower form. */
+.product-details__consultation-shell .catalog-consultation {
+    margin-top: 0;
+}
+
+@media (min-width: 640px) {
+    .product-details__quick-specs {
+        font-size: 14px;
+    }
+
+    .product-details__download-button {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1180px) {
+    .product-details__quick-specs {
+        font-size: 14px;
+    }
+
+    .product-details__quick-spec-item {
+        min-height: 58px;
+        gap: 10px;
+        padding-inline: 14px;
+    }
+
+    .product-details__quick-spec-icon {
+        width: 20px;
+        height: 20px;
+        flex-basis: 20px;
+    }
+
+    .product-details__download-button {
+        min-height: 46px;
+        font-size: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-product-image],
+    .product-details__download-button {
+        transition: none;
+    }
+}
+
+/* =========================================================
+   Final product-details visual alignment
+   ========================================================= */
+
+/* Controls under the product image use the approved brand-blue icon color. */
+.product-details-page [data-view-reset],
+.product-details-page [data-view-rotate],
+.product-details-page [data-view-fullscreen] {
+    color: #79b6ed;
+}
+
+/* CAD / request-file button and the main technical frame use the same dark stroke. */
+.product-details__cad-button {
+    border-color: #0f172b;
+    color: #0f172b;
+}
+
+/* Keep the download icon clearly separated from the left edge. */
+.product-details__download-button img {
+    left: 16px;
+    filter: brightness(0) invert(1);
+}
+
+/* The hero overlap already reclaims its own space. Keep the next section in
+ * normal flow instead of compensating with a second negative margin. */
+.product-details__content {
+    margin-top: clamp(var(--details-section-gap), 3vw, 48px);
+}
+
+body[data-page="product-details"] .product-details__description p.site-prose {
+    direction: rtl;
+    text-align: justify;
+    text-align-last: right;
+    text-justify: inter-word;
+    line-height: 1.95;
+}
+
+@media (max-width: 639px) {
+    body[data-page="product-details"] .product-details__summary > article {
+        padding: 16px;
+        border-radius: 12px;
+        gap: 0;
+    }
+    body[data-page="product-details"] .product-details__summary #product-title {
+        line-height: 1.7;
+    }
+    body[data-page="product-details"] .product-details__summary .site-card__description {
+        line-height: 1.95;
+        margin-top: 10px;
+    }
+    body[data-page="product-details"] .product-details__summary .site-card__cta {
+        font-size: 12px;
+        line-height: 1.8;
+        min-height: 44px;
+    }
+    body[data-page="product-details"] .product-details__summary [data-product-image] {
+        object-fit: contain;
+    }
+    body[data-page="product-details"] .product-details__quick-specs .product-details__quick-spec-item {
+        min-height: 48px;
+        padding: 8px;
+        gap: 6px;
+        align-items: center;
+        font-size: 12px;
+        line-height: 1.7;
+    }
+    body[data-page="product-details"] .product-details__quick-specs .product-details__quick-spec-icon {
+        width: 16px;
+        height: 16px;
+        flex-basis: 16px;
+        margin-top: 0;
+    }
+    body[data-page="product-details"] .product-details__view-controls {
+        align-self: flex-end;
+    }
+}

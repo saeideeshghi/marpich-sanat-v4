@@ -1,0 +1,36 @@
+<!-- Shared template: search-panel. Content values come from src/data/pages at build time. -->
+<form class="product-search" id="{{id}}" data-product-search role="search">
+    <div class="product-search__bar">
+        <span {{{barLabelClass}}}>{{title}}</span>
+    </div>
+
+    <div class="product-search__field-row">
+        <button type="submit" class="product-search__submit" aria-label="جستجو">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        </button>
+
+        <input
+            type="search"
+            name="query"
+            class="product-search__input"
+            placeholder="{{placeholder}}"
+            autocomplete="off"
+        />
+    </div>
+
+    <div class="product-search__filters">
+        {{{filters}}}
+
+        <button type="button" class="product-search__advanced" data-search-advanced>
+            <span>فیلترهای پیشرفته</span>
+            <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="product-search__bottom">
+        <div class="product-search__chips" data-active-filters aria-label="فیلترهای فعال">{{{chips}}}</div>
+
+        <button type="button" class="{{{clearClass}}}" data-clear-filters> پاک کردن همه فیلترها </button>
+    </div>
+    <p class="sr-only" data-search-status role="status" hidden></p>
+</form>

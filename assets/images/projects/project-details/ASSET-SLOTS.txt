@@ -1,0 +1,10 @@
+Required image slots for project-details.html:
+- hero-factory.webp       : project hero / factory interior
+- product-01.webp         : product card 1
+- product-02.webp         : product card 2
+- product-03.webp         : product card 3
+- product-04.webp         : product card 4
+- system-diagram.webp     : technical system schematic
+- cta-hvac.webp           : CTA illustration / HVAC products
+
+These are intentionally not fabricated in Phase 1. Replace them with the real project assets.

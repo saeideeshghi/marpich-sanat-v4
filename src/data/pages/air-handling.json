@@ -1,0 +1,255 @@
+{
+  "search": {
+    "id": "product-search",
+    "title": "جستجوی پیشرفته محصولات",
+    "placeholder": "جستجو بر اساس مدل، شماره استاندارد یا مشخصات فنی...",
+    "filters": [
+      {
+        "name": "category",
+        "label": "دسته‌بندی محصول",
+        "options": [
+          {
+            "value": "",
+            "label": "دسته‌بندی / شکل"
+          },
+          {
+            "value": "ahu",
+            "label": "هواساز"
+          },
+          {
+            "value": "rooftop",
+            "label": "روف‌تاپ پکیج"
+          },
+          {
+            "value": "air-washer",
+            "label": "ایرواشر"
+          },
+          {
+            "value": "fan-coil",
+            "label": "فن‌کویل"
+          }
+        ]
+      },
+      {
+        "name": "material",
+        "label": "جنس محصول",
+        "options": [
+          {
+            "value": "",
+            "label": "متریال"
+          },
+          {
+            "value": "galvanized",
+            "label": "گالوانیزه"
+          },
+          {
+            "value": "aluminum",
+            "label": "آلومینیوم"
+          },
+          {
+            "value": "stainless",
+            "label": "استنلس استیل"
+          }
+        ]
+      },
+      {
+        "name": "dimensions",
+        "label": "ابعاد محصول",
+        "options": [
+          {
+            "value": "",
+            "label": "ابعاد / قطر"
+          },
+          {
+            "value": "small",
+            "label": "کوچک"
+          },
+          {
+            "value": "medium",
+            "label": "متوسط"
+          },
+          {
+            "value": "large",
+            "label": "بزرگ"
+          }
+        ]
+      },
+      {
+        "name": "pressure",
+        "label": "کلاس فشار",
+        "options": [
+          {
+            "value": "",
+            "label": "مشخصات / کلاس فشار"
+          },
+          {
+            "value": "low",
+            "label": "فشار پایین"
+          },
+          {
+            "value": "medium",
+            "label": "فشار متوسط"
+          },
+          {
+            "value": "high",
+            "label": "فشار بالا"
+          }
+        ]
+      }
+    ],
+    "chips": ["جنس فولاد ضدزنگ 316L", "ضخامت ۳ میلی‌متر", "فشار بالا"],
+    "variant": "air-handling"
+  },
+  "consultation": {
+    "id": "air-handling-consultation",
+    "eyebrow": "مشاوره مهندسی",
+    "title": "به یک راهکار سفارشی در صنعت خود نیاز دارید؟",
+    "description": "تیم مهندسی ما در طراحی راهکارهای سفارشی تهویه مطبوع برای چالش‌های منحصربه‌فرد صنعتی تخصص دارد. همین امروز با مهندسان ما صحبت کنید.",
+    "image": "/assets/images/products-page/consultation-system.png",
+    "imageAlt": "اجزای سیستم تهویه صنعتی",
+    "nameLabel": "نام و نام خانوادگی",
+    "namePlaceholder": "نام و نام خانوادگی",
+    "secondaryLabel": "نام شرکت",
+    "secondaryName": "company",
+    "secondaryType": "text",
+    "secondaryAutocomplete": "organization",
+    "secondaryPlaceholder": "نام شرکت",
+    "messageLabel": "توضیح نیاز پروژه",
+    "messagePlaceholder": "نیاز خود را توضیح دهید",
+    "submitText": "درخواست راهکار سفارشی"
+  },
+  "products": [
+    {
+      "image": "/assets/images/products-page/air-handling-unit.png",
+      "alt": "دستگاه هواساز صنعتی",
+      "category": "هواساز صنعتی",
+      "title": "دستگاه هواساز صنعتی",
+      "description": "واحد تهویه و تأمین هوای تازه برای پروژه‌های صنعتی با کنترل دقیق دما و رطوبت.",
+      "specs": ["دبی بالا", "فیلتر چندمرحله‌ای", "کنترل هوشمند"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول",
+      "variant": "air-handling"
+    },
+    {
+      "image": "/assets/images/products-page/air-handling-unit.png",
+      "alt": "هواساز هایژنیک",
+      "category": "هایژنیک",
+      "title": "هواساز هایژنیک",
+      "description": "طراحی بهداشتی برای فضاهای حساس با سطوح قابل شست‌وشو و فیلتراسیون پیشرفته.",
+      "specs": ["HEPA", "بدنه دوجداره", "قابل شست‌وشو"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول",
+      "variant": "air-handling"
+    },
+    {
+      "image": "/assets/images/products-page/rooftop-package-unit.png",
+      "alt": "روف‌تاپ پکیج یونیت",
+      "category": "روف‌تاپ پکیج",
+      "title": "روف‌تاپ پکیج یونیت",
+      "description": "پکیج یکپارچه سرمایش، گرمایش و تهویه برای نصب سریع روی بام پروژه‌های تجاری.",
+      "specs": ["نصب سریع", "راندمان بالا", "کنترل مرکزی"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول",
+      "variant": "air-handling"
+    },
+    {
+      "image": "/assets/images/products-page/featured-air-handling-unit.png",
+      "alt": "چیلر تراکمی صنعتی",
+      "category": "کنترل دما",
+      "title": "چیلر تراکمی صنعتی",
+      "description": "تأمین آب سرد پایدار برای سیستم‌های تهویه مرکزی با کنترل ظرفیت متناسب با بار.",
+      "specs": ["ظرفیت متنوع", "کنترل ظرفیت", "راندمان بالا"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول",
+      "variant": "air-handling"
+    },
+    {
+      "image": "/assets/images/products-page/centrifugal-fan.png",
+      "alt": "برج خنک‌کننده فایبرگلاس",
+      "category": "خنک‌کاری",
+      "title": "برج خنک‌کننده فایبرگلاس",
+      "description": "تجهیز خنک‌کاری مدار آب با بدنه مقاوم، مصرف انرژی مناسب و نگهداری ساده.",
+      "specs": ["بدنه FRP", "فن کم‌صدا", "مقاوم به خوردگی"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول",
+      "variant": "air-handling"
+    },
+    {
+      "image": "/assets/images/products-page/centrifugal-fan.png",
+      "alt": "اگزاست فن صنعتی",
+      "category": "کنترل حجم هوا",
+      "title": "اگزاست فن صنعتی",
+      "description": "فن تخلیه صنعتی برای مکش هوای آلوده و کنترل جریان در خطوط تهویه با کارکرد پیوسته.",
+      "specs": ["فشار بالا", "کارکرد مداوم", "بالانس دقیق"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول",
+      "variant": "air-handling"
+    },
+    {
+      "image": "/assets/images/products-page/volume-control-damper.png",
+      "alt": "ایرواشر",
+      "category": "تهویه مطبوع",
+      "title": "ایرواشر",
+      "description": "سیستم شست‌وشو و رطوبت‌زنی هوا برای افزایش کیفیت هوای ورودی و سرمایش تبخیری.",
+      "specs": ["رطوبت‌زنی", "شست‌وشوی هوا", "مصرف بهینه"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول",
+      "variant": "air-handling"
+    },
+    {
+      "image": "/assets/images/products-page/air-handling-unit.png",
+      "alt": "داکت اسپلیت صنعتی",
+      "category": "سیستم کانالی",
+      "title": "داکت اسپلیت صنعتی",
+      "description": "سیستم تهویه کانالی برای تأمین سرمایش و گرمایش یکنواخت در فضاهای متوسط و بزرگ.",
+      "specs": ["کانالی", "گرمایش و سرمایش", "کنترل زون"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول",
+      "variant": "air-handling"
+    },
+    {
+      "image": "/assets/images/products-page/roof-centrifugal-fan.png",
+      "alt": "هواساز پشت‌بامی اقتصادی",
+      "category": "توزیع هوا",
+      "title": "هواساز پشت‌بامی اقتصادی",
+      "description": "گزینه اقتصادی و کم‌حجم برای تأمین هوای تازه و تهویه پروژه‌های متوسط.",
+      "specs": ["کم‌حجم", "نصب روی بام", "نگهداری ساده"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول",
+      "variant": "air-handling"
+    },
+    {
+      "image": "/assets/images/products-page/air-handling-unit.png",
+      "alt": "پکیج تهویه پارکینگ",
+      "category": "تهویه پارکینگ",
+      "title": "پکیج تهویه پارکینگ",
+      "description": "پکیج تخصصی تخلیه آلاینده و مدیریت هوای پارکینگ با امکان اتصال به سیستم کنترل.",
+      "specs": ["کنترل CO", "دور متغیر", "کنترل مرکزی"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول",
+      "variant": "air-handling"
+    },
+    {
+      "image": "/assets/images/products-page/fresh-air-louver.png",
+      "alt": "یونیت هیتر",
+      "category": "گرمایش صنعتی",
+      "title": "یونیت هیتر",
+      "description": "تجهیز گرمایش موضعی برای سالن‌ها و فضاهای صنعتی با توزیع سریع هوای گرم.",
+      "specs": ["گرمایش سریع", "نصب دیواری", "ظرفیت متنوع"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول",
+      "variant": "air-handling"
+    },
+    {
+      "image": "/assets/images/products-page/rectangular-silencer.png",
+      "alt": "فن‌کویل سقفی توکار",
+      "category": "فن‌کویل",
+      "title": "فن‌کویل سقفی توکار",
+      "description": "فن‌کویل کم‌ارتفاع برای نصب در سقف کاذب و توزیع یکنواخت هوای مطبوع در فضا.",
+      "specs": ["کم‌ارتفاع", "صدای کم", "سرویس آسان"],
+      "href": "product-details.html",
+      "linkText": "مشاهده جزئیات محصول",
+      "variant": "air-handling"
+    }
+  ]
+}

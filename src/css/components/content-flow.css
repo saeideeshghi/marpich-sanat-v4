@@ -1,0 +1,269 @@
+/* Shared content flow and interaction rules. Component typography and small-screen
+ * geometry live in responsive.css; footer geometry lives in components/footer.css. */
+body {
+    font-size: 16px;
+    line-height: 1.8;
+}
+body[data-page] :is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), select, textarea) {
+    font-size: 16px;
+}
+main :is(p, h1, h2, h3, h4, li, dd) {
+    overflow-wrap: break-word;
+}
+main :is(button, a):focus-visible {
+    outline: 2px solid #2f75ab;
+    outline-offset: 3px;
+}
+
+/* Specification chips may wrap instead of squeezing full words into three tiny cells. */
+body[data-page]
+    :is(
+        .product-card__specs,
+        .industry-textile__product-specs,
+        .project-details__product-specs,
+        .industry-textile__product-tags,
+        .industry-textile__project-meta
+    ) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+body[data-page]
+    :is(
+        .product-card__specs,
+        .industry-textile__product-specs,
+        .project-details__product-specs,
+        .industry-textile__product-tags,
+        .industry-textile__project-meta
+    )
+    > span {
+    flex: 1 1 76px;
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.7;
+}
+.product-card__category {
+    max-width: calc(100% - 24px);
+    white-space: normal;
+    height: auto;
+}
+.product-card__link {
+    min-height: 36px;
+}
+.product-card__body {
+    min-width: 0;
+}
+
+body[data-page="home"] main .home-products-actions {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 14px;
+}
+body[data-page="home"] main .home-products-actions a {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 44px;
+    white-space: normal;
+    line-height: 1.7;
+    align-content: center;
+}
+body[data-page="home"] main .home-products-actions a:last-child {
+    justify-self: end;
+}
+body[data-page="home"] main .home-products-actions span {
+    display: inline;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+body[data-page="home"] main .home-products-actions i {
+    display: inline-block;
+    margin-inline-start: 4px;
+    vertical-align: middle;
+}
+@media (max-width: 1227px) {
+    body[data-page="home"] main .home-products-actions {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+    }
+    body[data-page="home"] main .home-products-actions a:last-child {
+        justify-self: start;
+    }
+}
+.projects-page__testimonials-subtitle {
+    min-width: 0;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+.projects-page__testimonials-subtitle p {
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+}
+
+/* Contact cards grow naturally with legible copy and touch-sized actions. */
+.branch-card__detail-row dd {
+    overflow-wrap: anywhere;
+}
+.branch-card a {
+    min-height: 44px;
+    height: auto;
+    padding-block: 8px;
+    white-space: normal;
+    line-height: 1.7;
+}
+.contact-control {
+    min-height: 44px;
+}
+body[data-page="home"] .home-product-category {
+    width: auto;
+    min-width: 72px;
+    max-width: calc(100% - 16px);
+    height: auto;
+    min-height: 26px;
+    padding: 4px 8px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    border-radius: 0.25rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.mobile-menu [data-nav][aria-current],
+.mobile-menu [data-nav][aria-current] span {
+    color: #79b6ed;
+}
+body[data-page] :is(.about-card-link__text, .about-gallery__link-text) {
+    border-bottom: 0;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Apply link decoration to the label, never to a sibling arrow/icon. */
+body[data-page] :is(a, button).site-text-link {
+    text-decoration: none;
+}
+body[data-page] :is(a, button).site-text-link > .site-text-link__label {
+    border-bottom: 0;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+}
+
+body[data-page] button.site-text-link {
+    border-bottom: 0;
+}
+
+/* Catalog load-more labels show one underline only while hovered. */
+body:is([data-page="products"], [data-page="air-handling"], [data-page="industries"])
+    button.catalog-more__button.site-text-link
+    > .site-text-link__label,
+body[data-page="articles"] .articles-load-more > button > .site-text-link__label {
+    border-bottom: 0;
+    text-decoration: none;
+}
+body:is([data-page="products"], [data-page="air-handling"], [data-page="industries"])
+    button.catalog-more__button.site-text-link:is(:hover, :focus-visible)
+    > .site-text-link__label,
+body[data-page="articles"] .articles-load-more > button:is(:hover, :focus-visible) > .site-text-link__label {
+    text-decoration: underline;
+}
+
+/* Home card actions reveal the label underline on hover or keyboard focus. */
+body[data-page="home"] main .site-text-link > .site-text-link__label {
+    text-decoration: none;
+}
+body[data-page="home"] main .site-text-link:is(:hover, :focus-visible) > .site-text-link__label {
+    text-decoration: underline;
+}
+body[data-page="home"] main .site-text-link--plain > .site-text-link__label {
+    text-decoration: none !important;
+}
+
+/* The copy and form share one centered column while the desktop layout is hidden. */
+@media (max-width: 1179px) {
+    body[data-page] [data-consultation] .site-consultation__copy :is(h2, p) {
+        text-align: center;
+        margin-inline: auto;
+    }
+    body[data-page] [data-consultation] .site-consultation__mobile-form {
+        margin-inline: auto;
+    }
+}
+
+/* Keep tablet consultation copy in the form's centered column, aligned with
+ * the input text rather than centering the individual lines. */
+@media (min-width: 559px) and (max-width: 1179px) {
+    body[data-page="home"] [data-consultation] .site-consultation__copy {
+        width: 100%;
+        max-width: 550px;
+        margin-inline: auto;
+        padding-inline: 12px;
+    }
+    body[data-page="home"] [data-consultation] .site-consultation__copy > :is(h2, p) {
+        text-align: right !important;
+        text-align-last: right !important;
+    }
+}
+@media (min-width: 640px) and (max-width: 767px) {
+    body[data-page="home"] [data-consultation] .site-consultation__copy {
+        padding-inline: 16px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1179px) {
+    body[data-page="home"] [data-consultation] .site-consultation__copy {
+        padding-inline: 20px;
+    }
+}
+@media (min-width: 767px) and (max-width: 1024px) {
+    body[data-page] [data-consultation] .site-consultation__copy {
+        width: 100%;
+        max-width: 550px;
+        margin-inline: auto;
+        padding-inline: 16px;
+    }
+    body[data-page] [data-consultation] .site-consultation__copy > :is(h2, p) {
+        text-align: right !important;
+        text-align-last: right !important;
+    }
+    body[data-page] .catalog-consultation__content > :is(h2, p) {
+        padding-inline: 16px;
+        text-align: right !important;
+        text-align-last: right !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    body[data-page] [data-consultation] .site-consultation__copy {
+        padding-inline: 20px;
+    }
+}
+
+/* Search fields share the surrounding panel color, including the enhanced
+ * catalog dropdowns. These selectors do not affect enquiry or contact fields. */
+body[data-page] .product-search .product-search__field-row,
+body[data-page] .articles-search .articles-search__field-row {
+    background-color: inherit;
+}
+body[data-page] .product-search :is(.product-search__input, .product-search__select, .product-search__dropdown-toggle),
+body[data-page] .articles-search .articles-search__input {
+    background-color: transparent;
+}
+
+@media (min-width: 1025px) and (max-width: 1493px) {
+    body[data-page] [data-consultation] .site-consultation__content > h2,
+    body[data-page] .catalog-consultation .catalog-consultation__title {
+        font-size: 31px;
+    }
+}
+
+/* The illustrated catalog CTA needs a smaller heading in this exact range. */
+@media (min-width: 1025px) and (max-width: 1480px) {
+    body[data-page] .catalog-consultation .catalog-consultation__title {
+        font-size: 22px;
+    }
+}

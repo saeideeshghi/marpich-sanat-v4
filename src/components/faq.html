@@ -1,0 +1,29 @@
+<!-- Shared template: faq. Content values come from src/data/pages at build time. -->
+<section
+    class="industry-textile__faq site-faq"
+    data-faq
+    data-faq-preview-count="3"
+    data-single-open="true"
+    aria-labelledby="{{id}}"
+>
+    <h2 id="{{id}}" class="industry-textile__section-title">{{title}}</h2>
+
+    <div id="{{id}}-list" class="industry-textile__faq-list"> {{{items}}} </div>
+
+    <button
+        class="industry-textile__faq-more site-text-link"
+        type="button"
+        data-faq-more
+        aria-expanded="false"
+        aria-controls="{{id}}-list"
+        hidden
+    >
+        <span class="site-text-link__label">{{linkText}}</span>
+        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+    </button>
+    <noscript
+        ><a class="industry-textile__faq-more site-text-link" href="{{href}}"
+            ><span class="site-text-link__label">{{linkText}}</span></a
+        ></noscript
+    >
+</section>

@@ -1,0 +1,582 @@
+/*
+ * Industries page
+ * Shared Header / Footer / Mobile Menu stay in common project files.
+ * Search / Filter and Consultation visuals come from src/css/components/catalog.css.
+ * This file keeps only Industries-specific layout and card behavior.
+ */
+
+.industries-page {
+    --industries-navy-color: #0f172b;
+    --industries-blue-color: #79b6ed;
+    --industries-search-button-color: #2f63a2;
+    --industries-orange-color: #f76e11;
+    --industries-page-background-color: #f4f7fc;
+    --industries-card-background-color: #ffffff;
+    --industries-border-color: #dce3ee;
+    --industries-muted-text-color: #64748b;
+    --industries-card-shadow: var(--shadow-card);
+
+    overflow: clip;
+    background: var(--industries-page-background-color);
+    color: var(--industries-navy-color);
+}
+
+.industries-hero > .site-container,
+.industries-main > .site-container {
+    width: min(calc(100% - 120px), 1320px);
+    max-width: none;
+    margin-inline: auto;
+    padding-inline: 0;
+}
+
+/* =========================================================
+   Hero
+   Shared animated header pattern is mounted by site-pattern.js.
+   ========================================================= */
+.industries-hero {
+    position: relative;
+    z-index: 2;
+    padding-top: 120px;
+    padding-bottom: 38px;
+    background: var(--industries-page-background-color);
+    color: #fff;
+}
+
+.industries-hero::before {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: -2;
+    height: 470px;
+    background: var(--industries-navy-color);
+    content: "";
+}
+
+.industries-hero__heading {
+    position: relative;
+    z-index: 1;
+    text-align: right;
+}
+
+.industries-hero__eyebrow {
+    margin: 0 0 8px;
+    color: var(--industries-blue-color);
+    font-size: var(--hero-eyebrow-font-size);
+    font-weight: 600;
+    line-height: 1.65;
+}
+
+.industries-hero__title {
+    max-width: 980px;
+    margin: 0;
+    font-size: var(--hero-title-font-size);
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+/* =========================================================
+   Main background
+   ========================================================= */
+.industries-main {
+    position: relative;
+    padding: 0 0 44px;
+    background:
+        linear-gradient(90deg, transparent 0 92%, rgb(121 182 237 / 0.035) 92% 92.15%, transparent 92.15%) 0 0 / 86px
+            100%,
+        var(--industries-page-background-color);
+}
+
+/* =========================================================
+   Featured mosaic
+   ========================================================= */
+.industries-featured {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    direction: ltr;
+    grid-template-rows: 200px 208px 196px;
+    gap: 16px;
+    padding-top: 64px;
+}
+
+.industry-feature {
+    position: relative;
+    min-width: 0;
+    direction: rtl;
+    text-align: right;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #dbe3ee;
+    isolation: isolate;
+}
+
+.industry-feature--textile {
+    grid-column: 8 / 13;
+    grid-row: 1 / 3;
+}
+
+.industry-feature--healthcare {
+    grid-column: 1 / 8;
+    grid-row: 1;
+}
+
+.industry-feature--petrochemical {
+    grid-column: 1 / 5;
+    grid-row: 2;
+}
+
+.industry-feature--pharma {
+    grid-column: 5 / 8;
+    grid-row: 2 / 4;
+}
+
+.industry-feature--laboratory {
+    grid-column: 8 / 13;
+    grid-row: 3;
+}
+
+.industry-feature--other {
+    grid-column: 1 / 5;
+    grid-row: 3;
+    background: rgb(255 255 255 / 0.84);
+    box-shadow: var(--shadow-card);
+}
+
+.industry-feature__image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.industry-feature__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: rgba(15, 23, 43, 0.57);
+    backdrop-filter: blur(0);
+}
+
+.industry-feature__content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    direction: rtl;
+    justify-content: flex-start;
+    padding: 24px 26px;
+    color: #fff;
+    text-align: right;
+}
+
+.industry-feature__content h2 {
+    margin: 0;
+    font-size: max(14px, clamp(21px, 1.8vw, 29px));
+    font-weight: 800;
+    line-height: 1.45;
+}
+
+.industry-feature__content p {
+    max-width: 98%;
+    margin: 8px 0 0;
+    color: rgb(255 255 255 / 0.95);
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+.industry-feature__link {
+    position: relative;
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    align-self: flex-start;
+    gap: 8px;
+    margin-top: 15px;
+    margin-inline-end: auto;
+    padding-bottom: 6px;
+    direction: rtl;
+    color: var(--industries-blue-color);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: right;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+}
+
+.industry-feature__link::after {
+    display: none;
+}
+
+.industry-feature__content--dark {
+    color: var(--industries-navy-color);
+}
+
+.industry-feature__content--dark p {
+    color: #475569;
+}
+
+.industry-feature__link--dark {
+    color: var(--industries-blue-color);
+}
+
+/* =========================================================
+   Catalog
+   ========================================================= */
+.industries-catalog {
+    padding-top: 60px;
+}
+
+.industries-catalog__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+    direction: rtl;
+}
+
+.industries-catalog__head h2 {
+    margin: 0;
+    color: var(--industries-navy-color);
+    font-size: 31px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.industries-page .view-switcher {
+    display: flex;
+    direction: ltr;
+    gap: 8px;
+}
+
+.industries-page .view-switcher__button {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 1px solid var(--industries-blue-color);
+    border-radius: 5px;
+    background: transparent;
+    color: var(--industries-blue-color);
+    font-size: 14px;
+    cursor: pointer;
+    transition:
+        background-color 160ms ease,
+        color 160ms ease;
+}
+
+.industries-page .view-switcher__button.is-active {
+    background: var(--industries-blue-color);
+    color: #fff;
+}
+
+.industries-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
+    direction: rtl;
+}
+
+/* Industry cards intentionally reuse the approved shared catalog card styles.
+   Markup in industries.html carries both industry-card and product-card classes.
+   Keep only Industries-specific layout in this file. */
+
+/* Anchor each photo to its own frame, including responsive and list layouts.
+ * Image dimensions must not participate in sizing the media container. */
+body[data-page="industries"] .industry-card__media {
+    position: relative;
+    min-width: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+body[data-page="industries"] .industry-card__media > .product-card__image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    padding: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Right-aligned text inside a badge, as well as a badge on the right edge. */
+body[data-page="industries"] .industry-card__tag {
+    inset-inline-start: 0;
+    inset-inline-end: auto;
+    justify-content: flex-start;
+    direction: rtl;
+    text-align: right;
+}
+
+.catalog-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 44px;
+    padding-bottom: 56px;
+}
+
+.catalog-more__button {
+    position: relative;
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    background: transparent;
+    padding: 0 0 6px;
+    color: #354158;
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* =========================================================
+   Consultation — local copy of approved CTA visual
+   ========================================================= */
+.industries-consultation {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    grid-template-areas: "content visual";
+    gap: 42px;
+    align-items: center;
+    min-height: 480px;
+    background: #cfeaff;
+    padding: 42px 56px;
+    direction: ltr;
+}
+
+/* =========================================================
+   Tablet
+   ========================================================= */
+@media (max-width: 73.6875rem) {
+    .industries-hero > .site-container,
+    .industries-main > .site-container {
+        width: min(calc(100% - 48px), 1080px);
+    }
+
+    .industries-hero {
+        padding-top: 118px;
+        padding-bottom: 32px;
+    }
+
+    .industries-hero::before {
+        height: 430px;
+    }
+
+    .industries-hero__eyebrow {
+        font-size: var(--hero-eyebrow-font-size);
+    }
+
+    .industries-hero__title {
+        font-size: var(--hero-title-font-size);
+    }
+
+    .industries-featured {
+        grid-template-rows: 175px 185px 175px;
+        gap: 12px;
+    }
+
+    .industries-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .industries-consultation {
+        min-height: 420px;
+        padding: 34px 38px;
+    }
+}
+
+/* =========================================================
+   Mobile
+   ========================================================= */
+@media (max-width: 48rem) {
+    .industries-hero > .site-container,
+    .industries-main > .site-container {
+        width: calc(100% - 24px);
+    }
+
+    .industries-hero {
+        padding-top: 104px;
+        padding-bottom: 24px;
+    }
+
+    .industries-hero::before {
+        height: 278px;
+    }
+
+    .industries-hero__heading {
+        padding-inline: 2px;
+    }
+
+    .industries-hero__eyebrow {
+        margin-bottom: 4px;
+        font-size: var(--hero-eyebrow-font-size);
+        line-height: 1.6;
+    }
+
+    .industries-hero__title {
+        max-width: 360px;
+        font-size: var(--hero-title-font-size);
+        line-height: 1.4;
+    }
+
+    /* Mobile mosaic matches the approved mobile reference. */
+    .industries-featured {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: 184px 132px 150px 145px 145px;
+        gap: 8px;
+    }
+
+    .industry-feature {
+        border-radius: 8px;
+    }
+
+    .industry-feature--textile {
+        grid-column: 1 / 3;
+        grid-row: 1;
+    }
+
+    .industry-feature--laboratory {
+        grid-column: 1 / 3;
+        grid-row: 2;
+    }
+
+    .industry-feature--healthcare {
+        grid-column: 1 / 3;
+        grid-row: 3;
+    }
+
+    .industry-feature--pharma {
+        grid-column: 1;
+        grid-row: 4 / 6;
+    }
+
+    .industry-feature--petrochemical {
+        grid-column: 2;
+        grid-row: 4;
+    }
+
+    .industry-feature--other {
+        grid-column: 2;
+        grid-row: 5;
+    }
+
+    .industry-feature__content {
+        justify-content: flex-start;
+        padding: 12px 12px 13px;
+    }
+
+    .industry-feature__content h2 {
+        font-size: 15px;
+    }
+
+    .industry-feature__content p {
+        margin-top: 4px;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .industry-feature__link {
+        gap: 5px;
+        margin-top: 7px;
+        padding-bottom: 4px;
+        font-size: 14px;
+    }
+
+    .industry-feature--pharma .industry-feature__content h2 {
+        font-size: 14px;
+    }
+
+    .industry-feature--pharma .industry-feature__content p,
+    .industry-feature--petrochemical .industry-feature__content p,
+    .industry-feature--other .industry-feature__content p {
+        font-size: 14px;
+    }
+
+    .industries-catalog {
+        padding-top: 30px;
+    }
+
+    .industries-catalog__head {
+        margin-bottom: 14px;
+    }
+
+    .industries-catalog__head h2 {
+        font-size: 19px;
+    }
+
+    .industries-page .view-switcher {
+        gap: 5px;
+    }
+
+    .industries-page .view-switcher__button {
+        width: 30px;
+        height: 30px;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    .industries-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    /* Catalog cards use responsive rules from src/css/components/catalog.css. */
+
+    .catalog-more {
+        margin-top: 28px;
+        padding-bottom: 34px;
+    }
+
+    .catalog-more__button {
+        gap: 7px;
+        font-size: 14px;
+    }
+
+    .industries-consultation {
+        grid-template-columns: 1fr;
+        grid-template-areas: "visual" "content";
+        gap: 12px;
+        min-height: 0;
+        margin-inline: -12px;
+        padding: 24px 16px 28px;
+    }
+}
+
+@media (max-width: 639px) {
+    body[data-page="industries"] #industries-catalog-title {
+        font-size: 22px;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 22.5rem) {
+    .industries-featured {
+        grid-template-rows: 170px 124px 142px 138px 138px;
+    }
+}
+
+/* A subtle photo zoom stays clipped inside the existing media frame. */
+.industries-page .industry-card .product-card__image,
+.industries-page .industry-feature__image {
+    transition: transform 320ms ease;
+}
+@media (hover: hover) {
+    .industries-page .industry-card:is(:hover, :focus-within) .product-card__image,
+    .industries-page .industry-feature:is(:hover, :focus-within) .industry-feature__image {
+        transform: scale(1.06);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .industries-page .industry-card .product-card__image,
+    .industries-page .industry-feature__image {
+        transition: none;
+        transform: none;
+    }
+}
