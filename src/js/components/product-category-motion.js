@@ -695,9 +695,7 @@ export function initProductCategoryMotion(root, options = {}) {
         const expandedBackground = win.getComputedStyle(expanded).backgroundColor;
         const expandedShadow = win.getComputedStyle(expanded).boxShadow;
         expanded.classList.add("pcm-morphing");
-        back.hidden = false;
         hint.hidden = true;
-        if (overlayToolbar) toolbar.hidden = false;
         const last = expanded.getBoundingClientRect(),
             lastImage = paintedImageRect(image, info.sourceImage);
         if (photo) image.style.visibility = "hidden";
@@ -1031,11 +1029,9 @@ export function initProductCategoryMotion(root, options = {}) {
             peers.clear();
         }
         const count = await productsTask;
-        back.hidden = true;
         hint.hidden = false;
         active = null;
         root.dataset.pcmState = "all";
-        if (overlayToolbar) toolbar.hidden = true;
         status.textContent = "همه دسته‌بندی‌ها و محصولات نمایش داده شدند.";
         emit("change", { categoryId: null, count, state: "all" });
     }
@@ -1047,6 +1043,10 @@ export function initProductCategoryMotion(root, options = {}) {
             if (to !== null) await open(to);
         },
         onBusy: (busy) => {
+            if (busy) {
+                back.hidden = true;
+                if (overlayToolbar) toolbar.hidden = true;
+            }
             stage.setAttribute("aria-busy", String(busy));
             results.setAttribute("aria-busy", String(busy));
             emit("busy", { busy });
@@ -1054,6 +1054,8 @@ export function initProductCategoryMotion(root, options = {}) {
         onError: (error) => emit("error", { message: error.message }),
         onIdle: (id) => {
             applyAppearance();
+            back.hidden = id === null || disposed;
+            if (overlayToolbar) toolbar.hidden = back.hidden;
             const currentFocus = doc.activeElement;
             const restore = currentFocus === doc.body || currentFocus === back || grid.contains(currentFocus);
             const target = id ? back : categoryInfo.get(lastSelected)?.card.querySelector("[data-pcm-select]");

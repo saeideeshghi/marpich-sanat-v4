@@ -36,7 +36,7 @@ body[data-page]
 body[data-page="about"] .about-certificate-card__caption span {
     color: #276ca8;
 }
-body[data-page] [data-consultation] h2 .text-brand-orange {
+body[data-page]:not([data-page="home"]) [data-consultation] h2 .text-brand-orange {
     color: #a54906;
 }
 body[data-page] [data-consultation] .site-consultation__benefit {
