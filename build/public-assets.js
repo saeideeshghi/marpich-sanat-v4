@@ -3,6 +3,7 @@ import { basename, resolve, relative, sep } from "node:path";
 import { randomUUID } from "node:crypto";
 import { prepareCertificatePhotos } from "./certificate-assets.js";
 import { prepareGalleryPhoto } from "./gallery-assets.js";
+import { prepareExpertisePhotos } from "./expertise-assets.js";
 
 export const hasCredentialMaterial = (text) =>
     /-----BEGIN (?:RSA |EC |OPENSSH |ENCRYPTED )?PRIVATE KEY-----|-----BEGIN PGP (?:PRIVATE KEY BLOCK)-----|(?:AKIA|ASIA)[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{60,}/.test(
@@ -100,5 +101,6 @@ export function preparePublicAssets(root) {
         cpSync(nativePublic, destination, { recursive: true, filter: (path) => basename(path) !== ".gitkeep" });
     prepareCertificatePhotos(destination);
     prepareGalleryPhoto(destination);
+    prepareExpertisePhotos(destination);
     return destination;
 }

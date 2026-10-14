@@ -13,10 +13,6 @@
 }
 .expertise-page__card {
     --expertise-artwork-ratio: 1311 / 303;
-    --expertise-image-left: -0.7628%;
-    --expertise-image-top: -1.9802%;
-    --expertise-image-width: 101.5256%;
-    --expertise-image-height: 106.6007%;
     overflow: hidden;
     border-radius: var(--card-radius);
     background: #fff;
@@ -63,15 +59,14 @@ body[data-page="expertise"] .expertise-page__card.is-open .expertise-page__artwo
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
 }
-/* Crop the thin edge baked into the artwork as well as removing the CSS
- * shadow. A two-pixel bleed stays inside the existing clipping frame. */
+/* The build provides the photograph without the exported shadow/corner mask.
+ * Fit it exactly to the same frame that clips the gradient. */
 .expertise-page__media-image {
     position: absolute;
-    left: calc(var(--expertise-image-left) - 2px);
-    top: calc(var(--expertise-image-top) - 2px);
-    width: calc(var(--expertise-image-width) + 4px);
+    inset: 0;
+    width: 100%;
     max-width: none;
-    height: calc(var(--expertise-image-height) + 4px);
+    height: 100%;
     object-fit: cover;
     object-position: center;
 }
@@ -84,28 +79,18 @@ body[data-page="expertise"] .expertise-page__card.is-open .expertise-page__artwo
     contain: paint;
 }
 .expertise-page__media-image--flip {
-    left: auto;
-    right: calc(var(--expertise-image-left) - 2px);
     transform: scaleX(-1);
 }
 /* Mirror only the cropped photograph. Its frame and authored gradient stay
  * fixed, and opening the details never changes the photo's scale. */
 body[data-page="expertise"] #field-assessment {
     --expertise-artwork-ratio: 1271 / 303;
-    --expertise-image-left: -0.7868%;
-    --expertise-image-width: 104.7207%;
 }
 body[data-page="expertise"] #advanced-production {
     --expertise-artwork-ratio: 1308 / 303;
-    --expertise-image-left: -0.7645%;
-    --expertise-image-top: 0%;
-    --expertise-image-width: 100.9939%;
-    --expertise-image-height: 100%;
 }
 body[data-page="expertise"] #site-execution {
     --expertise-artwork-ratio: 1310 / 303;
-    --expertise-image-left: -0.8397%;
-    --expertise-image-width: 101.6031%;
 }
 .expertise-page__media-content {
     position: relative;
@@ -222,14 +207,6 @@ body[data-page="expertise"]
 .expertise-page__project-cta:hover {
     background: #f76e11;
     color: #fff;
-}
-@media (min-width: 1180px) {
-    /* Keep the photograph behind the white frame at its antialiased corners,
-     * so the baked shadow cannot form a dark outline along the card edge. */
-    .expertise-page__artwork {
-        inset: 1px;
-        border-radius: calc(var(--card-radius) - 1px);
-    }
 }
 @media (max-width: 1179px) {
     /* Stack the caption below the photograph; its overlay stays inside the

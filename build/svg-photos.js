@@ -17,15 +17,29 @@ export function isSvgPhoto(url, text) {
 }
 
 export async function responsiveSvgPhoto(source, url, metadata, publicRoot, cache) {
-    const version = createHash("sha256").update(source).update("svg-photo-lossless-v1").digest("hex").slice(0, 12);
+    const cleanExpertisePhoto = source.toString("utf8").includes('data-expertise-photo="true"');
+    const version = createHash("sha256")
+        .update(source)
+        .update(cleanExpertisePhoto ? "expertise-photo-lossless-v1" : "svg-photo-lossless-v1")
+        .digest("hex")
+        .slice(0, 12);
     const fullWidth = metadata.width;
     const maximum = Math.max(1920, fullWidth * 2);
     const widths = [...new Set([fullWidth, ...[480, 720, 960, 1440, 1920].filter((width) => width < maximum)])];
     const variants = [];
+    // Fractional SVG densities round the canvas height up, leaving a transparent
+    // last row. Rasterize these opaque photo frames once at an integer scale,
+    // then resize their pixels. Other SVG artwork retains its original alpha.
+    let photo;
     for (const width of widths.sort((a, b) => a - b)) {
         const path = resolve(cache, `svg-${version}-${width}w.webp`);
         if (!existsSync(path)) {
-            const bytes = await sharp(source, { density: (72 * width) / fullWidth, limitInputPixels: 40000000 })
+            if (cleanExpertisePhoto && !photo)
+                photo = await sharp(source, { density: 144, limitInputPixels: 40000000 }).png().toBuffer();
+            const bytes = await sharp(photo || source, {
+                density: (72 * width) / fullWidth,
+                limitInputPixels: 40000000,
+            })
                 .resize({ width })
                 .webp({ lossless: true, effort: 4 })
                 .toBuffer();

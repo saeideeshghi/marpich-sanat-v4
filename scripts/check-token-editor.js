@@ -16,7 +16,12 @@ for (const token of tokens) {
     if (!token.editable) assert.throws(() => normalizeTokenValue(token.name, "24px"));
 }
 assert.equal(normalizeTokenValue("--site-gutter", "۲۴"), "24px");
-assert.equal(normalizeTokenValue("--expertise-image-left", "-8%"), "-8%");
+assert.equal(normalizeTokenValue("--hero-summary-overlap-desktop", "-8%"), "-8%");
+for (const name of ["left", "top", "width", "height"])
+    assert.throws(
+        () => normalizeTokenValue(`--expertise-image-${name}`, "-8%"),
+        "Obsolete photo cropping controls are removed",
+    );
 assert.equal(normalizeTokenValue("--hero-title-line-height", 1.8), "1.8");
 for (const invalid of [
     "24px; color: red",

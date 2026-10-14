@@ -4,10 +4,55 @@ import { preparePublicAssets, cleanupPublicAssets } from "../build/public-assets
 import { optimizePublicAssets } from "../build/optimized-assets.js";
 import { pages } from "../build/pages.js";
 import { renderPage } from "../build/html-partials.js";
+import assert from "node:assert/strict";
+import sharp from "sharp";
+import { expertisePhoto } from "../build/expertise-assets.js";
 
 const root = resolve(import.meta.dirname, "..");
 const publicRoot = preparePublicAssets(root);
-await optimizePublicAssets(root, publicRoot);
+for (const name of [
+    "assessment-consulting",
+    "engineering-design",
+    "advanced-manufacturing",
+    "site-project-management",
+    "testing-commissioning",
+]) {
+    const filename = `${name}.svg`;
+    const original = readFileSync(resolve(root, "assets/images/expertise", filename), "utf8");
+    const photo = readFileSync(resolve(publicRoot, "assets/images/expertise", filename), "utf8");
+    assert.notEqual(photo, original, `${filename}: exported frame must be removed`);
+    assert(!/<filter\b|<mask\b|\brx=|shape-rendering=/.test(photo), "No exported shadow or rounded pixel boundary");
+    const embeddedImage = (svg) => svg.match(/<image\b[^>]*\/>/)[0];
+    const pattern = (svg) => svg.match(/<pattern\b[^>]*>[\s\S]*?<\/pattern>/)[0];
+    assert.equal(embeddedImage(photo), embeddedImage(original), "Original photograph bytes are unchanged");
+    assert.equal(pattern(photo), pattern(original), "Original photograph transform is unchanged");
+    assert.equal(expertisePhoto(photo, filename), photo, "Preparation must be idempotent");
+    assert.equal(expertisePhoto(original, "custom.svg"), original, "Unrelated artwork is preserved");
+    const custom = '<svg viewBox="0 0 500 300"><image href="owner-photo.png"/></svg>';
+    assert.equal(expertisePhoto(custom, filename), custom, "Custom artwork is preserved");
+    const pixels = await sharp(Buffer.from(photo)).ensureAlpha().raw().toBuffer();
+    for (let index = 3; index < pixels.length; index += 4)
+        assert.equal(pixels[index], 255, `${filename}: transparent gutters or rounded edges remain`);
+    assert.equal(readFileSync(resolve(root, "assets/images/expertise", filename), "utf8"), original);
+}
+console.log("PASS: all five expertise photographs have opaque edges, original photo pixels and no baked frame.");
+const optimized = await optimizePublicAssets(root, publicRoot);
+for (const [url, sources] of Object.entries(optimized.responsiveMap)) {
+    if (!url.startsWith("/assets/images/expertise/") || !url.endsWith(".svg")) continue;
+    const svg = readFileSync(resolve(publicRoot, url.slice(1)), "utf8");
+    if (!svg.includes('data-expertise-photo="true"')) continue;
+    for (const source of sources.split(", ")) {
+        const variant = source.split(" ")[0];
+        if (!variant.endsWith(".webp")) continue;
+        const pixels = await sharp(readFileSync(resolve(publicRoot, variant.slice(1))))
+            .ensureAlpha()
+            .raw()
+            .toBuffer();
+        let minimum = 255;
+        for (let index = 3; index < pixels.length; index += 4) minimum = Math.min(minimum, pixels[index]);
+        assert.equal(minimum, 255, `${variant}: responsive encoding must not reintroduce transparent edges`);
+    }
+}
 const references = new Set();
 
 function collectReferences(source) {

@@ -428,40 +428,6 @@
     "editable": true,
     "property": "aspect-ratio"
   },
-  "--expertise-image-height": {
-    "kind": "length",
-    "selectors": [".expertise-page__card", "body[data-page=\"expertise\"] #advanced-production"],
-    "editable": true,
-    "property": "width"
-  },
-  "--expertise-image-left": {
-    "kind": "length",
-    "selectors": [
-      ".expertise-page__card",
-      "body[data-page=\"expertise\"] #field-assessment",
-      "body[data-page=\"expertise\"] #advanced-production",
-      "body[data-page=\"expertise\"] #site-execution"
-    ],
-    "editable": true,
-    "property": "margin-left"
-  },
-  "--expertise-image-top": {
-    "kind": "length",
-    "selectors": [".expertise-page__card", "body[data-page=\"expertise\"] #advanced-production"],
-    "editable": true,
-    "property": "margin-left"
-  },
-  "--expertise-image-width": {
-    "kind": "length",
-    "selectors": [
-      ".expertise-page__card",
-      "body[data-page=\"expertise\"] #field-assessment",
-      "body[data-page=\"expertise\"] #advanced-production",
-      "body[data-page=\"expertise\"] #site-execution"
-    ],
-    "editable": true,
-    "property": "width"
-  },
   "--font-peyda": {
     "kind": "font",
     "selectors": [],
