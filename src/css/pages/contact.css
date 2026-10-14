@@ -619,14 +619,7 @@ textarea.contact-control {
 }
 .contact-intro h1 {
     margin-top: 20px;
-    font-size: var(--hero-title-font-size);
     font-weight: 800;
-    line-height: 1.55;
-}
-body[data-page="contact"] .contact-intro p.site-prose {
-    max-width: none;
-    font-size: var(--hero-description-font-size);
-    line-height: 1.9;
 }
 .contact-branches {
     margin-top: 24px;
@@ -707,10 +700,6 @@ body[data-page="contact"] .contact-benefits .benefit-item :is(h3, p) {
     }
     .contact-intro h1 {
         margin-top: 12px;
-        font-size: var(--hero-title-font-size);
-    }
-    body[data-page="contact"] .contact-intro p.site-prose {
-        font-size: var(--hero-description-font-size);
     }
     .contact-branches {
         width: min(calc(100% - 40px), 760px);
@@ -761,10 +750,6 @@ body[data-page="contact"] .contact-benefits .benefit-item :is(h3, p) {
 @media (max-width: 639px) {
     .contact-intro {
         padding-top: 132px;
-    }
-    .contact-intro h1 {
-        font-size: var(--hero-title-font-size);
-        line-height: 1.65;
     }
     .contact-branches {
         gap: 16px;
@@ -982,11 +967,7 @@ body[data-page="contact"] .contact-cooperation__icon {
     display: block;
     width: 44px;
     height: 44px;
-    color: #6586d7;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    object-fit: contain;
 }
 
 body[data-page="contact"] .contact-cooperation__item h3 {

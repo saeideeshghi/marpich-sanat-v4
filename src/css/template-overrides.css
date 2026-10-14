@@ -580,11 +580,6 @@ body[data-page="product-details"] .catalog-consultation__accent {
 }
 }
 @media (min-width: 640px) and (max-width: 1179px) {
-body[data-page="contact"] #contact-title {
-    font-size: 33px !important;
-}
-}
-@media (min-width: 640px) and (max-width: 1179px) {
 body[data-page="about"] .about-gallery__content > p.site-prose {
     font-size: 13px !important;
 }
@@ -786,11 +781,6 @@ body[data-page="product-details"] .extras-panel__content > ul > li:nth-of-type(2
 @media (max-width: 639px) {
 body[data-page="product-details"] #product-details-consultation-title {
     font-size: 16px !important;
-}
-}
-@media (max-width: 639px) {
-body[data-page="contact"] #contact-title {
-    font-size: 20px !important;
 }
 }
 @media (max-width: 639px) {

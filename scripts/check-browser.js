@@ -162,6 +162,34 @@ try {
         }
     }
     report.features.catalogConsultationAlignment = true;
+    for (const width of [320, 390, 639, 640, 767, 1024, 1179, 1180, 1920, 2560]) {
+        await navigate("contact.html", width);
+        const hero = await evaluate(`(() => {
+            const size = selector => parseFloat(getComputedStyle(document.querySelector(selector)).fontSize);
+            return {
+                eyebrow: size('.contact-hero .site-hero__eyebrow'),
+                title: size('.contact-hero .site-hero__title'),
+                description: size('.contact-hero .site-hero__description'),
+                overflow: document.documentElement.scrollWidth - innerWidth,
+            };
+        })()`);
+        const desktop = width >= 1180;
+        assert.equal(hero.eyebrow, desktop ? 28 : 20, `Contact hero eyebrow at ${width}px`);
+        assert.equal(hero.title, desktop ? 42 : width >= 640 ? 38 : 25, `Contact hero title at ${width}px`);
+        assert.equal(hero.description, desktop ? 22 : 18, `Contact hero description at ${width}px`);
+        assert(hero.overflow <= 1, `Contact page has no horizontal overflow at ${width}px`);
+    }
+    await evaluate(
+        "document.querySelector('.contact-cooperation').scrollIntoView({behavior:'instant',block:'center'})",
+    );
+    await waitFor(
+        "[...document.querySelectorAll('img.contact-cooperation__icon')].length===2 && [...document.querySelectorAll('img.contact-cooperation__icon')].every(image => image.complete && image.naturalWidth>0)",
+    );
+    const cooperationIcons = await evaluate(
+        "[...document.querySelectorAll('img.contact-cooperation__icon')].map(image => new URL(image.currentSrc).pathname.split('/').pop())",
+    );
+    assert.deepEqual(cooperationIcons, ["fluent_people.svg", "healthicons_construction-worker-.svg"]);
+    report.features.contactHeroAndCooperationIcons = true;
     await navigate("product-details.html", 1180);
     const productPosition = await evaluate(
         "(()=>{const box=document.querySelector('.product-details__summary'),content=document.querySelector('.product-details__content');return {shift:new DOMMatrix(getComputedStyle(box).transform).m42,gap:content.getBoundingClientRect().top-box.getBoundingClientRect().bottom,expectedGap:parseFloat(getComputedStyle(content).marginTop)}})()",

@@ -1141,18 +1141,6 @@
       "breakpoint": "mobile",
       "target": {
         "kind": "element",
-        "selector": "#contact-title",
-        "label": "عنوان اصلی · در کنار شما برای ارائه راهکارهای"
-      },
-      "properties": {
-        "font-size": 20
-      }
-    },
-    {
-      "page": "contact",
-      "breakpoint": "mobile",
-      "target": {
-        "kind": "element",
         "selector": ".contact-branches > article.branch-card:nth-of-type(1) > div > div:nth-of-type(2) > a.contact-whatsapp:nth-of-type(1) > span.site-card__cta-label",
         "label": "متن / آیکون · گفت‌وگو در واتساپ"
       },
@@ -1194,18 +1182,6 @@
       },
       "properties": {
         "font-size": 16
-      }
-    },
-    {
-      "page": "contact",
-      "breakpoint": "tablet",
-      "target": {
-        "kind": "element",
-        "selector": "#contact-title",
-        "label": "عنوان اصلی · در کنار شما برای ارائه راهکارهای"
-      },
-      "properties": {
-        "font-size": 33
       }
     },
     {
