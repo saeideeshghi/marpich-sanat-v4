@@ -145,11 +145,25 @@ npm run publish:github -- --release-tag v4.0.1
 - [تنظیم GitHub Actions برای Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 - [مسیر Base و انتشار Vite روی Pages](https://vite.dev/guide/static-deploy.html#github-pages)
 
-## ?????? ???? ???? ?? V3 ?? V4
+## انتقال مخزن از V3 به V4
 
-??? ????? ???? ???????? ???? marpich-sanat-v3 ?????? ????? ????? ?? package.json ?????? ??????. ???? ?????? ???? ???? checkout? ?? ?? ???? ???? ????? ????? ??? origin ?? ????? ?????? ? ???? ???? ?? ?? ??? previous-origin ??? ??????:
+برای انتقال پوشهٔ متصل به مخزن قبلی، دستور زیر مقصد جدید را تنظیم و مقصد قبلی را با نام `previous-origin` حفظ می‌کند. این مرحله برای مخزنی که از قبل به V4 متصل است لازم نیست:
 
 ```powershell
 npm run github:setup -- --repo saeideeshghi/marpich-sanat-v4 --replace-origin
 npm run publish:github -- --release-tag v4.0.0
 ```
+
+## ثبت نسخه‌های بعدی
+
+تغییرات روزانه با Commit ثبت می‌شوند. برای نسخهٔ قابل ارجاع، نسخهٔ `package.json` و نسخهٔ ریشهٔ `package-lock.json` را هماهنگ کن، تغییرات را در `CHANGELOG.md` بنویس و با یک Tag تازه منتشر کن. اصلاح باگ مانند این تغییر، نسخهٔ `4.0.1` می‌گیرد؛ قابلیت جدید سازگار، `4.1.0` و تغییر ناسازگار، `5.0.0`.
+
+```powershell
+npm run publish:github -- --release-tag v4.0.1
+```
+
+در GitHub از **Releases → Draft a new release** همان Tag را انتخاب و توضیحات نسخه را ثبت کن. Tagهای منتشرشده را جابه‌جا یا بازنویسی نکن؛ هر اصلاح بعدی نسخهٔ تازه می‌گیرد. برای بازگشت سایت به نسخه‌ای قبلی، تغییر را با یک Commit بازگردان تا سابقهٔ نسخه‌ها حفظ شود.
+
+## فایل‌های قابل ثبت در Git
+
+`.gitignore` باید داخل مخزن باشد تا همهٔ اعضا قواعد یکسان داشته باشند. `.env.example` فقط نمونهٔ بدون اطلاعات محرمانه است و ثبت می‌شود. فایل واقعی `.env` و انواع `.env.*`، کلیدهای خصوصی، `node_modules`، `dist`، `.cache` و فایل‌های فشردهٔ محلی نادیده گرفته می‌شوند؛ GitHub Actions خروجی سایت را جداگانه می‌سازد و منتشر می‌کند. قواعد Ignore فایل‌هایی را که قبلاً ثبت شده‌اند از سابقه حذف نمی‌کنند.

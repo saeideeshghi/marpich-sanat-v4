@@ -119,6 +119,49 @@ try {
         ),
     );
     report.features.cardLinks = true;
+    for (const filename of ["products.html", "air-handling.html", "product-details.html", "industry-textile.html"]) {
+        for (const width of [766, 767, 900, 1024, 1025]) {
+            await navigate(filename, width);
+            const alignment = await evaluate(`(() => {
+                const content = document.querySelector('.catalog-consultation__content');
+                const field = content.querySelector('.catalog-consultation__field');
+                const style = getComputedStyle(field);
+                const fieldRight = field.getBoundingClientRect().right - parseFloat(style.paddingRight) - parseFloat(style.borderRightWidth);
+                const texts = [...content.querySelectorAll(':scope > h2, :scope > p')].map(element => {
+                    const style = getComputedStyle(element);
+                    return {
+                        right: element.getBoundingClientRect().right - parseFloat(style.paddingRight),
+                        align: style.textAlign,
+                        last: style.textAlignLast,
+                    };
+                });
+                const form = content.querySelector('form').getBoundingClientRect();
+                const box = content.getBoundingClientRect();
+                return {
+                    fieldRight, texts,
+                    accentRight: content.querySelector('.catalog-consultation__accent').getBoundingClientRect().right,
+                    centerOffset: (form.left + form.right - box.left - box.right) / 2,
+                    overflow: document.documentElement.scrollWidth - innerWidth,
+                };
+            })()`);
+            assert(alignment.overflow <= 1, `${filename} at ${width}px: horizontal overflow`);
+            if (width < 767 || width > 1024) continue;
+            assert(Math.abs(alignment.centerOffset) < 0.1, `${filename}: consultation form stays centered`);
+            for (const text of alignment.texts) {
+                assert.equal(text.align, "right", `${filename}: consultation text alignment`);
+                assert.equal(text.last, "right", `${filename}: consultation last line alignment`);
+                assert(
+                    Math.abs(text.right - alignment.fieldRight) < 0.1,
+                    `${filename}: text and input share their right edge`,
+                );
+            }
+            assert(
+                Math.abs(alignment.accentRight - alignment.fieldRight) < 0.1,
+                `${filename}: accent shares the text edge`,
+            );
+        }
+    }
+    report.features.catalogConsultationAlignment = true;
     await navigate("product-details.html", 1180);
     const productPosition = await evaluate(
         "(()=>{const box=document.querySelector('.product-details__summary'),content=document.querySelector('.product-details__content');return {shift:new DOMMatrix(getComputedStyle(box).transform).m42,gap:content.getBoundingClientRect().top-box.getBoundingClientRect().bottom,expectedGap:parseFloat(getComputedStyle(content).marginTop)}})()",

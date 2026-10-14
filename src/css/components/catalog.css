@@ -593,20 +593,33 @@
     .catalog-consultation__visual {
         display: none;
     }
-    .catalog-consultation__content {
-        width: min(100%, 660px);
+    body[data-page] .catalog-consultation__content {
+        width: min(100%, 600px);
         margin-inline: auto;
-        text-align: center;
+        text-align: right;
+    }
+    body[data-page] .catalog-consultation__content > :is(h2, p) {
+        width: 100%;
+        max-width: none;
+        /* Match the fields' 16px padding plus their 1px border. */
+        padding-inline: 17px;
+    }
+    /* Layered important declarations outrank the customizer's unlayered
+     * generic prose rule without inflating selector specificity. */
+    @layer components {
+        body[data-page] .catalog-consultation__content > :is(h2, p) {
+            text-align: right !important;
+            text-align-last: right !important;
+        }
     }
     body[data-page] .catalog-consultation .catalog-consultation__description {
-        margin-inline: auto;
-        text-align: center;
+        margin-inline: 0;
     }
-    .catalog-consultation__accent {
-        margin-inline: auto;
+    body[data-page] .catalog-consultation__accent {
+        margin-inline: 17px 0;
     }
     .catalog-consultation__form {
-        width: min(100%, 600px);
+        width: 100%;
         margin-inline: auto;
     }
 }

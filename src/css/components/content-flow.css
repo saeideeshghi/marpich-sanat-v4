@@ -231,11 +231,6 @@ body[data-page="home"] main .site-text-link--plain > .site-text-link__label {
         text-align: right !important;
         text-align-last: right !important;
     }
-    body[data-page] .catalog-consultation__content > :is(h2, p) {
-        padding-inline: 16px;
-        text-align: right !important;
-        text-align-last: right !important;
-    }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
     body[data-page] [data-consultation] .site-consultation__copy {
