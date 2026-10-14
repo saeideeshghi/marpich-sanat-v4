@@ -15,12 +15,7 @@ main :is(button, a):focus-visible {
     outline-offset: 3px;
 }
 
-/* Small labels need readable text while retaining the existing brand surfaces. */
-body[data-page]
-    main
-    :is(.home-product-category, .article-card__category, .industry-card__tag, .product-card__category) {
-    color: #0f172b;
-}
+/* Text links retain their own brand surfaces; image badges keep page-owned colours. */
 body[data-page]
     main
     :is(
@@ -35,9 +30,6 @@ body[data-page]
 }
 body[data-page="about"] .about-certificate-card__caption span {
     color: #276ca8;
-}
-body[data-page] [data-consultation] .site-consultation__benefit {
-    color: #536274;
 }
 
 /* Specification chips may wrap instead of squeezing full words into three tiny cells. */
@@ -224,60 +216,42 @@ body[data-page="home"] main .site-text-link--plain > .site-text-link__label {
 /* Keep tablet consultation copy in the form's centered column, aligned with
  * the input text rather than centering the individual lines. */
 @media (min-width: 559px) and (max-width: 1179px) {
-    body[data-page="home"] [data-consultation] .site-consultation__copy {
-        width: 100%;
-        max-width: 550px;
-        margin-inline: auto;
-        padding-inline: 12px;
-    }
-    body[data-page="home"] [data-consultation] .site-consultation__copy > :is(h2, p) {
-        text-align: right !important;
-        text-align-last: right !important;
-    }
-}
-@media (min-width: 640px) and (max-width: 767px) {
-    body[data-page="home"] [data-consultation] .site-consultation__copy {
-        padding-inline: 16px;
-    }
-}
-@media (min-width: 768px) and (max-width: 1179px) {
-    body[data-page="home"] [data-consultation] .site-consultation__copy {
-        padding-inline: 20px;
-    }
-}
-@media (min-width: 767px) and (max-width: 1024px) {
     body[data-page] [data-consultation] .site-consultation__copy {
         width: 100%;
         max-width: 550px;
         margin-inline: auto;
-        padding-inline: 16px;
+        padding-inline: 12px;
     }
     body[data-page] [data-consultation] .site-consultation__copy > :is(h2, p) {
         text-align: right !important;
         text-align-last: right !important;
     }
 }
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 640px) and (max-width: 767px) {
+    body[data-page] [data-consultation] .site-consultation__copy {
+        padding-inline: 16px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1179px) {
     body[data-page] [data-consultation] .site-consultation__copy {
         padding-inline: 20px;
     }
 }
-
-/* On small home screens the complete copy shares the form's outer edge. */
+/* Every instance uses the approved home layout on compact screens. */
 @media (max-width: 576px) {
-    body[data-page="home"] [data-consultation] .site-consultation__copy {
+    body[data-page] [data-consultation] .site-consultation__copy {
         width: 100%;
         max-width: 550px;
         margin-inline: auto;
         padding-inline: 0;
     }
-    body[data-page="home"] [data-consultation] .site-consultation__copy > :is(h2, p) {
+    body[data-page] [data-consultation] .site-consultation__copy > :is(h2, p) {
         width: 100%;
         max-width: none;
         padding-inline: 0;
     }
     @layer components {
-        body[data-page="home"] [data-consultation] .site-consultation__copy > :is(h2, p) {
+        body[data-page] [data-consultation] .site-consultation__copy > :is(h2, p) {
             text-align: right !important;
             text-align-last: right !important;
         }

@@ -60,19 +60,15 @@ export function renderComponent(name, data, root) {
                     )
                     .join("\n"),
             });
-        case "consultation":
-            // Keep each icon and label together when structured benefits wrap.
-            // Existing string content continues to pass through HTML escaping.
+        case "consultation": {
+            // Both supported data shapes use the same approved text layout.
+            const benefits = Array.isArray(data.benefits)
+                ? data.benefits.map((label) => `✓ ${label}`).join(" ")
+                : data.benefits;
             return render(name, data, {
-                benefits: Array.isArray(data.benefits)
-                    ? data.benefits
-                          .map(
-                              (label) =>
-                                  `<span class="site-consultation__benefit"><span class="site-consultation__benefit-icon" aria-hidden="true">✓</span><span>${e(label)}</span></span>`,
-                          )
-                          .join(" ")
-                    : e(data.benefits),
+                benefits: e(benefits),
             });
+        }
         case "catalog-consultation":
             return render(name, data);
         case "product-cards":

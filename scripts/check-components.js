@@ -47,6 +47,18 @@ assert(product.includes("product-card__category site-card__media-tag"));
 assert(product.includes("product-card__spec site-card__meta-tag"));
 assert(!product.includes("site-card__tag"));
 assert(one.includes("site-faq__answer"));
+const consultation = JSON.parse(readFileSync(resolve(root, "src/data/pages/home.json"), "utf8")).consultation;
+const aboutBenefits = JSON.parse(readFileSync(resolve(root, "src/data/pages/about.json"), "utf8")).consultation
+    .benefits;
+assert.equal(
+    renderComponent("consultation", { ...consultation, benefits: aboutBenefits }, root),
+    renderComponent("consultation", consultation, root),
+    "Equivalent benefit arrays and text must keep the same shared form markup",
+);
+assert(
+    renderComponent("consultation", { ...consultation, benefits: [hostile] }, root).includes("&lt;script&gt;"),
+    "Structured benefits remain escaped",
+);
 for (const file of ["index.html", "about.html", "expertise.html"]) {
     const html = renderPage(readFileSync(resolve(root, file), "utf8"), file, root);
     assert.equal(

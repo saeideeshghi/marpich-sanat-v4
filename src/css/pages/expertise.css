@@ -36,7 +36,7 @@
     inset: 0;
     z-index: 1;
     background: linear-gradient(
-        278.37deg,
+        81.63deg,
         rgb(255 255 255 / 0) 0.77%,
         rgb(255 255 255 / 0) 7.39%,
         rgb(255 255 255 / 0.03) 14.4%,
@@ -47,9 +47,9 @@
         #fff 100%
     );
     opacity: 0.98;
+    border-radius: inherit;
     content: "";
     pointer-events: none;
-    transform: scaleX(-1);
 }
 /* The collapsed photograph is rounded; an expanded card joins its panel flush.
  * State rules also cover the artwork frame and both overlay corners. */
@@ -59,12 +59,6 @@ body[data-page="expertise"] .expertise-page__card.is-open .expertise-page__media
 body[data-page="expertise"] .expertise-page__card.is-open .expertise-page__artwork::after {
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
-}
-/* The supplied PNGs have rounded corners baked into their pixels. Extend only
- * the open photograph below the seam, so those corners are clipped outside it.
- * The outer card keeps its own rounded bottom around the details panel. */
-body[data-page="expertise"] .expertise-page__card.is-open .expertise-page__media-image {
-    height: calc(var(--expertise-image-height) + 6% + 4px);
 }
 /* Crop the thin edge baked into the artwork as well as removing the CSS
  * shadow. A two-pixel bleed stays inside the existing clipping frame. */
@@ -84,17 +78,12 @@ body[data-page="expertise"] .expertise-page__card.is-open .expertise-page__media
     overflow: hidden;
 }
 .expertise-page__media-image--flip {
-    transform: none;
-}
-.expertise-page__artwork:has(.expertise-page__media-image--flip) {
+    left: auto;
+    right: calc(var(--expertise-image-left) - 2px);
     transform: scaleX(-1);
 }
-/* The mirrored photograph keeps the overlay facing the same direction. */
-.expertise-page__artwork:has(.expertise-page__media-image--flip)::after {
-    transform: none;
-}
-/* PNGs include their own shadow gutters. Remove only those gutters, then
- * mirror the cropped frame so the photo reaches both edges in either direction. */
+/* Mirror only the cropped photograph. Its frame and full-size gradient stay
+ * fixed, and opening the details never changes the photo's scale. */
 body[data-page="expertise"] #field-assessment {
     --expertise-artwork-ratio: 1271 / 303;
     --expertise-image-left: -0.7868%;

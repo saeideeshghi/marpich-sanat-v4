@@ -590,16 +590,6 @@ body[data-page="about"] #about-gallery-title {
 }
 }
 @media (min-width: 640px) and (max-width: 1179px) {
-body[data-page="about"] .site-consultation__copy > h2 {
-    text-align-last: center !important;
-}
-}
-@media (min-width: 640px) and (max-width: 1179px) {
-body[data-page="expertise"] .site-consultation__copy {
-    text-align-last: center !important;
-}
-}
-@media (min-width: 640px) and (max-width: 1179px) {
 body[data-page="industries"] #industries-page-title {
     font-size: 35px !important;
 }

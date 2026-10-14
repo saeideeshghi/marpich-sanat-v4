@@ -1,5 +1,6 @@
 import { cpSync, existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync } from "node:fs";
 import { basename, resolve, relative, sep } from "node:path";
+import { randomUUID } from "node:crypto";
 import { prepareCertificatePhotos } from "./certificate-assets.js";
 import { prepareGalleryPhoto } from "./gallery-assets.js";
 
@@ -49,19 +50,21 @@ export function assertPublicAssetTree(directory, root) {
     inspect(directory);
 }
 
-function publicDestination(root) {
+const ownedPublicDirectories = new Map();
+
+function assertCachePath(root, destination) {
     const cache = resolve(root, ".cache");
-    const destination = resolve(cache, `static-public-${process.pid}`);
     for (const path of [cache, destination])
         if (existsSync(path) && lstatSync(path).isSymbolicLink())
             throw new Error("Public asset cache must not be a filesystem link");
-    return destination;
 }
 
 export function cleanupPublicAssets(root, directory) {
-    if (resolve(directory) !== publicDestination(root))
+    const destination = resolve(directory);
+    if (ownedPublicDirectories.get(destination) !== resolve(root))
         throw new Error("Public asset cleanup must target this process's workspace cache");
-    rmSync(directory, { recursive: true, force: true, maxRetries: 3 });
+    assertCachePath(root, destination);
+    rmSync(destination, { recursive: true, force: true, maxRetries: 3 });
 }
 
 export const publicAssetLifecycle = (root, directory) => ({
@@ -73,13 +76,16 @@ export const publicAssetLifecycle = (root, directory) => ({
 // in root/assets; native public assets take priority, including new process SVGs.
 // Never move or delete the owner's source artwork, and never duplicate it in git.
 export function preparePublicAssets(root) {
-    // Independent dev servers/builds must not delete one another's public tree.
-    const destination = publicDestination(root);
+    // Vite can prepare a new config before closing the previous one in the same
+    // process. Each config owns a separate directory, including during restart.
+    const destination = resolve(root, ".cache", `static-public-${process.pid}-${randomUUID()}`);
+    assertCachePath(root, destination);
     if (!relative(resolve(root), destination).startsWith(`.cache${sep}`))
         throw new Error("Public asset output must remain inside the project cache");
     const sources = ["assets", "fonts", "public"].map((name) => resolve(root, name)).filter(existsSync);
     sources.forEach((source) => assertPublicAssetTree(source, root));
-    cleanupPublicAssets(root, destination);
+    if (existsSync(destination)) throw new Error("Public asset cache already exists");
+    ownedPublicDirectories.set(destination, resolve(root));
     mkdirSync(destination, { recursive: true });
     for (const name of ["assets", "fonts"]) {
         const source = resolve(root, name);

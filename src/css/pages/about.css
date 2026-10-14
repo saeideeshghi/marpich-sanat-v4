@@ -636,18 +636,6 @@
 /* =========================================================
    Certificates
 ========================================================= */
-/* Each complete benefit can wrap without separating its icon from its label. */
-body[data-page="about"] [data-consultation] .site-consultation__benefit {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    vertical-align: middle;
-    white-space: nowrap;
-}
-body[data-page="about"] [data-consultation] .site-consultation__benefit-icon {
-    flex: none;
-}
-
 .about-certificates {
     padding: 72px 0 70px;
 }

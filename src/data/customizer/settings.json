@@ -1306,18 +1306,6 @@
     },
     {
       "page": "about",
-      "breakpoint": "tablet",
-      "target": {
-        "kind": "element",
-        "selector": ".site-consultation__copy > h2",
-        "label": "عنوان بخش · از تعریف نیاز تا راهکارهای اختصا"
-      },
-      "properties": {
-        "text-align-last": "center"
-      }
-    },
-    {
-      "page": "about",
       "breakpoint": "mobile",
       "target": {
         "kind": "element",
@@ -1579,18 +1567,6 @@
       },
       "properties": {
         "font-weight": "600"
-      }
-    },
-    {
-      "page": "expertise",
-      "breakpoint": "tablet",
-      "target": {
-        "kind": "element",
-        "selector": ".site-consultation__copy",
-        "label": "قاب · از تعریف نیاز تا راهکارهای اختصا"
-      },
-      "properties": {
-        "text-align-last": "center"
       }
     },
     {

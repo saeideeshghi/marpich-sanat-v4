@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import {
+    existsSync,
     readFileSync,
     readdirSync,
     mkdtempSync,
@@ -151,7 +152,11 @@ try {
     const prepared = preparePublicAssets(fixture);
     assert(!readdirSync(resolve(prepared, "assets")).includes(".gitkeep"));
     assert.throws(() => cleanupPublicAssets(fixture, resolve(fixture, ".cache")), /this process/);
+    const replacement = preparePublicAssets(fixture);
+    assert.notEqual(replacement, prepared, "Restarted configs must own different public directories");
     cleanupPublicAssets(fixture, prepared);
+    assert(existsSync(resolve(replacement, "assets")), "Closing the old config must preserve replacement assets");
+    cleanupPublicAssets(fixture, replacement);
     for (const file of [
         "src/data/customizer/settings.json",
         "src/data/patterns/site-pattern.json",
