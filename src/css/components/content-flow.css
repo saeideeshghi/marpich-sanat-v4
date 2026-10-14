@@ -15,6 +15,34 @@ main :is(button, a):focus-visible {
     outline-offset: 3px;
 }
 
+/* Small labels need readable text while retaining the existing brand surfaces. */
+body[data-page]
+    main
+    :is(.home-product-category, .article-card__category, .industry-card__tag, .product-card__category) {
+    color: #0f172b;
+}
+body[data-page]
+    main
+    :is(
+        .product-card__link,
+        .industry-textile__card-link,
+        .home-expertise-grid a,
+        .home-products-actions > a,
+        .site-text-link--plain
+    )
+    :is(.site-text-link__label, .site-card__cta-label) {
+    color: #276ca8;
+}
+body[data-page="about"] .about-certificate-card__caption span {
+    color: #276ca8;
+}
+body[data-page] [data-consultation] h2 .text-brand-orange {
+    color: #a54906;
+}
+body[data-page] [data-consultation] .site-consultation__benefit {
+    color: #536274;
+}
+
 /* Specification chips may wrap instead of squeezing full words into three tiny cells. */
 body[data-page]
     :is(

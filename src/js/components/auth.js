@@ -386,12 +386,25 @@ export function initAuth() {
         message();
     }
     digits.forEach((input, index) => {
+        let pastedCode;
+        let pasteCleanup;
         input.placeholder = " ";
         input.addEventListener("focus", () => input.select());
-        input.addEventListener("input", () => distributeCode(input.value, index));
+        input.addEventListener("input", () => {
+            clearTimeout(pasteCleanup);
+            distributeCode(pastedCode ?? input.value, index);
+            pastedCode = undefined;
+        });
         input.addEventListener("paste", (event) => {
-            event.preventDefault();
-            distributeCode(event.clipboardData.getData("text"), index);
+            // Let the browser perform its native paste/autofill action. The
+            // following input event distributes the unmodified clipboard code.
+            pastedCode = event.clipboardData?.getData("text").slice(0, 4096);
+            clearTimeout(pasteCleanup);
+            // Native event dispatch runs microtasks before its default input
+            // action in some browsers; expire only after that action's task.
+            pasteCleanup = setTimeout(() => {
+                pastedCode = undefined;
+            }, 0);
         });
         input.addEventListener("keydown", (event) => {
             if (event.key === "Backspace" && !input.value && index > 0) {

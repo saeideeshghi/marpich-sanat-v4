@@ -7,8 +7,17 @@ import { compilePatternModule } from "../build/pattern-runtime.js";
 import { normalizePattern } from "../src/js/customizer/pattern-model.js";
 import { optimizePublicAssets, optimizedImages } from "../build/optimized-assets.js";
 import { compositorFrames } from "../src/js/components/product-category-motion.js";
+import { selectIconRules, prepareIconFonts } from "../build/icon-fonts.js";
+import { isSvgPhoto, responsiveSvgPhoto } from "../build/svg-photos.js";
 
 const root = resolve(import.meta.dirname, "..");
+const selected = selectIconRules(
+    '.fa-user { --fa: "\\f007"; } .fa-user-alt, .fa-person { --fa: "\\f008"; } .fa-star { --fa: "\\f005"; }',
+    ['<i class="fa-solid fa-user"></i>', 'icon.className = "fa-person"'],
+);
+assert.deepEqual(selected.icons, ["fa-person", "fa-user"]);
+assert(!selected.css.includes("fa-star"));
+assert(selected.text.includes(String.fromCodePoint(0xf007)) && selected.text.includes(String.fromCodePoint(0xf008)));
 for (const alignment of ["left", "right"]) {
     const initial = {
         left: "30px",
@@ -95,6 +104,33 @@ try {
         assert(variant.length < heroSource.length / 10, "Photographic delivery is substantially smaller");
     }
     assert.deepEqual(readFileSync(hero), heroSource, "Responsive encoding does not change the original");
+    const svg = Buffer.from(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256"><image href="data:image/png;base64,${png.toString("base64")}" width="256" height="256"/></svg>`,
+    );
+    const photoUrl = "/assets/images/about/about-team.svg";
+    mkdirSync(resolve(publicRoot, "assets/images/about"), { recursive: true });
+    assert(isSvgPhoto(photoUrl, svg.toString()));
+    assert(!isSvgPhoto("/assets/icons/test.svg", svg.toString()));
+    assert(!isSvgPhoto("/assets/images/projects/project-details/system-diagram.svg", svg.toString()));
+    const photos = await responsiveSvgPhoto(
+        svg,
+        photoUrl,
+        { width: 256, height: 256 },
+        publicRoot,
+        resolve(fixture, ".cache"),
+    );
+    const originalRender = await sharp(svg).png().toBuffer();
+    assert.deepEqual(
+        await visible(readFileSync(resolve(publicRoot, photos.src.slice(1)))),
+        await visible(originalRender),
+        "SVG delivery preserves every visible pixel and alpha",
+    );
+    assert(
+        photos.srcset.includes("480w") && photos.srcset.includes(`${photoUrl} 1920w`),
+        "Keep large scalable originals available",
+    );
+    const icons = await prepareIconFonts(root, publicRoot);
+    assert(icons.deliveredBytes < icons.originalBytes / 4, "Unused glyphs must not be downloaded");
     const plugin = optimizedImages(responsive.imageMap, responsive.responsiveMap);
     const markup = '<img src="/assets/images/hero/hero-engineers.png" class="hero-image" fetchpriority="high" />';
     assert(plugin.transformIndexHtml.handler(markup).includes('srcset="'));
@@ -102,6 +138,17 @@ try {
         !plugin.transformIndexHtml
             .handler(markup.replace('class="hero-image"', 'class="cms-summary"'))
             .includes('srcset="'),
+    );
+    const dimensionPlugin = optimizedImages({}, {}, { "/assets/photo.png": { width: 256, height: 256 } });
+    assert(
+        dimensionPlugin.transformIndexHtml
+            .handler('<img src="/assets/photo.png" />')
+            .includes('width="256" height="256"'),
+    );
+    assert(
+        !dimensionPlugin.transformIndexHtml
+            .handler('<img src="/assets/photo.png" width="100" height="100" />')
+            .includes('width="256"'),
     );
     const second = await optimizePublicAssets(fixture, publicRoot);
     assert.deepEqual(second.imageMap, responsive.imageMap, "Repeat builds produce the same map");

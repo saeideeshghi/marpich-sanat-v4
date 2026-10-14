@@ -1,5 +1,16 @@
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync, mkdtempSync, mkdirSync, copyFileSync, rmSync } from "node:fs";
+import {
+    readFileSync,
+    readdirSync,
+    mkdtempSync,
+    mkdirSync,
+    copyFileSync,
+    rmSync,
+    writeFileSync,
+    symlinkSync,
+    rmdirSync,
+    unlinkSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { createServer, request as httpRequest } from "node:http";
 import { resolve } from "node:path";
@@ -11,6 +22,12 @@ import { renderPage } from "../build/html-partials.js";
 import { templateCustomizer } from "../build/customizer.js";
 import { htmlPartials } from "../build/html-partials.js";
 import { isAuthToken, retryAfterSeconds } from "../src/js/services/auth-response.js";
+import {
+    assertPublicAssetTree,
+    hasCredentialMaterial,
+    preparePublicAssets,
+    cleanupPublicAssets,
+} from "../build/public-assets.js";
 
 const root = resolve(import.meta.dirname, "..");
 for (const value of [undefined, null, {}, [], Infinity, NaN, -1, "invalid"])
@@ -80,20 +97,61 @@ assert(!/localStorage|sessionStorage/.test(auth), "Auth credentials must not ent
 const sourceFiles = readdirSync(root, { withFileTypes: true })
     .filter((entry) => entry.isFile())
     .map((entry) => entry.name);
-for (const directory of ["src", "build", "scripts", "docs", ".github"])
+for (const directory of ["src", "build", "scripts", "docs", ".github", "assets", "public"])
     sourceFiles.push(
         ...readdirSync(resolve(root, directory), { recursive: true }).map((name) => `${directory}/${name}`),
     );
 for (const name of sourceFiles) {
-    if (!/\.(?:html|[cm]?js|json|md|css|ya?ml)$/.test(name)) continue;
+    if (!/\.(?:html|[cm]?js|json|md|css|svg|txt|ya?ml)$/.test(name)) continue;
     const content = readFileSync(resolve(root, name), "utf8");
-    assert(
-        !/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{36,}/.test(content),
-        `Key material in ${name}`,
-    );
+    assert(!hasCredentialMaterial(content), `Key material in ${name}`);
 }
 const fixture = mkdtempSync(resolve(tmpdir(), "marpich-security-"));
 try {
+    const assets = resolve(fixture, "public/assets");
+    mkdirSync(assets, { recursive: true });
+    for (const name of [".env", ".env.production", "backup.key", "client.p12", "client.pfx"]) {
+        const file = resolve(assets, name);
+        writeFileSync(file, "private configuration");
+        assert.throws(
+            () => preparePublicAssets(fixture),
+            /cannot be published/,
+            `Ignore rules must not expose ${name}`,
+        );
+        rmSync(file);
+    }
+    const textKey = resolve(assets, "notes.txt");
+    writeFileSync(textKey, "github_pat_" + "a".repeat(64));
+    assert.throws(() => assertPublicAssetTree(assets, fixture), /Key material/);
+    rmSync(textKey);
+    const activeSvg = resolve(assets, "active.svg");
+    for (const svg of [
+        '<svg onload="alert(1)"/>',
+        "<svg><script>alert(1)</script></svg>",
+        "<svg><foreignObject/></svg>",
+        '<svg><a href="javascript:alert(1)"/></svg>',
+        '<svg><a href="&#x6a;ava&#9;script:alert(1)"/></svg>',
+        '<svg xmlns:s="http://www.w3.org/2000/svg"><s:script>alert(1)</s:script></svg>',
+        '<!DOCTYPE svg [<!ENTITY target "javascript:alert(1)">]><svg/>',
+    ]) {
+        writeFileSync(activeSvg, svg);
+        assert.throws(() => assertPublicAssetTree(assets, fixture), /Active SVG/, "Do not deploy active SVG documents");
+    }
+    rmSync(activeSvg);
+    const privateFolder = resolve(assets, ".aws");
+    mkdirSync(privateFolder);
+    assert.throws(() => assertPublicAssetTree(assets, fixture), /cannot be published/);
+    rmdirSync(privateFolder);
+    const linked = resolve(assets, "linked");
+    symlinkSync(resolve(fixture, "public"), linked, process.platform === "win32" ? "junction" : "dir");
+    assert.throws(() => assertPublicAssetTree(assets, fixture), /cannot be published/);
+    if (process.platform === "win32") rmdirSync(linked);
+    else unlinkSync(linked);
+    writeFileSync(resolve(assets, ".gitkeep"), "");
+    const prepared = preparePublicAssets(fixture);
+    assert(!readdirSync(resolve(prepared, "assets")).includes(".gitkeep"));
+    assert.throws(() => cleanupPublicAssets(fixture, resolve(fixture, ".cache")), /this process/);
+    cleanupPublicAssets(fixture, prepared);
     for (const file of [
         "src/data/customizer/settings.json",
         "src/data/patterns/site-pattern.json",

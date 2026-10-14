@@ -1,6 +1,6 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { resolve, relative } from "node:path";
-import { preparePublicAssets } from "../build/public-assets.js";
+import { preparePublicAssets, cleanupPublicAssets } from "../build/public-assets.js";
 import { isValidSvgPath } from "../src/js/utils/svg-path.js";
 const root = resolve(import.meta.dirname, "..");
 const publicRoot = preparePublicAssets(root);
@@ -25,3 +25,4 @@ function scan(directory) {
 scan(publicRoot);
 console.log(`${paths} SVG paths checked; ${failures} invalid.`);
 if (failures) process.exitCode = 1;
+cleanupPublicAssets(root, publicRoot);

@@ -1,8 +1,6 @@
 /* Shared styles load in the HTML head before the ordered page stylesheet. */
 @import "tailwindcss" source("../");
-@import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
-@import "@fortawesome/fontawesome-free/css/solid.min.css";
-@import "@fortawesome/fontawesome-free/css/regular.min.css";
+@import "@marpich/icons.css";
 @import "./tokens.css";
 @import "./fonts.css";
 @import "./base.css";

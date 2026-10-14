@@ -1,6 +1,6 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve, relative } from "node:path";
-import { preparePublicAssets } from "../build/public-assets.js";
+import { preparePublicAssets, cleanupPublicAssets } from "../build/public-assets.js";
 import { optimizePublicAssets } from "../build/optimized-assets.js";
 import { pages } from "../build/pages.js";
 import { renderPage } from "../build/html-partials.js";
@@ -48,3 +48,4 @@ if (missing.length) {
     );
     process.exitCode = 1;
 }
+cleanupPublicAssets(root, publicRoot);

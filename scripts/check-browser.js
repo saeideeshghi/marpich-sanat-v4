@@ -107,6 +107,44 @@ try {
             report.pages.push({ file: definition.file, width, ...data, errors: 0 });
             console.log(`PASS ${definition.file} @ ${width}`);
         }
+    for (const path of [
+        "__audit-missing.html",
+        "assets/__audit-missing.css",
+        ".env",
+        ".git/config",
+        "__customizer/settings",
+    ])
+        assert.equal(
+            (await fetch(new URL(path, base))).status,
+            404,
+            `Missing/private route must not return the home page: ${path}`,
+        );
+    report.features.missingAndPrivateRoutes = true;
+    await navigate("about.html", 390);
+    const originalImageAttributes = await evaluate(
+        "Object.fromEntries(['src','srcset','sizes','width','height'].map(name=>[name,document.querySelector('.about-team-media__image').getAttribute(name)]))",
+    );
+    await evaluate(
+        "window.dispatchEvent(new CustomEvent('site:image-preview',{detail:[{breakpoint:'all',source:'/assets/images/about/why-marpich.png'}]}))",
+    );
+    await waitFor(
+        "document.querySelector('.about-team-media__image').complete && document.querySelector('.about-team-media__image').naturalWidth>0",
+    );
+    assert(
+        await evaluate(
+            "!document.querySelector('.about-team-media__image').hasAttribute('srcset') && !document.querySelector('.about-team-media__image').hasAttribute('width')",
+        ),
+        "Custom images must not keep the approved photo's source set or aspect ratio",
+    );
+    await evaluate("window.dispatchEvent(new CustomEvent('site:image-preview',{detail:[]}))");
+    assert.deepEqual(
+        await evaluate(
+            "Object.fromEntries(['src','srcset','sizes','width','height'].map(name=>[name,document.querySelector('.about-team-media__image').getAttribute(name)]))",
+        ),
+        originalImageAttributes,
+        "Restoring the approved photo restores its responsive sources and dimensions",
+    );
+    report.features.customImageResponsiveSources = true;
     await navigate("index.html", 1500);
     assert.equal(
         await evaluate("getComputedStyle(document.querySelector('.home-products-actions')).justifyContent"),
@@ -351,6 +389,30 @@ try {
         "Malformed server cooldowns do not corrupt the countdown",
     );
     report.features.authMalformedResponses = true;
+    const paste = await evaluate(`(async () => {
+        const input = document.querySelector('[data-otp-digit]');
+        input.focus();
+        const clipboard = new DataTransfer();
+        clipboard.setData('text/plain', '۱۲۳۴۵۶');
+        const event = new ClipboardEvent('paste', {clipboardData:clipboard, bubbles:true, cancelable:true});
+        const accepted = input.dispatchEvent(event);
+        await Promise.resolve();
+        input.value = '9۱۲۳۴۵۶';
+        input.dispatchEvent(new InputEvent('input', {inputType:'insertFromPaste', data:'۱۲۳۴۵۶', bubbles:true}));
+        return {accepted, code:[...document.querySelectorAll('[data-otp-digit]')].map(input => input.value).join('')};
+    })()`);
+    assert(paste.accepted, "OTP fields allow the browser's native paste");
+    assert.equal(paste.code, "123456", "Persian OTP paste distributes all six digits");
+    await evaluate(
+        "document.querySelectorAll('[data-otp-digit]').forEach(input=>input.value='');document.querySelector('[data-otp-digit]').focus()",
+    );
+    await call("Input.insertText", { text: "١٢٣٤٥٦" });
+    assert.equal(
+        await evaluate("[...document.querySelectorAll('[data-otp-digit]')].map(input=>input.value).join('')"),
+        "123456",
+        "Native Arabic SMS/autofill input is normalized",
+    );
+    report.features.otpNativePasteAndAutofill = true;
     await call("Fetch.disable");
     await navigate("contact.html", 390);
     const upload = await evaluate(

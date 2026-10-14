@@ -1,7 +1,16 @@
 /* Expertise service cards. Sizes come from ../type-settings.css.
  * One shared structure for all services; only content and artwork differ.
- * Details are visible without JS and collapse after progressive enhancement.
+ * Details are readable without JS; capable browsers start collapsed without
+ * a layout jump while the interaction module is still loading.
  */
+@media (scripting: enabled) {
+    body[data-page="expertise"] [data-service]:not([data-initialized]) [data-service-details] {
+        display: none;
+    }
+    body[data-page="expertise"] [data-service]:not([data-initialized]) [data-service-details]:target {
+        display: block;
+    }
+}
 .expertise-page__card {
     --expertise-artwork-ratio: 1311 / 303;
     --expertise-image-left: -0.7628%;
