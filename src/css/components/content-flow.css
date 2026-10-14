@@ -266,6 +266,27 @@ body[data-page="home"] main .site-text-link--plain > .site-text-link__label {
     }
 }
 
+/* On small home screens the complete copy shares the form's outer edge. */
+@media (max-width: 576px) {
+    body[data-page="home"] [data-consultation] .site-consultation__copy {
+        width: 100%;
+        max-width: 550px;
+        margin-inline: auto;
+        padding-inline: 0;
+    }
+    body[data-page="home"] [data-consultation] .site-consultation__copy > :is(h2, p) {
+        width: 100%;
+        max-width: none;
+        padding-inline: 0;
+    }
+    @layer components {
+        body[data-page="home"] [data-consultation] .site-consultation__copy > :is(h2, p) {
+            text-align: right !important;
+            text-align-last: right !important;
+        }
+    }
+}
+
 /* Search fields share the surrounding panel color, including the enhanced
  * catalog dropdowns. These selectors do not affect enquiry or contact fields. */
 body[data-page] .product-search .product-search__field-row,

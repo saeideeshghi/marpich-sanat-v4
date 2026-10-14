@@ -601,8 +601,8 @@
     body[data-page] .catalog-consultation__content > :is(h2, p) {
         width: 100%;
         max-width: none;
-        /* Match the fields' 16px padding plus their 1px border. */
-        padding-inline: 17px;
+        /* Align the copy with the fields' outer right edge. */
+        padding-inline: 0;
     }
     /* Layered important declarations outrank the customizer's unlayered
      * generic prose rule without inflating selector specificity. */
@@ -616,7 +616,7 @@
         margin-inline: 0;
     }
     body[data-page] .catalog-consultation__accent {
-        margin-inline: 17px 0;
+        margin-inline: 0;
     }
     .catalog-consultation__form {
         width: 100%;

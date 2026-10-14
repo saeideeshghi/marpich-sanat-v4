@@ -157,14 +157,22 @@ try {
         ),
     );
     report.features.cardLinks = true;
-    for (const filename of ["products.html", "air-handling.html", "product-details.html", "industry-textile.html"]) {
+    for (const filename of [
+        "products.html",
+        "air-handling.html",
+        "product-details.html",
+        "industry-textile.html",
+        "projects.html",
+        "project-details.html",
+        "industries.html",
+        "articles.html",
+    ]) {
         for (const width of [766, 767, 900, 1024, 1025]) {
             await navigate(filename, width);
             const alignment = await evaluate(`(() => {
                 const content = document.querySelector('.catalog-consultation__content');
                 const field = content.querySelector('.catalog-consultation__field');
-                const style = getComputedStyle(field);
-                const fieldRight = field.getBoundingClientRect().right - parseFloat(style.paddingRight) - parseFloat(style.borderRightWidth);
+                const fieldRight = field.getBoundingClientRect().right;
                 const texts = [...content.querySelectorAll(':scope > h2, :scope > p')].map(element => {
                     const style = getComputedStyle(element);
                     return {

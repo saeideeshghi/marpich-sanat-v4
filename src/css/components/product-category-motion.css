@@ -50,13 +50,13 @@
     padding: 0;
     border: 1px solid #d5e2f0;
     border-radius: 8px;
-    background: #fff;
-    color: #2e5e8e;
+    background: transparent;
+    color: var(--pcm-blue);
     cursor: pointer;
 }
 .pcm-back:hover {
     border-color: #9ac4e9;
-    background: #edf6ff;
+    background: transparent;
 }
 .pcm-icon {
     font-size: 17px;
