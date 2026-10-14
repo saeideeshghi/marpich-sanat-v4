@@ -27,16 +27,19 @@
     position: relative;
     min-height: 255px;
     overflow: hidden;
+    border-radius: inherit;
     isolation: isolate;
     /* Keep the wide authored photograph at its own ratio on desktop. */
     aspect-ratio: var(--expertise-artwork-ratio);
 }
 .expertise-page__artwork::after {
     position: absolute;
-    inset: 0;
+    inset-block: 0;
+    right: 0;
     z-index: 1;
+    width: 77.35%;
     background: linear-gradient(
-        81.63deg,
+        278.37deg,
         rgb(255 255 255 / 0) 0.77%,
         rgb(255 255 255 / 0) 7.39%,
         rgb(255 255 255 / 0.03) 14.4%,
@@ -47,9 +50,9 @@
         #fff 100%
     );
     opacity: 0.98;
-    border-radius: inherit;
     content: "";
     pointer-events: none;
+    transform: scaleX(-1);
 }
 /* The collapsed photograph is rounded; an expanded card joins its panel flush.
  * State rules also cover the artwork frame and both overlay corners. */
@@ -76,13 +79,16 @@ body[data-page="expertise"] .expertise-page__card.is-open .expertise-page__artwo
     position: absolute;
     inset: 0;
     overflow: hidden;
+    border-radius: inherit;
+    /* Clip the photograph and gradient together at the actual photo frame. */
+    contain: paint;
 }
 .expertise-page__media-image--flip {
     left: auto;
     right: calc(var(--expertise-image-left) - 2px);
     transform: scaleX(-1);
 }
-/* Mirror only the cropped photograph. Its frame and full-size gradient stay
+/* Mirror only the cropped photograph. Its frame and authored gradient stay
  * fixed, and opening the details never changes the photo's scale. */
 body[data-page="expertise"] #field-assessment {
     --expertise-artwork-ratio: 1271 / 303;
@@ -239,6 +245,8 @@ body[data-page="expertise"]
         width: 100%;
         aspect-ratio: var(--expertise-artwork-ratio);
         overflow: hidden;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
     }
     body[data-page="expertise"] .expertise-page__media-content {
         width: 100%;
@@ -258,6 +266,9 @@ body[data-page="expertise"]
     }
 }
 @media (max-width: 639px) {
+    .expertise-page__artwork::after {
+        width: 88%;
+    }
     .expertise-page__media {
         min-height: 224px;
     }
