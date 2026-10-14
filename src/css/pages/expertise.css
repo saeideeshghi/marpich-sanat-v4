@@ -23,7 +23,6 @@
     position: relative;
     min-height: 255px;
     overflow: hidden;
-    border-radius: inherit;
     isolation: isolate;
     /* Keep the wide authored photograph at its own ratio on desktop. */
     aspect-ratio: var(--expertise-artwork-ratio);
@@ -34,8 +33,10 @@
     right: 0;
     z-index: 1;
     width: 77.35%;
+    /* Equivalent to the authored 278.37deg gradient mirrored horizontally.
+     * Painting it directly avoids a one-pixel seam at fractional layer widths. */
     background: linear-gradient(
-        278.37deg,
+        81.63deg,
         rgb(255 255 255 / 0) 0.77%,
         rgb(255 255 255 / 0) 7.39%,
         rgb(255 255 255 / 0.03) 14.4%,
@@ -48,16 +49,6 @@
     opacity: 0.98;
     content: "";
     pointer-events: none;
-    transform: scaleX(-1);
-}
-/* The collapsed photograph is rounded; an expanded card joins its panel flush.
- * State rules also cover the artwork frame and both overlay corners. */
-body[data-page="expertise"] .expertise-page__card.is-open .expertise-page__media,
-body[data-page="expertise"] .expertise-page__card.is-open .expertise-page__artwork,
-body[data-page="expertise"] .expertise-page__card.is-open .expertise-page__media-image,
-body[data-page="expertise"] .expertise-page__card.is-open .expertise-page__artwork::after {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
 }
 /* The build provides the photograph without the exported shadow/corner mask.
  * Fit it exactly to the same frame that clips the gradient. */
@@ -74,9 +65,10 @@ body[data-page="expertise"] .expertise-page__card.is-open .expertise-page__artwo
     position: absolute;
     inset: 0;
     overflow: hidden;
-    border-radius: inherit;
     /* Clip the photograph and gradient together at the actual photo frame. */
     contain: paint;
+    /* Compose both layers before the card clips their rounded outer corners. */
+    transform: translateZ(0);
 }
 .expertise-page__media-image--flip {
     transform: scaleX(-1);
@@ -222,8 +214,6 @@ body[data-page="expertise"]
         width: 100%;
         aspect-ratio: var(--expertise-artwork-ratio);
         overflow: hidden;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
     }
     body[data-page="expertise"] .expertise-page__media-content {
         width: 100%;
