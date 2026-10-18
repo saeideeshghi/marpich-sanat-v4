@@ -13,6 +13,12 @@
     text-align: right;
 }
 
+/* Fill the contact page's shorter canvas instead of letterboxing the shared
+ * tall SVG. Its view fragment changes only this page; the source stays intact. */
+body[data-page="contact"] .site-page-background-layer {
+    background-image: url("/assets/decorations/page-pattern.svg#svgView(preserveAspectRatio(none))");
+}
+
 /* =========================================================
    HERO / PATTERN
 ========================================================= */

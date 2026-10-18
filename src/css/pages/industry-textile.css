@@ -621,6 +621,30 @@ body[data-page="industry-textile"] .industry-textile__products-grid .site-card__
     pointer-events: none;
 }
 
+/* Whole, four-pixel line boxes keep every divider on the same pixel phase at
+ * common display scales, including 125%. Scope this to the textile FAQ. */
+body[data-page="industry-textile"] .industry-textile__faq-item button {
+    padding-block: 20px;
+    line-height: 24px;
+}
+
+body[data-page="industry-textile"] .industry-textile__faq .industry-textile__faq-answer {
+    padding-bottom: 20px;
+    line-height: 32px;
+}
+
+@media (max-width: 639px) {
+    body[data-page="industry-textile"] .industry-textile__faq-item button {
+        padding-block: 16px;
+        line-height: 28px;
+    }
+
+    body[data-page="industry-textile"] .industry-textile__faq .industry-textile__faq-answer {
+        padding-bottom: 16px;
+        line-height: 28px;
+    }
+}
+
 .industry-textile__faq-item h3 {
     margin: 0;
 }
