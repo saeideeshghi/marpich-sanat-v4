@@ -65,11 +65,15 @@ export function htmlPartials(root) {
                     if (!/\bdecoding=/.test(tag)) tag = tag.replace(/\s*\/?>(?=$)/, ' decoding="async" />');
                     return tag;
                 });
-                // Fonts are selected by actual CSS usage. An unconditional
-                // preload downloads an unused weight on some backend views.
+                // Preload the artwork this page actually uses; Contact has its
+                // own background instead of the shared light-page pattern.
+                const pagePattern =
+                    basename(context.filename) === "contact.html"
+                        ? "contact-page-pattern.svg#svgView(preserveAspectRatio(none))"
+                        : "page-pattern.svg";
                 return rendered.replace(
                     "</head>",
-                    '<link rel="icon" type="image/svg+xml" href="/assets/logos/LOGO.svg" />\n<link rel="preload" as="image" href="/assets/decorations/page-pattern.svg" />\n</head>',
+                    `<link rel="icon" type="image/svg+xml" href="/assets/logos/LOGO.svg" />\n<link rel="preload" as="image" href="/assets/decorations/${pagePattern}" />\n</head>`,
                 );
             },
         },
