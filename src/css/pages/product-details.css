@@ -172,7 +172,6 @@
    ========================================================= */
 
 /* Controls under the product image use the approved brand-blue icon color. */
-.product-details-page [data-view-reset],
 .product-details-page [data-view-rotate],
 .product-details-page [data-view-fullscreen] {
     color: #79b6ed;

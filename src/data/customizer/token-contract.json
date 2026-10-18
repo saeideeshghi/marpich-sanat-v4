@@ -428,6 +428,12 @@
     "editable": true,
     "property": "aspect-ratio"
   },
+  "--expertise-fade-width": {
+    "kind": "length",
+    "selectors": [".expertise-page__card"],
+    "editable": true,
+    "property": "width"
+  },
   "--font-peyda": {
     "kind": "font",
     "selectors": [],
@@ -488,7 +494,12 @@
   },
   "--hero-content-padding-bottom": {
     "kind": "length",
-    "selectors": ["body[data-page]", "body[data-page=\"about\"]", "body[data-page=\"project-details\"]"],
+    "selectors": [
+      "body[data-page]",
+      "body[data-page=\"contact\"]",
+      "body[data-page=\"about\"]",
+      "body[data-page=\"project-details\"]"
+    ],
     "editable": true,
     "property": "width"
   },

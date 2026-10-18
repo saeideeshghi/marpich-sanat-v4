@@ -24,7 +24,6 @@ document.querySelectorAll("[data-product-document]").forEach((button) => {
 });
 
 const productImage = document.querySelector("[data-product-image]");
-const resetButton = document.querySelector("[data-view-reset]");
 const rotateButton = document.querySelector("[data-view-rotate]");
 const fullscreenButton = document.querySelector("[data-view-fullscreen]");
 
@@ -47,11 +46,6 @@ document.querySelectorAll("[data-product-image], [data-fallback-image]").forEach
     if (image.complete && image.naturalWidth === 0) {
         showImageFallback(image);
     }
-});
-
-resetButton?.addEventListener("click", () => {
-    rotation = 0;
-    if (productImage) productImage.style.transform = "rotateY(0deg)";
 });
 
 rotateButton?.addEventListener("click", () => {

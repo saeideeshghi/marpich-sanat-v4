@@ -65,6 +65,7 @@ body[data-page="home"] {
     --home-hero-content-margin-top: 105px;
 }
 body[data-page="contact"] {
+    --hero-content-padding-bottom: 20px;
     --hero-content-padding-top-desktop: 156px;
     --hero-content-padding-top-tablet: 180px;
     --hero-content-padding-top-mobile: 172px;

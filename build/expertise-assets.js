@@ -2,7 +2,7 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const exports = {
-    "assessment-consulting.svg": { id: "2402", x: 50, y: 6, width: 1271, photoWidth: 1311, mirror: true },
+    "assessment-consulting.svg": { id: "2402", x: 50, y: 6, width: 1271, photoWidth: 1311 },
     "engineering-design.svg": { id: "2421", x: 11, y: 6, width: 1310, photoWidth: 1311 },
     "advanced-manufacturing.svg": { id: "2405", x: 10, y: 0, width: 1308, photoWidth: 1321, mirror: true },
     "site-project-management.svg": { id: "2439", x: 11, y: 6, width: 1310, photoWidth: 1311 },
@@ -24,8 +24,8 @@ export function expertisePhoto(source, filename) {
     if (!pattern || !image || !/data:image\/(?:png|jpeg);base64,/.test(image[0])) return source;
     const photoX = item.id === "2405" ? 0 : 10;
     const rectangle = `<rect x="${photoX}" y="${item.y}" width="${item.photoWidth}" height="303" fill="url(#pattern0_1_${item.id})"/>`;
-    // These two SVG exports face opposite to the supplied PNGs. Keep the page's
-    // existing photo direction, including its separate CSS mirror for assessment.
+    // Normalize the production photograph to its existing displayed direction.
+    // Assessment already faces correctly in the SVG and needs no CSS mirror.
     const artwork = item.mirror
         ? `<g transform="translate(${2 * item.x + item.width} 0) scale(-1 1)">${rectangle}</g>`
         : rectangle;
