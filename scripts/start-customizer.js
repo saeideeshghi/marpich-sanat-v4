@@ -1,7 +1,7 @@
 // One launcher for CMD and npm: stale dependencies and native optional bindings
 // are reinstalled before Vite starts. Source styles keep using the same server.
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, mkdirSync, writeFileSync } from "node:fs";
+import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";

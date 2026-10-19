@@ -5,6 +5,8 @@ import { pages } from "../build/pages.js";
 import { backendHeaders } from "../build/security-headers.js";
 
 const root = resolve(import.meta.dirname, "../dist/backend");
+// URL fragments and queries select a view/resource variant, not a disk filename.
+const assetPath = (url) => resolve(root, url.split(/[?#]/, 1)[0].replace(/^\//, ""));
 const manifest = JSON.parse(readFileSync(resolve(root, ".vite/manifest.json")));
 const assets = {};
 for (const page of pages) {
@@ -15,7 +17,7 @@ for (const page of pages) {
         for (const candidate of srcset.split(",")) {
             const url = candidate.trim().split(/\s+/)[0];
             if (url.startsWith("/assets/"))
-                assert(existsSync(resolve(root, url.slice(1))), `${page.file}: missing responsive image ${url}`);
+                assert(existsSync(assetPath(url)), `${page.file}: missing responsive image ${url}`);
         }
     assert(!html.includes("@include") && !html.includes("/src/"), `${page.file}: unresolved source`);
     assert(!html.includes('as="font"'), `${page.file}: unexpected font preload`);
@@ -31,22 +33,19 @@ for (const page of pages) {
             `${page.file}: preload the header pattern`,
         );
     else assert(!preloads.some((url) => /\/header-/.test(url)), "Home must not download an unused header pattern");
-    for (const url of preloads)
-        assert(existsSync(resolve(root, url.replace(/^\//, ""))), `Missing preloaded module ${url}`);
-    for (const url of [...css, ...scripts])
-        assert(existsSync(resolve(root, url.split("?")[0].replace(/^\//, ""))), `Missing ${url}`);
+    for (const url of preloads) assert(existsSync(assetPath(url)), `Missing preloaded module ${url}`);
+    for (const url of [...css, ...scripts]) assert(existsSync(assetPath(url)), `Missing ${url}`);
     const imagePreloads = [...html.matchAll(/<link\b[^>]*rel="preload"[^>]*as="image"[^>]*href="([^"]+)"/g)].map(
         (m) => m[1],
     );
-    for (const url of imagePreloads)
-        assert(existsSync(resolve(root, url.replace(/^\//, ""))), `Missing preloaded image ${url}`);
+    for (const url of imagePreloads) assert(existsSync(assetPath(url)), `Missing preloaded image ${url}`);
     assets[page.name] = { html: page.file, script: scripts[0], css, modulePreloads: preloads, imagePreloads };
 }
 assert(!existsSync(resolve(root, "tools")), "Internal editor must not be deployed with public backend views");
 assert(!existsSync(resolve(root, "assets/customizer/settings.json")), "Do not publish editable studio configuration");
 const imageMap = JSON.parse(readFileSync(resolve(root, "assets/image-manifest.json")));
 for (const variant of Object.values(imageMap))
-    assert(existsSync(resolve(root, variant.slice(1))), `Missing image variant ${variant}`);
+    assert(existsSync(assetPath(variant)), `Missing image variant ${variant}`);
 writeFileSync(resolve(root, "page-assets.json"), JSON.stringify(assets, null, 2) + "\n");
 writeFileSync(resolve(root, "security-headers.json"), JSON.stringify(backendHeaders, null, 2) + "\n");
 console.log(
