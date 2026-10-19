@@ -1249,19 +1249,27 @@ ui["confirm-save"].addEventListener("click", async () => {
 });
 
 async function initialize() {
-    try {
-        const response = await fetch(`${base}__customizer/settings`, {
-            signal: AbortSignal.timeout(3000),
-            cache: "no-store",
-        });
-        if (!response.ok || !response.headers.get("content-type")?.includes("application/json"))
-            throw new Error("static");
-        const result = await response.json();
-        saved = normalizeConfig(result.config);
-        revision = result.revision;
-        token = result.token;
-        canSave = result.canSave === true;
-    } catch {
+    let loaded = false;
+    // Only Vite's development server exposes the local write endpoint.
+    if (import.meta.env.DEV) {
+        try {
+            const response = await fetch(`${base}__customizer/settings`, {
+                signal: AbortSignal.timeout(3000),
+                cache: "no-store",
+            });
+            if (!response.ok || !response.headers.get("content-type")?.includes("application/json"))
+                throw new Error("static");
+            const result = await response.json();
+            saved = normalizeConfig(result.config);
+            revision = result.revision;
+            token = result.token;
+            canSave = result.canSave === true;
+            loaded = true;
+        } catch {
+            /* Fall back to the exported settings when the development endpoint is unavailable. */
+        }
+    }
+    if (!loaded) {
         try {
             const response = await fetch(`${base}assets/customizer/settings.json`, { cache: "no-store" });
             if (!response.ok) throw new Error();
