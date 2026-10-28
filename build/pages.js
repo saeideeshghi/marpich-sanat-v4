@@ -15,3 +15,15 @@ export const pages = [
     { name: "industries", file: "industries.html", activeNav: "industries" },
     { name: "articles", file: "articles.html", activeNav: "articles" },
 ];
+
+export const localizedPages = ["en", "ar"].flatMap((locale) =>
+    pages.map((page) => ({
+        ...page,
+        name: page.name + ":" + locale,
+        sourceName: page.name,
+        sourceFile: page.file,
+        file: locale + "/" + page.file,
+        locale,
+    })),
+);
+export const allPages = [...pages, ...localizedPages];

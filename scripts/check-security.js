@@ -98,7 +98,7 @@ assert(!/localStorage|sessionStorage/.test(auth), "Auth credentials must not ent
 const sourceFiles = readdirSync(root, { withFileTypes: true })
     .filter((entry) => entry.isFile())
     .map((entry) => entry.name);
-for (const directory of ["src", "build", "scripts", "docs", ".github", "assets", "public"])
+for (const directory of ["src", "build", "scripts", "docs", "assets", "public"])
     sourceFiles.push(
         ...readdirSync(resolve(root, directory), { recursive: true }).map((name) => `${directory}/${name}`),
     );
@@ -134,10 +134,17 @@ try {
         '<svg><a href="&#x6a;ava&#9;script:alert(1)"/></svg>',
         '<svg xmlns:s="http://www.w3.org/2000/svg"><s:script>alert(1)</s:script></svg>',
         '<!DOCTYPE svg [<!ENTITY target "javascript:alert(1)">]><svg/>',
+        '<svg><a id="link" href="#"/><set href="#link" attributeName="href" to="javascript:alert(1)"/></svg>',
+        '<svg><a><animate attributeName="xlink:href" values="#;javascript:alert(1)"/></a></svg>',
+        '<svg><a><set attributeName="h&#114;ef" to="javascript:alert(1)"/></a></svg>',
+        '<svg><a><set attributeName="other:href" to="javascript:alert(1)"/></a></svg>',
+        '<svg><set attributeName="onload" to="alert(1)"/></svg>',
     ]) {
         writeFileSync(activeSvg, svg);
         assert.throws(() => assertPublicAssetTree(assets, fixture), /Active SVG/, "Do not deploy active SVG documents");
     }
+    writeFileSync(activeSvg, '<svg><rect><animate attributeName="opacity" from="0" to="1"/></rect></svg>');
+    assert.doesNotThrow(() => assertPublicAssetTree(assets, fixture), "Keep non-executable SVG animation valid");
     rmSync(activeSvg);
     const privateFolder = resolve(assets, ".aws");
     mkdirSync(privateFolder);

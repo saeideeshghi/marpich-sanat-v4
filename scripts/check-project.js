@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, relative, resolve } from "node:path";
-import { pages } from "../build/pages.js";
+import { pages, allPages } from "../build/pages.js";
 import { renderPage } from "../build/html-partials.js";
 
 const root = resolve(import.meta.dirname, "..");
@@ -20,7 +20,7 @@ for (const name of readdirSync(cssRoot, { recursive: true }).filter((name) => na
     }
 }
 const rendered = new Map(
-    pages.map((page) => [page.file, renderPage(readFileSync(resolve(root, page.file), "utf8"), page.file, root)]),
+    allPages.map((page) => [page.file, renderPage(readFileSync(resolve(root, page.file), "utf8"), page.file, root)]),
 );
 const ids = (html) => [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 let placeholders = 0;

@@ -9,3 +9,5 @@ src/data/patterns/
 src/data/customizer/settings.json
 src/css/template-overrides.css
 docs/backend-handoff.html
+
+.codex/

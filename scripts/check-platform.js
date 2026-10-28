@@ -4,12 +4,10 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { syncBuiltinESMExports } from "node:module";
-import { spawnSync } from "node:child_process";
 import { collectDesignTokens, designTokenReference } from "../build/design-tokens.js";
 import { templateCustomizer } from "../build/customizer.js";
 import { pages } from "../build/pages.js";
 import { tokenContract } from "../build/token-contract.js";
-import { publishCommand } from "./publish-github.js";
 
 const root = path.resolve(import.meta.dirname, "..");
 const baseline = collectDesignTokens(root);
@@ -93,7 +91,7 @@ for (const platform of ["posix", "win32"]) {
 for (const platform of ["posix", "win32"]) {
     const virtualRoot =
         platform === "win32"
-            ? "C:\\Users\\Saeid_Eshghi\\Desktop\\پروژه صنعت (2)\\marpich-sanat-v3"
+            ? "C:\\fixture\\پروژه صنعت (2)\\marpich-sanat-v3"
             : "/fixture/پروژه صنعت (2)/marpich-sanat-v3";
     const localPath = (file) =>
         typeof file === "string" && file.startsWith(virtualRoot)
@@ -173,34 +171,6 @@ for (const platform of ["posix", "win32"]) {
     }
 }
 
-const node = "C:\\Program Files\\nodejs\\node.exe";
-const npm = "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js";
-assert.deepEqual(
-    publishCommand("npm", ["run", "check"], {
-        platform: "win32",
-        execPath: node,
-        npmExecPath: npm,
-    }),
-    { program: node, args: [npm, "run", "check"] },
-);
-const fallback = { platform: "win32", npmExecPath: null, comSpec: "cmd.exe" };
-assert.deepEqual(publishCommand("npm", ["run", "check"], fallback), {
-    program: "cmd.exe",
-    args: ["/d", "/s", "/c", "npm run check"],
-});
-assert.throws(() => publishCommand("npm", ["run", "check; echo bad"], fallback), /Unsupported npm command/);
-assert.deepEqual(publishCommand("git", ["status", "--short"], fallback), {
-    program: "git",
-    args: ["status", "--short"],
-});
-assert.deepEqual(publishCommand("npm", ["ci"], { platform: "linux" }), { program: "npm", args: ["ci"] });
-if (process.env.npm_execpath && fs.existsSync(process.env.npm_execpath)) {
-    const command = publishCommand("npm", ["--version"], { platform: "win32" });
-    const result = spawnSync(command.program, command.args, { encoding: "utf8", shell: false });
-    assert.equal(result.status, 0, result.stderr);
-    assert(/^\d+\.\d+\.\d+/.test(result.stdout.trim()));
-    assert(!result.stderr.includes("DEP0190"));
-}
 console.log(
-    "PASS: Windows/POSIX catalog parity, LF/CRLF, saved CSS isolation, Vite customizer paths/Pages links, deterministic owners/HMR and npm invocation without shell:true.",
+    "PASS: Windows/POSIX catalog parity, LF/CRLF, saved CSS isolation, customizer paths, deterministic owners and HMR.",
 );

@@ -55,10 +55,10 @@ export async function optimizePublicAssets(root, publicRoot) {
                 width: metadata.autoOrient?.width || metadata.width,
                 height: metadata.autoOrient?.height || metadata.height,
             };
-        if (/\.ttf$/i.test(path)) {
-            if (existsSync(path.replace(/\.ttf$/i, ".woff2"))) continue;
+        if (/\.(?:ttf|otf)$/i.test(path)) {
+            if (existsSync(path.replace(/\.(?:ttf|otf)$/i, ".woff2"))) continue;
             const encoded = await encode(source, "woff2");
-            writeFileSync(path.replace(/\.ttf$/i, ".woff2"), encoded);
+            writeFileSync(path.replace(/\.(?:ttf|otf)$/i, ".woff2"), encoded);
             savings.fonts++;
             savings.original += source.length;
             savings.optimized += encoded.length;

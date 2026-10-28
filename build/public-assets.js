@@ -10,20 +10,26 @@ export const hasCredentialMaterial = (text) =>
         text,
     );
 
+const decodeSvgAttribute = (value) =>
+    value
+        .replace(/&#(x[a-f\d]+|\d+);/gi, (_, code) => {
+            const point = parseInt(
+                code[0].toLowerCase() === "x" ? code.slice(1) : code,
+                code[0].toLowerCase() === "x" ? 16 : 10,
+            );
+            return point <= 0x10ffff ? String.fromCodePoint(point) : "\ufffd";
+        })
+        .replace(/[\u0000-\u0020\u007f]/g, "");
+
 const activeSvg = (text) => {
     if (/<(?:[\w.-]+:)?(?:script|foreignObject)\b|<!DOCTYPE\b|\son[a-z]+\s*=/i.test(text)) return true;
-    return [...text.matchAll(/\b(?:[\w.-]+:)?href\s*=\s*(["'])(.*?)\1/gs)].some(([, , value]) => {
-        const decoded = value
-            .replace(/&#(x[a-f\d]+|\d+);/gi, (_, code) => {
-                const point = parseInt(
-                    code[0].toLowerCase() === "x" ? code.slice(1) : code,
-                    code[0].toLowerCase() === "x" ? 16 : 10,
-                );
-                return point <= 0x10ffff ? String.fromCodePoint(point) : "\ufffd";
-            })
-            .replace(/[\u0000-\u0020\u007f]/g, "");
-        return /^(?:javascript:|vbscript:|data:text\/html)/i.test(decoded);
-    });
+    // SMIL can replace a safe href after load. Check the animated attribute,
+    // including numeric XML references and namespace aliases, not just URLs.
+    for (const [, , value] of text.matchAll(/\battributeName\s*=\s*(["'])(.*?)\1/gs))
+        if (/^(?:[\w.-]+:)?(?:href|on[a-z]+)$/i.test(decodeSvgAttribute(value))) return true;
+    for (const [, , value] of text.matchAll(/\b(?:[\w.-]+:)?href\s*=\s*(["'])(.*?)\1/gs))
+        if (/^(?:javascript:|vbscript:|data:text\/html)/i.test(decodeSvgAttribute(value))) return true;
+    return false;
 };
 
 // Git ignore rules do not stop Vite from copying local public files into dist.

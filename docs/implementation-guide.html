@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>مارپیچ صنعت — مسیر ادامهٔ نسخهٔ سه‌زبانه ۴.۱.۰</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                color: #142339;
+                background: #f3f6fb;
+                font:
+                    15px/2 Tahoma,
+                    Arial,
+                    sans-serif;
+            }
+            header {
+                padding: 48px 24px;
+                background: #0f172b;
+                color: white;
+            }
+            main,
+            header > div {
+                max-width: 1000px;
+                margin: auto;
+            }
+            main {
+                padding: 24px 20px 60px;
+            }
+            h1 {
+                font-size: clamp(24px, 5vw, 38px);
+                margin: 8px 0 16px;
+            }
+            h2 {
+                font-size: 21px;
+                margin: 0 0 14px;
+            }
+            p {
+                margin: 8px 0;
+            }
+            header p,
+            a {
+                color: #79b6ed;
+            }
+            section {
+                background: white;
+                border: 1px solid #dae3ef;
+                border-radius: 16px;
+                padding: 26px;
+                margin: 20px 0;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 16px;
+            }
+            .card {
+                background: #f3f6fb;
+                padding: 18px;
+                border-radius: 10px;
+            }
+            .status {
+                color: #14634c;
+                font-size: 13px;
+                font-weight: bold;
+            }
+            .next {
+                color: #a05200;
+            }
+            code {
+                direction: ltr;
+                unicode-bidi: isolate;
+                display: inline-block;
+                color: #285b82;
+                font:
+                    14px/1.8 Consolas,
+                    monospace;
+                overflow-wrap: anywhere;
+            }
+            ol {
+                padding-right: 22px;
+            }
+            li {
+                margin: 10px 0;
+            }
+            a {
+                color: #276ca8;
+                text-underline-offset: 4px;
+            }
+            .table {
+                overflow-x: auto;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                min-width: 450px;
+            }
+            td,
+            th {
+                border-bottom: 1px solid #e2e9f3;
+                padding: 12px;
+                text-align: right;
+            }
+            footer {
+                color: #546679;
+                font-size: 13px;
+            }
+        </style>
+    </head>
+    <body>
+        <header
+            ><div>
+                <p>مارپیچ صنعت · نسخهٔ ۴.۱.۰</p>
+                <h1>همان سایت؛ اکنون در سه زبان</h1>
+                <p>۱۲ قالب مشترک، ۳۶ مسیر فارسی، انگلیسی و عربی؛ با حفظ طراحی فارسی.</p>
+            </div></header
+        >
+        <main>
+            <section>
+                <h2>از این نسخه جلو می‌رویم</h2>
+                <p
+                    >پوشهٔ مرجع <code>marpich-sanat-v4.1.0</code> است. این نسخه ادامهٔ سایت فعلی است و صفحه‌های انگلیسی
+                    و عربی از همان قالب‌ها ساخته می‌شوند. نسخهٔ آزمایشی با طراحی جداگانه مبنای توسعه نیست.</p
+                >
+                <p
+                    >راهنمای اجرا: <a href="../README.md">README</a> · ساختار فنی:
+                    <a href="LOCALIZATION.md">راهنمای زبان‌ها</a> · نتیجهٔ بررسی‌ها:
+                    <a href="RELEASE-4.1.0.md">گزارش این نسخه</a></p
+                >
+            </section>
+            <section>
+                <h2>بخش‌های آماده‌شده</h2>
+                <div class="grid">
+                    <div class="card"
+                        ><span class="status">آماده</span><h3>ساختار و ترجمه</h3
+                        ><p
+                            >همهٔ ۱۲ صفحه، منوها، متن‌ها، فرم‌ها، فیلترها و پیام‌های تعاملی در هر سه زبان؛ ۱۱۶۴ پیام در
+                            هر زبان جدید.</p
+                        ></div
+                    >
+                    <div class="card"
+                        ><span class="status">آماده</span><h3>جهت و فونت</h3
+                        ><p
+                            >فارسی و عربی راست‌چین با Peyda؛ انگلیسی چپ‌چین با Montserrat برای تیتر و D-DIN برای متن و
+                            زیرتیتر.</p
+                        ></div
+                    >
+                    <div class="card"
+                        ><span class="status">آماده</span><h3>تغییر زبان</h3
+                        ><p
+                            >کاربر از هر صفحه به همان صفحه در زبان دیگر می‌رود. لینک‌های داخلی نیز زبان انتخاب‌شده را
+                            نگه می‌دارند.</p
+                        ></div
+                    >
+                </div>
+            </section>
+            <section>
+                <h2>چطور اجرا و بررسی کنیم</h2>
+                <ol>
+                    <li>ترمینال را در پوشهٔ مرجع و کنار <code>package.json</code> باز کنید.</li>
+                    <li>اولین بار <code>npm ci</code> و سپس <code>npm run dev</code> را اجرا کنید.</li>
+                    <li>سایت را از نشانی محلی نمایش‌داده‌شده باز کنید؛ صفحه‌های HTML خام را مستقیم اجرا نکنید.</li>
+                    <li
+                        >برای مقایسه، <code>/index.html</code>، <code>/en/index.html</code> و
+                        <code>/ar/index.html</code> را باز کنید؛ سپس با منوی زبان، صفحه‌های داخلی را بررسی کنید.</li
+                    >
+                </ol>
+            </section>
+            <section>
+                <h2>هر تغییر از کجا انجام می‌شود</h2>
+                <div class="table"
+                    ><table>
+                        <thead
+                            ><tr><th>تغییر</th><th>محل اصلی</th></tr></thead
+                        >
+                        <tbody>
+                            <tr
+                                ><td>ساختار و محتوای صفحه</td
+                                ><td>HTML ریشه، <code>src/components</code> و <code>src/data/pages</code></td></tr
+                            >
+                            <tr
+                                ><td>ترجمهٔ انگلیسی و عربی</td
+                                ><td><code>src/i18n/en.json</code> و <code>src/i18n/ar.json</code></td></tr
+                            >
+                            <tr
+                                ><td>فونت و اصلاح نمایش انگلیسی</td
+                                ><td><code>src/css/locales/en-fonts.css</code></td></tr
+                            >
+                            <tr
+                                ><td>ظاهر و تنظیمات مشترک</td
+                                ><td><code>src/css</code> و ابزار تنظیمات؛ با کنترل هم‌زمان هر سه زبان</td></tr
+                            >
+                        </tbody>
+                    </table></div
+                >
+            </section>
+            <section>
+                <h2>مرحلهٔ بعدی</h2>
+                <ol>
+                    <li
+                        ><strong>تأیید متن نهایی شرکت:</strong> نام محصولات، اطلاعات تماس، متن تخصصی و ترجمه‌ها با
+                        محتوای نهایی شرکت تطبیق داده شوند.</li
+                    >
+                    <li
+                        ><strong>اصلاحات ظاهری موردنظر شما:</strong> هر تغییر جدید ابتدا روی جزء مشترک اعمال و بعد در
+                        موبایل و دسکتاپ هر سه زبان کنترل شود.</li
+                    >
+                    <li
+                        ><strong>اتصال سرویس‌ها:</strong> فرم‌ها، ارسال فایل، ورود واقعی، پیامک، مقالات و مقصد لینک‌های
+                        جای‌خالی به بک‌اند وصل شوند. رابط فعلی این سرویس‌ها را ایجاد نمی‌کند.</li
+                    >
+                    <li
+                        ><strong>انتشار سایت:</strong> پس از اتصال بک‌اند و بررسی محیط مقصد انجام می‌شود. ثبت نسخه در
+                        گیت‌هاب، به‌تنهایی سایت عمومی را منتشر نمی‌کند.</li
+                    >
+                </ol>
+                <p class="next"
+                    >یکان بخ در مجموعهٔ بررسی‌شده پیدا نشد؛ فونت مشابه به نام آن استفاده نشده است. فعلاً Peyda موجود
+                    برای فارسی و عربی حفظ شده است.</p
+                >
+            </section>
+            <footer
+                >این راهنما آفلاین و مستقل است. گزارش‌های قدیمی پروژه سابقهٔ فنی‌اند؛ وضعیت این نسخه در گزارش ۴.۱.۰ ثبت
+                شده است.</footer
+            >
+        </main>
+    </body>
+</html>

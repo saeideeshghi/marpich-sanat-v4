@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "
 import { dirname, resolve } from "node:path";
 import { normalizeConfig, compileCSS } from "../src/js/customizer/model.js";
 import { imageSourceRules } from "../src/js/customizer/image-source.js";
-import { pages } from "./pages.js";
+import { allPages as pages } from "./pages.js";
 import { loadDesignConfig, settingsText } from "./design-config.js";
 
 // Filesystem paths stay native; Vite hook comparisons use forward slashes.
@@ -17,7 +17,9 @@ export function templateCustomizer(root, base, { publicTools = true } = {}) {
         footer: resolve(root, "src/data/patterns/footer-pattern.json"),
     };
     const pagePaths = new Set(pages.map((page) => normalizePath(resolve(root, page.file))));
-    const aboutPath = normalizePath(resolve(root, "about.html"));
+    const aboutPaths = new Set(
+        pages.filter((p) => (p.sourceFile || p.file) === "about.html").map((p) => normalizePath(resolve(root, p.file))),
+    );
     const patternFiles = new Set(Object.values(patternPaths).map(normalizePath));
     const token = randomBytes(24).toString("hex");
     const load = () => loadDesignConfig(root);
@@ -54,7 +56,7 @@ export function templateCustomizer(root, base, { publicTools = true } = {}) {
                 const config = load();
                 const styleVersion = createHash("sha256").update(compileCSS(config)).digest("hex").slice(0, 12);
                 return [
-                    ...(filename === aboutPath
+                    ...(aboutPaths.has(filename)
                         ? [
                               {
                                   tag: "script",
