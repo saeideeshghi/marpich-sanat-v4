@@ -18,4 +18,6 @@
 /* Scan authored pages only; generated dist/cache files are not CSS inputs. */
 @source "../../*.html";
 @source "../../tools/*.html";
-@source "../../docs/backend-handoff.html";
+
+@source not "../i18n";
+@source not "../css/locales";

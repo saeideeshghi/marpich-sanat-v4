@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { pages } from "../build/pages.js";
+import { allPages as pages } from "../build/pages.js";
 import { backendHeaders } from "../build/security-headers.js";
 
 const root = resolve(import.meta.dirname, "../dist/backend");
@@ -27,7 +27,7 @@ for (const page of pages) {
     const scripts = [...html.matchAll(/<script\b[^>]*src="([^"]+)"[^>]*>/g)].map((m) => m[1]);
     assert(css.length >= 3 && scripts.length === 1, `${page.file}: CSS and JS must be resolvable before rendering`);
     const preloads = [...html.matchAll(/<link\b[^>]*rel="modulepreload"[^>]*href="([^"]+)"/g)].map((m) => m[1]);
-    if (page.name !== "home")
+    if ((page.sourceName || page.name) !== "home")
         assert(
             preloads.some((url) => /\/header-/.test(url)),
             `${page.file}: preload the header pattern`,

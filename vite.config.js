@@ -2,7 +2,9 @@ import { resolve } from "node:path";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import { htmlPartials } from "./build/html-partials.js";
-import { pages } from "./build/pages.js";
+import { allPages as pages } from "./build/pages.js";
+import { localizedRuntime } from "./build/localization.js";
+import { localeOutput } from "./build/locale-output.js";
 import { preparePublicAssets, publicAssetLifecycle } from "./build/public-assets.js";
 import { publicAssetBase } from "./build/public-asset-base.js";
 import { templateCustomizer } from "./build/customizer.js";
@@ -10,13 +12,12 @@ import { designTokenReference } from "./build/design-tokens.js";
 import { runtimePatterns } from "./build/pattern-runtime.js";
 import { optimizePublicAssets, optimizedImages } from "./build/optimized-assets.js";
 import { backendHeaders } from "./build/security-headers.js";
-import { githubPagesBase, readGithubRepository } from "./build/github-pages.js";
 import { prepareIconFonts } from "./build/icon-fonts.js";
 
 const root = import.meta.dirname;
 
 export default defineConfig(async ({ mode, isPreview, command }) => {
-    const base = mode === "pages" ? githubPagesBase(process.env.GITHUB_REPOSITORY || readGithubRepository(root)) : "/";
+    const base = "/";
     const preview = { host: "127.0.0.1", headers: mode === "backend" ? backendHeaders : {} };
     const outDir = mode === "backend" ? "dist/backend" : "dist";
     // Preview serves a completed build. It must not recopy/re-encode source
@@ -27,7 +28,7 @@ export default defineConfig(async ({ mode, isPreview, command }) => {
     const icons = await prepareIconFonts(root, publicDir, { subset: command === "build" });
     return {
         appType: "mpa",
-        // Backend/local builds stay at /. Pages has a repository path prefix.
+        // Independent local and backend builds use the site root.
         base,
         server: {
             host: "127.0.0.1",
@@ -35,7 +36,7 @@ export default defineConfig(async ({ mode, isPreview, command }) => {
                 deny: [
                     ".env",
                     ".env.*",
-                    "*.{crt,pem,key}",
+                    "*.{crt,pem,key,p12,pfx}",
                     "**/.git/**",
                     "**/.aws/**",
                     "**/.codex/**",
@@ -51,6 +52,7 @@ export default defineConfig(async ({ mode, isPreview, command }) => {
         resolve: { alias: { "@marpich/icons.css": icons.cssPath } },
         plugins: [
             publicAssetLifecycle(root, publicDir),
+            localizedRuntime(root),
             htmlPartials(root),
             optimizedImages(imageMap, responsiveMap, imageDimensions),
             runtimePatterns(root),
@@ -58,6 +60,7 @@ export default defineConfig(async ({ mode, isPreview, command }) => {
             publicAssetBase(base),
             templateCustomizer(root, base, { publicTools: mode !== "backend" }),
             ...(mode === "backend" ? [] : [designTokenReference(root)]),
+            localeOutput(root),
         ],
         build: {
             outDir,

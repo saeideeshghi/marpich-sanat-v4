@@ -22,7 +22,7 @@ export function settingsArchive(config) {
         ]),
         [
             "APPLY-SETTINGS.txt",
-            "پوشه src این بسته را کنار package.json پروژه Merge و Replace کنید. تصاویر و فونت‌های قبلی را نگه دارید.\nاجرای محلی: npm run customize\nخروجی سایت: npm run build:pages\nاین بسته شامل CSS، تنظیمات ریسپانسیو و پترن هدر/فوتر است؛ به مرورگر یا localStorage وابسته نیست.\nبرای انتشار: PUSH-GITHUB.cmd\n",
+            "پوشه src این بسته را کنار package.json پروژه Merge و Replace کنید. تصاویر و فونت‌های قبلی را نگه دارید.\nاجرای محلی: npm run customize\nخروجی سایت: npm run build\nاین بسته شامل CSS، تنظیمات ریسپانسیو و پترن هدر/فوتر است؛ به مرورگر یا localStorage وابسته نیست.\n",
         ],
     ];
     const parts = [],

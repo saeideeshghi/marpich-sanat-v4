@@ -50,7 +50,7 @@ _Layout.cshtml شامل lang="fa"، dir="rtl"، Metadata، Header، Menu، Auth�
 
 ## ۱۲. اتصال Vite و Manifest به ASP.NET
 
-برای Backend از npm run build استفاده کنید؛ build:pages برای پیشوند مخزن GitHub است. خروجی Manifest در dist/.vite/manifest.json قرار دارد. Registry فعلی entryهای HTML مثل about.html و products.html را ثبت می‌کند؛ قبل از خواندن Manifest، وجود کلید همان صفحه را کنترل کنید.
+برای Backend از npm run build:backend استفاده کنید. خروجی Manifest در dist/backend/.vite/manifest.json قرار دارد. Registry فعلی entryهای HTML مثل about.html و products.html را ثبت می‌کند؛ قبل از خواندن Manifest، وجود کلید همان صفحه را کنترل کنید.
 
 ۱. محتوای assets، fonts و سایر فایل‌های عمومی خروجی را با همان مسیرها به wwwroot منتقل کنید. نسخهٔ Manifest را کنار برنامه و دور از ویرایش کاربر نگه دارید.
 
@@ -212,13 +212,13 @@ VITE_AUTH_API_BASE=/api/auth
 
 VITE_ها در Bundle مرورگر قرار می‌گیرند؛ کلید سرویس SMS و سایر Secretها باید فقط در Backend باشند. حالت Preview فقط در Dev و با OTP برابر 123456 فعال است؛ Production چنین ورود آزمایشی ندارد.
 
-| مسیر موجود در Adapter         | Payload فعلی                                     | پاسخ موفق مورد انتظار                                          |
-| ----------------------------- | ------------------------------------------------ | -------------------------------------------------------------- |
-| POST /api/auth/login          | identifier، password، remember                   | ok: true؛ user اختیاری؛ Session Cookie واقعی                   |
-| POST /api/auth/register       | fullName، identifier، password، confirmPassword  | ok: true، challengeId و retryAfter                             |
-| POST /api/auth/request-code   | identifier، purpose و گاهی challengeId           | ok: true، challengeId و retryAfter                             |
-| POST /api/auth/verify-code    | identifier، challengeId، purpose، code، remember | ok: true؛ برای reset حتماً resetToken؛ برای ورود Session واقعی |
-| POST /api/auth/reset-password | resetToken و password                            | ok: true؛ Token یک‌بارمصرف باطل شود                            |
+| مسیر موجود در Adapter         | Payload فعلی                                                                               | پاسخ موفق مورد انتظار                                          |
+| ----------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
+| POST /api/auth/login          | identifier، password، remember                                                             | ok: true؛ user اختیاری؛ Session Cookie واقعی                   |
+| POST /api/auth/register       | fullName، identifier، password (confirmPassword فقط در UI بررسی و پیش از ارسال حذف می‌شود) | ok: true، challengeId و retryAfter                             |
+| POST /api/auth/request-code   | identifier، purpose و گاهی challengeId                                                     | ok: true، challengeId و retryAfter                             |
+| POST /api/auth/verify-code    | identifier، challengeId، purpose، code، remember                                           | ok: true؛ برای reset حتماً resetToken؛ برای ورود Session واقعی |
+| POST /api/auth/reset-password | resetToken و password                                                                      | ok: true؛ Token یک‌بارمصرف باطل شود                            |
 
 purpose یکی از login، register یا reset است. OTP شش‌رقمی است. Backend باید Challenge را به identifier و purpose متصل کند، انقضا و سقف تلاش داشته باشد و پیامک/ایمیل واقعی بفرستد. پاسخ 429 همراه Retry-After از UI پشتیبانی می‌شود؛ سایر خطاها از message خوانده می‌شوند.
 
@@ -289,7 +289,7 @@ API پیشنهادی فهرست‌ها، مانند GET /api/products یا GET /
 
 ## ۱۹. انتشار، آزمون پذیرش و ترتیب تحویل
 
-GitHub Pages فقط Frontend استاتیک این پروژه را اجرا می‌کند. ASP.NET Core و دیتابیس به میزبان Backend نیاز دارند. در مرحلهٔ اتصال، Frontend و API روی دامنهٔ یکسان یا تنظیم مشخص Reverse Proxy منتشر شوند؛ cross-origin بدون تغییر Adapter و قرارداد Cookie به‌صورت خودکار کار نمی‌کند.
+ASP.NET Core و دیتابیس به میزبان Backend نیاز دارند. در مرحلهٔ اتصال، Frontend و API روی دامنهٔ یکسان یا تنظیم مشخص Reverse Proxy منتشر شوند؛ cross-origin بدون تغییر Adapter و قرارداد Cookie به‌صورت خودکار کار نمی‌کند.
 
 | کنترل              | نتیجهٔ مورد انتظار                                                       |
 | ------------------ | ------------------------------------------------------------------------ |

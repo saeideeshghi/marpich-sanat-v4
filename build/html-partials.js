@@ -5,6 +5,8 @@
 import { readFileSync, existsSync } from "node:fs";
 import { resolve, basename } from "node:path";
 import { pages } from "./pages.js";
+import { pageForFile } from "./page-registry.js";
+import { translateHTML, localeUrl, locales } from "./localization.js";
 import { renderComponent } from "./components.js";
 import { publicContentSecurityPolicy } from "./security-headers.js";
 
@@ -13,12 +15,13 @@ const partialNames = ["header", "mobile-menu", "footer", "auth-modal"];
 // Native HTML is produced before Vite processes scripts and assets.
 // There is no browser fetch, client-side HTML injection, or extra dependency.
 export function renderPage(html, filename, root) {
-    const page = pages.find((item) => item.file === basename(filename));
+    const page = pageForFile(root, filename);
     if (!page) return html;
 
-    const dataPath = resolve(root, "src/data/pages", `${page.name}.json`);
+    const dataPath = resolve(root, "src/data/pages", `${page.sourceName || page.name}.json`);
+    if (page.locale) html = readFileSync(resolve(root, page.sourceFile), "utf8");
     const data = existsSync(dataPath) ? JSON.parse(readFileSync(dataPath, "utf8")) : {};
-    return html.replace(/<!--\s*@include\s+([\w-]+)(?:\s+([\w-]+))?\s*-->/g, (_, name, key) => {
+    const rendered = html.replace(/<!--\s*@include\s+([\w-]+)(?:\s+([\w-]+))?\s*-->/g, (_, name, key) => {
         if (key) {
             if (!Object.hasOwn(data, key)) throw new Error(`${page.file}: missing component data ${key}`);
             return renderComponent(name, data[key], root);
@@ -28,10 +31,27 @@ export function renderPage(html, filename, root) {
         return partial.replace(/<(?:a|button)\b[^>]*\bdata-nav="([^"]+)"[^>]*>/g, (tag, nav) => {
             if (nav !== page.activeNav) return tag;
             const destination = tag.match(/\bhref="([^"]+)"/)?.[1];
-            const current = destination === page.file ? "page" : "true";
+            const current = destination === (page.sourceFile || page.file) ? "page" : "true";
             return tag.replace(/>$/, ` aria-current="${current}">`);
         });
     });
+    const withEntry = rendered.replace(
+        'src="/src/js/pages/' + (page.sourceName || page.name) + '.js"',
+        'src="/__locale-entry/' + (page.locale || "fa") + "/" + (page.sourceName || page.name) + '.js"',
+    );
+    const localized = page.locale ? translateHTML(withEntry, page.locale, root, page) : withEntry;
+    const file = page.sourceFile || page.file;
+    const alternates = [...locales, "x-default"]
+        .map(
+            (locale) =>
+                '<link rel="alternate" hreflang="' +
+                locale +
+                '" href="' +
+                localeUrl(file, locale === "x-default" ? "fa" : locale) +
+                '" />',
+        )
+        .join("\n");
+    return localized.replace("</head>", alternates + "\n</head>");
 }
 
 export function htmlPartials(root) {
@@ -47,7 +67,7 @@ export function htmlPartials(root) {
             order: "pre",
             handler(html, context) {
                 let rendered = renderPage(html, context.filename, root);
-                if (!pages.some((page) => page.file === basename(context.filename))) return rendered;
+                if (!pageForFile(root, context.filename)) return rendered;
                 if (production)
                     rendered = rendered.replace(
                         /(<meta\b[^>]*\bcharset=["'][^"']+["'][^>]*>)/i,

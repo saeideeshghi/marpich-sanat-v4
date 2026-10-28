@@ -1,8 +1,26 @@
-/* Language disclosure only. EN/AR content must come from the site's actual
- * localized routes. A backend adapter can cancel site:language-request and
- * navigate there; Persian content never receives a false lang/dir attribute. */
+/* Switch to the equivalent page, preserving its anchor. Each route renders
+ * the same page template with its own language and direction. */
 export function initLanguageSelectors() {
     const selectors = [...document.querySelectorAll("[data-language-selector]")];
+    const currentLocale = document.documentElement.lang || "fa";
+    if (currentLocale !== "fa") {
+        selectors.forEach((root) => {
+            const toggle = root.querySelector("[data-language-toggle]");
+            const option = root.querySelector('[data-language-option="' + currentLocale + '"]');
+            const flag = option?.querySelector("img");
+            const badge = toggle?.querySelector("img");
+            if (flag && badge) {
+                badge.src = flag.src;
+                badge.alt = flag.alt;
+            }
+            for (const node of toggle?.querySelectorAll("span") || [])
+                if (node.textContent.trim() === "FA") node.textContent = currentLocale.toUpperCase();
+            root.querySelectorAll("[data-language-option]").forEach((item) => {
+                if (item.dataset.languageOption === currentLocale) item.setAttribute("aria-current", "true");
+                else item.removeAttribute("aria-current");
+            });
+        });
+    }
     const close = (root, restoreFocus = false) => {
         const toggle = root.querySelector("[data-language-toggle]");
         root.querySelector("[data-language-menu]").hidden = true;
@@ -56,7 +74,15 @@ export function initLanguageSelectors() {
             option.addEventListener("click", () => {
                 const language = option.dataset.languageOption;
                 close(root, true);
-                if (language === "fa") return;
+                const activeLocale = document.documentElement.lang || "fa";
+                if (language === activeLocale) return;
+                if (["fa", "en", "ar"].includes(language)) {
+                    const file = location.pathname.split("/").at(-1) || "index.html";
+                    if (/^[a-z][\w-]*\.html$/.test(file)) {
+                        location.assign("/" + (language === "fa" ? "" : language + "/") + file + location.hash);
+                        return;
+                    }
+                }
                 const request = new CustomEvent("site:language-request", { detail: { language }, cancelable: true });
                 if (document.dispatchEvent(request)) {
                     status.textContent = `نسخه ${language === "en" ? "انگلیسی" : "عربی"} فعلاً در دسترس نیست.`;

@@ -19,7 +19,7 @@ const faq = JSON.parse(readFileSync(resolve(root, "src/data/pages/industry-texti
 const output = renderComponent("faq", { ...faq, href: "/faq", linkText: "FAQ destination" }, root);
 assert(output.includes('href="/faq"') && output.includes("FAQ destination"), "FAQ must use its data link");
 
-// The Pages base also applies to runtime fallbacks, not only visible src/href.
+// A non-root hosting base also applies to runtime fallbacks, not only visible src/href.
 const assetPlugin = publicAssetBase("/marpich-sanat/");
 const markup =
     '<img src="/assets/main.svg" data-fallback="/assets/backup.svg" data-image-candidates="/assets/first.svg|/assets/second.svg" srcset="/assets/small.svg 1x, /assets/large.svg 2x" />';
@@ -37,4 +37,4 @@ assert.equal(normalizeSearchText("کانال‌کشی"), normalizeSearchText("ك
 assert.equal(normalizeSearchText("مدل ۱۲۳"), normalizeSearchText("مدل ١٢٣"));
 assert.equal(normalizeSearchText("Air Handling"), normalizeSearchText("AIR HANDLING"));
 assert.equal(normalizeSearchText(null), "");
-console.log("PASS: URL validation, search/FAQ rendering, Pages image fallbacks and Persian/Arabic search matching.");
+console.log("PASS: URL validation, search/FAQ rendering, prefixed image fallbacks and Persian/Arabic search matching.");
