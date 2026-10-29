@@ -1,6 +1,6 @@
 # مارپیچ صنعت · راهنمای شروع
 
-نسخهٔ 4.1.0 همان سایت موجود با ۱۲ قالب مشترک و سه زبان فارسی، انگلیسی و عربی است؛ در مجموع ۳۶ مسیر مستقل دارد. ظاهر و تنظیمات فارسی حفظ شده‌اند. فناوری‌ها: Vite، Tailwind CSS، HTML، CSS و JavaScript با ES Modules.
+نسخهٔ 4.1.1 همان سایت موجود با ۱۲ قالب مشترک و سه زبان فارسی، انگلیسی و عربی است؛ در مجموع ۳۶ مسیر مستقل دارد. ظاهر و تنظیمات فارسی حفظ شده‌اند. فناوری‌ها: Vite، Tailwind CSS، HTML، CSS و JavaScript با ES Modules.
 
 راهنمای آفلاین این نسخه: [docs/implementation-guide.html](docs/implementation-guide.html). جزئیات قراردادهای بک‌اند و نقشهٔ ۱۲ قالب اصلی در [راهنمای تحویل قبلی](docs/backend-handoff.html) باقی مانده‌اند؛ برای تغییرات سه‌زبانه، [LOCALIZATION.md](docs/LOCALIZATION.md) را بخوانید. خود سایت باید با Vite اجرا شود.
 
@@ -57,3 +57,7 @@ npm run preview:backend
 ## ادامهٔ توسعهٔ سه‌زبانه
 
 نسخهٔ مرجع توسعه همین پوشه و همین مخزن `saeideeshghi/marpich-sanat-v4` است. برای دیدن نسخه‌ها پس از `npm run dev`، `/index.html`، `/en/index.html` و `/ar/index.html` را باز کنید. محتوای هر سه زبان از یک قالب می‌آید؛ ترجمه‌ها در `src/i18n` هستند و کپی مستقل از صفحه طراحی نکنید. گزارش این نسخه در [docs/RELEASE-4.1.0.md](docs/RELEASE-4.1.0.md) قرار دارد.
+
+## پیش‌نمایش آنلاین
+
+اصلاح 4.1.1 انتشار واقعی GitHub Pages را تکمیل می‌کند: [فارسی](https://saeideeshghi.github.io/marpich-sanat-v4/)، [English](https://saeideeshghi.github.io/marpich-sanat-v4/en/index.html)، [العربية](https://saeideeshghi.github.io/marpich-sanat-v4/ar/index.html). ساخت مخصوص انتشار با `npm run build:pages` و خروجی `dist/pages` انجام می‌شود. راهنمای دقیق: [docs/PAGES.md](docs/PAGES.md).

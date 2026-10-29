@@ -79,7 +79,9 @@ export function initLanguageSelectors() {
                 if (["fa", "en", "ar"].includes(language)) {
                     const file = location.pathname.split("/").at(-1) || "index.html";
                     if (/^[a-z][\w-]*\.html$/.test(file)) {
-                        location.assign("/" + (language === "fa" ? "" : language + "/") + file + location.hash);
+                        location.assign(
+                            import.meta.env.BASE_URL + (language === "fa" ? "" : language + "/") + file + location.hash,
+                        );
                         return;
                     }
                 }

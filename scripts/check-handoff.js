@@ -30,6 +30,12 @@ assert(
 );
 assert(transformed.includes('srcset="/marpich-sanat/assets/small.svg 1x, /marpich-sanat/assets/large.svg 2x"'));
 assert.equal(assetPlugin.transformIndexHtml.handler(transformed), transformed, "Asset prefix must not duplicate");
+const localeLinks = assetPlugin.transformIndexHtml.handler(
+    '<a href="/en/products.html#product-search">Products</a><link rel="alternate" hreflang="ar" href="/ar/products.html" />',
+);
+assert(localeLinks.includes('href="/marpich-sanat/en/products.html#product-search"'));
+assert(localeLinks.includes('href="/marpich-sanat/ar/products.html"'));
+assert.equal(assetPlugin.transformIndexHtml.handler(localeLinks), localeLinks);
 
 // Match the user's spelling, without changing native identifiers or display text.
 assert.equal(normalizeSearchText("تهویه صنعتی"), normalizeSearchText("تَهْوِيه صِنْعَتي"));

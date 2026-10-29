@@ -13,13 +13,16 @@ import { runtimePatterns } from "./build/pattern-runtime.js";
 import { optimizePublicAssets, optimizedImages } from "./build/optimized-assets.js";
 import { backendHeaders } from "./build/security-headers.js";
 import { prepareIconFonts } from "./build/icon-fonts.js";
+import { githubPagesBase, readGithubRepository } from "./build/github-pages.js";
 
 const root = import.meta.dirname;
 
 export default defineConfig(async ({ mode, isPreview, command }) => {
-    const base = "/";
-    const preview = { host: "127.0.0.1", headers: mode === "backend" ? backendHeaders : {} };
-    const outDir = mode === "backend" ? "dist/backend" : "dist";
+    const isPages = mode === "pages";
+    const publicTools = mode !== "backend" && !isPages;
+    const base = isPages ? githubPagesBase(process.env.GITHUB_REPOSITORY || readGithubRepository(root)) : "/";
+    const preview = { host: "127.0.0.1", headers: publicTools ? {} : backendHeaders };
+    const outDir = isPages ? "dist/pages" : mode === "backend" ? "dist/backend" : "dist";
     // Preview serves a completed build. It must not recopy/re-encode source
     // artwork or regenerate editable styles just to start an HTTP server.
     if (isPreview === true) return { appType: "mpa", base, preview, build: { outDir } };
@@ -58,8 +61,8 @@ export default defineConfig(async ({ mode, isPreview, command }) => {
             runtimePatterns(root),
             tailwindcss(),
             publicAssetBase(base),
-            templateCustomizer(root, base, { publicTools: mode !== "backend" }),
-            ...(mode === "backend" ? [] : [designTokenReference(root)]),
+            templateCustomizer(root, base, { publicTools }),
+            ...(publicTools ? [designTokenReference(root)] : []),
             localeOutput(root),
         ],
         build: {
@@ -70,7 +73,7 @@ export default defineConfig(async ({ mode, isPreview, command }) => {
             rollupOptions: {
                 input: {
                     ...Object.fromEntries(pages.map(({ name, file }) => [name, resolve(root, file)])),
-                    ...(mode === "backend"
+                    ...(!publicTools
                         ? {}
                         : {
                               customizer: resolve(root, "tools/customizer.html"),
