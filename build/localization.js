@@ -2,7 +2,40 @@ import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { escapeHtml } from "./components.js";
 import { normalizeMessage, hasPersianText, runtimeMessages } from "./i18n-runtime-tools.js";
+import { pageForFile } from "./page-registry.js";
 export const locales = ["fa", "en", "ar"];
+// Emit after Vite's HTML asset processing: alternate URLs are page routes,
+// never source HTML files to import/hash as downloadable assets.
+export function localeAlternates(root) {
+    let base = "/";
+    return {
+        name: "marpich-locale-alternates",
+        enforce: "post",
+        configResolved(config) {
+            base = config.base;
+        },
+        transformIndexHtml: {
+            order: "post",
+            handler(html, context) {
+                const page = pageForFile(root, context.filename);
+                if (!page) return html;
+                const file = page.sourceFile || page.file;
+                const links = [...locales, "x-default"]
+                    .map(
+                        (locale) =>
+                            '<link rel="alternate" hreflang="' +
+                            locale +
+                            '" href="' +
+                            base +
+                            localeUrl(file, locale === "x-default" ? "fa" : locale).slice(1) +
+                            '" />',
+                    )
+                    .join("\n");
+                return html.replace("</head>", links + "\n</head>");
+            },
+        },
+    };
+}
 const decode = (value) =>
     value
         .replace(/&#(x[\da-f]+|\d+);/gi, (_, v) =>
