@@ -4,6 +4,7 @@ import { existsSync, readFileSync, statSync } from "node:fs";
 import { resolve } from "node:path";
 import { allPages as pages } from "../build/pages.js";
 import { githubPagesBase, readGithubRepository } from "../build/github-pages.js";
+import postcss from "postcss";
 
 const root = resolve(import.meta.dirname, "..");
 const isPages = process.argv.includes("--pages");
@@ -92,12 +93,29 @@ for (const file of files) {
     for (const style of expected)
         assert(styles.includes(style), `${file}: missing CSS from entry/shared chunk: ${style}`);
     if (definition) {
-        if (definition.locale === "en")
+        if (definition.locale === "en") {
             assert(
                 html.includes('data-locale-source="assets/customizer/template-overrides.css"'),
                 `${file}: missing localized customizer CSS`,
             );
-        else
+            const ast = postcss.parse(styles.map((style) => readFileSync(builtFile(style), "utf8")).join("\n"));
+            for (const selector of [".site-pattern-stage", ".site-footer__back-top"]) {
+                let geometry;
+                ast.walkRules(selector, (rule) => {
+                    const declarations = Object.fromEntries(
+                        rule.nodes.filter((node) => node.type === "decl").map((d) => [d.prop, d.value]),
+                    );
+                    if (declarations.position === "absolute") geometry = declarations;
+                });
+                assert(geometry, file + ": missing centered " + selector);
+                assert.equal(geometry.right, "50%", file + ": mirrored center anchor");
+                assert(
+                    /translate(?:X)?\(50%\)/.test(geometry.transform),
+                    file + ": compiled translation must keep " + selector + " centered",
+                );
+            }
+            assert(html.includes(base + "assets/logos/logo-international.svg"), file + ": international wordmark");
+        } else
             assert(
                 styles.includes("assets/customizer/template-overrides.css"),
                 `${file}: missing approved customizer CSS`,
