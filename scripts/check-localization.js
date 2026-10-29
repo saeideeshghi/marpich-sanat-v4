@@ -5,6 +5,8 @@ import { pages, localizedPages } from "../build/pages.js";
 import { renderPage } from "../build/html-partials.js";
 import { dictionary, translateText, localeUrl, localizedRuntime, localeAlternates } from "../build/localization.js";
 import { normalizeMessage, runtimeMessages } from "../build/i18n-runtime-tools.js";
+import { flip, mirrorTranslation } from "../build/locale-output.js";
+import postcss from "postcss";
 const root = resolve(import.meta.dirname, "..");
 const json = (path) => JSON.parse(readFileSync(resolve(root, path), "utf8"));
 const source = json("src/i18n/source.json"),
@@ -63,12 +65,57 @@ for (const page of pages) {
         }
         assert(/<span\b[^>]*lang="fa"[^>]*>\s*فارسی<\/span/.test(translated), "Keep native language labels");
         if (locale === "en") assert(/<dialog\b[^>]*dir="ltr"/.test(translated), "English dialog direction");
+        assert.equal(
+            (translated.match(/src="\/assets\/logos\/logo-international\.svg"/g) || []).length,
+            (rendered.match(/src="\/assets\/logos\/(?:LOGO|logo-symbol-left)\.svg"/g) || []).length,
+            "International logo in desktop/mobile header and footer: " + locale + "/" + page.file,
+        );
         for (const href of translated.matchAll(/href="(\/(?:en|ar)\/[^"?#]+\.html)/g))
             assert(
                 localizedPages.some((p) => "/" + p.file === href[1]),
                 "Existing translated route: " + href[1],
             );
     }
+}
+// These are two real forms emitted by development and Vite's CSS minifier.
+// The old implementation only handled translateX, moving production patterns,
+// navigation markers and back-to-top controls outside their intended position.
+for (const [input, expected] of [
+    ["translateX(-50%) scaleX(.45)", "translateX(50%) scaleX(.45)"],
+    ["translate(-50%)scaleX(.45)", "translate(50%)scaleX(.45)"],
+    ["translate(-50%, -20px)", "translate(50%, -20px)"],
+    ["translate3d(20px, 4px, 0)", "translate3d(-20px, 4px, 0)"],
+    [
+        "translateX(calc(-1 * var(--distance))) translateY(-10px)",
+        "translateX(calc(-1 * (calc(-1 * var(--distance))))) translateY(-10px)",
+    ],
+])
+    assert.equal(mirrorTranslation(input), expected);
+for (const transform of ["translateX(-50%)", "translate(-50%)"]) {
+    const output = postcss.parse(flip(`.stage{left:50%;transform:${transform}}`));
+    const values = Object.fromEntries(output.first.nodes.map((d) => [d.prop, d.value]));
+    assert.equal(values.right, "50%");
+    assert(!values.left);
+    // A full-width child is centered: right 50% + positive half-width offset.
+    assert.match(values.transform, /translate(?:X)?\(50%\)/);
+}
+const marquee = "@keyframes partner-flow{to{transform:translateX(calc(-1 * var(--partners-scroll-distance)))}}";
+assert.equal(flip(marquee), marquee, "Marquee keeps its own LTR coordinates");
+const variables = postcss.parse(
+    flip(".x{--tw-translate-x:-50%;translate:var(--tw-translate-x) var(--tw-translate-y)}"),
+);
+assert.equal(variables.first.nodes[0].value, "50%");
+assert.equal(variables.first.nodes[1].value, "var(--tw-translate-x) var(--tw-translate-y)");
+for (const [input, expected] of [
+    ["left 16px center", "right 16px center"],
+    ["16px", "right 16px center"],
+    ["16px 20px", "calc(100% - 16px) 20px"],
+    ["10% 70%", "90% 70%"],
+    ["50% 70%", "50% 70%"],
+    ["bottom", "bottom"],
+]) {
+    const output = postcss.parse(flip(`.select{background-position:${input}}`));
+    assert.equal(output.first.first.value, expected);
 }
 assert.equal(
     translateText(" نمونه ", { نمونه: '<img src=x onerror="alert(1)">' }),

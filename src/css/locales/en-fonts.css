@@ -45,7 +45,9 @@ html[lang="en"] :is(input[type="email"], input[type="tel"], input[type="password
 html[lang="en"] :is(.site-card__title, .product-card__title, .article-card__title) {
     overflow-wrap: anywhere;
 }
-html[lang="en"] :is(.fa-arrow-left, .fa-chevron-left, img[src*="/arrow-left"], .home-process-arrow) {
+html[lang="en"]
+    :is(.fa-arrow-left, .fa-chevron-left, img[src*="arrow-left"], img[src$="/send.svg"], .home-process-arrow),
+html[lang="en"] .featured-card__count::after {
     scale: -1 1;
 }
 html[lang="en"] body .home-partners__title :is(strong, span) {
@@ -62,4 +64,64 @@ html[lang="en"] .pcm-back .fa-arrow-left {
 html[lang="en"] .site-footer .site-footer__description {
     text-align: left;
     text-align-last: left;
+}
+
+/* Mirror physical composition as well as text. Children retain LTR copy;
+ * numeric values, phone/email inputs and the logo marquee stay LTR. */
+html[lang="en"]
+    :is(
+        .about-story__grid,
+        .about-management__grid,
+        .about-gallery__content-wrap,
+        .about-certificates__grid,
+        .about-certificates__cards,
+        .details-card__body,
+        .catalog-consultation,
+        .air-handling-consultation,
+        .industries-consultation,
+        .product-search__field-row,
+        .articles-search__field-row,
+        .view-switcher,
+        .articles-view-switcher,
+        .contact-submit,
+        .upload-box,
+        .about-gallery__link
+    ) {
+    direction: rtl;
+}
+html[lang="en"] body[data-page="products"] .featured-products,
+html[lang="en"] .industries-featured {
+    direction: rtl;
+}
+html[lang="en"] .product-details__summary > article,
+html[lang="en"] body[data-page] main .articles-grid.is-list > article {
+    direction: rtl;
+}
+html[lang="en"] body[data-page="project-details"] .project-details__technical .details-card__body {
+    direction: rtl;
+}
+html[lang="en"] .site-consultation > .site-frame > div:first-child {
+    direction: rtl;
+}
+html[lang="en"] :is(.branch-card__detail-row dd, .contact-control--phone:not(:placeholder-shown)) {
+    text-align: left;
+}
+html[lang="en"] .about-gallery__content,
+html[lang="en"] .about-certificate-card {
+    direction: ltr;
+}
+@media (max-width: 1000px) {
+    html[lang="en"] body[data-page="about"] .about-page .about-certificate-card {
+        direction: rtl;
+    }
+}
+/* Logical centering stays stable across Vite's transform minification. */
+html[lang="en"] .site-nav-link::after {
+    inset-inline: 0;
+    width: min(38px, 100%);
+    margin-inline: auto;
+    transform: scaleX(0.45);
+}
+html[lang="en"] :is(.site-nav-link:hover, .site-nav-link:focus-visible, .site-nav-link[aria-current])::after {
+    transform: scaleX(1);
 }

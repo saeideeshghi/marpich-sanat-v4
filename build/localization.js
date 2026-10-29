@@ -82,19 +82,27 @@ export function translateHTML(html, locale, root, page) {
                     locale === "en" && !/\blang="(?:fa|ar)"/.test(token)
                         ? token.replace(/\bdir="rtl"/g, 'dir="ltr"')
                         : token;
-                return directional
-                    .replace(
-                        /\b(alt|aria-label|placeholder|title|content)="([^"]*)"/g,
-                        (_, key, value) => key + '="' + translateText(value, messages) + '"',
-                    )
-                    .replace(/\bhref="([^"]+)"/g, (tag, value) => {
-                        if (/^(?:[a-z][\w+.-]*:|\/\/|\/assets\/|\/src\/|#)/i.test(value)) return tag;
-                        const parts = value.split(/([?#].*)/);
-                        const file = parts[0].replace(/^\//, "");
-                        return /^[\w-]+\.html$/.test(file)
-                            ? 'href="' + localeUrl(file, locale) + (parts[1] || "") + '"'
-                            : tag;
-                    });
+                return (
+                    directional
+                        // The international wordmark contains outlined Latin lettering;
+                        // localizing the image at build time adds no runtime/font request.
+                        .replace(
+                            /\bsrc="\/assets\/logos\/(?:LOGO|logo-symbol-left)\.svg"/g,
+                            'src="/assets/logos/logo-international.svg"',
+                        )
+                        .replace(
+                            /\b(alt|aria-label|placeholder|title|content)="([^"]*)"/g,
+                            (_, key, value) => key + '="' + translateText(value, messages) + '"',
+                        )
+                        .replace(/\bhref="([^"]+)"/g, (tag, value) => {
+                            if (/^(?:[a-z][\w+.-]*:|\/\/|\/assets\/|\/src\/|#)/i.test(value)) return tag;
+                            const parts = value.split(/([?#].*)/);
+                            const file = parts[0].replace(/^\//, "");
+                            return /^[\w-]+\.html$/.test(file)
+                                ? 'href="' + localeUrl(file, locale) + (parts[1] || "") + '"'
+                                : tag;
+                        })
+                );
             }
             return protectedTag ? token : translateText(token, messages);
         })
