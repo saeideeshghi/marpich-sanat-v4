@@ -10,7 +10,12 @@ export function publicAssetBase(base) {
             handler(html) {
                 return html.replace(
                     /\b(src|href|poster|srcset|data-image-candidates|data-fallback)=(['"])(.*?)\2/gs,
-                    (_, attribute, quote, value) => `${attribute}=${quote}${prefix(value)}${quote}`,
+                    (_, attribute, quote, value) => {
+                        const localPage =
+                            attribute === "href" && /^\/(?:(?:en|ar)\/)?[a-z][\w-]*\.html(?:[?#].*)?$/.test(value);
+                        const target = localPage ? base + value.slice(1) : prefix(value);
+                        return `${attribute}=${quote}${target}${quote}`;
+                    },
                 );
             },
         },

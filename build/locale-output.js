@@ -47,15 +47,21 @@ function flip(css) {
     });
     return ast.toString();
 }
-const strip = (url) => url.split(/[?#]/)[0].replace(/^\//, "");
 export function localeOutput(root) {
     let directory;
+    let base = "/";
+    const strip = (url) => {
+        const path = url.split(/[?#]/)[0];
+        if (!path.startsWith(base)) throw new Error("Unexpected stylesheet base: " + path);
+        return path.slice(base.length);
+    };
     let building = false;
     return {
         name: "marpich-locale-output",
         enforce: "post",
         configResolved(config) {
             directory = resolve(root, config.build.outDir);
+            base = config.base;
             building = config.command === "build";
         },
         transformIndexHtml: {
@@ -131,14 +137,19 @@ export function localeOutput(root) {
                                 writeFileSync(resolve(directory, path), css);
                                 mapping.set(original, path);
                             }
-                            return start + "/" + mapping.get(original) + end + ' data-locale-source="' + original + '"';
+                            return (
+                                start + base + mapping.get(original) + end + ' data-locale-source="' + original + '"'
+                            );
                         },
                     );
-                    const fontCss = readFileSync(resolve(root, "src/css/locales/en-fonts.css"), "utf8");
+                    const fontCss = readFileSync(resolve(root, "src/css/locales/en-fonts.css"), "utf8").replace(
+                        /url\((['"]?)\/fonts\//g,
+                        (_, quote) => "url(" + quote + base + "fonts/",
+                    );
                     const fontHash = createHash("sha256").update(fontCss).digest("hex").slice(0, 12);
                     const path = "assets/locales/en/fonts." + fontHash + ".css";
                     writeFileSync(resolve(directory, path), fontCss);
-                    html = html.replace("</head>", '<link rel="stylesheet" href="/' + path + '"></head>');
+                    html = html.replace("</head>", '<link rel="stylesheet" href="' + base + path + '"></head>');
                 }
                 writeFileSync(file, html);
                 const entry = manifest[page.file];

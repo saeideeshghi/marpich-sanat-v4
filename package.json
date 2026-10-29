@@ -1,6 +1,6 @@
 {
   "name": "marpich-sanat",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -21,7 +21,9 @@
     "tokens:refresh": "node scripts/refresh-tokens.js",
     "check:build": "node scripts/check-build.js",
     "check:localization": "node scripts/check-localization.js",
-    "check:browser:locales": "node scripts/check-browser-locales.js"
+    "check:browser:locales": "node scripts/check-browser-locales.js",
+    "build:pages": "vite build --mode pages && node scripts/check-build.js --pages",
+    "preview:pages": "vite preview --mode pages"
   },
   "devDependencies": {
     "postcss": "^8.5.28",

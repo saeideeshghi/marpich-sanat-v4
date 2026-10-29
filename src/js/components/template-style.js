@@ -5,7 +5,11 @@ import { imageSourceRules } from "../customizer/image-source.js";
 // a draft without leaking old approved declarations into its preview.
 export function initTemplateStyles() {
     initCustomizerImage(import.meta.env.BASE_URL);
-    if (import.meta.env.MODE !== "backend" && new URL(location.href).searchParams.has("mps-preview"))
+    if (
+        import.meta.env.MODE !== "backend" &&
+        import.meta.env.MODE !== "pages" &&
+        new URL(location.href).searchParams.has("mps-preview")
+    )
         import("../customizer/preview-session.js").then(({ initDraftPreview }) =>
             initDraftPreview(import.meta.env.BASE_URL),
         );

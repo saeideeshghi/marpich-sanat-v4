@@ -3,10 +3,12 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { resolve } from "node:path";
 import { allPages as pages } from "../build/pages.js";
+import { githubPagesBase, readGithubRepository } from "../build/github-pages.js";
 
 const root = resolve(import.meta.dirname, "..");
-const dist = resolve(root, "dist");
-const base = "/";
+const isPages = process.argv.includes("--pages");
+const dist = resolve(root, isPages ? "dist/pages" : "dist");
+const base = isPages ? githubPagesBase(process.env.GITHUB_REPOSITORY || readGithubRepository(root)) : "/";
 const manifestPath = resolve(dist, ".vite/manifest.json");
 assert(existsSync(manifestPath), "Missing build. Run npm run build first.");
 const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
@@ -38,7 +40,10 @@ for (const entry of Object.values(manifest)) {
         assert(manifest[dependency], `Missing JS dependency: ${dependency}`);
 }
 
-const files = [...pages.map(({ file }) => file), "tools/customizer.html", "tools/design-tokens.html"];
+const files = [
+    ...pages.map(({ file }) => file),
+    ...(isPages ? [] : ["tools/customizer.html", "tools/design-tokens.html"]),
+];
 let stylesheetLinks = 0;
 for (const file of files) {
     const html = readFileSync(builtFile(file), "utf8");
@@ -48,6 +53,11 @@ for (const file of files) {
             if (url.startsWith(base)) builtFile(deployedPath(url));
         }
     assert(!html.includes("@include"), `${file}: unbuilt HTML includes`);
+    if (isPages)
+        for (const [, url] of html.matchAll(/\b(?:href|src|data-fallback)="(\/[^\"]+)"/g)) {
+            const filePath = deployedPath(url);
+            builtFile(filePath);
+        }
     const styles = [...html.matchAll(/<link\b[^>]*>/g)]
         .map(([tag]) => ({ rel: tag.match(/\brel="([^"]+)"/)?.[1], href: tag.match(/\bhref="([^"]+)"/)?.[1] }))
         .filter(({ rel }) => rel === "stylesheet")
@@ -56,6 +66,7 @@ for (const file of files) {
     for (const style of styles) {
         const css = readFileSync(builtFile(style), "utf8");
         assert(!/<(?:!doctype|html)\b/i.test(css), `${file}: stylesheet resolves to HTML: ${style}`);
+        if (isPages) for (const [, url] of css.matchAll(/url\(["']?(\/[^"')]+)["']?\)/g)) builtFile(deployedPath(url));
     }
     const expected = entryStyles(file);
     assert(expected.length > 0, `${file}: no compiled entry styles`);
@@ -81,6 +92,10 @@ for (const file of files) {
     assert(modules.includes(manifest[file].file), `${file}: missing compiled JS entry`);
     for (const module of modules) builtFile(module);
     stylesheetLinks += styles.length;
+}
+if (isPages) {
+    assert(!existsSync(resolve(dist, "tools")), "Pages must not publish internal editors");
+    assert(!existsSync(resolve(dist, "assets/customizer/settings.json")), "Pages must not publish editable settings");
 }
 
 console.log(`PASS: ${files.length} built entries, ${stylesheetLinks} CSS links, shared chunks and JS files at ${base}`);
