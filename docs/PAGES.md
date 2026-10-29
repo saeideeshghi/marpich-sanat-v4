@@ -6,6 +6,8 @@
 - انگلیسی: https://saeideeshghi.github.io/marpich-sanat-v4/en/index.html
 - عربی: https://saeideeshghi.github.io/marpich-sanat-v4/ar/index.html
 
+اصلاح 4.1.2 لینک‌های معرفی زبان‌ها (`hreflang`) را پس از پردازش HTML تولید می‌کند، تا به صفحه‌های واقعی اشاره کنند و به فایل‌های خام سورس تبدیل نشوند. آزمون خروجی این مقصدها را برای هر ۳۶ صفحه بررسی می‌کند.
+
 ## ساخت و بررسی محلی
 
 ```powershell

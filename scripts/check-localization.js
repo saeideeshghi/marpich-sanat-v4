@@ -3,7 +3,7 @@ import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { pages, localizedPages } from "../build/pages.js";
 import { renderPage } from "../build/html-partials.js";
-import { dictionary, translateText, localeUrl, localizedRuntime } from "../build/localization.js";
+import { dictionary, translateText, localeUrl, localizedRuntime, localeAlternates } from "../build/localization.js";
 import { normalizeMessage, runtimeMessages } from "../build/i18n-runtime-tools.js";
 const root = resolve(import.meta.dirname, "..");
 const json = (path) => JSON.parse(readFileSync(resolve(root, path), "utf8"));
@@ -42,8 +42,25 @@ for (const page of pages) {
         const translated = renderPage("", resolve(root, locale, page.file), root);
         assert.deepEqual(shape(translated), shape(rendered), "Same template structure: " + locale + "/" + page.file);
         assert(translated.includes('lang="' + locale + '" dir="' + (locale === "en" ? "ltr" : "rtl") + '"'));
-        for (const language of ["fa", "en", "ar", "x-default"])
-            assert(translated.includes('hreflang="' + language + '"'));
+        for (const base of ["/", "/marpich-sanat-v4/"]) {
+            const plugin = localeAlternates(root);
+            plugin.configResolved({ base });
+            const output = plugin.transformIndexHtml.handler(translated, {
+                filename: resolve(root, locale, page.file),
+            });
+            for (const language of ["fa", "en", "ar", "x-default"])
+                assert(
+                    output.includes(
+                        'hreflang="' +
+                            language +
+                            '" href="' +
+                            base +
+                            (language === "fa" || language === "x-default" ? "" : language + "/") +
+                            page.file +
+                            '"',
+                    ),
+                );
+        }
         assert(/<span\b[^>]*lang="fa"[^>]*>\s*فارسی<\/span/.test(translated), "Keep native language labels");
         if (locale === "en") assert(/<dialog\b[^>]*dir="ltr"/.test(translated), "English dialog direction");
         for (const href of translated.matchAll(/href="(\/(?:en|ar)\/[^"?#]+\.html)/g))

@@ -6,7 +6,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { resolve, basename } from "node:path";
 import { pages } from "./pages.js";
 import { pageForFile } from "./page-registry.js";
-import { translateHTML, localeUrl, locales } from "./localization.js";
+import { translateHTML } from "./localization.js";
 import { renderComponent } from "./components.js";
 import { publicContentSecurityPolicy } from "./security-headers.js";
 
@@ -39,19 +39,7 @@ export function renderPage(html, filename, root) {
         'src="/src/js/pages/' + (page.sourceName || page.name) + '.js"',
         'src="/__locale-entry/' + (page.locale || "fa") + "/" + (page.sourceName || page.name) + '.js"',
     );
-    const localized = page.locale ? translateHTML(withEntry, page.locale, root, page) : withEntry;
-    const file = page.sourceFile || page.file;
-    const alternates = [...locales, "x-default"]
-        .map(
-            (locale) =>
-                '<link rel="alternate" hreflang="' +
-                locale +
-                '" href="' +
-                localeUrl(file, locale === "x-default" ? "fa" : locale) +
-                '" />',
-        )
-        .join("\n");
-    return localized.replace("</head>", alternates + "\n</head>");
+    return page.locale ? translateHTML(withEntry, page.locale, root, page) : withEntry;
 }
 
 export function htmlPartials(root) {

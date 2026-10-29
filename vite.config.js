@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import { htmlPartials } from "./build/html-partials.js";
 import { allPages as pages } from "./build/pages.js";
-import { localizedRuntime } from "./build/localization.js";
+import { localizedRuntime, localeAlternates } from "./build/localization.js";
 import { localeOutput } from "./build/locale-output.js";
 import { preparePublicAssets, publicAssetLifecycle } from "./build/public-assets.js";
 import { publicAssetBase } from "./build/public-asset-base.js";
@@ -61,6 +61,7 @@ export default defineConfig(async ({ mode, isPreview, command }) => {
             runtimePatterns(root),
             tailwindcss(),
             publicAssetBase(base),
+            localeAlternates(root),
             templateCustomizer(root, base, { publicTools }),
             ...(publicTools ? [designTokenReference(root)] : []),
             localeOutput(root),

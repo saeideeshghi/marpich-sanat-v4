@@ -47,6 +47,25 @@ const files = [
 let stylesheetLinks = 0;
 for (const file of files) {
     const html = readFileSync(builtFile(file), "utf8");
+    const definition = pages.find((page) => page.file === file);
+    if (definition) {
+        const alternates = Object.fromEntries(
+            [...html.matchAll(/<link\b[^>]*hreflang="([^"]+)"[^>]*href="([^"]+)"[^>]*>/g)].map((m) => [m[1], m[2]]),
+        );
+        assert.equal(Object.keys(alternates).length, 4, file + ": language alternatives");
+        for (const locale of ["fa", "en", "ar", "x-default"]) {
+            const expected =
+                base +
+                (locale === "fa" || locale === "x-default" ? "" : locale + "/") +
+                (definition.sourceFile || file);
+            assert.equal(
+                alternates[locale],
+                expected,
+                file + ": alternate must target a real page, not an imported source asset",
+            );
+            builtFile(deployedPath(expected));
+        }
+    }
     for (const [, srcset] of html.matchAll(/\bsrcset="([^"]+)"/g))
         for (const candidate of srcset.split(",")) {
             const url = candidate.trim().split(/\s+/)[0];
@@ -72,7 +91,6 @@ for (const file of files) {
     assert(expected.length > 0, `${file}: no compiled entry styles`);
     for (const style of expected)
         assert(styles.includes(style), `${file}: missing CSS from entry/shared chunk: ${style}`);
-    const definition = pages.find((page) => page.file === file);
     if (definition) {
         if (definition.locale === "en")
             assert(
