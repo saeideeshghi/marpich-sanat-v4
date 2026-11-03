@@ -125,3 +125,186 @@ html[lang="en"] .site-nav-link::after {
 html[lang="en"] :is(.site-nav-link:hover, .site-nav-link:focus-visible, .site-nav-link[aria-current])::after {
     transform: scaleX(1);
 }
+
+/* November review: keep reading copy regular and avoid stretched word spacing.
+ * These rules belong to English; approved Persian settings stay untouched. */
+html[lang="en"] body[data-page] .site-prose {
+    text-align: left;
+    text-align-last: left;
+    font-weight: 400;
+    word-spacing: normal;
+}
+html[lang="en"] body[data-page="home"] .hero-image {
+    scale: -1 1;
+}
+html[lang="en"] body[data-page="home"] .hero-content {
+    margin-top: 40px;
+}
+html[lang="en"] .site-header__desktop > div:last-child {
+    flex-direction: row-reverse;
+}
+html[lang="en"] .home-hero-action {
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 12px;
+}
+html[lang="en"] .home-hero-action > span {
+    white-space: nowrap;
+}
+@media (min-width: 1180px) {
+    html[lang="en"] .home-hero-actions {
+        grid-template-columns: max-content max-content;
+    }
+}
+
+html[lang="en"] body[data-page] .branch-card__detail-row {
+    grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+    gap: 4px 12px;
+}
+html[lang="en"] body[data-page] .branch-card__detail-row dt {
+    white-space: normal;
+}
+html[lang="en"] body[data-page] .branch-card__detail-row dd {
+    overflow-wrap: anywhere;
+}
+html[lang="en"] .about-gallery__media img {
+    scale: -1 1;
+}
+/* The review's reference tag layout: one full row, then two equal cells. */
+html[lang="en"] body[data-page] .product-card__specs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+html[lang="en"] .product-card__specs > :first-child {
+    grid-column: 1 / -1;
+}
+
+/* Saved design declarations use !important. Locale reading rules must win that
+ * cascade without editing the shared approved design configuration. */
+html[lang="en"] body[data-page] main :is(p, li, .site-prose):not(.home-process-step),
+html[lang="en"] body[data-page] .site-card__description:not([hidden]) {
+    text-align: left !important;
+    text-align-last: left !important;
+    word-spacing: normal;
+    font-weight: 400 !important;
+}
+html[lang="en"] body[data-page] .site-card__description {
+    font-size: 16px !important;
+    line-height: 1.65 !important;
+}
+html[lang="en"] body[data-page] :is(.site-card__cta, .site-card__cta-label) {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+html[lang="en"] .home-partners__title {
+    flex-basis: auto;
+    width: max-content;
+    min-width: max-content;
+}
+html[lang="en"] .home-partners__title strong {
+    white-space: nowrap;
+}
+html[lang="en"] body[data-page="home"] .home-expertise-grid .site-card__title {
+    font-size: 24px !important;
+    line-height: 1.35;
+    min-height: 2.7em;
+}
+html[lang="en"] body[data-page="home"] .home-expertise-grid .site-card__description:not([hidden]) {
+    min-height: 4.95em !important;
+    -webkit-line-clamp: 3 !important;
+    line-clamp: 3 !important;
+}
+html[lang="en"] body[data-page="home"] .home-why__content > div:first-child > p {
+    font-size: 18px;
+}
+html[lang="en"] .home-why__content span.whitespace-nowrap {
+    white-space: normal;
+    max-width: 150px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+html[lang="en"] body[data-page] .home-process-step > p {
+    text-align: center !important;
+    text-align-last: center !important;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+}
+html[lang="en"] body[data-page="contact"] .benefit-item .site-card__title {
+    font-size: 18px !important;
+}
+html[lang="en"] body[data-page="contact"] .benefit-item .site-card__description:not([hidden]) {
+    text-align: center !important;
+    text-align-last: center !important;
+}
+
+/* Mirrored border geometry needs a mirrored rotation to keep a down chevron. */
+html[lang="en"] .select-wrap::after {
+    transform: translateY(-70%) rotate(-45deg);
+}
+html[lang="en"] .site-pattern-layer--header .site-pattern-stage {
+    scale: -1 1;
+    /* Individual scale also mirrors the physical centering translation. */
+    transform: translateX(-50%);
+}
+html[lang="en"] :is(.featured-card__image, .pcm-expanded__image) {
+    scale: -1 1;
+}
+
+/* Mirror the service photograph together with its authored alpha fade. */
+html[lang="en"] .expertise-page__media-image {
+    scale: -1 1;
+}
+
+html[lang="en"] body[data-page] main .home-process-step > p {
+    text-align: center !important;
+    text-align-last: center !important;
+    max-width: 260px;
+    margin-inline: auto;
+    min-height: 3em;
+}
+html[lang="en"] body[data-page="contact"] .contact-benefits > .contact-benefits__grid > .benefit-item > p.site-prose {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    text-align-last: center !important;
+}
+@media (min-width: 1180px) {
+    html[lang="en"] .site-nav-link {
+        font-size: clamp(12px, calc(0.625vw + 4.625px), 14px);
+    }
+    html[lang="en"] body[data-page="home"] main h2:not(.site-card__title),
+    html[lang="en"] body[data-page="contact"] .contact-cooperation__heading {
+        font-size: 32px !important;
+    }
+}
+
+html[lang="en"] .about-gallery__link-arrow {
+    display: inline-block;
+    scale: -1 1;
+}
+
+/* Important locale typography is layered so saved per-template specificity does
+ * not silently restore the old 17px English card titles. */
+@layer english-review {
+    @media (min-width: 640px) {
+        html[lang="en"] .site-card__title {
+            font-size: 24px !important;
+            line-height: 1.4 !important;
+            min-height: 2.8em;
+        }
+        html[lang="en"] .contact-benefits .site-card__title {
+            font-size: 18px !important;
+            min-height: 0;
+        }
+    }
+}
+
+html[lang="en"] .pcm-image-ghost > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    scale: -1 1;
+}

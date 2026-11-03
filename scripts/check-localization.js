@@ -66,7 +66,14 @@ for (const page of pages) {
         assert(/<span\b[^>]*lang="fa"[^>]*>\s*فارسی<\/span/.test(translated), "Keep native language labels");
         if (locale === "en") assert(/<dialog\b[^>]*dir="ltr"/.test(translated), "English dialog direction");
         assert.equal(
-            (translated.match(/src="\/assets\/logos\/logo-international\.svg"/g) || []).length,
+            (
+                translated.match(
+                    new RegExp(
+                        'src="/assets/logos/' + (locale === "en" ? "logo-en" : "logo-international") + '\\.svg"',
+                        "g",
+                    ),
+                ) || []
+            ).length,
             (rendered.match(/src="\/assets\/logos\/(?:LOGO|logo-symbol-left)\.svg"/g) || []).length,
             "International logo in desktop/mobile header and footer: " + locale + "/" + page.file,
         );

@@ -74,14 +74,15 @@ export function flip(css) {
         decl.prop = decl.prop.replace(/left|right/g, (word) => (word === "left" ? "right" : "left"));
         if (/^(?:text-align|text-align-last|float|clear)$/.test(decl.prop))
             decl.value = decl.value.replace(/\bleft\b|\bright\b/g, (word) => (word === "left" ? "right" : "left"));
+        if (decl.prop === "text-align" && decl.value === "justify") decl.value = "left";
         if (/^(?:background-position|object-position|transform-origin)$/.test(decl.prop))
             decl.value = mirrorPosition(decl.value);
         if (decl.prop === "direction" && decl.value === "rtl") decl.value = "ltr";
         if (/^background(?:-image)?$/.test(decl.prop))
             decl.value = decl.value
                 .replace(
-                    /linear-gradient\(\s*(90|270)deg/g,
-                    (_, angle) => "linear-gradient(" + (angle === "90" ? "270" : "90") + "deg",
+                    /linear-gradient\(\s*(-?[\d.]+)deg/g,
+                    (_, angle) => "linear-gradient(" + ((((360 - Number(angle)) % 360) + 360) % 360) + "deg",
                 )
                 .replace(/\bto (left|right)\b/g, (_, direction) => "to " + (direction === "left" ? "right" : "left"));
         if (decl.prop === "font-family") decl.value = decl.value.replace(/Peyda/g, "D-DIN");
@@ -132,6 +133,11 @@ export function localeOutput(root) {
         transformIndexHtml: {
             order: "post",
             handler(html, context) {
+                const arabic = localizedPages.some(
+                    (page) => page.locale === "ar" && resolve(root, page.file) === resolve(context.filename),
+                );
+                if (!building && arabic)
+                    return html.replace("</head>", '<link rel="stylesheet" href="/src/css/locales/ar.css"></head>');
                 if (
                     building ||
                     !localizedPages.some(
@@ -214,6 +220,14 @@ export function localeOutput(root) {
                     const fontHash = createHash("sha256").update(fontCss).digest("hex").slice(0, 12);
                     const path = "assets/locales/en/fonts." + fontHash + ".css";
                     writeFileSync(resolve(directory, path), fontCss);
+                    html = html.replace("</head>", '<link rel="stylesheet" href="' + base + path + '"></head>');
+                }
+                if (page.locale === "ar") {
+                    const css = readFileSync(resolve(root, "src/css/locales/ar.css"), "utf8");
+                    const hash = createHash("sha256").update(css).digest("hex").slice(0, 12);
+                    const path = "assets/locales/ar/review." + hash + ".css";
+                    mkdirSync(dirname(resolve(directory, path)), { recursive: true });
+                    writeFileSync(resolve(directory, path), css);
                     html = html.replace("</head>", '<link rel="stylesheet" href="' + base + path + '"></head>');
                 }
                 writeFileSync(file, html);

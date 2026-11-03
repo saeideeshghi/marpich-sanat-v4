@@ -88,7 +88,9 @@ export function translateHTML(html, locale, root, page) {
                         // localizing the image at build time adds no runtime/font request.
                         .replace(
                             /\bsrc="\/assets\/logos\/(?:LOGO|logo-symbol-left)\.svg"/g,
-                            'src="/assets/logos/logo-international.svg"',
+                            locale === "en"
+                                ? 'src="/assets/logos/logo-en.svg"'
+                                : 'src="/assets/logos/logo-international.svg"',
                         )
                         .replace(
                             /\b(alt|aria-label|placeholder|title|content)="([^"]*)"/g,

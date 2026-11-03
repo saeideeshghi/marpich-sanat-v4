@@ -114,7 +114,12 @@ for (const file of files) {
                     file + ": compiled translation must keep " + selector + " centered",
                 );
             }
-            assert(html.includes(base + "assets/logos/logo-international.svg"), file + ": international wordmark");
+            assert(
+                html.includes(
+                    base + "assets/logos/" + (file.startsWith("en/") ? "logo-en.svg" : "logo-international.svg"),
+                ),
+                file + ": international wordmark",
+            );
         } else
             assert(
                 styles.includes("assets/customizer/template-overrides.css"),
