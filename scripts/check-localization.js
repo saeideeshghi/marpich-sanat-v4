@@ -84,6 +84,17 @@ for (const page of pages) {
             );
     }
 }
+for (const locale of ["en", "ar"]) {
+    const contact = renderPage("", resolve(root, locale, "contact.html"), root);
+    const mapHref = contact.match(/href="(https:\/\/www\.google\.com\/maps\/search\/[^\"]+)"/)?.[1];
+    assert(mapHref, locale + ": factory map link exists");
+    const mapQuery = new URL(mapHref.replaceAll("&amp;", "&")).searchParams.get("query");
+    assert.equal(
+        mapQuery,
+        dictionary(root, locale)["مشهد، کیلومتر ۲۵ جاده آسیایی، شهرک صنعتی ماشین‌سازی، بلوار اصلی، خیابان صنعت"],
+        locale + ": factory map query is localized",
+    );
+}
 // These are two real forms emitted by development and Vite's CSS minifier.
 // The old implementation only handled translateX, moving production patterns,
 // navigation markers and back-to-top controls outside their intended position.

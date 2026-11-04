@@ -97,6 +97,15 @@ export function translateHTML(html, locale, root, page) {
                             (_, key, value) => key + '="' + translateText(value, messages) + '"',
                         )
                         .replace(/\bhref="([^"]+)"/g, (tag, value) => {
+                            if (/^https:\/\/www\.google\.com\/maps\/search\//i.test(value)) {
+                                const mapUrl = new URL(decode(value));
+                                const query = mapUrl.searchParams.get("query");
+                                const translatedQuery = query && messages[normalizeMessage(query)];
+                                if (translatedQuery) {
+                                    mapUrl.searchParams.set("query", translatedQuery);
+                                    return 'href="' + escapeHtml(mapUrl.toString()) + '"';
+                                }
+                            }
                             if (/^(?:[a-z][\w+.-]*:|\/\/|\/assets\/|\/src\/|#)/i.test(value)) return tag;
                             const parts = value.split(/([?#].*)/);
                             const file = parts[0].replace(/^\//, "");
