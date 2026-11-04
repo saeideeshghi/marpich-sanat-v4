@@ -170,13 +170,10 @@ html[lang="en"] body[data-page] .branch-card__detail-row dd {
 html[lang="en"] .about-gallery__media img {
     scale: -1 1;
 }
-/* The review's reference tag layout: one full row, then two equal cells. */
+/* Keep all three product tags on one aligned row on desktop. */
 html[lang="en"] body[data-page] .product-card__specs {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-html[lang="en"] .product-card__specs > :first-child {
-    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 /* Saved design declarations use !important. Locale reading rules must win that
@@ -248,6 +245,10 @@ html[lang="en"] .site-pattern-layer--header .site-pattern-stage {
     /* Individual scale also mirrors the physical centering translation. */
     transform: translateX(-50%);
 }
+html[lang="en"] .site-pattern-layer--footer .site-pattern-stage {
+    scale: -1 1;
+    transform: translateX(-50%);
+}
 html[lang="en"] :is(.featured-card__image, .pcm-expanded__image) {
     scale: -1 1;
 }
@@ -307,4 +308,29 @@ html[lang="en"] .pcm-image-ghost > img {
     height: 100%;
     object-fit: contain;
     scale: -1 1;
+}
+
+@media (min-width: 1180px) {
+    html[lang="en"] body[data-page="home"] .hero-content {
+        width: min(74%, 980px);
+    }
+    html[lang="en"] body[data-page="home"] .home-hero-title {
+        max-width: 900px;
+        font-size: clamp(32px, 2.4vw, 36px) !important;
+        line-height: 1.3 !important;
+    }
+    html[lang="en"] body[data-page="home"] .home-hero-description {
+        max-width: 900px;
+        margin-top: 24px;
+        line-height: 1.75;
+    }
+    html[lang="en"] body[data-page="home"] .home-hero-actions {
+        margin-top: 24px;
+    }
+}
+
+@media (max-width: 639px) {
+    html[lang="en"] body[data-page] .product-card__specs {
+        grid-template-columns: minmax(0, 1fr);
+    }
 }
