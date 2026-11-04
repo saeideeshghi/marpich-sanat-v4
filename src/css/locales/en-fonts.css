@@ -253,6 +253,13 @@ html[lang="en"] :is(.featured-card__image, .pcm-expanded__image) {
     scale: -1 1;
 }
 
+@media (max-width: 767px) {
+    html[lang="en"] .articles-search__filter {
+        white-space: normal;
+        line-height: 1.15;
+    }
+}
+
 /* Mirror the service photograph together with its authored alpha fade. */
 html[lang="en"] .expertise-page__media-image {
     scale: -1 1;
