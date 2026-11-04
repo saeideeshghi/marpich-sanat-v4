@@ -178,7 +178,7 @@ html[lang="en"] body[data-page] .product-card__specs {
 
 /* Saved design declarations use !important. Locale reading rules must win that
  * cascade without editing the shared approved design configuration. */
-html[lang="en"] body[data-page] main :is(p, li, .site-prose):not(.home-process-step),
+html[lang="en"] body[data-page] main :is(p, li, .site-prose):not(.home-process-step > p),
 html[lang="en"] body[data-page] .site-card__description:not([hidden]) {
     text-align: left !important;
     text-align-last: left !important;
@@ -291,6 +291,12 @@ html[lang="en"] body[data-page="contact"] .contact-benefits > .contact-benefits_
 html[lang="en"] .about-gallery__link-arrow {
     display: inline-block;
     scale: -1 1;
+}
+
+/* Keep the history timeline's terminal chevron pointing down after the
+ * English layout mirrors the original Persian border geometry. */
+html[lang="en"] .about-timeline::after {
+    transform: rotate(-45deg);
 }
 
 /* Important locale typography is layered so saved per-template specificity does
