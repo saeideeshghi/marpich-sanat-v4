@@ -452,7 +452,7 @@ body[data-page="industry-textile"] .industry-textile__products-grid .site-card__
     background: #ece9e6;
 }
 
-/* Use the same tag surface in both rows of localized product cards. */
+/* Keep localized tag sizing consistent while retaining the feature color. */
 html:is([lang="en"], [lang="ar"])
     body[data-page="industry-textile"]
     .industry-textile__products-grid
@@ -464,6 +464,14 @@ html:is([lang="en"], [lang="ar"])
     border-radius: 0.35rem;
     background: #f7f9fb;
     color: #536071;
+}
+html:is([lang="en"], [lang="ar"])
+    body[data-page="industry-textile"]
+    .industry-textile__products-grid
+    .industry-textile__product-tags
+    > .site-card__meta-tag {
+    border: 0;
+    background: #ece9e6;
 }
 
 @media (max-width: 1000px) {
