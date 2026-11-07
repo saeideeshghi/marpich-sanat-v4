@@ -173,23 +173,21 @@ html[lang="en"] body[data-page] .branch-card__detail-row dd {
 html[lang="en"] .about-gallery__media img {
     scale: -1 1;
 }
-/* Catalog and textile cards share the compact two-column tag pattern. */
-html[lang="en"]
-    body[data-page]
-    :is(.product-card__specs, .industry-textile__product-specs, .industry-textile__project-meta) {
+/* Keep textile tags compact and give catalog tags their own full row. */
+html[lang="en"] body[data-page] :is(.industry-textile__product-specs, .industry-textile__project-meta) {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
 }
 html[lang="en"]
-    :is(.product-card__specs, .industry-textile__product-specs, .industry-textile__project-meta)
+    :is(.industry-textile__product-specs, .industry-textile__project-meta)
     > .site-card__meta-tag:last-child:nth-child(odd) {
     grid-column: 1 / -1;
 }
 html[lang="en"]
     body[data-page]
     main
-    :is(.product-card__specs, .industry-textile__product-body, .industry-textile__project-meta)
+    :is(.product-card__specs, .industry-textile__product-specs, .industry-textile__project-meta)
     .site-card__meta-tag {
     min-height: 1.8rem;
     padding: 4px 6px !important;
@@ -215,13 +213,13 @@ html[lang="en"] body[data-page="product-details"] .product-details__quick-specs 
 }
 html[lang="en"] body[data-page="product-details"] .product-details__quick-spec-item {
     direction: ltr;
-    justify-content: start;
-    text-align: start;
+    justify-content: center;
+    text-align: center;
 }
 @layer english-review {
     html[lang="en"] .product-details__quick-spec-item > span {
-        text-align: start !important;
-        text-align-last: start !important;
+        text-align: center !important;
+        text-align-last: center !important;
         font-size: clamp(12px, 1.05vw, 15px) !important;
         line-height: 1.4 !important;
     }
@@ -396,8 +394,11 @@ html[lang="en"] .pcm-image-ghost > img {
     }
 }
 
-@media (max-width: 639px) {
-    html[lang="en"] body[data-page] .product-card__specs {
-        grid-template-columns: minmax(0, 1fr);
-    }
+html[lang="en"] body[data-page] .product-card__specs {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+}
+html[lang="en"] body[data-page] .product-card__specs > .site-card__meta-tag {
+    width: 100%;
+    justify-self: stretch;
 }
