@@ -452,6 +452,20 @@ body[data-page="industry-textile"] .industry-textile__products-grid .site-card__
     background: #ece9e6;
 }
 
+/* Use the same tag surface in both rows of localized product cards. */
+html:is([lang="en"], [lang="ar"])
+    body[data-page="industry-textile"]
+    .industry-textile__products-grid
+    :is(.industry-textile__product-tags, .industry-textile__product-specs)
+    > .site-card__meta-tag {
+    min-height: 1.8rem;
+    padding: 4px 6px !important;
+    border: 1px solid #d9e1ea;
+    border-radius: 0.35rem;
+    background: #f7f9fb;
+    color: #536071;
+}
+
 @media (max-width: 1000px) {
     body[data-page="industry-textile"] #industry-testimonials-title,
     body[data-page="industry-textile"] .industry-textile__testimonials-subtitle p {

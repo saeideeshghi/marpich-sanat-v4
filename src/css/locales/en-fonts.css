@@ -212,14 +212,21 @@ html[lang="en"] body[data-page="product-details"] .product-details__quick-specs 
     grid-auto-rows: 1fr;
 }
 html[lang="en"] body[data-page="product-details"] .product-details__quick-spec-item {
+    width: min(100%, 14rem);
+    justify-self: center;
     direction: ltr;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
+    text-align: left;
 }
 @layer english-review {
+    html[lang="en"] .product-details__quick-spec-item[data-badge-wrapped] {
+        grid-column: auto !important;
+        width: min(100%, 14rem) !important;
+        justify-content: flex-start !important;
+    }
     html[lang="en"] .product-details__quick-spec-item > span {
-        text-align: center !important;
-        text-align-last: center !important;
+        text-align: left !important;
+        text-align-last: left !important;
         font-size: clamp(12px, 1.05vw, 15px) !important;
         line-height: 1.4 !important;
     }
