@@ -58,12 +58,15 @@ html[lang="en"] .site-header__auth {
     white-space: nowrap;
     font-size: 13px;
 }
+html[lang="en"] .pcm-toolbar.pcm-toolbar--overlay {
+    inset-inline: 12px auto;
+}
 html[lang="en"] .pcm-back .fa-arrow-left {
     scale: 1;
 }
 html[lang="en"] .site-footer .site-footer__description {
-    text-align: left;
-    text-align-last: left;
+    text-align: justify;
+    text-align-last: start;
 }
 
 /* Mirror physical composition as well as text. Children retain LTR copy;
@@ -170,10 +173,58 @@ html[lang="en"] body[data-page] .branch-card__detail-row dd {
 html[lang="en"] .about-gallery__media img {
     scale: -1 1;
 }
-/* Keep all three product tags on one aligned row on desktop. */
-html[lang="en"] body[data-page] .product-card__specs {
+/* Catalog and textile cards share the compact two-column tag pattern. */
+html[lang="en"]
+    body[data-page]
+    :is(.product-card__specs, .industry-textile__product-specs, .industry-textile__project-meta) {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+}
+html[lang="en"]
+    :is(.product-card__specs, .industry-textile__product-specs, .industry-textile__project-meta)
+    > .site-card__meta-tag:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+html[lang="en"]
+    body[data-page]
+    main
+    :is(.product-card__specs, .industry-textile__product-body, .industry-textile__project-meta)
+    .site-card__meta-tag {
+    min-height: 1.8rem;
+    padding: 4px 6px !important;
+    border: 1px solid #d9e1ea;
+    border-radius: 0.35rem;
+    background: #f7f9fb;
+    color: #536071;
+}
+html[lang="en"] body[data-page="industry-textile"] .industry-textile__project-media {
+    aspect-ratio: 1.9 / 1;
+}
+html[lang="en"] body[data-page="industry-textile"] .industry-textile__summary-item {
+    direction: ltr;
+    text-align: start;
+}
+html[lang="en"] body[data-page="contact"] .branch-card__title-row {
+    direction: ltr;
+    text-align: start;
+}
+html[lang="en"] body[data-page="product-details"] .product-details__quick-specs {
+    direction: ltr;
+    grid-auto-rows: 1fr;
+}
+html[lang="en"] body[data-page="product-details"] .product-details__quick-spec-item {
+    direction: ltr;
+    justify-content: start;
+    text-align: start;
+}
+@layer english-review {
+    html[lang="en"] .product-details__quick-spec-item > span {
+        text-align: start !important;
+        text-align-last: start !important;
+        font-size: clamp(12px, 1.05vw, 15px) !important;
+        line-height: 1.4 !important;
+    }
 }
 
 /* Saved design declarations use !important. Locale reading rules must win that
@@ -307,6 +358,9 @@ html[lang="en"] .about-timeline::after {
             font-size: 24px !important;
             line-height: 1.4 !important;
             min-height: 2.8em;
+        }
+        html[lang="en"] .branch-card__title-row .site-card__title {
+            min-height: 0;
         }
         html[lang="en"] .contact-benefits .site-card__title {
             font-size: 18px !important;
