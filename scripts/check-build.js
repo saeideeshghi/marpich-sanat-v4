@@ -4,6 +4,9 @@ import { existsSync, readFileSync, statSync } from "node:fs";
 import { resolve } from "node:path";
 import { allPages as pages } from "../build/pages.js";
 import { githubPagesBase, readGithubRepository } from "../build/github-pages.js";
+import { loadDesignConfig } from "../build/design-config.js";
+import { compileCSS } from "../src/js/customizer/model.js";
+import { flipCSS } from "../src/js/customizer/locale-css.js";
 import postcss from "postcss";
 
 const root = resolve(import.meta.dirname, "..");
@@ -93,11 +96,26 @@ for (const file of files) {
     for (const style of expected)
         assert(styles.includes(style), `${file}: missing CSS from entry/shared chunk: ${style}`);
     if (definition) {
-        if (definition.locale === "en") {
+        const locale = definition.locale || "fa";
+        const customizerLink = html.match(/<link\b[^>]*id="mps-template-overrides"[^>]*>/)?.[0];
+        assert(customizerLink, `${file}: missing locale-specific Customizer stylesheet`);
+        const href = customizerLink.match(/\bhref="([^"]+)"/)?.[1];
+        const customizerCss = deployedPath(href || "");
+        const localeCssName = `assets/customizer/template-overrides${locale === "fa" ? "" : `.${locale}`}.css`;
+        if (locale === "en") {
             assert(
-                html.includes('data-locale-source="assets/customizer/template-overrides.css"'),
+                customizerLink.includes(`data-locale-source="${localeCssName}"`),
                 `${file}: missing localized customizer CSS`,
             );
+        } else assert.equal(customizerCss, localeCssName, `${file}: wrong locale Customizer stylesheet`);
+        assert(styles.includes(customizerCss), `${file}: Customizer stylesheet is absent from links`);
+        const expectedCustomizerCss = compileCSS(loadDesignConfig(root, locale));
+        assert.equal(
+            readFileSync(builtFile(customizerCss), "utf8"),
+            locale === "en" ? flipCSS(expectedCustomizerCss) : expectedCustomizerCss,
+            `${file}: Customizer CSS must contain only its locale settings and transform English once`,
+        );
+        if (definition.locale === "en") {
             const ast = postcss.parse(styles.map((style) => readFileSync(builtFile(style), "utf8")).join("\n"));
             for (const selector of [".site-pattern-stage", ".site-footer__back-top"]) {
                 let geometry;
@@ -120,11 +138,7 @@ for (const file of files) {
                 ),
                 file + ": international wordmark",
             );
-        } else
-            assert(
-                styles.includes("assets/customizer/template-overrides.css"),
-                `${file}: missing approved customizer CSS`,
-            );
+        }
     }
     const modules = [...html.matchAll(/<script\b[^>]*>/g)]
         .map(([tag]) => ({ type: tag.match(/\btype="([^"]+)"/)?.[1], src: tag.match(/\bsrc="([^"]+)"/)?.[1] }))
@@ -136,7 +150,14 @@ for (const file of files) {
 }
 if (isPages) {
     assert(!existsSync(resolve(dist, "tools")), "Pages must not publish internal editors");
-    assert(!existsSync(resolve(dist, "assets/customizer/settings.json")), "Pages must not publish editable settings");
+    for (const locale of ["fa", "en", "ar"])
+        assert(
+            !existsSync(resolve(dist, `assets/customizer/settings${locale === "fa" ? "" : `.${locale}`}.json`)),
+            `Pages must not publish editable ${locale} settings`,
+        );
+} else {
+    for (const locale of ["fa", "en", "ar"])
+        builtFile(`assets/customizer/settings${locale === "fa" ? "" : `.${locale}`}.json`);
 }
 
 console.log(`PASS: ${files.length} built entries, ${stylesheetLinks} CSS links, shared chunks and JS files at ${base}`);

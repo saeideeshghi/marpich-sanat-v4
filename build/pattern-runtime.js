@@ -32,6 +32,7 @@ export function compilePatternModule(input) {
 
 export function runtimePatterns(root) {
     const names = { header: "site-pattern", footer: "footer-pattern" };
+    const locales = ["fa", "en", "ar"];
     let base = "/";
     return {
         name: "marpich-runtime-patterns",
@@ -39,12 +40,13 @@ export function runtimePatterns(root) {
             base = config.base;
         },
         resolveId(id) {
-            return /^virtual:site-pattern\/(header|footer)$/.test(id) ? `\0${id}` : null;
+            return /^virtual:site-pattern\/(header|footer)\?locale=(fa|en|ar)$/.test(id) ? `\0${id}` : null;
         },
         load(id) {
-            const kind = id.match(/^\0virtual:site-pattern\/(header|footer)$/)?.[1];
-            if (!kind) return null;
-            const path = resolve(root, `src/data/patterns/${names[kind]}.json`);
+            const match = id.match(/^\0virtual:site-pattern\/(header|footer)\?locale=(fa|en|ar)$/);
+            if (!match) return null;
+            const [, kind, locale] = match;
+            const path = resolve(root, `src/data/patterns/${locale === "fa" ? "" : `${locale}/`}${names[kind]}.json`);
             this.addWatchFile(path);
             return compilePatternModule(JSON.parse(readFileSync(path, "utf8")));
         },
@@ -53,21 +55,27 @@ export function runtimePatterns(root) {
         generateBundle: {
             order: "post",
             handler(_, bundle) {
-                const chunks = Object.values(bundle).filter(
-                    (item) =>
-                        item.type === "chunk" &&
-                        (item.facadeModuleId === "\0virtual:site-pattern/header" ||
-                            item.facadeModuleId?.replaceAll("\\", "/").endsWith("/src/js/components/site-pattern.js")),
+                const chunks = Object.values(bundle).filter((item) => item.type === "chunk");
+                const player = chunks.find((item) =>
+                    item.facadeModuleId?.replaceAll("\\", "/").endsWith("/src/js/components/site-pattern.js"),
                 );
-                if (!chunks.length) return;
-                const links = chunks
-                    .map((chunk) => `<link rel="modulepreload" crossorigin href="${base}${chunk.fileName}" />`)
-                    .join("\n");
+                const headers = new Map(
+                    locales.map((locale) => [
+                        locale,
+                        chunks.find((item) => item.facadeModuleId === `\0virtual:site-pattern/header?locale=${locale}`),
+                    ]),
+                );
+                if (!player && ![...headers.values()].some(Boolean)) return;
                 for (const asset of Object.values(bundle)) {
                     if (asset.type !== "asset" || !asset.fileName.endsWith(".html")) continue;
                     const html = String(asset.source);
                     if (!/<body\b[^>]*data-page=["'](?!home["'])/.test(html)) continue;
-                    asset.source = html.replace("</head>", `${links}\n</head>`);
+                    const locale = html.match(/<html\b[^>]*\blang=["'](fa|en|ar)["']/)?.[1] || "fa";
+                    const links = [headers.get(locale), player]
+                        .filter(Boolean)
+                        .map((chunk) => `<link rel="modulepreload" crossorigin href="${base}${chunk.fileName}" />`)
+                        .join("\n");
+                    if (links) asset.source = html.replace("</head>", `${links}\n</head>`);
                 }
             },
         },

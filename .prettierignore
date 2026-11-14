@@ -8,6 +8,8 @@ package-lock.json
 src/data/patterns/
 src/data/customizer/settings.json
 src/css/template-overrides.css
+src/css/template-overrides.en.css
+src/css/template-overrides.ar.css
 docs/backend-handoff.html
 
 .codex/

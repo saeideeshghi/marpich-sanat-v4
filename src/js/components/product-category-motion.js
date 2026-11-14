@@ -57,52 +57,6 @@ export const MOTION_EASINGS = Object.freeze({
     gentle: "cubic-bezier(.16,1,.3,1)",
     linear: "linear",
 });
-export const MOTION_PRESETS = Object.freeze({
-    balanced: { ...MOTION_DEFAULTS },
-    quick: {
-        ...MOTION_DEFAULTS,
-        openDuration: 380,
-        closeDuration: 300,
-        openDelay: 25,
-        siblingsFade: 115,
-        contentDelay: 105,
-        contentDuration: 235,
-        productsDelay: 230,
-        productDuration: 290,
-        stagger: 35,
-        distance: 14,
-    },
-    showcase: {
-        ...MOTION_DEFAULTS,
-        openDuration: 880,
-        closeDuration: 670,
-        openDelay: 90,
-        siblingsFade: 240,
-        contentDelay: 310,
-        contentDuration: 450,
-        productsDelay: 590,
-        productDuration: 580,
-        stagger: 80,
-        distance: 32,
-        easing: "gentle",
-    },
-    quiet: {
-        ...MOTION_DEFAULTS,
-        openDuration: 420,
-        closeDuration: 330,
-        openDelay: 0,
-        siblingsFade: 110,
-        contentDelay: 90,
-        contentDuration: 220,
-        productsDelay: 260,
-        productDuration: 280,
-        stagger: 20,
-        distance: 0,
-        entry: "fade",
-        sharedImage: false,
-    },
-});
-
 export function normalizeMotionConfig(input = {}) {
     const source = input && typeof input === "object" && !Array.isArray(input) ? input : {};
     const result = { ...MOTION_DEFAULTS };
@@ -339,9 +293,6 @@ export function initProductCategoryMotion(root, options = {}) {
         if (className) node.className = className;
         if (text !== undefined) node.textContent = text;
         return node;
-    }
-    function setHidden(node, hidden) {
-        node.hidden = hidden;
     }
     function restoreStyle(node, original) {
         if (original === null) node.removeAttribute("style");

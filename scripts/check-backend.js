@@ -27,12 +27,17 @@ for (const page of pages) {
     const scripts = [...html.matchAll(/<script\b[^>]*src="([^"]+)"[^>]*>/g)].map((m) => m[1]);
     assert(css.length >= 3 && scripts.length === 1, `${page.file}: CSS and JS must be resolvable before rendering`);
     const preloads = [...html.matchAll(/<link\b[^>]*rel="modulepreload"[^>]*href="([^"]+)"/g)].map((m) => m[1]);
-    if ((page.sourceName || page.name) !== "home")
+    if ((page.sourceName || page.name) !== "home") {
+        const locale = page.locale || "fa";
         assert(
-            preloads.some((url) => /\/header-/.test(url)),
-            `${page.file}: preload the header pattern`,
+            preloads.some((url) => url.includes(`/header_locale_${locale}-`)),
+            `${page.file}: preload the ${locale} header pattern`,
         );
-    else assert(!preloads.some((url) => /\/header-/.test(url)), "Home must not download an unused header pattern");
+    } else
+        assert(
+            !preloads.some((url) => /\/header_locale_(?:fa|en|ar)-/.test(url)),
+            "Home must not download an unused header pattern",
+        );
     for (const url of preloads) assert(existsSync(assetPath(url)), `Missing preloaded module ${url}`);
     for (const url of [...css, ...scripts]) assert(existsSync(assetPath(url)), `Missing ${url}`);
     const imagePreloads = [...html.matchAll(/<link\b[^>]*rel="preload"[^>]*as="image"[^>]*href="([^"]+)"/g)].map(

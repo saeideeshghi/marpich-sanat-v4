@@ -1,16 +1,23 @@
 import { normalizeConfig, compileCSS } from "./model.js";
 import { imageSourceRules } from "./image-source.js";
-import { pages } from "../../../build/pages.js";
+import { flipCSS } from "./locale-css.js";
+import { localePageFile, CUSTOMIZER_LOCALES } from "./locale-state.js";
+import { localizedPages, pages } from "../../../build/pages.js";
 
 const parameter = "mps-preview";
 const lifetime = 6 * 60 * 60 * 1000;
-const prefix = (base) => `marpich-preview:${base}:`;
+const locales = CUSTOMIZER_LOCALES;
+export const localeStorageKey = (base, name, locale = "fa") => {
+    if (!locales.includes(locale)) throw new Error("زبان Customizer معتبر نیست.");
+    return `marpich-${name}:${base}:${locale}`;
+};
+const prefix = (base, locale) => `${localeStorageKey(base, "preview", locale)}:`;
 const validId = (id) => typeof id === "string" && /^[\da-f-]{36}$/.test(id);
 
 // A snapshot stays in this browser; the URL contains only an opaque identifier.
-export function savePreviewSnapshot(config, base, previousId) {
+export function savePreviewSnapshot(config, base, previousId, locale = "fa") {
     const id = validId(previousId) ? previousId : crypto.randomUUID();
-    const keyPrefix = prefix(base);
+    const keyPrefix = prefix(base, locale);
     const candidates = [];
     for (let index = 0; index < localStorage.length; index++) {
         const key = localStorage.key(index);
@@ -32,13 +39,14 @@ export function savePreviewSnapshot(config, base, previousId) {
         if (!keep.has(item.key) && item.key !== keyPrefix + id) localStorage.removeItem(item.key);
     localStorage.setItem(
         keyPrefix + id,
-        JSON.stringify({ expires: Date.now() + lifetime, config: normalizeConfig(config) }),
+        JSON.stringify({ expires: Date.now() + lifetime, locale, config: normalizeConfig(config) }),
     );
     return id;
 }
 
-export function previewURL(page, id, base, origin = location.origin) {
-    const url = new URL(base + page.file, origin);
+export function previewURL(page, id, base, locale = "fa", origin = location.origin) {
+    if (!locales.includes(locale)) throw new Error("زبان Customizer معتبر نیست.");
+    const url = new URL(base + localePageFile(page, locale), origin);
     url.searchParams.set(parameter, id);
     return url;
 }
@@ -46,7 +54,8 @@ export function previewURL(page, id, base, origin = location.origin) {
 export function initDraftPreview(base) {
     const id = new URL(location.href).searchParams.get(parameter);
     if (!validId(id)) return;
-    const key = prefix(base) + id;
+    const locale = locales.includes(document.documentElement.lang) ? document.documentElement.lang : "fa";
+    const key = prefix(base, locale) + id;
     const savedLink = document.getElementById("mps-template-overrides");
     const style = document.createElement("style");
     style.id = "mps-standalone-preview";
@@ -86,9 +95,11 @@ export function initDraftPreview(base) {
     const apply = () => {
         try {
             const snapshot = JSON.parse(localStorage.getItem(key));
-            if (!snapshot || snapshot.expires <= Date.now()) throw new Error("expired");
+            if (!snapshot || snapshot.expires <= Date.now() || (snapshot.locale || "fa") !== locale)
+                throw new Error("expired");
             const config = normalizeConfig(snapshot.config);
-            style.textContent = compileCSS(config);
+            const css = compileCSS(config);
+            style.textContent = locale === "en" ? flipCSS(css) : css;
             if (savedLink) savedLink.disabled = true;
             window.dispatchEvent(new Event("site:styles-preview"));
             window.dispatchEvent(new CustomEvent("site:image-preview", { detail: imageSourceRules(config.rules) }));
@@ -109,7 +120,8 @@ export function initDraftPreview(base) {
         if (event.key === key) apply();
     });
     // Carry the draft through site navigation, while preserving query/hash state.
-    const allowedPaths = new Set(pages.map((page) => new URL(base + page.file, location.origin).pathname));
+    const allowedPages = locale === "fa" ? pages : localizedPages.filter((page) => page.locale === locale);
+    const allowedPaths = new Set(allowedPages.map((page) => new URL(base + page.file, location.origin).pathname));
     for (const link of document.querySelectorAll("a[href]:not([download])")) {
         const raw = link.getAttribute("href");
         if (!raw || raw.startsWith("#")) continue;

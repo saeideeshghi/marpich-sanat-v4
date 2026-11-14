@@ -409,3 +409,69 @@ html[lang="en"] body[data-page] .product-card__specs > .site-card__meta-tag {
     width: 100%;
     justify-self: stretch;
 }
+
+/* Keep the 4.1.4 English review layer intact while Persian and Arabic return
+ * to the shared 4.0.3 visual baseline. */
+html[lang="en"]
+    body[data-page]
+    main
+    :is(
+        .product-card__link,
+        .industry-textile__card-link,
+        .home-expertise-grid a,
+        .home-products-actions > a,
+        .site-text-link--plain
+    )
+    :is(.site-text-link__label, .site-card__cta-label) {
+    color: var(--color-brand-blue);
+}
+html[lang="en"] .about-card-link__text {
+    order: 1;
+}
+html[lang="en"] .about-card-link__arrow {
+    order: 2;
+}
+html[lang="en"] body[data-page="contact"] .site-page-background-layer {
+    background-image: url("/assets/decorations/contact-page-pattern.svg#svgView(preserveAspectRatio(none))");
+}
+html[lang="en"] body[data-page="contact"] :is(.contact-control, .upload-box) {
+    background-color: #ecf0f8;
+}
+html[lang="en"]
+    body[data-page="industry-textile"]
+    .industry-textile__products-grid
+    :is(.industry-textile__product-tags, .industry-textile__product-specs)
+    > .site-card__meta-tag {
+    min-height: 1.8rem;
+    padding: 4px 6px !important;
+    border: 1px solid #d9e1ea;
+    border-radius: 0.35rem;
+    background: #f7f9fb;
+    color: #536071;
+}
+html[lang="en"]
+    body[data-page="industry-textile"]
+    .industry-textile__products-grid
+    .industry-textile__product-tags
+    > .site-card__meta-tag {
+    border: 0;
+    background: #ece9e6;
+}
+html[lang="en"] body[data-page="industry-textile"] .industry-textile__faq-item button {
+    padding-block: 20px;
+    line-height: 24px;
+}
+html[lang="en"] body[data-page="industry-textile"] .industry-textile__faq .industry-textile__faq-answer {
+    padding-bottom: 20px;
+    line-height: 32px;
+}
+@media (max-width: 639px) {
+    html[lang="en"] body[data-page="industry-textile"] .industry-textile__faq-item button {
+        padding-block: 16px;
+        line-height: 28px;
+    }
+    html[lang="en"] body[data-page="industry-textile"] .industry-textile__faq .industry-textile__faq-answer {
+        padding-bottom: 16px;
+        line-height: 28px;
+    }
+}

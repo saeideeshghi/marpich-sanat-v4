@@ -452,28 +452,6 @@ body[data-page="industry-textile"] .industry-textile__products-grid .site-card__
     background: #ece9e6;
 }
 
-/* Keep localized tag sizing consistent while retaining the feature color. */
-html:is([lang="en"], [lang="ar"])
-    body[data-page="industry-textile"]
-    .industry-textile__products-grid
-    :is(.industry-textile__product-tags, .industry-textile__product-specs)
-    > .site-card__meta-tag {
-    min-height: 1.8rem;
-    padding: 4px 6px !important;
-    border: 1px solid #d9e1ea;
-    border-radius: 0.35rem;
-    background: #f7f9fb;
-    color: #536071;
-}
-html:is([lang="en"], [lang="ar"])
-    body[data-page="industry-textile"]
-    .industry-textile__products-grid
-    .industry-textile__product-tags
-    > .site-card__meta-tag {
-    border: 0;
-    background: #ece9e6;
-}
-
 @media (max-width: 1000px) {
     body[data-page="industry-textile"] #industry-testimonials-title,
     body[data-page="industry-textile"] .industry-textile__testimonials-subtitle p {
@@ -641,30 +619,6 @@ html:is([lang="en"], [lang="ar"])
 
     content: "";
     pointer-events: none;
-}
-
-/* Whole, four-pixel line boxes keep every divider on the same pixel phase at
- * common display scales, including 125%. Scope this to the textile FAQ. */
-body[data-page="industry-textile"] .industry-textile__faq-item button {
-    padding-block: 20px;
-    line-height: 24px;
-}
-
-body[data-page="industry-textile"] .industry-textile__faq .industry-textile__faq-answer {
-    padding-bottom: 20px;
-    line-height: 32px;
-}
-
-@media (max-width: 639px) {
-    body[data-page="industry-textile"] .industry-textile__faq-item button {
-        padding-block: 16px;
-        line-height: 28px;
-    }
-
-    body[data-page="industry-textile"] .industry-textile__faq .industry-textile__faq-answer {
-        padding-bottom: 16px;
-        line-height: 28px;
-    }
 }
 
 .industry-textile__faq-item h3 {

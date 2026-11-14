@@ -1,6 +1,7 @@
 import "../../css/customizer.css";
 import "../../css/token-reference.css";
 import { pages } from "../../../build/pages.js";
+import { localeEditorURL, localePageFile, readCustomizerLocale } from "./locale-state.js";
 import {
     BREAKPOINTS,
     PAGE_NAMES,
@@ -20,7 +21,8 @@ import { describeElement, semanticClasses, elementSelector, repeatedSelector } f
 import { createPatternEditor } from "./pattern-editor.js";
 import { createViewportResizer } from "./viewport.js";
 import { normalizeZoom, previewGeometry, ZOOM_LIMITS } from "./zoom.js";
-import { savePreviewSnapshot, previewURL } from "./preview-session.js";
+import { savePreviewSnapshot, previewURL, localeStorageKey } from "./preview-session.js";
+import { flipCSS } from "./locale-css.js";
 import { removeSharedPropertyOverrides } from "./shared-overrides.js";
 import { imageSourceRules } from "./image-source.js";
 import { createTokenReference } from "./token-reference.js";
@@ -31,6 +33,7 @@ import { createAboutImageControls } from "./about-image-controls.js";
 const $ = (id) => document.getElementById(id);
 const ui = Object.fromEntries(
     [
+        "locale",
         "page",
         "width",
         "target",
@@ -68,8 +71,9 @@ const ui = Object.fromEntries(
     ].map((id) => [id, $(id)]),
 );
 const base = import.meta.env.BASE_URL;
-const cacheKey = `marpich-customizer-draft:${base}`;
-const preferencesKey = `marpich-customizer-view:${base}`;
+const locale = readCustomizerLocale(location.search);
+const cacheKey = localeStorageKey(base, "customizer-draft", locale);
+const preferencesKey = localeStorageKey(base, "customizer-view", locale);
 const clone = (value) => structuredClone(value);
 const asText = (element, value) => {
     element.textContent = value;
@@ -129,6 +133,11 @@ const option = (value, label) => {
 for (const page of pages) ui.page.append(option(page.name, PAGE_NAMES[page.name]));
 for (const item of BREAKPOINTS) ui.breakpoint.append(option(item.key, item.label));
 for (const item of STATES) $("element-state").append(option(item.key, item.label));
+ui.locale.value = locale;
+ui.locale.addEventListener("change", () => {
+    remember();
+    location.assign(localeEditorURL(location.href, ui.locale.value, currentPage));
+});
 
 const fields = createStyleControls({
     container: ui.controls,
@@ -523,6 +532,8 @@ function refreshState() {
     );
     ui["save-state"].dataset.dirty = String(dirty);
     ui.save.disabled = !ready || !dirty || busy;
+    $("export").disabled = !ready || busy;
+    ui.locale.disabled = !ready || busy;
     ui["open-preview"].disabled = !ready || busy;
     ui.save.textContent = canSave ? "تأیید و ثبت در قالب" : "تأیید و دریافت فایل‌ها";
     ui.undo.disabled = historyIndex <= 0 || busy;
@@ -586,7 +597,8 @@ function applyDraft() {
         element.classList.remove("mps-preview-state");
     if (forceState && currentState !== "normal" && !comparing)
         for (const element of matchingElements()) element.classList.add("mps-preview-state");
-    draftStyle.textContent = compileCSS(draft, { previewState: forceState ? currentState : undefined });
+    const css = compileCSS(draft, { previewState: forceState ? currentState : undefined });
+    draftStyle.textContent = locale === "en" ? flipCSS(css) : css;
     draftStyle.disabled = comparing;
     if (savedLink) savedLink.disabled = !comparing;
     ui.compare.setAttribute("aria-pressed", String(comparing));
@@ -703,7 +715,10 @@ function resizePreview() {
         ui.scale,
         `نمایش ${Math.round(scale * 100).toLocaleString("fa")}٪ · عرض واقعی ${currentWidth.toLocaleString("fa")}px`,
     );
-    asText(ui["preview-caption"], `${PAGE_NAMES[currentPage]} · ${currentWidth.toLocaleString("fa")} پیکسل`);
+    asText(
+        ui["preview-caption"],
+        `${PAGE_NAMES[currentPage]} · ${ui.locale.selectedOptions[0]?.textContent || "فارسی"} · ${currentWidth.toLocaleString("fa")} پیکسل`,
+    );
     tokenReference.refresh();
 }
 function setZoom(value) {
@@ -762,7 +777,10 @@ function navigateToPage(page, keepTarget = false) {
     refreshTargets();
     refreshFields();
     ui.loading.hidden = false;
-    ui.preview.src = `${base}${pages.find((item) => item.name === page).file}`;
+    ui.preview.src = `${base}${localePageFile(
+        pages.find((item) => item.name === page),
+        locale,
+    )}`;
     resizePreview();
     remember();
 }
@@ -799,6 +817,7 @@ ui.preview.addEventListener("load", async () => {
     try {
         const document = ui.preview.contentDocument;
         if (!PAGE_NAMES[document?.body?.dataset.page]) return;
+        if (document.documentElement.lang !== locale) throw new Error("preview locale mismatch");
         frameLayoutObserver?.disconnect();
         frameDocument = document;
         extraOverlays = [];
@@ -1132,6 +1151,45 @@ function keyboard(event) {
 document.addEventListener("keydown", keyboard);
 new ResizeObserver(resizePreview).observe(ui.stage);
 
+async function exportAllLocaleSettings() {
+    const configs = { [locale]: clone(draft) };
+    for (const selected of ["fa", "en", "ar"]) {
+        if (selected === locale) continue;
+        let config;
+        if (import.meta.env.DEV) {
+            try {
+                const response = await fetch(`${base}__customizer/settings?locale=${selected}`, {
+                    cache: "no-store",
+                    signal: AbortSignal.timeout(3000),
+                });
+                if (response.ok) config = normalizeConfig((await response.json()).config);
+            } catch {
+                /* Static exports remain available when the local endpoint is unavailable. */
+            }
+        }
+        if (!config) {
+            const settingsFile = `settings${selected === "fa" ? "" : `.${selected}`}.json`;
+            const response = await fetch(`${base}assets/customizer/${settingsFile}`, { cache: "no-store" });
+            if (!response.ok) throw new Error(`تنظیمات نسخهٔ ${selected} خوانده نشد.`);
+            config = normalizeConfig(await response.json());
+        }
+        try {
+            const cached = JSON.parse(
+                localStorage.getItem(localeStorageKey(base, "customizer-draft", selected)) || "null",
+            );
+            if (cached?.baseline === JSON.stringify(config)) config = normalizeConfig(cached.config);
+        } catch {
+            /* Export the saved locale when a browser draft cannot be read. */
+        }
+        configs[selected] = config;
+    }
+    return configs;
+}
+
+async function downloadAllLocaleSettings() {
+    downloadSettings(await exportAllLocaleSettings());
+}
+
 $("import").addEventListener("change", async (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -1148,17 +1206,22 @@ $("import").addEventListener("change", async (event) => {
     }
     event.target.value = "";
 });
-$("export").addEventListener("click", () => {
-    downloadSettings(draft);
-    message("بستهٔ استایل و پترن دریافت شد؛ پوشه src آن را در پروژه Merge و Replace کن، سپس محلی اجرا یا منتشر کن.");
+$("export").addEventListener("click", async () => {
+    try {
+        await downloadAllLocaleSettings();
+        message("بستهٔ کامل تنظیمات فارسی، انگلیسی و عربی دریافت شد؛ پیش‌نویس نسخهٔ انتخاب‌شده هم در آن قرار دارد.");
+    } catch (error) {
+        message(error.message || "دریافت تنظیمات انجام نشد.", true);
+    }
 });
 ui["open-preview"].addEventListener("click", () => {
     try {
-        previewId = savePreviewSnapshot(draft, base, previewId);
+        previewId = savePreviewSnapshot(draft, base, previewId, locale);
         const url = previewURL(
             pages.find((page) => page.name === currentPage),
             previewId,
             base,
+            locale,
         );
         window.open(url.href, "_blank", "noopener");
         message(
@@ -1174,7 +1237,7 @@ function showConfirmation() {
     const changes = changedRules();
     asText(
         ui["confirm-summary"],
-        `${(changes.length + changedPatterns().length).toLocaleString("fa")} تنظیم تغییر کرده. تغییرات بر اساس اندازه و محدوده‌ای که انتخاب کردی اعمال می‌شوند.`,
+        `${(changes.length + changedPatterns().length).toLocaleString("fa")} تنظیم در نسخهٔ ${ui.locale.selectedOptions[0]?.textContent || "فارسی"} تغییر کرده. این ثبت فقط روی همین نسخهٔ زبانی اثر می‌گذارد.`,
     );
     ui["confirm-pages"].replaceChildren();
     for (const page of new Set(changes.map((rule) => rule.page))) {
@@ -1184,14 +1247,14 @@ function showConfirmation() {
     }
     for (const kind of changedPatterns()) {
         const item = document.createElement("li");
-        item.textContent = `پترن مشترک ${kind === "header" ? "هدر" : "فوتر"} · همهٔ صفحه‌ها`;
+        item.textContent = `پترن ${kind === "header" ? "هدر" : "فوتر"} · همه صفحه‌های ${ui.locale.selectedOptions[0]?.textContent || "فارسی"}`;
         ui["confirm-pages"].append(item);
     }
     asText(
         ui["confirm-mode"],
         canSave
-            ? "با تأیید، تنظیمات در فایل‌های قالب ثبت می‌شوند؛ با باز کردن دوباره صفحه هم باقی می‌مانند. برای سایت آنلاین، نسخه جدید را منتشر کن."
-            : "در نسخه آنلاین، فایل‌های پروژه قابل نوشتن نیستند. تأیید یک ZIP شامل CSS و JSON می‌دهد؛ آن‌ها را در پروژه جایگزین کن و نسخه جدید را منتشر کن.",
+            ? `با تأیید، تنظیمات فقط برای نسخهٔ ${ui.locale.selectedOptions[0]?.textContent || "فارسی"} در فایل‌های قالب ثبت می‌شوند و روی همهٔ صفحه‌های همین زبان باقی می‌مانند.`
+            : `در نسخه آنلاین، فایل‌های پروژه قابل نوشتن نیستند. تأیید یک ZIP شامل تنظیمات هر سه زبان می‌دهد؛ پیش‌نویس فعلی فقط برای ${ui.locale.selectedOptions[0]?.textContent || "فارسی"} است.`,
     );
     ui["confirm-save"].textContent = canSave ? "تأیید و ثبت" : "تأیید و دریافت ZIP";
     ui["save-error"].hidden = true;
@@ -1207,9 +1270,14 @@ ui.confirm.addEventListener("cancel", (event) => {
 ui["confirm-save"].addEventListener("click", async () => {
     if (busy) return;
     if (!canSave) {
-        downloadSettings(draft);
-        ui.confirm.close();
-        message("بسته تأییدشده دریافت شد. برای ثبت روی قالب، فایل‌های src بسته را در پروژه جایگزین و منتشر کن.");
+        try {
+            await downloadAllLocaleSettings();
+            ui.confirm.close();
+            message("بستهٔ تأییدشدهٔ هر سه زبان دریافت شد. پیش‌نویس نسخهٔ انتخاب‌شده هم در بسته قرار دارد.");
+        } catch (error) {
+            asText($("save-error"), error.message || "دریافت فایل‌ها انجام نشد.");
+            $("save-error").hidden = false;
+        }
         return;
     }
     busy = true;
@@ -1221,7 +1289,7 @@ ui["confirm-save"].addEventListener("click", async () => {
         const response = await fetch(`${base}__customizer/settings`, {
             method: "POST",
             headers: { "Content-Type": "application/json", "X-Marpich-Customizer": token },
-            body: JSON.stringify({ revision, config: draft }),
+            body: JSON.stringify({ locale, revision, config: draft }),
             signal: AbortSignal.timeout(10000),
         });
         const result = await response.json();
@@ -1232,7 +1300,7 @@ ui["confirm-save"].addEventListener("click", async () => {
         ui.confirm.close();
         remember();
         message(
-            "ثبت شد. استایل‌ها در فایل‌های قالب ذخیره شدند و روی همه صفحه‌ها اعمال می‌شوند. برای سایت آنلاین، بیلد و انتشار را انجام بده.",
+            `ثبت شد. فقط نسخهٔ ${ui.locale.selectedOptions[0]?.textContent || "فارسی"} به‌روز شد؛ تنظیمات دو زبان دیگر دست‌نخورده ماند.`,
         );
     } catch (error) {
         ui["save-error"].hidden = false;
@@ -1253,7 +1321,7 @@ async function initialize() {
     // Only Vite's development server exposes the local write endpoint.
     if (import.meta.env.DEV) {
         try {
-            const response = await fetch(`${base}__customizer/settings`, {
+            const response = await fetch(`${base}__customizer/settings?locale=${locale}`, {
                 signal: AbortSignal.timeout(3000),
                 cache: "no-store",
             });
@@ -1271,7 +1339,8 @@ async function initialize() {
     }
     if (!loaded) {
         try {
-            const response = await fetch(`${base}assets/customizer/settings.json`, { cache: "no-store" });
+            const settingsFile = `settings${locale === "fa" ? "" : `.${locale}`}.json`;
+            const response = await fetch(`${base}assets/customizer/${settingsFile}`, { cache: "no-store" });
             if (!response.ok) throw new Error();
             saved = normalizeConfig(await response.json());
         } catch {

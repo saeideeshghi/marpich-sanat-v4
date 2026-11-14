@@ -1,18 +1,2 @@
-/* Arabic review adjustments; shared Persian styles remain unchanged. */
-html[lang="ar"] .site-header__auth {
-    width: auto;
-    min-width: 180px;
-    white-space: nowrap;
-}
-html[lang="ar"] .home-hero-action {
-    justify-content: center;
-}
-html[lang="ar"] body[data-page="home"] .hero-content .home-hero-description {
-    max-width: 760px;
-    margin-inline-start: 0;
-    margin-inline-end: auto;
-}
-html[lang="ar"] body[data-page] .product-card__specs {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-}
+/* Arabic keeps the same visual rules as Persian. Direction and Peyda typography
+ * come from the shared RTL document and base styles. */

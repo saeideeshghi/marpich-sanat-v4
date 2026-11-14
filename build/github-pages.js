@@ -21,22 +21,7 @@ export function readGithubRepository(root) {
     return parseGithubRepository(config.repository).repository;
 }
 
-export function repositoryFromOrigin(origin) {
-    const match = String(origin).match(/^(?:https:\/\/github\.com\/|git@github\.com:)([^/]+)\/([^/]+?)(?:\.git)?\/?$/i);
-    if (!match) return "";
-    try {
-        return parseGithubRepository(`${match[1]}/${match[2]}`).repository;
-    } catch {
-        return "";
-    }
-}
-
 export function githubPagesBase(repository) {
     const { owner, name } = parseGithubRepository(repository);
     return name.toLowerCase() === `${owner.toLowerCase()}.github.io` ? "/" : `/${name}/`;
-}
-
-export function githubPagesUrl(repository) {
-    const { owner } = parseGithubRepository(repository);
-    return `https://${owner}.github.io${githubPagesBase(repository)}`;
 }
