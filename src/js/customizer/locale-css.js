@@ -108,4 +108,3 @@ export function flipCSS(css) {
     });
     return ast.toString();
 }
-

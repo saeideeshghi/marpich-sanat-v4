@@ -232,4 +232,3 @@ export function templateCustomizer(root, base, { publicTools = true } = {}) {
         },
     };
 }
-

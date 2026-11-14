@@ -25,4 +25,3 @@ export function localeEditorURL(href, locale, page) {
     url.searchParams.set("page", page);
     return url.href;
 }
-
