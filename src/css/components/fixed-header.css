@@ -61,14 +61,3 @@ body[data-page] .site-header[data-header-fixed="true"] {
     visibility: hidden;
     pointer-events: none;
 }
-
-/* Keep the fixed navigation available when a keyboard user focuses it. */
-body[data-page] .site-header[data-header-at-footer]:not(:focus-within) {
-    opacity: 0;
-    pointer-events: none;
-}
-@media (prefers-reduced-motion: no-preference) {
-    html[lang="en"] body[data-page] .site-header[data-header-fixed="true"] {
-        transition: opacity 180ms ease;
-    }
-}

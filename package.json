@@ -1,6 +1,6 @@
 {
   "name": "marpich-sanat",
-  "version": "4.1.5",
+  "version": "4.1.6",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,7 +10,7 @@
     "build:backend": "vite build --mode backend && node scripts/check-backend.js",
     "preview": "vite preview",
     "preview:backend": "vite preview --mode backend",
-    "check": "node scripts/check-project.js && node scripts/check-components.js && node scripts/check-certificate-assets.js && node scripts/check-pattern-motion.js && node scripts/check-handoff.js && node scripts/check-customizer.js && node scripts/check-customizer-locales.js && node scripts/check-view-tools.js && node scripts/check-token-editor.js && node scripts/check-platform.js",
+    "check": "node scripts/check-project.js && node scripts/check-components.js && node scripts/check-certificate-assets.js && node scripts/check-pattern-motion.js && node scripts/check-handoff.js && node scripts/check-customizer.js && node scripts/check-view-tools.js && node scripts/check-token-editor.js && node scripts/check-platform.js",
     "check:assets": "node scripts/check-assets.js",
     "check:security": "node scripts/check-security.js && node scripts/check-svg.js",
     "check:release": "npm run check && npm run check:localization && npm run check:security && npm run check:assets && npm run check:performance && npm run format:check",

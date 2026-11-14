@@ -11,33 +11,20 @@ function crc32(bytes) {
 }
 
 export function settingsArchive(config) {
-    const locales = ["fa", "en", "ar"];
-    const configs = Object.fromEntries(
-        locales.filter((locale) => config?.[locale]).map((locale) => [locale, normalizeConfig(config[locale])]),
-    );
-    if (!Object.keys(configs).length) configs.fa = normalizeConfig(config);
+    const normalized = normalizeConfig(config);
     const encoder = new TextEncoder();
-    const files = locales.flatMap((locale) => {
-        const normalized = configs[locale];
-        if (!normalized) return [];
-        const localized = locale !== "fa";
-        const directory = localized ? `src/data/patterns/${locale}/` : "src/data/patterns/";
-        return [
-            [
-                `src/data/customizer/settings${localized ? `.${locale}` : ""}.json`,
-                `${JSON.stringify(persistedSettings(normalized), null, 2)}\n`,
-            ],
-            [`src/css/template-overrides${localized ? `.${locale}` : ""}.css`, compileCSS(normalized)],
-            ...Object.entries(normalized.patterns || {}).map(([kind, pattern]) => [
-                `${directory}${kind === "header" ? "site" : "footer"}-pattern.json`,
-                `${JSON.stringify(pattern, null, 2)}\n`,
-            ]),
-        ];
-    });
-    files.push([
-        "APPLY-SETTINGS.txt",
-        "پوشه src این بسته را کنار package.json پروژه Merge و Replace کنید. تصاویر و فونت‌های قبلی را نگه دارید.\nاجرای محلی: npm run customize\nخروجی سایت: npm run build\nاین بسته تنظیمات مستقل فارسی، انگلیسی و عربی، CSS و پترن هر زبان را دارد؛ به مرورگر یا localStorage وابسته نیست.\n",
-    ]);
+    const files = [
+        ["src/data/customizer/settings.json", `${JSON.stringify(persistedSettings(normalized), null, 2)}\n`],
+        ["src/css/template-overrides.css", compileCSS(normalized)],
+        ...Object.entries(normalized.patterns || {}).map(([kind, pattern]) => [
+            `src/data/patterns/${kind === "header" ? "site" : "footer"}-pattern.json`,
+            `${JSON.stringify(pattern, null, 2)}\n`,
+        ]),
+        [
+            "APPLY-SETTINGS.txt",
+            "پوشه src این بسته را کنار package.json پروژه Merge و Replace کنید. تصاویر و فونت‌های قبلی را نگه دارید.\nاجرای محلی: npm run customize\nخروجی سایت: npm run build\nاین بسته شامل CSS، تنظیمات ریسپانسیو و پترن هدر/فوتر است؛ به مرورگر یا localStorage وابسته نیست.\n",
+        ],
+    ];
     const parts = [],
         central = [];
     let offset = 0,

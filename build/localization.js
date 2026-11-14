@@ -88,24 +88,13 @@ export function translateHTML(html, locale, root, page) {
                         // localizing the image at build time adds no runtime/font request.
                         .replace(
                             /\bsrc="\/assets\/logos\/(?:LOGO|logo-symbol-left)\.svg"/g,
-                            locale === "en"
-                                ? 'src="/assets/logos/logo-en.svg"'
-                                : 'src="/assets/logos/logo-international.svg"',
+                            'src="/assets/logos/logo-international.svg"',
                         )
                         .replace(
                             /\b(alt|aria-label|placeholder|title|content)="([^"]*)"/g,
                             (_, key, value) => key + '="' + translateText(value, messages) + '"',
                         )
                         .replace(/\bhref="([^"]+)"/g, (tag, value) => {
-                            if (/^https:\/\/www\.google\.com\/maps\/search\//i.test(value)) {
-                                const mapUrl = new URL(decode(value));
-                                const query = mapUrl.searchParams.get("query");
-                                const translatedQuery = query && messages[normalizeMessage(query)];
-                                if (translatedQuery) {
-                                    mapUrl.searchParams.set("query", translatedQuery);
-                                    return 'href="' + escapeHtml(mapUrl.toString()) + '"';
-                                }
-                            }
                             if (/^(?:[a-z][\w+.-]*:|\/\/|\/assets\/|\/src\/|#)/i.test(value)) return tag;
                             const parts = value.split(/([?#].*)/);
                             const file = parts[0].replace(/^\//, "");

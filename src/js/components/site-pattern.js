@@ -21,20 +21,9 @@ const linkedProducts = new WeakSet();
 const SVG_NS = "http://www.w3.org/2000/svg";
 
 const patternLoaders = {
-    fa: {
-        header: () => import("virtual:site-pattern/header?locale=fa").then((module) => module.default),
-        footer: () => import("virtual:site-pattern/footer?locale=fa").then((module) => module.default),
-    },
-    en: {
-        header: () => import("virtual:site-pattern/header?locale=en").then((module) => module.default),
-        footer: () => import("virtual:site-pattern/footer?locale=en").then((module) => module.default),
-    },
-    ar: {
-        header: () => import("virtual:site-pattern/header?locale=ar").then((module) => module.default),
-        footer: () => import("virtual:site-pattern/footer?locale=ar").then((module) => module.default),
-    },
+    header: () => import("virtual:site-pattern/header").then((module) => module.default),
+    footer: () => import("virtual:site-pattern/footer").then((module) => module.default),
 };
-const pageLocale = () => (patternLoaders[document.documentElement.lang] ? document.documentElement.lang : "fa");
 
 export function mountPattern(root, initialConfig, initialTime = 0) {
     const uid = `mps-pattern-${Math.random().toString(36).slice(2, 10)}`;
@@ -890,7 +879,7 @@ function registerPattern(host, kind) {
     const mount = async () => {
         if (entry.player || entry.loading) return;
         entry.loading = true;
-        const loaded = await patternLoaders[pageLocale()][kind]();
+        const loaded = await patternLoaders[kind]();
         // A live preview received during loading takes precedence.
         entry.source ||= loaded;
         entry.config = JSON.stringify(entry.source);

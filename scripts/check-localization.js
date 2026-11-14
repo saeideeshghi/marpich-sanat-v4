@@ -66,14 +66,7 @@ for (const page of pages) {
         assert(/<span\b[^>]*lang="fa"[^>]*>\s*فارسی<\/span/.test(translated), "Keep native language labels");
         if (locale === "en") assert(/<dialog\b[^>]*dir="ltr"/.test(translated), "English dialog direction");
         assert.equal(
-            (
-                translated.match(
-                    new RegExp(
-                        'src="/assets/logos/' + (locale === "en" ? "logo-en" : "logo-international") + '\\.svg"',
-                        "g",
-                    ),
-                ) || []
-            ).length,
+            (translated.match(/src="\/assets\/logos\/logo-international\.svg"/g) || []).length,
             (rendered.match(/src="\/assets\/logos\/(?:LOGO|logo-symbol-left)\.svg"/g) || []).length,
             "International logo in desktop/mobile header and footer: " + locale + "/" + page.file,
         );
@@ -83,17 +76,6 @@ for (const page of pages) {
                 "Existing translated route: " + href[1],
             );
     }
-}
-for (const locale of ["en", "ar"]) {
-    const contact = renderPage("", resolve(root, locale, "contact.html"), root);
-    const mapHref = contact.match(/href="(https:\/\/www\.google\.com\/maps\/search\/[^\"]+)"/)?.[1];
-    assert(mapHref, locale + ": factory map link exists");
-    const mapQuery = new URL(mapHref.replaceAll("&amp;", "&")).searchParams.get("query");
-    assert.equal(
-        mapQuery,
-        dictionary(root, locale)["مشهد، کیلومتر ۲۵ جاده آسیایی، شهرک صنعتی ماشین‌سازی، بلوار اصلی، خیابان صنعت"],
-        locale + ": factory map query is localized",
-    );
 }
 // These are two real forms emitted by development and Vite's CSS minifier.
 // The old implementation only handled translateX, moving production patterns,

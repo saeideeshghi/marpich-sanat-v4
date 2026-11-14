@@ -57,6 +57,52 @@ export const MOTION_EASINGS = Object.freeze({
     gentle: "cubic-bezier(.16,1,.3,1)",
     linear: "linear",
 });
+export const MOTION_PRESETS = Object.freeze({
+    balanced: { ...MOTION_DEFAULTS },
+    quick: {
+        ...MOTION_DEFAULTS,
+        openDuration: 380,
+        closeDuration: 300,
+        openDelay: 25,
+        siblingsFade: 115,
+        contentDelay: 105,
+        contentDuration: 235,
+        productsDelay: 230,
+        productDuration: 290,
+        stagger: 35,
+        distance: 14,
+    },
+    showcase: {
+        ...MOTION_DEFAULTS,
+        openDuration: 880,
+        closeDuration: 670,
+        openDelay: 90,
+        siblingsFade: 240,
+        contentDelay: 310,
+        contentDuration: 450,
+        productsDelay: 590,
+        productDuration: 580,
+        stagger: 80,
+        distance: 32,
+        easing: "gentle",
+    },
+    quiet: {
+        ...MOTION_DEFAULTS,
+        openDuration: 420,
+        closeDuration: 330,
+        openDelay: 0,
+        siblingsFade: 110,
+        contentDelay: 90,
+        contentDuration: 220,
+        productsDelay: 260,
+        productDuration: 280,
+        stagger: 20,
+        distance: 0,
+        entry: "fade",
+        sharedImage: false,
+    },
+});
+
 export function normalizeMotionConfig(input = {}) {
     const source = input && typeof input === "object" && !Array.isArray(input) ? input : {};
     const result = { ...MOTION_DEFAULTS };
@@ -124,18 +170,16 @@ function productStartDelay(config, closing) {
 }
 
 // Move the intact source card to the destination's upper-right corner first.
-// The optional English anchor fixes left/top during stretching; RTL keeps right/top.
+// During stretching, physical right/top remain fixed; only width/height change.
 // Closing performs the same path in reverse, including cards from lower rows.
-export function cornerStretchPlan(from, to, base, config = {}, closing = false, leftAnchor = false) {
+export function cornerStretchPlan(from, to, base, config = {}, closing = false) {
     const cfg = normalizeMotionConfig(config),
         corner = closing ? from : to,
         size = closing ? to : from;
     const anchor = { right: corner.right, top: corner.top, width: size.width, height: size.height };
-    if (leftAnchor) anchor.right = corner.left + size.width;
     anchor.left = anchor.right - anchor.width;
     anchor.bottom = anchor.top + anchor.height;
-    const travels =
-        Math.abs(leftAnchor ? from.left - to.left : from.right - to.right) > 1 || Math.abs(from.top - to.top) > 1;
+    const travels = Math.abs(from.right - to.right) > 1 || Math.abs(from.top - to.top) > 1;
     const offset = travels ? (closing ? 1 - cfg.cornerTravel / 100 : cfg.cornerTravel / 100) : closing ? 1 : 0;
     const frame = (rect, offset) => ({ ...rightGeometry(rect, base), offset, easing: MOTION_EASINGS[cfg.easing] });
     const frames = travels ? [frame(from, 0), frame(anchor, offset), frame(to, 1)] : [frame(from, 0), frame(to, 1)];
@@ -251,7 +295,6 @@ export function initProductCategoryMotion(root, options = {}) {
     if (root.__productMotion) return root.__productMotion;
     const doc = root.ownerDocument,
         win = doc.defaultView;
-    const leftAnchor = doc.documentElement.lang === "en";
     const grid = root.querySelector(options.gridSelector || ".featured-products");
     const results = root.querySelector(options.productsSelector || "[data-product-grid], .products-grid");
     if (!grid || !results) throw new Error("Product Motion: featured-products and products-grid must exist.");
@@ -293,6 +336,9 @@ export function initProductCategoryMotion(root, options = {}) {
         if (className) node.className = className;
         if (text !== undefined) node.textContent = text;
         return node;
+    }
+    function setHidden(node, hidden) {
+        node.hidden = hidden;
     }
     function restoreStyle(node, original) {
         if (original === null) node.removeAttribute("style");
@@ -499,15 +545,11 @@ export function initProductCategoryMotion(root, options = {}) {
     }
     function imageGhost(source, first, base) {
         if (!source || first.width < 1 || first.height < 1) return null;
-        // Mirror only the picture, not the compositor's moving coordinate frame.
-        // RTL retains the original image element and motion geometry.
-        const ghost = element(leftAnchor ? "div" : "img", "pcm-image-ghost");
-        const picture = leftAnchor ? element("img") : ghost;
-        picture.src = source.currentSrc || source.src;
-        picture.alt = "";
+        const ghost = element("img", "pcm-image-ghost");
+        ghost.src = source.currentSrc || source.src;
+        ghost.alt = "";
         ghost.setAttribute("aria-hidden", "true");
-        picture.draggable = false;
-        if (leftAnchor) ghost.append(picture);
+        ghost.draggable = false;
         Object.assign(ghost.style, geometry(first, base));
         stage.append(ghost);
         return ghost;
@@ -610,7 +652,6 @@ export function initProductCategoryMotion(root, options = {}) {
             Math.max(0, delay - outgoingDuration),
         );
         const entryFrames = productEntryFrames(cfg);
-        if (leftAnchor && cfg.entry === "right") entryFrames[0].transform = `translateX(${-cfg.distance}px)`;
         visible.forEach((card, index) =>
             incoming.add(
                 card,
@@ -659,8 +700,7 @@ export function initProductCategoryMotion(root, options = {}) {
             lastImage = paintedImageRect(image, info.sourceImage);
         if (photo) image.style.visibility = "hidden";
         const motion = group(cfg);
-        const corner =
-            cfg.opening === "top-right" ? cornerStretchPlan(first, last, base, cfg, false, leftAnchor) : null;
+        const corner = cfg.opening === "top-right" ? cornerStretchPlan(first, last, base, cfg) : null;
         if (corner)
             motion.add(
                 stage,
@@ -873,7 +913,7 @@ export function initProductCategoryMotion(root, options = {}) {
             peers = group(cfg);
         const corner =
             cfg.closing === "corner"
-                ? cornerStretchPlan(first, last, base, { ...cfg, easing: cfg.closeEasing }, true, leftAnchor)
+                ? cornerStretchPlan(first, last, base, { ...cfg, easing: cfg.closeEasing }, true)
                 : null;
         const frames = corner ? corner.frames : [rightGeometry(first, base), rightGeometry(last, base)];
         const targetStyle = win.getComputedStyle(info.card);

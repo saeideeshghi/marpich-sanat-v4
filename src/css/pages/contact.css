@@ -13,6 +13,12 @@
     text-align: right;
 }
 
+/* Fit the supplied contact artwork to this page's light canvas. Other pages
+ * keep the shared artwork, and the original SVG keeps its authored geometry. */
+body[data-page="contact"] .site-page-background-layer {
+    background-image: url("/assets/decorations/contact-page-pattern.svg#svgView(preserveAspectRatio(none))");
+}
+
 /* =========================================================
    HERO / PATTERN
 ========================================================= */
@@ -151,6 +157,11 @@
     padding-bottom: 22px;
 }
 
+/* Keep the decorative page artwork behind an opaque, readable form surface. */
+body[data-page="contact"] :is(.contact-control, .upload-box) {
+    background-color: #ecf0f8;
+}
+
 .contact-control {
     width: 100%;
     height: 34px;
@@ -158,7 +169,6 @@
     border: 1px solid rgb(121 182 237 / 50%);
     border-radius: 8px;
     outline: none;
-    background: rgb(255 255 255 / 8%);
     padding-inline: 11px;
     color: #172137;
     font-size: 14px;
@@ -176,7 +186,6 @@
 
 .contact-control:focus {
     border-color: #79b6ed;
-    background: rgb(255 255 255 / 40%);
     box-shadow: 0 0 0 2px rgb(121 182 237 / 14%);
 }
 
@@ -210,13 +219,8 @@ textarea.contact-control {
     padding-left: 34px;
 }
 
-.upload-box {
-    background: rgb(255 255 255 / 6%);
-}
-
 .upload-box.is-dragging {
     border-color: #ff7428;
-    background: rgb(255 116 40 / 7%);
 }
 
 /* =========================================================

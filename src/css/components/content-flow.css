@@ -26,7 +26,7 @@ body[data-page]
         .site-text-link--plain
     )
     :is(.site-text-link__label, .site-card__cta-label) {
-    color: #276ca8;
+    color: var(--color-brand-blue);
 }
 body[data-page="about"] .about-certificate-card__caption span {
     color: #276ca8;

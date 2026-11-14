@@ -13,7 +13,6 @@ export function initFixedHeader() {
     measure.setAttribute("aria-hidden", "true");
     header.append(measure);
     const html = document.documentElement;
-    const footer = html.lang === "en" ? document.querySelector(".site-footer") : null;
     const originalPadding = html.style.scrollPaddingTop;
     const hamburger = window.matchMedia("(max-width: 1179px)");
     let frame = 0;
@@ -41,16 +40,11 @@ export function initFixedHeader() {
             needsMeasure = true;
             schedule();
         }
-        if (footer) {
-            const footerInView = footer.getBoundingClientRect().top < window.innerHeight;
-            header.toggleAttribute("data-header-at-footer", fixed && footerInView);
-        }
         // Anchor navigation and scrollIntoView keep their targets below the menu.
-        if (!measured && !changed && !footer) return;
-        const padding =
-            fixed && !header.hasAttribute("data-header-at-footer")
-                ? `${Math.ceil(header.getBoundingClientRect().height + settings.top + 12)}px`
-                : originalPadding;
+        if (!measured && !changed) return;
+        const padding = fixed
+            ? `${Math.ceil(header.getBoundingClientRect().height + settings.top + 12)}px`
+            : originalPadding;
         if (html.style.scrollPaddingTop !== padding) html.style.scrollPaddingTop = padding;
     }
 
