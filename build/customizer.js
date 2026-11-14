@@ -44,7 +44,7 @@ export function templateCustomizer(root, base, { publicTools = true } = {}) {
     const updateCSS = (locale) => {
         const path = cssPaths[locale];
         const css = compileCSS(load(locale));
-        if (!existsSync(path) || readFileSync(path, "utf8") !== css) atomicWrite(path, css);
+        if (!existsSync(path) || readFileSync(path, "utf8").replace(/\r\n/g, "\n").trimEnd() !== css.trimEnd()) atomicWrite(path, css);
     };
     const json = (res, status, value) => {
         res.statusCode = status;
@@ -231,3 +231,4 @@ export function templateCustomizer(root, base, { publicTools = true } = {}) {
         },
     };
 }
+
