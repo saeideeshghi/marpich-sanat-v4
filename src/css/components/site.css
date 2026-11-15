@@ -35,6 +35,19 @@
     position: relative;
     border: 0;
 }
+
+html[lang="ar"] .site-header__auth {
+    width: max-content;
+    min-width: 143px;
+    padding-inline: 12px;
+}
+
+html[lang="ar"] :is(.site-header__auth, .mobile-menu__auth) > span {
+    direction: rtl;
+    unicode-bidi: isolate;
+    white-space: nowrap;
+    line-height: 1.4;
+}
 .site-header__auth::before {
     content: "";
     position: absolute;

@@ -1,0 +1,726 @@
+body[data-page="contact"] .contact-copy-short {
+    display: none;
+}
+
+/* Mobile refinements requested for Persian and Arabic. Keep each rule
+ * language-scoped so the English layout and all desktop layouts stay intact. */
+@media (max-width: 767px) {
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page]
+        main
+        :is(
+            .home-expertise-grid,
+            .home-projects-grid,
+            .home-products-grid,
+            .products-grid:not(.is-list):not(.products-grid--list),
+            .projects-page__grid,
+            .articles-grid:not(.is-list),
+            .about-expertise__grid,
+            .industry-textile__products-grid,
+            .industry-textile__projects-grid,
+            .project-details__products-grid
+        ),
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] main .industries-catalog .industries-grid {
+        grid-template-columns: minmax(0, 1fr);
+        grid-auto-rows: auto;
+        gap: 8px;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page]
+        main
+        :is(
+            .home-expertise-grid > article > div:first-child,
+            .home-projects-grid > article > div:first-child,
+            .home-products-grid > article > div:first-child,
+            .site-card__media,
+            .product-card__media,
+            .projects-page__card-media,
+            .article-card__media,
+            .about-expertise-card__image,
+            .industry-textile__product-media,
+            .industry-textile__project-media,
+            .project-details__product-media
+        ) {
+        height: 150px !important;
+        min-height: 150px !important;
+        max-height: 150px;
+        flex-basis: 150px !important;
+        aspect-ratio: auto !important;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page]
+        main
+        :is(
+            .product-card__body,
+            .projects-page__card-body,
+            .article-card__body,
+            .about-expertise-card__body,
+            .industry-textile__product-body,
+            .industry-textile__project-body,
+            .project-details__product-body,
+            .home-expertise-grid > article > div:last-child,
+            .home-projects-grid > article > div:last-child,
+            .home-products-grid > article > div:last-child
+        ) {
+        min-height: 0;
+        padding: 12px;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page]
+        main
+        :is(
+            .site-card__description,
+            .product-card__description,
+            .projects-page__card-description,
+            .article-card__description,
+            .about-expertise-card__description,
+            .industry-textile__product-body > p,
+            .industry-textile__project-body > p,
+            .project-details__product-body > p
+        ) {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        margin-block-start: 4px;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page]
+        main
+        :is(.article-card, .product-card, .projects-page__card, .industry-textile__product-card)
+        :is(
+            .site-card__description,
+            .article-card__description,
+            .product-card__description,
+            .projects-page__card-description
+        ):not([hidden]) {
+        -webkit-line-clamp: 2 !important;
+        line-clamp: 2 !important;
+        line-height: 1.55;
+    }
+
+    html:where([lang="fa"], [lang="ar"], [lang="en"])
+        body[data-page]
+        main
+        :is(
+            .article-card__meta,
+            .product-card__specs,
+            .projects-page__card-meta,
+            .industry-textile__product-specs,
+            .industry-textile__product-tags
+        ) {
+        gap: 4px;
+        margin-block-start: 5px;
+        padding-block-start: 0;
+    }
+
+    html:where([lang="fa"], [lang="ar"], [lang="en"])
+        body[data-page]
+        main
+        :is(
+            .article-card__meta,
+            .product-card__specs,
+            .projects-page__card-meta,
+            .industry-textile__product-specs,
+            .industry-textile__product-tags
+        )
+        > span {
+        min-height: 23px !important;
+        height: auto !important;
+        padding: 3px 5px;
+        font-size: 11px;
+        line-height: 1.35;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page]
+        main
+        :is(.article-card__link, .product-card__link, .projects-page__card-link, .industry-textile__card-link) {
+        margin-block-start: 4px;
+        padding-block-start: 0;
+        min-height: 32px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] .product-search {
+        margin-top: 18px;
+        border-radius: 9px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] .product-search__bar {
+        min-height: 40px;
+        padding-inline: 12px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] .product-search__bar > span {
+        font-size: 13px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] .product-search__field-row {
+        min-height: 52px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] .product-search__submit {
+        width: 55px;
+        flex-basis: 55px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] .product-search__filters {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 6px;
+        padding: 9px 10px 6px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] .product-search__filters > * {
+        grid-column: span 2;
+        min-height: 40px;
+        min-width: 0;
+        font-size: clamp(9px, 2.7vw, 12px);
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="industries"]
+        .product-search__filters
+        > :is([name="sensitivity"], [name="application"], .product-search__dropdown--4, .product-search__dropdown--2) {
+        grid-column: span 3;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="industries"]
+        .product-search__filters
+        > :is([name="sensitivity"], .product-search__dropdown--4) {
+        order: -2;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="industries"]
+        .product-search__filters
+        > :is([name="application"], .product-search__dropdown--2) {
+        order: -1;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] .product-search__dropdown-toggle {
+        min-height: 40px;
+        padding-inline: 6px;
+        font-size: inherit;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] .industries-featured {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+        grid-auto-rows: 150px;
+        gap: 8px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] .industries-featured > .industry-feature {
+        grid-area: auto;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] .product-search__bottom {
+        gap: 7px;
+        padding: 8px 10px 12px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industries"] .filter-chip {
+        min-height: 28px;
+        padding: 3px 9px;
+        font-size: 11px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="articles"] .articles-search {
+        margin-top: 8px;
+        border-radius: 9px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="articles"] .articles-search__field-row {
+        min-height: 54px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="articles"] .articles-search__submit {
+        width: 58px;
+        flex-basis: 58px;
+        font-size: 19px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="articles"] .articles-search__filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 6px;
+        padding: 12px 10px;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="articles"]
+        :is(.articles-search__filter, .articles-search__more) {
+        width: auto;
+        min-height: 34px;
+        padding-inline: clamp(4px, 1.6vw, 8px);
+        font-size: clamp(10px, 2.8vw, 13px);
+        white-space: nowrap;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="articles"] [data-article-filter="experience"] {
+        order: 1;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="articles"]
+        :is([data-article-filter="hvac"], [data-article-filter="standards"], .articles-search__more) {
+        order: 2;
+    }
+
+    body[data-page="home"] .home-partners__logos {
+        gap: 16px;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industry-textile"] .industry-textile__summary-grid {
+        direction: rtl;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industry-textile"] .industry-textile__summary-item {
+        align-items: flex-start;
+        text-align: right;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="industry-textile"]
+        .industry-textile__summary-item
+        > :is(span, strong) {
+        width: 100%;
+        text-align: right;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="industry-textile"]
+        main
+        .industry-textile__testimonial-card.site-card
+        > p.site-card__description:not([hidden]) {
+        display: -webkit-box !important;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3 !important;
+        line-clamp: 3 !important;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industry-textile"] .industry-textile__faq-item::after {
+        background: linear-gradient(270deg, #79b6ed 31%, #e4edff 100%);
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="industry-textile"] .industry-textile__hero-wrap::after {
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        height: 40px;
+        background: linear-gradient(180deg, #0f172b 0%, rgb(15 23 43 / 0.55) 44%, #f4f7fc 100%);
+        content: "";
+        pointer-events: none;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="contact"] .contact-copy-full {
+        display: none;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="contact"] .contact-copy-short {
+        display: inline;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="contact"]
+        :is(.contact-cooperation__intro, .contact-cooperation__item p) {
+        max-width: 100%;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="contact"] .branch-card__map {
+        height: clamp(150px, 38vw, 170px) !important;
+        min-height: clamp(150px, 38vw, 170px) !important;
+        object-fit: cover;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="contact"] .branch-card--factory > .branch-card__map {
+        height: clamp(150px, 38vw, 170px) !important;
+        min-height: clamp(150px, 38vw, 170px) !important;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="contact"]
+        .contact-cooperation
+        :is(.contact-cooperation__intro, .contact-cooperation__item h3, .contact-cooperation__item p),
+    html:where([lang="fa"], [lang="ar"]) body[data-page="contact"] .contact-benefits__grid :is(h3, p) {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="contact"]
+        .contact-benefits__grid
+        > .benefit-item
+        > :is(h3, p.site-card__description:not([hidden])) {
+        display: block !important;
+        max-height: 1.6em !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        font-size: 12px !important;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="about"] .about-page .about-certificate-card {
+        direction: ltr;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="about"] .about-page .about-certificate-card__document {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="about"] .about-page .about-certificate-card__caption {
+        grid-column: 2;
+        grid-row: 1;
+        direction: rtl;
+        align-items: flex-start;
+        text-align: start;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="about"]
+        .about-page
+        .about-certificate-card__caption
+        > :is(strong, span, p) {
+        text-align: start !important;
+        text-align-last: start !important;
+    }
+
+    html:is([lang="fa"], [lang="ar"])
+        body[data-page="about"]
+        .about-page
+        .about-certificate-card__caption
+        > p.site-card__description:not([hidden]) {
+        text-align: start !important;
+        text-align-last: start !important;
+    }
+
+    html[lang="en"] body[data-page="about"] .about-page .about-certificate-card {
+        direction: ltr !important;
+    }
+
+    html[lang="en"] body[data-page="about"] .about-page .about-certificate-card__document {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    html[lang="en"] body[data-page="about"] .about-page .about-certificate-card__caption {
+        grid-column: 1;
+        grid-row: 1;
+        direction: ltr;
+        align-items: flex-start;
+        text-align: start !important;
+    }
+
+    html[lang="en"] body[data-page="about"] .about-page .about-certificate-card__caption > :is(strong, span, p) {
+        direction: ltr !important;
+        text-align: start !important;
+        text-align-last: start !important;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="project-details"] .project-details__meta-item,
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="project-details"]
+        .project-details__meta-item
+        > :is(span, strong) {
+        direction: rtl;
+        text-align: end;
+    }
+
+    html[lang="en"] body[data-page="project-details"] .project-details__meta-item,
+    html[lang="en"] body[data-page="project-details"] .project-details__meta-item > :is(span, strong) {
+        text-align: start;
+    }
+}
+
+@media (max-width: 639px) {
+    html:where([lang="fa"], [lang="ar"]) body[data-page="home"] .home-process-step {
+        grid-template-rows: var(--process-icon-row) minmax(36px, auto) auto;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="home"] .home-process-step > p {
+        display: block;
+        margin-block-start: 2px;
+        font-size: 11px;
+        line-height: 1.55;
+    }
+}
+
+/* On narrow phones, the four-step process snakes across two rows. The second
+ * connector is flipped and turned down to bridge the two rows cleanly. */
+@media (max-width: 639px) {
+    html:where([lang="fa"], [lang="ar"]) body[data-page="home"] .home-process-step:nth-child(3) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="home"] .home-process-step:nth-child(4) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="home"] .home-process-step:nth-child(2) .home-process-arrow {
+        display: flex;
+        top: calc(100% + 1px);
+        right: auto;
+        left: 50%;
+        width: 6px;
+        height: 26px;
+        padding: 0;
+        transform: none;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="home"]
+        .home-process-step:nth-child(2)
+        .home-process-arrow
+        img {
+        width: 26px;
+        height: 6px;
+        transform: rotate(90deg) scaleX(-1);
+    }
+
+    html:where([lang="fa"], [lang="ar"]) body[data-page="home"] .home-process-step:nth-child(3) .home-process-arrow {
+        right: calc(-50% - 8px);
+        left: auto;
+        transform: translateY(-50%) scaleX(-1);
+    }
+}
+
+/* The requested card type sizes apply to English and Arabic mobile only. */
+@media (max-width: 767px) {
+    /* Per-card saved styles are emitted with !important; this scoped guard
+     * raises the mobile override above those generated selectors. */
+    html:where([lang="en"], [lang="ar"]) body[data-page]:not(#mobile-card-type-reset) {
+        --card-title-font-size: 16px;
+        --card-description-font-size: 14px;
+        --card-link-font-size: 13px;
+        --section-title-font-size: 22px;
+    }
+
+    html:where([lang="en"], [lang="ar"])
+        body[data-page]:not(#mobile-card-type-reset)
+        main
+        :is(
+            .site-card__title,
+            .article-card__title,
+            .projects-page__card-title,
+            .product-card__title,
+            .featured-card__title,
+            .industry-feature__content h2,
+            .home-article__title
+        ) {
+        font-size: 16px !important;
+    }
+
+    html:where([lang="en"], [lang="ar"])
+        body[data-page]:not(#mobile-card-type-reset)
+        main
+        :is(
+            .site-card__description,
+            .article-card__description,
+            .projects-page__card-description,
+            .product-card__description,
+            .home-article__description
+        ) {
+        font-size: 14px !important;
+    }
+
+    html:where([lang="en"], [lang="ar"])
+        body[data-page]:not(#mobile-card-type-reset)
+        main
+        :is(
+            .site-card__cta,
+            .site-card__cta-label,
+            .article-card__link,
+            .projects-page__card-link,
+            .product-card__link,
+            .industry-textile__card-link,
+            .about-card-link
+        ) {
+        font-size: 13px !important;
+    }
+
+    html:where([lang="en"], [lang="ar"])
+        body[data-page]:not(#mobile-card-type-reset)
+        main
+        :is(
+            .site-text-link:not(.site-card__cta),
+            .site-text-link:not(.site-card__cta) > .site-text-link__label,
+            .articles-search__more,
+            .catalog-more__button,
+            .about-text-link,
+            .industry-textile__all-link
+        ) {
+        font-size: 14px !important;
+    }
+
+    html:where([lang="en"], [lang="ar"])
+        body[data-page="home"]:not(#mobile-card-type-reset)
+        main
+        :is(#expertise, #projects, #products, #articles)
+        .mb-5
+        > a {
+        font-size: 14px !important;
+    }
+
+    html:where([lang="en"], [lang="ar"])
+        body[data-page]:not(#mobile-card-type-reset)
+        main
+        :is(
+            .projects-page__section-title,
+            .about-section-title,
+            .about-story__title,
+            .articles-catalog-title,
+            .industries-catalog__head h2,
+            .industry-textile__section-title,
+            .project-details__section-title,
+            .section-heading,
+            .contact-cooperation__heading
+        ),
+    html[lang="en"] body[data-page="home"]:not(#mobile-card-type-reset) main h2,
+    html[lang="ar"] body[data-page="home"]:not(#mobile-card-type-reset) main h2 {
+        font-size: 22px !important;
+    }
+}
+
+/* Keep a complete pair visible on short phones while retaining 150px artwork. */
+@media (max-width: 767px) and (max-height: 740px) {
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page]
+        main
+        :is(
+            .home-expertise-grid,
+            .home-projects-grid,
+            .home-products-grid,
+            .articles-grid,
+            .products-grid,
+            .industries-grid,
+            .projects-page__grid,
+            .industry-textile__products-grid,
+            .industry-textile__projects-grid,
+            .about-expertise__grid
+        )
+        > article
+        .site-card__body {
+        padding-block: 6px !important;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page="projects"]
+        main
+        .projects-page__grid
+        > article
+        .site-card__body {
+        padding-block: 4px !important;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page]
+        main
+        :is(
+            .home-expertise-grid,
+            .home-projects-grid,
+            .home-products-grid,
+            .articles-grid,
+            .products-grid,
+            .industries-grid,
+            .projects-page__grid,
+            .industry-textile__products-grid,
+            .industry-textile__projects-grid,
+            .about-expertise__grid
+        )
+        > article
+        .site-card__title:not([hidden]) {
+        line-height: 1.35 !important;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page]
+        main
+        :is(
+            .home-expertise-grid,
+            .home-projects-grid,
+            .home-products-grid,
+            .articles-grid,
+            .products-grid,
+            .industries-grid,
+            .projects-page__grid,
+            .industry-textile__products-grid,
+            .industry-textile__projects-grid,
+            .about-expertise__grid
+        )
+        > article
+        .site-card__description:not([hidden]) {
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1 !important;
+        line-clamp: 1 !important;
+        overflow: hidden;
+        max-height: calc(1em * var(--card-description-line-height)) !important;
+    }
+
+    html:where([lang="fa"], [lang="ar"], [lang="en"])
+        body[data-page]
+        main
+        :is(
+            .article-card__meta,
+            .product-card__specs,
+            .projects-page__card-meta,
+            .industry-textile__product-tags,
+            .industry-textile__product-specs
+        ) {
+        margin-block-start: 4px !important;
+    }
+
+    html:where([lang="fa"], [lang="ar"], [lang="en"])
+        body[data-page]
+        main
+        :is(
+            .article-card__meta,
+            .product-card__specs,
+            .projects-page__card-meta,
+            .industry-textile__product-tags,
+            .industry-textile__product-specs
+        )
+        > span {
+        min-height: 20px !important;
+        padding-block: 2px !important;
+        font-size: 10px;
+        line-height: 1.25 !important;
+    }
+
+    html:where([lang="fa"], [lang="ar"])
+        body[data-page]
+        main
+        :is(
+            .home-expertise-grid,
+            .home-projects-grid,
+            .home-products-grid,
+            .articles-grid,
+            .products-grid,
+            .industries-grid,
+            .projects-page__grid,
+            .industry-textile__products-grid,
+            .industry-textile__projects-grid,
+            .about-expertise__grid
+        )
+        > article
+        .site-card__cta {
+        padding-block-start: 0 !important;
+        margin-block-start: 4px !important;
+    }
+}

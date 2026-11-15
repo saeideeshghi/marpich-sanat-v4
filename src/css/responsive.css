@@ -7,3 +7,8 @@
 
 @import "./responsive-rules.css";
 @import "./site-layout.css";
+@import "./components/catalog-card-polish.css";
+@import "./components/site-agent-cta.css";
+@import "./components/site-agent-panel.css";
+@import "./locales/fa-desktop-cards.css";
+@import "./locales/mobile-fa-ar-adjustments.css";

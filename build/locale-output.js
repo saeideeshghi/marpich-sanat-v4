@@ -157,14 +157,14 @@ export function localeOutput(root) {
                     return res.end();
                 }
                 const path = url.searchParams.get("path") || "";
-                const saved = path === "/assets/customizer/template-overrides.css";
+                const saved = path === "/assets/customizer/template-overrides.en.css";
                 if (!saved && (!/^\/src\/css\/[\w/.-]+\.css$/.test(path) || path.includes(".."))) {
                     res.statusCode = 400;
                     return res.end();
                 }
                 try {
                     const code = saved
-                        ? compileCSS(loadDesignConfig(root))
+                        ? compileCSS(loadDesignConfig(root, "en"))
                         : (await server.transformRequest(path + "?direct"))?.code;
                     if (typeof code !== "string") {
                         res.statusCode = 404;

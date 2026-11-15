@@ -56,7 +56,11 @@ html[lang="en"] body .home-partners__title :is(strong, span) {
 }
 html[lang="en"] .site-header__auth {
     white-space: nowrap;
-    font-size: 13px;
+    font-size: 14px;
+    background: rgb(15 23 43 / 40%);
+}
+html[lang="en"] .site-header__auth::before {
+    background: none;
 }
 html[lang="en"] .pcm-back .fa-arrow-left {
     scale: 1;
@@ -124,4 +128,971 @@ html[lang="en"] .site-nav-link::after {
 }
 html[lang="en"] :is(.site-nav-link:hover, .site-nav-link:focus-visible, .site-nav-link[aria-current])::after {
     transform: scaleX(1);
+}
+
+/* English presentation cards share these defaults. Page variants set their own sizes. */
+html[lang="en"] .site-nav-link {
+    font-size: 16px;
+}
+
+html[lang="en"] .home-hero-eyebrow {
+    font-weight: 700;
+}
+
+html[lang="en"] .home-hero-action {
+    height: auto;
+    min-height: 48px;
+    white-space: nowrap;
+}
+
+html[lang="en"] .home-hero-action--primary {
+    padding-inline: 20px;
+}
+
+html[lang="en"] .home-hero-action--secondary {
+    padding-inline: 42px;
+}
+
+html[lang="en"] .home-hero-actions {
+    grid-template-columns: max-content max-content;
+    width: max-content;
+    max-width: 100%;
+    gap: 16px;
+}
+
+html[lang="en"] body[data-page="home"] .hero-image {
+    left: auto;
+    right: 0;
+    transform: scaleX(-1);
+    transform-origin: center;
+}
+
+html[lang="en"] body[data-page="home"] .hero-overlay {
+    background: linear-gradient(
+        270deg,
+        transparent 0%,
+        rgb(15 23 43 / 0.08) 24%,
+        rgb(15 23 43 / 0.72) 40%,
+        rgb(15 23 43 / 0.96) 54%,
+        #0f172b 68%
+    );
+}
+
+html[lang="en"] body[data-page] .site-card:not(.article-card) .site-card__title {
+    font-size: var(--en-card-title-size, 16px);
+    font-weight: 700;
+    text-align: left;
+}
+
+html[lang="en"] body[data-page] .site-card:not(.article-card) .site-card__description:not([hidden]) {
+    font-size: var(--en-card-description-size, 14px);
+    max-height: none;
+    text-align: left;
+    text-align-last: auto;
+}
+
+html[lang="en"] body[data-page] .site-card .site-card__cta {
+    font-size: var(--en-card-cta-size, 14px);
+}
+
+html[lang="en"] body[data-page="expertise"] {
+    --en-card-title-size: 24px;
+    --en-card-description-size: 18px;
+    --en-card-cta-size: 16px;
+}
+
+html[lang="en"] body:is([data-page="products"], [data-page="industries"], [data-page="product-details"]) {
+    --en-card-title-size: 20px;
+    --en-card-description-size: 16px;
+}
+
+html[lang="en"] body[data-page="projects"] .site-card__description:not([hidden]) {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+html[lang="en"] .home-process-steps {
+    --process-icon-row: 82px;
+}
+
+html[lang="en"] .home-process-icon {
+    margin-block-end: calc(var(--process-icon-row) - var(--icon-size));
+}
+
+html[lang="en"] .home-process-step:nth-child(2) .home-process-icon,
+html[lang="en"] .home-process-step:nth-child(3) .home-process-icon {
+    width: 80px;
+    height: 80px;
+    margin-block-end: 0;
+}
+
+html[lang="en"] :is(#process h2, .home-process-step h3) {
+    font-weight: 700;
+}
+
+html[lang="en"] .site-footer .site-footer__description {
+    text-align: justify;
+    text-align-last: left;
+}
+
+html[lang="en"] .site-consultation h2 {
+    font-size: calc(clamp(22px, 3vw, 32px) - 2px);
+}
+
+html[lang="en"] .site-consultation__content > p:first-of-type {
+    font-size: calc(clamp(16px, 2.3vw, 26px) - 2px);
+}
+
+html[lang="en"] .site-consultation__content > p:nth-of-type(2) {
+    font-size: calc(clamp(14px, 1.6vw, 18px) - 2px);
+}
+
+html[lang="en"] body[data-page] .site-consultation input {
+    font-size: clamp(14px, 1.6vw, 18px);
+}
+
+html[lang="en"] .site-consultation form > div {
+    min-width: 0;
+}
+
+html[lang="en"] body[data-page="product-details"] :is(th, td) {
+    text-align: left;
+}
+
+/* English textile hero and summary card. */
+html[lang="en"] .industry-textile__hero-copy > .site-hero__description {
+    display: none;
+}
+
+html[lang="en"] .industry-textile__hero-copy h1 {
+    font-size: clamp(20px, 3vw, 42px);
+}
+
+html[lang="en"] .about-timeline::after {
+    transform: rotate(45deg);
+    border: 0;
+    border-right: 2px solid var(--about-blue-color);
+    border-bottom: 2px solid var(--about-blue-color);
+}
+
+html[lang="en"] body[data-page="home"] main section :is(.site-text-link--plain, .home-products-all-link) {
+    font-size: clamp(14px, 1.4vw, 18px);
+}
+
+html[lang="en"] body[data-page] .site-card .article-card__link {
+    font-size: 16px;
+}
+
+html[lang="en"] body[data-page="product-details"] [data-product-image] {
+    max-width: 500px;
+    scale: -1 1;
+}
+
+html[lang="en"] body[data-page="contact"] :is(.branch-card__address, .branch-card__details) {
+    font-size: 16px;
+    text-align: left;
+}
+
+html[lang="en"] body[data-page="contact"] .branch-card__details {
+    direction: ltr;
+}
+
+html[lang="en"] body[data-page="contact"] .branch-card__details dd {
+    text-align: left;
+    unicode-bidi: plaintext;
+}
+
+html[lang="en"] .contact-cooperation__heading {
+    font-size: clamp(20px, 3vw, 32px);
+    white-space: nowrap;
+}
+
+html[lang="en"] body[data-page="contact"] .contact-submit__icon {
+    scale: -1 1;
+}
+
+@media (min-width: 1180px) {
+    html[lang="en"] body[data-page="contact"] .contact-cooperation__intro {
+        white-space: nowrap;
+    }
+}
+
+@media (min-width: 1024px) {
+    html[lang="en"] .home-why__desktop {
+        gap: clamp(16px, 2vw, 28px);
+    }
+
+    html[lang="en"] .home-why__desktop > div:first-child {
+        flex: 0 1 52%;
+    }
+}
+
+html[lang="en"] .site-header__desktop > div:last-child {
+    flex-direction: row-reverse;
+}
+
+/* Keep the English navigation next to the logo on the full header. */
+@media (min-width: 1180px) {
+    html[lang="en"] .site-header__desktop .site-navigation {
+        margin-inline: 10px;
+    }
+
+    html[lang="en"] .site-header__desktop > div:last-child {
+        margin-inline: auto 0;
+    }
+}
+
+@media (min-width: 1180px) and (max-width: 1479px) {
+    html[lang="en"] body[data-page] .site-header__desktop {
+        padding-inline: clamp(22px, 2.6vw, 38px);
+    }
+
+    html[lang="en"] .site-header__desktop .site-navigation > ul {
+        gap: clamp(7px, 0.75vw, 12px);
+    }
+
+    html[lang="en"] .site-header__desktop .site-nav-link {
+        font-size: clamp(13px, 1.1vw, 16px);
+    }
+}
+
+@media (min-width: 1480px) {
+    html[lang="en"] .site-header__desktop .site-navigation > ul {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 639px) {
+    html[lang="en"] body[data-page="home"] .home-hero-actions {
+        grid-template-columns: minmax(0, 1fr);
+        width: min(100%, 420px);
+    }
+
+    html[lang="en"] body[data-page="home"] .home-hero-action {
+        width: 100%;
+    }
+}
+
+html[lang="en"] .home-partners__title :is(strong, span) {
+    white-space: nowrap;
+}
+
+html[lang="en"] body[data-page="home"] main :is(#expertise, #projects, #products, #process) h2 {
+    font-size: clamp(20px, 2.7vw, 32px);
+}
+
+html[lang="en"] body:is([data-page="projects"], [data-page="products"]) .site-card__cta .fa-arrow-left {
+    scale: none;
+}
+
+html[lang="en"]
+    body:is([data-page="home"], [data-page="products"], [data-page="industries"], [data-page="industry-textile"])
+    .site-card__media-tag {
+    width: max-content;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 36px;
+    box-sizing: border-box;
+    padding-inline: clamp(16px, 2.5vw, 36px);
+    align-items: center;
+    justify-content: center;
+}
+
+html[lang="en"]
+    body[data-page]:not([data-page="articles"])
+    main
+    :is(.site-card__media-tag, .site-card__meta-tag, .site-card__status-tag):not(.article-card *) {
+    box-sizing: border-box;
+    min-height: 36px;
+    padding-inline: clamp(16px, 2.5vw, 36px);
+    align-items: center;
+    justify-content: center;
+}
+
+html[lang="en"] .catalog-consultation__title {
+    font-size: clamp(22px, 3vw, 32px);
+}
+
+html[lang="en"] .catalog-consultation__description {
+    font-size: clamp(16px, 2.3vw, 26px);
+    text-align: left;
+    text-align-last: left;
+}
+
+html[lang="en"] .catalog-consultation__field {
+    min-width: 0;
+    font-size: clamp(14px, 1.6vw, 18px);
+}
+
+html[lang="en"] .catalog-consultation__form {
+    width: 100%;
+    max-width: none;
+}
+
+html[lang="en"] body[data-page="products"] .pcm-toolbar.pcm-toolbar--overlay {
+    right: 12px;
+    left: auto;
+}
+
+html[lang="en"] .details-table--product {
+    width: 100%;
+    direction: ltr;
+}
+
+html[lang="en"] .details-table--product :is(th, td) {
+    text-align: left;
+}
+
+/* Keep the clear part of the service artwork opposite the English copy. */
+@media (min-width: 1024px) {
+    html[lang="en"] .expertise-page__media-image {
+        scale: -1 1;
+    }
+}
+
+html[lang="en"] .about-expertise-card__media {
+    position: relative;
+}
+
+@media (min-width: 1024px) {
+    html[lang="en"] .home-why__content > div:last-child {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        width: 100%;
+        gap: clamp(8px, 1.5vw, 24px);
+        margin-top: 24px;
+    }
+
+    html[lang="en"] .home-why__content > div:last-child > div {
+        width: auto;
+        min-width: 0;
+    }
+
+    html[lang="en"] .home-why__content > div:last-child :is(strong, span) {
+        text-align: left;
+        white-space: normal;
+    }
+}
+
+html[lang="en"] body[data-page="home"] .hero-content {
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+}
+
+@media (min-width: 1180px) {
+    html[lang="en"] body[data-page="home"] .home-hero-description {
+        font-size: 18px;
+    }
+
+    html[lang="en"] body[data-page="home"] .home-hero-actions {
+        margin-top: 40px;
+    }
+}
+
+/* Give complete English labels room on narrow screens. */
+@media (max-width: 599px) {
+    html[lang="en"] body[data-page="home"] :is(.home-expertise-grid, .home-projects-grid) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    html[lang="en"] body[data-page="projects"] .projects-page__grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+html[lang="en"] body[data-page] #consultation .site-consultation__content > p {
+    text-align: left !important;
+    text-align-last: left !important;
+}
+
+@media (min-width: 1180px) {
+    html[lang="en"] body[data-page] .site-consultation .site-consultation__content > h2 {
+        font-size: 32px;
+    }
+
+    html[lang="en"] body[data-page] .site-consultation form input {
+        font-size: 18px !important;
+    }
+}
+
+html[lang="en"]
+    body:is([data-page="products"], [data-page="industries"])
+    :is(.featured-card__title, .pcm-expanded__title, .product-card__title) {
+    font-size: 20px;
+}
+
+html[lang="en"]
+    body:is([data-page="products"], [data-page="industries"])
+    :is(.featured-card__description, .pcm-expanded__description, .product-card__description) {
+    font-size: 16px;
+    text-align: left;
+    text-align-last: left;
+}
+
+html[lang="en"] body[data-page="expertise"] .site-card .expertise-page__card-title {
+    font-size: 24px !important;
+}
+
+html[lang="en"] body[data-page="expertise"] .site-card .expertise-page__card-description {
+    font-size: 18px !important;
+    text-align: left !important;
+    text-align-last: left !important;
+}
+
+html[lang="en"] body[data-page="expertise"] .site-card .expertise-page__more-link {
+    font-size: 16px !important;
+}
+
+html[lang="en"] body[data-page="products"] .featured-card__content .featured-card__title,
+html[lang="en"] body[data-page="industries"] .site-card .site-card__title {
+    font-size: 20px !important;
+}
+
+html[lang="en"] body[data-page="industries"] .site-card .site-card__description {
+    font-size: 16px !important;
+    text-align: left !important;
+    text-align-last: left !important;
+}
+
+html[lang="en"]
+    body[data-page="home"]
+    :is(#expertise, #projects, #products)
+    .site-text-link:not(.site-card__cta):not(.home-products-actions *)
+    > .site-text-link__label {
+    font-size: clamp(14px, 1.4vw, 18px);
+}
+
+html[lang="en"] body[data-page="home"] :is(#expertise, #projects, #products) .site-card__title,
+html[lang="en"] body[data-page="projects"] .site-card .site-card__title {
+    font-size: 16px !important;
+}
+
+html[lang="en"] body[data-page="home"] :is(#expertise, #projects, #products) .site-card__description,
+html[lang="en"] body[data-page="projects"] .site-card .site-card__description {
+    text-align: left !important;
+    text-align-last: left !important;
+}
+
+@media (min-width: 768px) {
+    html[lang="en"] body[data-page="home"] :is(#expertise, #projects, #products) .site-card__cta-label,
+    html[lang="en"] body[data-page="projects"] .site-card .site-card__cta-label {
+        font-size: 14px !important;
+    }
+}
+
+html[lang="en"]
+    body[data-page="projects"]
+    main
+    .projects-page__grid
+    .projects-page__card
+    > .projects-page__card-body
+    > .site-card__title {
+    font-size: 16px !important;
+}
+
+html[lang="en"] body[data-page="home"] main :is(#expertise, #projects, #products) .site-card__description,
+html[lang="en"]
+    body[data-page="projects"]
+    main
+    .projects-page__grid
+    .projects-page__card
+    > .projects-page__card-body
+    > .site-card__description {
+    font-size: 14px !important;
+}
+
+html[lang="en"] body#top[data-page="projects"] main .projects-page__grid .site-card__description:not([hidden]) {
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+}
+
+html[lang="en"] body[data-page="home"] main :is(#expertise, #projects, #products) .site-card__description {
+    margin-top: 0;
+}
+
+html[lang="en"] body[data-page="home"] main :is(#expertise, #projects) .site-card__description {
+    color: #000;
+}
+
+@media (min-width: 1180px) {
+    html[lang="en"] body[data-page="home"] main #expertise .site-card__description {
+        font-size: 19px !important;
+    }
+
+    html[lang="en"] body[data-page="home"] main :is(#expertise, #projects, #products) .site-card__title {
+        margin-block-end: 0;
+    }
+}
+
+html[lang="en"] .home-process-step {
+    display: grid;
+    grid-template-rows: var(--process-icon-row) auto auto;
+    align-content: start;
+}
+
+html[lang="en"] .home-process-step .home-process-icon {
+    margin-block-end: 0 !important;
+    align-self: center;
+}
+
+html[lang="en"] .home-process-step > h3 {
+    align-self: start;
+}
+
+html[lang="en"] .home-process-arrow {
+    top: calc(var(--process-icon-row) / 2);
+}
+
+html[lang="en"] .home-process-step > p {
+    display: block;
+}
+
+@media (max-width: 639px) {
+    html[lang="en"] .home-process-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 639px) {
+    html[lang="en"] .home-process-step {
+        grid-template-rows: var(--process-icon-row) 64px auto;
+    }
+
+    html[lang="en"] .home-process-step:nth-child(2) .home-process-arrow {
+        display: none;
+    }
+}
+
+html[lang="en"] body[data-page="product-details"] #product-title {
+    font-size: 20px !important;
+}
+
+html[lang="en"] body[data-page="product-details"] .product-details__summary .site-card__description {
+    font-size: 16px !important;
+    text-align: left !important;
+    text-align-last: left !important;
+}
+
+html[lang="en"]
+    body[data-page="contact"]
+    .contact-branches
+    .branch-card
+    :is(.branch-card__address, .branch-card__detail-row > dt, .branch-card__detail-row > dd) {
+    font-size: 16px !important;
+    overflow-wrap: anywhere;
+}
+
+html[lang="en"] body[data-page="contact"] .branch-card__detail-row {
+    grid-template-columns: max-content minmax(0, 1fr);
+    column-gap: 8px;
+    direction: ltr;
+}
+
+html[lang="en"] body[data-page="contact"] .branch-card__detail-row > :is(dt, dd) {
+    min-width: 0;
+    white-space: normal;
+    text-align: left !important;
+}
+html[lang="en"] .home-hero-action > span {
+    white-space: nowrap !important;
+}
+
+html[lang="en"] #why-marpich img[src*="/why-marpich."] {
+    scale: -1 1;
+}
+
+html[lang="en"] body[data-page="projects"] .projects-page__card-link > span[aria-hidden="true"] {
+    scale: none;
+}
+
+html[lang="en"] body[data-page="products"] .product-card__link .fa-arrow-left {
+    scale: none;
+}
+
+/* Position the entire English hero group from the top edge of its canvas. */
+@media (min-width: 1180px) {
+    html[lang="en"] body[data-page="home"] .hero-shell {
+        height: auto;
+    }
+
+    html[lang="en"] body[data-page="home"] .hero-content-wrapper {
+        height: auto;
+        min-height: var(--hero-min-height) !important;
+        padding-block: 183px 40px !important;
+        align-items: flex-start !important;
+    }
+
+    html[lang="en"] body[data-page="home"] .hero-content {
+        margin-block-start: 0 !important;
+    }
+}
+
+/* Keep English gallery copy and fade at the left of the photograph. */
+html[lang="en"] body[data-page="about"] .about-gallery__content-wrap {
+    direction: ltr;
+    justify-content: flex-start;
+}
+
+html[lang="en"] body[data-page="about"] .about-gallery__media {
+    width: 100%;
+}
+
+html[lang="en"] body[data-page="about"] .about-gallery__media img {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-position: left top;
+    scale: -1 1;
+}
+
+html[lang="en"] body[data-page="about"] .about-gallery__fade {
+    background: linear-gradient(
+        to right,
+        #fff 0%,
+        rgb(255 255 255 / 95%) 14%,
+        rgb(255 255 255 / 65%) 30%,
+        transparent 58%
+    );
+    transform: none;
+}
+
+html[lang="en"] body[data-page="about"] .about-gallery__content {
+    text-align: left;
+}
+
+@media (max-width: 1000px) {
+    html[lang="en"] body[data-page="about"] .about-gallery__media img {
+        object-position: 22% center;
+    }
+}
+
+/* Use the same columns as the buttons below the English branch details. */
+html[lang="en"] body[data-page="contact"] .branch-card__details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0.5rem;
+    text-align: left;
+}
+
+html[lang="en"] body[data-page="contact"] .branch-card__detail-row {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-inline: 0;
+    grid-template-columns: subgrid;
+    direction: ltr;
+}
+
+html[lang="en"] body[data-page="contact"] .branch-card__detail-row > :is(dt, dd) {
+    text-align: left !important;
+}
+
+html[lang="en"] body[data-page="contact"] .branch-card__detail-row .branch-card__detail-value--rtl {
+    text-align: left !important;
+}
+
+/* Keep the installer-partner introduction on one line from tablet width up. */
+@media (min-width: 640px) {
+    html[lang="en"] body[data-page="contact"] .contact-cooperation__intro {
+        font-size: clamp(12px, 1.8vw, 16px);
+        line-height: 1.5;
+        white-space: nowrap;
+    }
+}
+
+html[lang="en"]
+    body[data-page="contact"]
+    :is(.contact-cooperation__intro, .contact-cooperation__item)
+    .contact-copy-full {
+    display: none;
+}
+
+html[lang="en"]
+    body[data-page="contact"]
+    :is(.contact-cooperation__intro, .contact-cooperation__item)
+    .contact-copy-short {
+    display: inline;
+}
+
+html[lang="en"] body[data-page="contact"] .contact-cooperation__intro {
+    font-size: clamp(12px, 3.3vw, 16px);
+    white-space: nowrap;
+}
+
+@media (min-width: 1228px) {
+    html[lang="en"] body[data-page="home"] main .home-products-actions {
+        grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+    }
+}
+
+html[lang="en"] body[data-page="industry-textile"] .industry-textile__summary-item :is(span, strong) {
+    text-align: left !important;
+    text-align-last: left !important;
+}
+
+html[lang="en"] body[data-page="contact"] .select-wrap::after {
+    inset-inline: auto 0.85rem;
+    border: 0;
+    background: #73baf6;
+    clip-path: polygon(0 20%, 50% 70%, 100% 20%, 100% 40%, 50% 90%, 0 40%);
+    transform: translateY(-50%);
+}
+
+html[lang="en"] body[data-page="home"] #expertise .home-expertise-grid .site-card__cta-label {
+    font-weight: 400 !important;
+}
+
+html[lang="en"] body[data-page="about"] .about-gallery {
+    background: transparent;
+}
+
+/* Homepage layout, scoped to the English version. */
+html[lang="en"] body[data-page="home"] .home-partners__inner {
+    width: auto;
+    margin-inline: max(var(--site-gutter), calc((100% - var(--site-layout-max-width)) / 2 + var(--site-gutter))) 0;
+    direction: ltr;
+}
+
+html[lang="en"] body[data-page="home"] .home-partners__viewport {
+    margin-inline-end: 0;
+    padding-inline-end: 0;
+}
+
+html[lang="en"] body[data-page="home"] .home-expertise-grid .site-card__title + span[aria-hidden="true"] {
+    margin-block-end: 5px;
+}
+
+@media (min-width: 1024px) {
+    html[lang="en"] body[data-page="home"] #why-marpich .home-why__content {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 1180px) {
+    html[lang="en"] .site-header__desktop .site-navigation {
+        margin-inline-end: 12px;
+    }
+
+    html[lang="en"] .site-header__desktop .site-navigation > ul > li:first-child > .site-nav-link {
+        padding-inline-start: 2px;
+    }
+}
+
+/* Compact copy and controls on the English homepage consultation form. */
+html[lang="en"] body:is(#top, [data-page])[data-page="home"] #consultation .site-consultation__content > h2 {
+    font-size: clamp(20px, 2.5vw, 30px);
+}
+
+html[lang="en"]
+    body:is(#top, [data-page])[data-page="home"]
+    #consultation
+    .site-consultation__content
+    > p:first-of-type {
+    font-size: clamp(14px, 1.1vw, 16px);
+}
+
+html[lang="en"]
+    body:is(#top, [data-page])[data-page="home"]
+    #consultation
+    .site-consultation__content
+    > p:nth-of-type(2) {
+    font-size: clamp(12px, 1.25vw, 16px);
+}
+
+html[lang="en"] body:is(#top, [data-page])[data-page="home"] #consultation :is(input, textarea, button) {
+    font-size: 14px !important;
+}
+
+@media (min-width: 1180px) {
+    html[lang="en"] body[data-page="home"] #consultation > .site-frame > div:first-child {
+        grid-template-columns: minmax(0, 42%) minmax(0, 1fr);
+    }
+
+    html[lang="en"] body:is(#top, [data-page])[data-page="home"] #consultation :is(input, textarea, button) {
+        font-size: 16px !important;
+    }
+}
+
+/* Larger English card copy; images, tags and links retain their own sizing. */
+html[lang="en"] body:is(#top, [data-page])[data-page="contact"] .branch-card .site-card__title {
+    font-size: 19px !important;
+}
+
+html[lang="en"] body:is(#top, [data-page])[data-page] main .site-card .site-card__title {
+    font-size: 19px !important;
+}
+
+html[lang="en"] body:is(#top, [data-page])[data-page] main .site-card .site-card__description {
+    font-size: 16px !important;
+}
+
+html[lang="en"]
+    body:is(#top, [data-page])[data-page="home"]
+    main
+    :is(#expertise, #projects, #products)
+    .site-card__title,
+html[lang="en"]
+    body:is(#top, [data-page])[data-page="projects"]
+    main
+    .projects-page__grid
+    .projects-page__card
+    .site-card__title,
+html[lang="en"]
+    body:is(#top, [data-page])[data-page="projects"]
+    main
+    .projects-page__testimonial-card
+    .site-card__title {
+    font-size: 18px !important;
+}
+
+html[lang="en"]
+    body:is(#top, [data-page])[data-page="home"]
+    main
+    :is(#expertise, #projects, #products, #articles)
+    .site-card__description {
+    font-size: 16px !important;
+}
+
+html[lang="en"]
+    body:is(#top, [data-page]):is([data-page="industries"], [data-page="product-details"])
+    main
+    .site-card
+    .site-card__title,
+html[lang="en"] body:is(#top, [data-page])[data-page="products"] main .featured-card__content .featured-card__title {
+    font-size: 22px !important;
+}
+
+html[lang="en"]
+    body:is(#top, [data-page]):is(
+        [data-page="industries"],
+        [data-page="product-details"],
+        [data-page="project-details"]
+    )
+    main
+    .site-card
+    .site-card__description,
+html[lang="en"] body:is(#top, [data-page])[data-page="about"] main .about-expertise-card .site-card__description {
+    font-size: 18px !important;
+}
+
+html[lang="en"] body:is(#top, [data-page])[data-page="expertise"] main .site-card .expertise-page__card-title {
+    font-size: 26px !important;
+}
+
+html[lang="en"] body:is(#top, [data-page])[data-page="expertise"] main .site-card .expertise-page__card-description {
+    font-size: 20px !important;
+}
+
+html[lang="en"] body:is(#top, [data-page])[data-page="contact"] main .benefit-item .site-card__title {
+    font-size: 16px !important;
+}
+
+html[lang="en"] body:is(#top, [data-page])[data-page="industry-textile"] .industry-textile__hero-copy h1 {
+    font-size: calc(clamp(20px, 3vw, 42px) + 2px);
+}
+
+html[lang="en"]
+    body:is(#top, [data-page])[data-page="industry-textile"]
+    main
+    :is(.industry-textile__section-title, .industry-textile__content-column h2) {
+    font-size: 34px;
+}
+
+html[lang="en"]
+    body:is(#top, [data-page])[data-page="industry-textile"]
+    main
+    :is(.industry-textile__intro, .industry-textile__importance, .industry-textile__content-column)
+    p.site-prose {
+    font-size: calc(var(--body-font-size) + 2px);
+}
+
+html[lang="en"] body:is(#top, [data-page])[data-page="industries"] .industries-featured .industry-feature__content {
+    direction: ltr;
+    text-align: left;
+    align-items: flex-start;
+}
+
+html[lang="en"] body:is(#top, [data-page])[data-page="industries"] .industries-featured .industry-feature__content > p {
+    font-weight: 400;
+    text-align: left !important;
+    text-align-last: left !important;
+}
+
+html[lang="en"] body:is(#top, [data-page])[data-page="contact"] .branch-card__detail-row > dd {
+    justify-self: stretch;
+    text-align: right !important;
+    text-align-last: right !important;
+}
+
+html[lang="en"] body[data-page="contact"] .contact-cooperation__item > p {
+    max-inline-size: 34ch;
+    min-block-size: 2lh;
+    text-wrap: balance;
+}
+
+@media (min-width: 1180px) {
+    html[lang="en"] body:is(#top, [data-page])[data-page="home"] main #expertise .site-card__description {
+        font-size: 21px !important;
+    }
+}
+
+@media (max-width: 639px) {
+    html[lang="en"] body[data-page="industry-textile"] #industry-textile-title {
+        font-size: 23px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    html[lang="en"] body:is(#top, [data-page])[data-page="home"] #articles .home-article__row .site-card__title > span {
+        font-size: inherit !important;
+    }
+
+    html[lang="en"] body:is(#top, [data-page])[data-page] main .site-card .site-card__title {
+        font-size: 18px !important;
+    }
+
+    html[lang="en"] body:is(#top, [data-page])[data-page] main .site-card .site-card__description {
+        font-size: 16px !important;
+    }
+
+    html[lang="en"]
+        body:is(#top, [data-page]):is([data-page="industries"], [data-page="product-details"])
+        main
+        .site-card
+        .site-card__title,
+    html[lang="en"] body:is(#top, [data-page])[data-page="expertise"] main .site-card .expertise-page__card-title {
+        font-size: 18px !important;
+    }
+
+    html[lang="en"]
+        body:is(#top, [data-page]):is(
+            [data-page="industries"],
+            [data-page="product-details"],
+            [data-page="project-details"]
+        )
+        main
+        .site-card
+        .site-card__description,
+    html[lang="en"] body:is(#top, [data-page])[data-page="about"] main .about-expertise-card .site-card__description,
+    html[lang="en"]
+        body:is(#top, [data-page])[data-page="expertise"]
+        main
+        .site-card
+        .expertise-page__card-description {
+        font-size: 16px !important;
+    }
+
+    html[lang="en"] body:is(#top, [data-page])[data-page="contact"] .branch-card .site-card__title {
+        font-size: 22px !important;
+    }
+
+    html[lang="en"] body:is(#top, [data-page])[data-page="contact"] main .benefit-item .site-card__title {
+        font-size: 18px !important;
+    }
+
+    html[lang="en"]
+        body:is(#top, [data-page])[data-page="industry-textile"]
+        main
+        :is(.industry-textile__section-title, .industry-textile__content-column h2) {
+        font-size: 24px !important;
+    }
 }

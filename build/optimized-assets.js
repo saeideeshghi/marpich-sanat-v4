@@ -147,6 +147,7 @@ export function optimizedImages(imageMap, responsiveMap = {}, imageDimensions = 
                     const svgPhoto = url.endsWith(".svg");
                     const cover = /\/(?:about-team|project-main|textile-main)\.svg$/.test(url);
                     const hero = /\bhero-image\b/.test(tag);
+                    const gallery = /\babout-gallery__image\b/.test(tag);
                     const why = url === "/assets/images/about/why-marpich.png";
                     const service = /\bexpertise-page__media-image\b/.test(tag);
                     // Full-width summaries may reuse a listing photograph.
@@ -159,15 +160,17 @@ export function optimizedImages(imageMap, responsiveMap = {}, imageDimensions = 
                         !/\b(?:site-card__image|article-card__image)\b|\/articles\/article-/.test(tag)
                     )
                         return tag;
-                    const sizes = hero
-                        ? "(max-width: 1179px) 960px, (max-width: 1599px) 65vw, 1100px"
-                        : cover
-                          ? "(max-width: 1179px) calc(100vw - 32px), 1320px"
-                          : why
-                            ? "(max-width: 1179px) 100vw, 700px"
-                            : service
-                              ? "(max-width: 1179px) 100vw, 1320px"
-                              : "(max-width: 639px) calc(100vw - 32px), (max-width: 1179px) 50vw, 440px";
+                    const sizes = gallery
+                        ? "108vw"
+                        : hero
+                          ? "(max-width: 1179px) 960px, (max-width: 1599px) 65vw, 1100px"
+                          : cover
+                            ? "(max-width: 1179px) calc(100vw - 32px), 1320px"
+                            : why
+                              ? "(max-width: 1179px) 100vw, 700px"
+                              : service
+                                ? "(max-width: 1179px) 100vw, 1320px"
+                                : "(max-width: 639px) calc(100vw - 32px), (max-width: 1179px) 50vw, 440px";
                     return tag.replace(/\s*\/?>(?=$)/, ` srcset="${responsiveMap[url]}" sizes="${sizes}" />`);
                 });
                 return html.replace(/\b(src|poster)=(['"])(.*?)\2/g, (tag, attr, quote, url) =>

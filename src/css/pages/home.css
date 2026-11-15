@@ -377,7 +377,7 @@
     .home-partners {
         --partners-logo-height: 56px;
         --logo-max-width: 110px;
-        --partners-logo-gap: 8px;
+        --partners-logo-gap: 16px;
     }
     .home-partners__inner {
         width: calc(100% - 24px);
@@ -428,6 +428,7 @@
 /* Use the supplied arrow assets; their heads retain the authored proportions. */
 .home-process-steps {
     --icon-size: 64px;
+    --process-icon-row: 82px;
     margin: 0 auto;
     padding: 30px 24px;
     width: min(100%, 1320px);
@@ -437,8 +438,12 @@
     direction: rtl;
     list-style: none;
 }
-.home-process-step {
+body[data-page="home"] .home-process-step {
     position: relative;
+    display: grid;
+    grid-template-rows: var(--process-icon-row) auto auto;
+    align-items: start;
+    align-content: start;
     min-width: 0;
     justify-self: stretch;
     text-align: center;
@@ -450,12 +455,18 @@
     width: var(--icon-size);
     height: var(--icon-size);
     margin-inline: auto;
+    align-self: center;
     object-fit: contain;
 }
+.home-process-step:nth-child(2) .home-process-icon,
+.home-process-step:nth-child(3) .home-process-icon {
+    width: 80px;
+    height: 80px;
+}
 .home-process-step h3 {
-    margin: 16px 0 0;
+    margin: 8px 0 0;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.7;
     text-align: center;
     text-align-last: center;
@@ -476,11 +487,11 @@ body[data-page="home"] .home-process-step > :is(h3, p) {
     display: flex;
     align-items: center;
     justify-content: center;
-    top: calc(var(--icon-size) / 2);
+    top: calc(var(--process-icon-row) / 2);
     left: -50%;
     width: 100%;
     height: 12px;
-    padding-inline: calc(var(--icon-size) / 2 + 18px);
+    padding-inline: calc(var(--process-icon-row) / 2 + 18px);
     transform: translateY(-50%);
     pointer-events: none;
 }
@@ -509,7 +520,7 @@ body[data-page="home"] .home-process-step > :is(h3, p) {
     }
     .home-process-arrow {
         height: 6px;
-        padding-inline: calc(var(--icon-size) / 2 + 5px);
+        padding-inline: calc(var(--process-icon-row) / 2 + 5px);
     }
     .home-process-arrow img {
         height: 6px;
@@ -594,12 +605,14 @@ body[data-page="home"] .home-process-step > :is(h3, p) {
 
     /* Keep the full paragraph in the DOM; show a two-line excerpt on phones. */
     body[data-page="home"] main .home-article__row {
-        grid-template-columns: clamp(104px, 30vw, 140px) minmax(0, 1fr) 44px;
+        grid-template-columns: minmax(0, 1fr) 44px;
         gap: 8px;
         padding-block: 16px;
     }
-    .home-article__media {
-        aspect-ratio: 1.15;
+    body[data-page="home"] main .home-article__media {
+        grid-column: 1 / -1;
+        width: 100%;
+        height: clamp(92px, 24vw, 125px);
     }
     .home-article__media > img {
         position: absolute;
@@ -621,21 +634,23 @@ body[data-page="home"] .home-process-step > :is(h3, p) {
         min-height: 44px;
     }
 }
-@media (max-width: 359px) {
-    body[data-page="home"] main .home-article__row {
-        grid-template-columns: 96px minmax(0, 1fr) 44px;
+/* Match one column in the product grid above, including its 16px gaps. */
+@media (min-width: 560px) and (max-width: 639px) {
+    body[data-page="home"] main .home-article__media {
+        width: calc((100% - 16px) / 2);
     }
 }
-
-/* A slightly wider photograph without stretching the source pixels. */
-@media (min-width: 640px) and (max-width: 1023px) {
+@media (min-width: 640px) and (max-width: 1179px) {
     body[data-page="home"] main .home-article__row {
-        grid-template-columns: 155px minmax(0, 1fr) 28px;
+        grid-template-columns: clamp(150px, 28%, 240px) minmax(0, 1fr) 28px;
     }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1180px) {
     body[data-page="home"] main .home-article__row {
-        grid-template-columns: 190px minmax(0, 1fr) 115px;
+        grid-template-columns: calc((100% - 48px) / 4) minmax(0, 1fr) max-content;
+    }
+    body[data-page="home"] main .home-article__media > img {
+        height: 120px;
     }
 }
 
@@ -666,4 +681,83 @@ body[data-page="home"] .home-why__accent {
 
 .home-project__client-logo[src$=".svg"] {
     filter: brightness(0) invert(1);
+}
+
+/* Let the desktop copy and statistics fill the space beside the photograph. */
+@media (min-width: 1024px) {
+    body[data-page="home"] #why-marpich .home-why__content > div:first-child p {
+        font-size: clamp(16px, 1.15vw, 21px);
+    }
+
+    body[data-page="home"] #why-marpich .home-why__content h2 {
+        font-size: clamp(30px, 2.5vw, 46px);
+        line-height: 1.35;
+    }
+
+    body[data-page="home"] #why-marpich .home-why__content > div:last-child {
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(8px, 1.5vw, 24px);
+    }
+
+    body[data-page="home"] #why-marpich .home-why__content > div:last-child > div {
+        width: auto;
+        min-width: 0;
+    }
+
+    body[data-page="home"] #why-marpich .home-why__content strong {
+        font-size: clamp(30px, 2.2vw, 42px);
+    }
+
+    body[data-page="home"] #why-marpich .home-why__content > div:last-child span {
+        font-size: clamp(14px, 1vw, 18px);
+        white-space: normal;
+    }
+}
+
+html:is([lang="fa"], [lang="ar"]) .home-partners[data-separator-aligned="true"] {
+    position: relative;
+}
+
+html:is([lang="fa"], [lang="ar"]) .home-partners[data-separator-aligned="true"] .home-partners__separator {
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    z-index: 1;
+}
+
+/* Keep the moving logos and RTL copy in separate columns. The moving strip
+ * stays on the left of the separator, while the localized copy stays on its
+ * right; explicit placement prevents the track from passing over the text. */
+html:is([lang="fa"], [lang="ar"]) .home-partners[data-separator-aligned="true"] .home-partners__inner {
+    display: grid;
+    direction: ltr;
+    column-gap: 16px;
+}
+
+html:is([lang="fa"], [lang="ar"]) .home-partners[data-separator-aligned="true"] .home-partners__viewport {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    flex: none;
+    overflow: hidden;
+}
+
+html:is([lang="fa"], [lang="ar"]) .home-partners[data-separator-aligned="true"] .home-partners__title {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    min-width: 0;
+    flex: none;
+    direction: rtl;
+    text-align: right;
+}
+@media (min-width: 1180px) {
+    body[data-page="home"] #consultation .site-consultation__description {
+        max-width: none;
+        white-space: nowrap;
+        overflow-wrap: normal;
+        text-wrap: nowrap;
+    }
 }

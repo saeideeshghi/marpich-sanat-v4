@@ -52,8 +52,7 @@ body[data-page]
 body[data-page] .site-hero :is(.product-search, .articles-search) {
     margin-top: 60px;
 }
-/* Search panels cross the canvas exactly at their midpoint. The shared hero
- * module measures their actual height after wrapping, filtering and resizing. */
+/* The shared hero module measures the boundary after wrapping and resizing. */
 body[data-page] :is(.products-hero, .industries-hero, .air-handling__hero, .articles-hero) {
     --site-pattern-crop-height: var(--hero-search-backdrop-height, 100%);
 }

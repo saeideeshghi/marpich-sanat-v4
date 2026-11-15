@@ -1,23 +1,37 @@
-/* Shared search panels cross the dark/light boundary at half their height.
- * Use local rect differences so scrolling never changes their position. */
+/* Align the search row with the dark background on the three landing pages. */
 function initHeroSearchLayout(hero, content) {
     const panel = hero.querySelector(".product-search, .articles-search");
     if (!panel || hero.dataset.heroSearchLayoutInitialized) return;
     hero.dataset.heroSearchLayoutInitialized = "true";
+    const alignSearchRow = ["articles", "products", "industries"].includes(document.body.dataset.page);
+    const searchButton = alignSearchRow ? panel.querySelector('button[type="submit"]') : null;
+    let offset = 0;
 
     const fitBackdrop = () => {
         const heroTop = hero.getBoundingClientRect().top;
         const box = panel.getBoundingClientRect();
-        const value = `${box.top - heroTop + box.height / 2}px`;
+        let boundary = box.top - heroTop + box.height / 2;
+        if (searchButton) {
+            const buttonBottom = searchButton.getBoundingClientRect().bottom;
+            // Keep the small desktop correction without pushing tall mobile filters far down.
+            const nextOffset = Math.min(24, Math.max(0, box.height / 2 - (buttonBottom - box.top)));
+            boundary = buttonBottom - heroTop - offset + nextOffset;
+            if (nextOffset !== offset) {
+                panel.style.insetBlockStart = `${nextOffset}px`;
+                panel.style.marginBlockEnd = `${nextOffset}px`;
+                offset = nextOffset;
+            }
+        }
+        const value = `${boundary}px`;
         if (hero.style.getPropertyValue("--hero-search-backdrop-height") !== value) {
             hero.style.setProperty("--hero-search-backdrop-height", value);
         }
     };
-    // Only the background changes, never the observed content dimensions;
-    // no animation frame loop or ResizeObserver feedback is needed.
+    // The offset depends on intrinsic panel dimensions, so layout settles after resizing.
     const observer = new ResizeObserver(fitBackdrop);
     observer.observe(content);
     observer.observe(panel);
+    if (searchButton) observer.observe(searchButton);
     window.addEventListener("resize", fitBackdrop, { passive: true });
     document.fonts.ready.then(fitBackdrop);
     fitBackdrop();

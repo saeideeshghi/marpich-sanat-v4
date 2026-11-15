@@ -1,6 +1,6 @@
 /* Shared fallback until consultation endpoints are available. */
-export function initPendingForms() {
-    document.querySelectorAll("[data-pending-form]").forEach((form) => {
+export function initPendingForms(scope = document) {
+    scope.querySelectorAll("[data-pending-form]").forEach((form) => {
         if (form.dataset.pendingInitialized) return;
         form.dataset.pendingInitialized = "true";
         form.addEventListener("submit", (event) => {
@@ -23,7 +23,9 @@ export function initPendingForms() {
                 status.setAttribute("role", "status");
                 form.append(status);
             }
-            status.textContent = "ثبت آنلاین درخواست هنوز فعال نیست؛ لطفاً از راه‌های تماس با ما استفاده کنید.";
+            status.textContent =
+                form.querySelector("[data-pending-message]")?.textContent?.trim() ||
+                "ثبت آنلاین درخواست هنوز فعال نیست؛ لطفاً از راه‌های تماس با ما استفاده کنید.";
         });
     });
 }

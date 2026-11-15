@@ -1,6 +1,6 @@
 // Only badges whose natural slot wraps occupy a full row. Measuring after
 // removing the promotion avoids a narrow/full-row ResizeObserver feedback loop.
-const badgeSelector = ".site-card__media-tag, .site-card__meta-tag, .site-card__status-tag";
+const badgeSelector = ".site-card__meta-tag, .site-card__status-tag";
 const initializedParents = new WeakSet();
 
 function textLineCount(badge) {
@@ -22,6 +22,8 @@ function textLineCount(badge) {
 export function initBadgeRows(scope = document) {
     const groups = new Map();
     scope.querySelectorAll(`main :is(${badgeSelector})`).forEach((badge) => {
+        if (badge.matches(".product-card__spec, .product-details__quick-spec-item")) return;
+        if (badge.closest(".projects-page__card-meta")) return;
         const parent = badge.parentElement;
         if (initializedParents.has(parent)) return;
         if (!groups.has(parent)) groups.set(parent, []);

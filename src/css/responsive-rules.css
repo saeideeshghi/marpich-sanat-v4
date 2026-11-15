@@ -10,11 +10,25 @@ body[data-page] :is(input:not([type="checkbox"]):not([type="radio"]):not([type="
 }
 body[data-page] :is(p.site-prose, .industry-textile__faq-answer) {
     font-size: var(--body-font-size);
-    line-height: 1.95;
     text-align: right;
     word-break: normal;
     overflow-wrap: break-word;
     text-wrap: pretty;
+}
+body[data-page]
+    :is(
+        .site-hero__description,
+        p.site-prose:not(.site-card__description),
+        .industry-textile__faq-answer,
+        .home-process-step > p,
+        .contact-cooperation__intro,
+        .contact-cooperation__item > p,
+        .site-footer__description
+    ) {
+    line-height: var(--hero-description-line-height) !important;
+}
+body[data-page] :is(.site-card__description, .article-card__description):not([hidden]) {
+    line-height: var(--card-description-line-height) !important;
 }
 body[data-page] main :is(h1, h2, h3, h4, p, li, dd, a, button) {
     word-break: normal;

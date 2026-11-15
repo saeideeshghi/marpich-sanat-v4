@@ -6,7 +6,10 @@
 }
 
 .industry-textile {
-    overflow: clip;
+    /* Let the summary overlap the hero without pulling the main background up. */
+    display: flow-root;
+    overflow-x: clip;
+    overflow-y: visible;
     background:
         linear-gradient(
             96deg,
@@ -150,7 +153,7 @@
     position: relative;
     padding: 0.25rem 1rem;
     border: 0;
-    text-align: center;
+    text-align: start;
 }
 
 .industry-textile__summary-item:not(:last-child)::after {

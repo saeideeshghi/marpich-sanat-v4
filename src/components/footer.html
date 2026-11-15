@@ -169,3 +169,240 @@
         ><i class="fa-solid fa-chevron-up" aria-hidden="true"></i
     ></a>
 </footer>
+<template data-consultation-panel-template>
+    <dialog class="site-agent-panel" id="site-agent-panel" aria-labelledby="site-agent-panel-title" hidden>
+        <div class="site-agent-panel__header">
+            <span class="site-agent-panel__mark"
+                ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z" /></svg
+            ></span>
+            <div>
+                <h2 id="site-agent-panel-title">با هم نیاز پروژه را روشن کنیم.</h2>
+                <small>مشاور مارپیچ · پاسخ ساده، بررسی دقیق‌تر</small>
+            </div>
+            <div class="site-agent-panel__tools">
+                <button type="button" class="site-agent-panel__tool" data-agent-help aria-label="راهنمای استفاده"
+                    ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M9.1 8a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4M12 17h.01 M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                        /></svg
+                ></button>
+                <button
+                    type="button"
+                    class="site-agent-panel__tool"
+                    data-agent-expand
+                    aria-label="نمای تمام‌صفحه"
+                    aria-pressed="false"
+                    ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5" /></svg
+                ></button>
+                <button type="button" class="site-agent-panel__tool" data-agent-close aria-label="بستن پنجره"
+                    ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="m6 6 12 12M6 18 18 6" /></svg
+                ></button>
+            </div>
+        </div>
+        <ol class="site-agent-panel__stages">
+            <li aria-current="step"><i aria-hidden="true">1</i> شناخت نیاز</li>
+            <li><i aria-hidden="true">2</i> جزئیات و پرسش‌ها</li>
+            <li><i aria-hidden="true">3</i> مرور برای کارشناس</li>
+        </ol>
+        <div class="site-agent-panel__tabs" role="tablist" aria-label="مشاور نیاز پروژه">
+            <button type="button" id="agent-tab-chat" role="tab" aria-controls="agent-chat" aria-selected="true"
+                >گفتگو</button
+            >
+            <button
+                type="button"
+                id="agent-tab-options"
+                role="tab"
+                aria-controls="agent-options"
+                aria-selected="false"
+                tabindex="-1"
+                >گزینه‌ها</button
+            >
+            <button
+                type="button"
+                id="agent-tab-needs"
+                role="tab"
+                aria-controls="agent-needs"
+                aria-selected="false"
+                tabindex="-1"
+                >نیازهای من</button
+            >
+            <button
+                type="button"
+                id="agent-tab-demo"
+                role="tab"
+                aria-controls="agent-demo"
+                aria-selected="false"
+                tabindex="-1"
+            >
+                نسخهٔ نمایشی مشاور
+            </button>
+        </div>
+        <div class="site-agent-panel__chat" id="agent-chat" role="tabpanel" aria-labelledby="agent-tab-chat">
+            <div class="site-agent-panel__toolbar">هر سؤال مرتبطی دارید بپرسید</div>
+            <div class="site-agent-panel__scroll">
+                <p class="site-agent-panel__date">گفتگوی همین پروژه</p>
+                <div class="site-agent-panel__message">
+                    <span class="site-agent-panel__mark"
+                        ><svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z" /></svg
+                    ></span>
+                    <div class="site-agent-panel__bubble">
+                        <strong>از کجا شروع کنیم؟</strong>
+                        <p>یک سؤال یا یک توضیح کوتاه کافی است.</p>
+                        <div class="site-agent-panel__choices">
+                            <button type="button" data-agent-compose>از نیازم بگم</button>
+                            <button type="button" data-agent-compose>درباره محصول سؤال دارم</button>
+                            <button type="button" data-agent-compose>مشخصات فنی دارم</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="site-agent-panel__composer">
+                <label class="sr-only" for="site-agent-panel-message">پیام شما</label>
+                <textarea
+                    id="site-agent-panel-message"
+                    rows="1"
+                    maxlength="2000"
+                    placeholder="از فضا، مسئله یا سؤالت بگو…"
+                    required
+                ></textarea>
+                <button class="site-agent-panel__submit" type="submit"
+                    ><span>ارسال</span
+                    ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M12 20V4m-6 6 6-6 6 6" /></svg
+                ></button>
+            </form>
+            <small class="site-agent-panel__caption"
+                ><svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path d="M5 10h14v11H5V10m3 0V6a4 4 0 0 1 8 0v4" />
+                </svg>
+                گفتگوی شما همراه نیاز پروژه برای بررسی آماده می‌شود.</small
+            >
+        </div>
+        <div
+            class="site-agent-panel__context"
+            id="agent-options"
+            role="tabpanel"
+            aria-labelledby="agent-tab-options"
+            hidden
+        >
+            <p>محصولات مرتبط با پروژه را در کاتالوگ بررسی کنید.</p>
+            <a class="site-agent-panel__submit" href="products.html">محصولات</a>
+        </div>
+        <div
+            class="site-agent-panel__context"
+            id="agent-needs"
+            role="tabpanel"
+            aria-labelledby="agent-tab-needs"
+            hidden
+        >
+            <p data-agent-summary hidden></p>
+            <p data-agent-empty>یک سؤال یا یک توضیح کوتاه کافی است.</p>
+            <form class="site-agent-panel__request" data-pending-form hidden>
+                <label for="site-agent-panel-name">نام و نام خانوادگی</label>
+                <input id="site-agent-panel-name" type="text" name="name" autocomplete="name" required />
+                <label for="site-agent-panel-phone">شماره تماس</label>
+                <input id="site-agent-panel-phone" type="tel" name="phone" autocomplete="tel" required />
+                <input type="hidden" name="description" />
+                <button class="site-agent-panel__submit" type="submit">ارسال درخواست</button>
+                <span data-pending-message hidden
+                    >ثبت آنلاین درخواست هنوز فعال نیست؛ لطفاً از راه‌های تماس با ما استفاده کنید.</span
+                >
+            </form>
+            <a href="contact.html#contact-form">با کارشناس ادامه بدهم</a>
+        </div>
+        <div class="site-agent-panel__demo" id="agent-demo" role="tabpanel" aria-labelledby="agent-tab-demo" hidden>
+            <details class="site-agent-panel__demo-guide">
+                <summary>مراحل استفاده از مشاور</summary>
+                <ol>
+                    <li>سؤال یا نیاز پروژه را بنویسید.</li>
+                    <li>محصولات پیشنهادی و برداشت مشاور را بررسی کنید.</li>
+                    <li>اطلاعات نمونه را برای مرور کارشناس آماده کنید.</li>
+                </ol>
+                <p>پیام‌ها و پرونده‌های این بخش نمونه هستند.</p>
+            </details>
+            <iframe
+                title="نسخهٔ نمایشی مشاور"
+                sandbox="allow-scripts allow-forms allow-downloads"
+                referrerpolicy="no-referrer"
+            ></iframe>
+        </div>
+    </dialog>
+</template>
+<button type="button" class="site-agent-cta" aria-label="مشاور نیاز پروژه">
+    <span class="site-agent-cta__icon" aria-hidden="true"
+        ><svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+        >
+            <path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z" /></svg
+    ></span>
+    <span class="site-agent-cta__copy">
+        <strong>مشاور نیاز پروژه</strong>
+        <small>سؤال بپرسید، با خیال راحت</small>
+    </span>
+</button>

@@ -38,7 +38,7 @@ body[data-page] {
     --card-tag-font-size-mobile: 10px;
     --card-description-lines: 2;
     --card-title-line-height: 1.7;
-    --card-description-line-height: 1.85;
+    --card-description-line-height: var(--hero-description-line-height);
     --body-font-size-desktop: 16px;
     --body-font-size-tablet: 16px;
     --body-font-size-mobile: 15px;

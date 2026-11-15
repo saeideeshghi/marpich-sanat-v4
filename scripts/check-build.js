@@ -95,7 +95,7 @@ for (const file of files) {
     if (definition) {
         if (definition.locale === "en") {
             assert(
-                html.includes('data-locale-source="assets/customizer/template-overrides.css"'),
+                html.includes('data-locale-source="assets/customizer/template-overrides.en.css"'),
                 `${file}: missing localized customizer CSS`,
             );
             const ast = postcss.parse(styles.map((style) => readFileSync(builtFile(style), "utf8")).join("\n"));
@@ -117,7 +117,7 @@ for (const file of files) {
             assert(html.includes(base + "assets/logos/logo-international.svg"), file + ": international wordmark");
         } else
             assert(
-                styles.includes("assets/customizer/template-overrides.css"),
+                styles.includes(`assets/customizer/template-overrides${definition.locale === "ar" ? ".ar" : ""}.css`),
                 `${file}: missing approved customizer CSS`,
             );
     }

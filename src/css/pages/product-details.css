@@ -26,7 +26,7 @@
     border: 1px solid #0f172b;
     border-radius: 12px;
     color: #28344b;
-    direction: rtl;
+    direction: inherit;
     font-size: 14px;
 }
 
@@ -77,7 +77,7 @@
     align-items: center;
     gap: 8px;
     padding: 8px 12px;
-    direction: rtl;
+    direction: inherit;
     text-align: right;
 }
 
@@ -101,7 +101,7 @@
     background: linear-gradient(90deg, #f76e11 0%, #f4824c 100%);
     padding: 0 48px 0 12px;
     color: #fff;
-    direction: rtl;
+    direction: inherit;
     text-align: right;
     font-size: 14px;
     font-weight: 500;
@@ -196,7 +196,7 @@
 }
 
 body[data-page="product-details"] .product-details__description p.site-prose {
-    direction: rtl;
+    direction: inherit;
     text-align: justify;
     text-align-last: right;
     text-justify: inter-word;
@@ -241,4 +241,50 @@ body[data-page="product-details"] .product-details__description p.site-prose {
     body[data-page="product-details"] .product-details__view-controls {
         align-self: flex-end;
     }
+}
+
+/* Align each icon at the reading edge of its column. */
+body[data-page="product-details"] .product-details__quick-specs.site-card__meta-row {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+}
+body[data-page="product-details"] .product-details__quick-specs .product-details__quick-spec-item {
+    direction: inherit !important;
+    justify-content: flex-start;
+    width: 100%;
+    min-width: 0;
+}
+body[data-page="product-details"] .product-details__quick-spec-item > span {
+    min-width: 0;
+    flex: 1;
+    direction: inherit;
+    text-align: start;
+}
+body[data-page="product-details"] .details-table--product :is(th, td) {
+    text-align: start !important;
+}
+
+/* Follow the locale’s reading direction and center values vertically. */
+body[data-page="product-details"] .product-details__quick-specs .product-details__quick-spec-item {
+    align-items: center;
+}
+html[lang] body[data-page="product-details"] .product-details__quick-specs .product-details__quick-spec-item > span {
+    text-align: start !important;
+    text-align-last: start !important;
+}
+
+/* Mirror the Persian download layout and reserve a separate column for the icon. */
+html[lang="en"] body[data-page="product-details"] .product-details__download-button {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20px;
+    align-items: center;
+    gap: 8px;
+    padding: 8px clamp(10px, 1.4vw, 20px);
+    text-align: center;
+}
+
+html[lang="en"] body[data-page="product-details"] .product-details__download-button > img {
+    position: static;
+    transform: none;
 }

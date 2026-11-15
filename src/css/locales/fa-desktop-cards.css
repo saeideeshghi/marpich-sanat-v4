@@ -1,0 +1,98 @@
+/* Carry the English desktop card sizing into Persian without replacing its font. */
+@media (min-width: 1180px) {
+    html[lang="fa"]
+        body:is([data-page="expertise"], [data-page="projects"])
+        .site-card:not(.article-card)
+        .site-card__title {
+        font-size: 16px !important;
+        font-weight: 700;
+    }
+
+    html[lang="fa"]
+        body:is([data-page="expertise"], [data-page="projects"])
+        .site-card:not(.article-card)
+        .site-card__description:not([hidden]) {
+        font-size: 14px !important;
+        max-height: none;
+    }
+
+    html[lang="fa"]
+        body:is([data-page="products"], [data-page="industries"])
+        :is(.featured-card__title, .pcm-expanded__title, .product-card__title, .site-card__title) {
+        font-size: 20px !important;
+    }
+
+    html[lang="fa"]
+        body:is([data-page="products"], [data-page="industries"])
+        :is(
+            .featured-card__description,
+            .pcm-expanded__description,
+            .product-card__description,
+            .site-card__description
+        ) {
+        font-size: 16px !important;
+    }
+
+    html[lang="fa"] body[data-page="expertise"] .site-card .expertise-page__card-title {
+        font-size: 24px !important;
+    }
+
+    html[lang="fa"] body[data-page="expertise"] .site-card .expertise-page__more-link {
+        font-size: 16px !important;
+    }
+
+    html[lang="fa"] body[data-page="home"] main :is(#expertise, #projects, #products) .site-card__title,
+    html[lang="fa"] body[data-page="projects"] .site-card .site-card__title {
+        font-size: 16px !important;
+    }
+
+    html[lang="fa"] body[data-page="home"] main :is(#expertise, #projects, #products) .site-card__description,
+    html[lang="fa"] body[data-page="projects"] .site-card .site-card__description {
+        font-size: 14px !important;
+    }
+
+    html[lang="fa"]
+        body[data-page="home"]
+        main
+        :is(#expertise, #projects, #products)
+        .site-card:not(.article-card)
+        .site-card__description {
+        margin-top: 0;
+    }
+
+    html[lang="fa"] body[data-page="home"] main #expertise .site-card:not(.article-card) .site-card__description {
+        color: #000;
+        font-size: 19px !important;
+    }
+}
+
+html[lang="fa"]
+    body:is(#top, [data-page])[data-page]
+    :is(.site-card, .featured-card)
+    :is(.site-card__title, .featured-card__title),
+html[lang="fa"]
+    body:is(#top, [data-page])[data-page="home"]
+    :is(#expertise, #projects, #products, #articles)
+    .site-card__title {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+
+html[lang="fa"]
+    body:is(#top, [data-page])[data-page]
+    :is(.site-card, .featured-card)
+    :is(.site-card__description, .featured-card__description),
+html[lang="fa"]
+    body:is(#top, [data-page])[data-page="home"]
+    :is(#expertise, #projects, #products, #articles)
+    .site-card__description {
+    font-size: 16px !important;
+}
+
+html[lang="fa"] body[data-page="home"] #expertise .home-expertise-grid .site-card__title + span[aria-hidden="true"] {
+    margin-block-end: 8px;
+}
+
+html[lang="fa"] body[data-page="home"] #expertise .home-expertise-grid .site-card__description {
+    margin-block-start: 0 !important;
+}

@@ -5,6 +5,7 @@ import { initAccordions } from "./components/accordion.js";
 import { initTestimonials } from "./components/testimonials.js";
 import { initCatalogs } from "./components/catalog.js";
 import { initConsultationForms } from "./components/consultation.js";
+import { initConsultationPanel } from "./components/consultation-panel.js";
 import { scheduleSitePatterns } from "./components/site-decorations.js";
 import { initPageBackground } from "./components/page-background.js";
 import { initHeroLayout } from "./components/hero.js";
@@ -31,6 +32,7 @@ export function initSite() {
     initBadgeRows();
     initCardLinks();
     initConsultationForms();
+    initConsultationPanel();
     scheduleSitePatterns();
     // Consumers such as the visual editor can wait for the page modules/CSS
     // before measuring its actual responsive layout.

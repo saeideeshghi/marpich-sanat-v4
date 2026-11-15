@@ -76,9 +76,11 @@ export function tokenContract(tokens) {
                                     ? "line-height"
                                     : kind === "integer"
                                       ? "order"
-                                      : /(?:image-left|image-top|summary-overlap|margin-top)/.test(name)
+                                      : /(?:image-left|image-top|summary-overlap)/.test(name)
                                         ? "margin-left"
-                                        : "width",
+                                        : /margin-top/.test(name)
+                                          ? "margin-top"
+                                          : "width",
                 },
             ];
         }),

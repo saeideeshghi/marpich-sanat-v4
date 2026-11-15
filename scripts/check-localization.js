@@ -65,11 +65,20 @@ for (const page of pages) {
         }
         assert(/<span\b[^>]*lang="fa"[^>]*>\s*فارسی<\/span/.test(translated), "Keep native language labels");
         if (locale === "en") assert(/<dialog\b[^>]*dir="ltr"/.test(translated), "English dialog direction");
+        const sourceLogoCount = (rendered.match(/src="\/assets\/logos\/(?:LOGO|logo-symbol-left)\.svg"/g) || []).length;
+        const internationalLogoCount = (translated.match(/src="\/assets\/logos\/logo-international\.svg"/g) || [])
+            .length;
         assert.equal(
-            (translated.match(/src="\/assets\/logos\/logo-international\.svg"/g) || []).length,
-            (rendered.match(/src="\/assets\/logos\/(?:LOGO|logo-symbol-left)\.svg"/g) || []).length,
-            "International logo in desktop/mobile header and footer: " + locale + "/" + page.file,
+            internationalLogoCount,
+            locale === "en" ? sourceLogoCount : 0,
+            "Use the outlined international logo in English only: " + locale + "/" + page.file,
         );
+        if (locale !== "en")
+            assert.equal(
+                (translated.match(/src="\/assets\/logos\/(?:LOGO|logo-symbol-left)\.svg"/g) || []).length,
+                sourceLogoCount,
+                "Keep Persian/Arabic logos unchanged: " + locale + "/" + page.file,
+            );
         for (const href of translated.matchAll(/href="(\/(?:en|ar)\/[^"?#]+\.html)/g))
             assert(
                 localizedPages.some((p) => "/" + p.file === href[1]),

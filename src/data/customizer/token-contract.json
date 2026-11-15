@@ -166,7 +166,11 @@
   },
   "--card-description-font-size": {
     "kind": "length",
-    "selectors": ["body[data-page=\"expertise\"] .expertise-page__card", "body[data-page]"],
+    "selectors": [
+      "html:where([lang=\"en\"], [lang=\"ar\"]) body[data-page]:not(#mobile-card-type-reset)",
+      "body[data-page=\"expertise\"] .expertise-page__card",
+      "body[data-page]"
+    ],
     "editable": true,
     "property": "width"
   },
@@ -206,7 +210,10 @@
   },
   "--card-link-font-size": {
     "kind": "length",
-    "selectors": ["body[data-page]"],
+    "selectors": [
+      "html:where([lang=\"en\"], [lang=\"ar\"]) body[data-page]:not(#mobile-card-type-reset)",
+      "body[data-page]"
+    ],
     "editable": true,
     "property": "width"
   },
@@ -284,7 +291,11 @@
   },
   "--card-title-font-size": {
     "kind": "length",
-    "selectors": ["body[data-page=\"expertise\"] .expertise-page__card", "body[data-page]"],
+    "selectors": [
+      "html:where([lang=\"en\"], [lang=\"ar\"]) body[data-page]:not(#mobile-card-type-reset)",
+      "body[data-page=\"expertise\"] .expertise-page__card",
+      "body[data-page]"
+    ],
     "editable": true,
     "property": "width"
   },
@@ -414,6 +425,30 @@
   "--details-section-gap": {
     "kind": "length",
     "selectors": ["body[data-page]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--en-card-cta-size": {
+    "kind": "length",
+    "selectors": ["html[lang=\"en\"] body[data-page=\"expertise\"]"],
+    "editable": true,
+    "property": "width"
+  },
+  "--en-card-description-size": {
+    "kind": "length",
+    "selectors": [
+      "html[lang=\"en\"] body[data-page=\"expertise\"]",
+      "html[lang=\"en\"] body:is([data-page=\"products\"], [data-page=\"industries\"], [data-page=\"product-details\"])"
+    ],
+    "editable": true,
+    "property": "width"
+  },
+  "--en-card-title-size": {
+    "kind": "length",
+    "selectors": [
+      "html[lang=\"en\"] body[data-page=\"expertise\"]",
+      "html[lang=\"en\"] body:is([data-page=\"products\"], [data-page=\"industries\"], [data-page=\"product-details\"])"
+    ],
     "editable": true,
     "property": "width"
   },
@@ -751,7 +786,7 @@
     "kind": "length",
     "selectors": ["body[data-page=\"home\"]"],
     "editable": true,
-    "property": "margin-left"
+    "property": "margin-top"
   },
   "--icon-size": {
     "kind": "length",
@@ -913,6 +948,12 @@
     "selectors": [".pcm-root"],
     "editable": false,
     "reason": "از motion.heroRadius در src/data/product-motion/config.json تنظیم کن؛ موتور انیمیشن این مقدار را برای باکس انتخاب‌شده و لایهٔ متحرک هماهنگ می‌کند.",
+    "property": "width"
+  },
+  "--process-icon-row": {
+    "kind": "length",
+    "selectors": ["html[lang=\"en\"] .home-process-steps", ".home-process-steps"],
+    "editable": true,
     "property": "width"
   },
   "--project-body-font-size": {
@@ -1081,7 +1122,10 @@
   },
   "--section-title-font-size": {
     "kind": "length",
-    "selectors": ["body[data-page]"],
+    "selectors": [
+      "html:where([lang=\"en\"], [lang=\"ar\"]) body[data-page]:not(#mobile-card-type-reset)",
+      "body[data-page]"
+    ],
     "editable": true,
     "property": "width"
   },

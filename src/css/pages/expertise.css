@@ -124,11 +124,10 @@ body[data-page="expertise"]
     color: #79b6ed;
     line-height: 1.6;
 }
-.expertise-page__more-link i {
-    font-size: 10px;
+.expertise-page__more-link .site-card__arrow {
     transition: rotate 180ms ease;
 }
-.expertise-page__more-link[aria-expanded="true"] i {
+.expertise-page__more-link[aria-expanded="true"] .site-card__arrow {
     rotate: -90deg;
 }
 .expertise-page__details {

@@ -29,10 +29,14 @@ for (const page of pages) {
     const preloads = [...html.matchAll(/<link\b[^>]*rel="modulepreload"[^>]*href="([^"]+)"/g)].map((m) => m[1]);
     if ((page.sourceName || page.name) !== "home")
         assert(
-            preloads.some((url) => /\/header-/.test(url)),
+            preloads.some((url) => /\/header(?:_locale_(?:fa|en|ar))?-/.test(url)),
             `${page.file}: preload the header pattern`,
         );
-    else assert(!preloads.some((url) => /\/header-/.test(url)), "Home must not download an unused header pattern");
+    else
+        assert(
+            !preloads.some((url) => /\/header(?:_locale_(?:fa|en|ar))?-/.test(url)),
+            "Home must not download an unused header pattern",
+        );
     for (const url of preloads) assert(existsSync(assetPath(url)), `Missing preloaded module ${url}`);
     for (const url of [...css, ...scripts]) assert(existsSync(assetPath(url)), `Missing ${url}`);
     const imagePreloads = [...html.matchAll(/<link\b[^>]*rel="preload"[^>]*as="image"[^>]*href="([^"]+)"/g)].map(

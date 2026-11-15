@@ -82,14 +82,17 @@ export function translateHTML(html, locale, root, page) {
                     locale === "en" && !/\blang="(?:fa|ar)"/.test(token)
                         ? token.replace(/\bdir="rtl"/g, 'dir="ltr"')
                         : token;
+                const localizedBrand =
+                    locale === "en"
+                        ? directional.replace(
+                              /\bsrc="\/assets\/logos\/(?:LOGO|logo-symbol-left)\.svg"/g,
+                              'src="/assets/logos/logo-international.svg"',
+                          )
+                        : directional;
                 return (
-                    directional
-                        // The international wordmark contains outlined Latin lettering;
-                        // localizing the image at build time adds no runtime/font request.
-                        .replace(
-                            /\bsrc="\/assets\/logos\/(?:LOGO|logo-symbol-left)\.svg"/g,
-                            'src="/assets/logos/logo-international.svg"',
-                        )
+                    // The international wordmark contains outlined Latin lettering;
+                    // keep Arabic on the original Persian mark and localize English at build time.
+                    localizedBrand
                         .replace(
                             /\b(alt|aria-label|placeholder|title|content)="([^"]*)"/g,
                             (_, key, value) => key + '="' + translateText(value, messages) + '"',

@@ -1,0 +1,125 @@
+/* Fit three specifications when there is room, then wrap to two plus one. */
+body:is([data-page="products"], [data-page="industries"], [data-page="air-handling"]) main .product-card__specs {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 6px;
+}
+
+body:is([data-page="products"], [data-page="industries"], [data-page="air-handling"]) main .product-card__spec {
+    display: flex;
+    flex: 1 1 min(96px, 45%);
+    min-width: 0;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.site-card__arrow:not(.site-card__chevron) {
+    display: inline-block;
+    flex: 0 0 auto;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: normal;
+    transform: none;
+    scale: none;
+}
+
+/* Project metadata stays in one three-cell row, including on narrow screens. */
+body[data-page="projects"] main .projects-page__card-meta {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 6px;
+}
+
+body[data-page="projects"] main .projects-page__card-meta > span {
+    display: grid;
+    min-width: 0;
+    height: 44px;
+    align-items: center;
+    justify-items: center;
+    overflow: hidden;
+    padding: 3px 5px !important;
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+    overflow-wrap: anywhere;
+    text-align: center;
+    text-overflow: clip;
+    white-space: normal !important;
+}
+
+/* Industry card titles keep one line; their descriptions stop after two. */
+body[data-page="industries"] main .industry-card .product-card__title,
+body[data-page="industries"] main .industry-feature__content h2 {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+body[data-page="industries"] main .industry-card .product-card__description,
+body[data-page="industries"] main .industry-feature__content p {
+    display: -webkit-box !important;
+    overflow: hidden !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+}
+
+/* The shared cards use the same chevron as Featured Projects. */
+.site-card__chevron {
+    flex: none;
+    font-size: 0.65em;
+    line-height: 1;
+}
+
+html[dir="ltr"] .site-card__chevron {
+    scale: -1 1;
+}
+
+html[lang="en"]
+    body[data-page]
+    main
+    :is(
+        .product-card__specs,
+        .projects-page__card-meta,
+        .article-card__meta,
+        .industry-textile__product-specs,
+        .industry-textile__project-meta,
+        .project-details__product-specs
+    )
+    > span {
+    text-align: center !important;
+    text-align-last: center !important;
+    padding-inline: 5px !important;
+    direction: ltr;
+    border: 1px solid #dfe5ee;
+    border-radius: 5px;
+    color: #5a6476;
+    background: #f8fafc;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+@media (max-width: 767px) {
+    html[lang="en"]
+        body[data-page]
+        main
+        :is(
+            .product-card__specs,
+            .projects-page__card-meta,
+            .article-card__meta,
+            .industry-textile__product-specs,
+            .industry-textile__project-meta,
+            .project-details__product-specs
+        )
+        > span {
+        min-height: 36px !important;
+        padding-block: 3px !important;
+        font-size: 11px !important;
+        line-height: 1.25 !important;
+    }
+}

@@ -536,7 +536,6 @@ body[data-page="home"] .home-process-steps > li.home-process-step:nth-of-type(1)
 @media (min-width: 1180px) {
 body[data-page="home"] .home-process-steps > li.home-process-step:nth-of-type(1) {
     text-align-last: center !important;
-    align-items: center !important;
 }
 }
 @media (min-width: 1180px) {

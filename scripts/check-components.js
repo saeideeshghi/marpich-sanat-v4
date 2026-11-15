@@ -61,8 +61,11 @@ assert(
 );
 for (const file of ["index.html", "about.html", "expertise.html"]) {
     const html = renderPage(readFileSync(resolve(root, file), "utf8"), file, root);
+    const panel = html.match(/<template\b[^>]*\bdata-consultation-panel-template\b[^>]*>[\s\S]*?<\/template>/)?.[0];
+    assert(panel, file + ": missing consultation panel");
+    const page = html.replace(panel, "");
     assert.equal(
-        (html.match(/data-pending-form/g) || []).length,
+        (page.match(/data-pending-form/g) || []).length,
         2,
         `${file}: both original consultation layouts in a single component`,
     );

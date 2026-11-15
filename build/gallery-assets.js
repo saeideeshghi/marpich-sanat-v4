@@ -6,6 +6,18 @@ import { resolve } from "node:path";
 // owner's source asset stay unchanged. Other/custom exports pass through.
 export function galleryPhoto(source) {
     if (
+        source.includes('viewBox="0 0 1447 385"') &&
+        source.includes('filter="url(#filter0_d_1502_35959)"') &&
+        source.includes('height="364.939"') &&
+        source.includes('transform="matrix(-1 0 0 1 1445.9 6)"')
+    ) {
+        return source
+            .replace('height="385"', 'height="364.939"')
+            .replace('viewBox="0 0 1447 385"', 'viewBox="0 6 1447 364.939"')
+            .replace('filter="url(#filter0_d_1502_35959)"', "");
+    }
+
+    if (
         !source.includes('viewBox="0 0 1440 385"') ||
         !source.includes('filter="url(#filter0_d_13_846)"') ||
         !source.includes('height="364.939"') ||

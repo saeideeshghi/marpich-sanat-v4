@@ -1,6 +1,5 @@
-/* Center text inside dedicated badge roles, including wrapped lines and
- * block/flex/grid layouts. Sizes, colours, padding and positions stay page-owned. */
-body[data-page] main :is(.site-card__media-tag, .site-card__meta-tag, .site-card__status-tag) {
+/* Center text in content chips; image labels use the shared fixed geometry below. */
+body[data-page] main :is(.site-card__meta-tag, .site-card__status-tag) {
     direction: rtl;
     text-align: center;
     text-align-last: center;
@@ -11,7 +10,7 @@ body[data-page] main :is(.site-card__media-tag, .site-card__meta-tag, .site-card
 
 /* The JS enhancement adds this only when the original badge slot wraps. Short
  * badges keep their page-owned geometry; long badges get a complete grid/flex row. */
-body[data-page] main :is(.site-card__media-tag, .site-card__meta-tag, .site-card__status-tag)[data-badge-wrapped] {
+body[data-page] main :is(.site-card__meta-tag, .site-card__status-tag)[data-badge-wrapped] {
     display: flex !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -25,11 +24,43 @@ body[data-page] main :is(.site-card__media-tag, .site-card__meta-tag, .site-card
     white-space: normal !important;
     overflow-wrap: anywhere;
 }
-body[data-page] main .site-card__media-tag[data-badge-wrapped] {
-    inset-inline: 0;
-}
-
-body[data-page] main :is(.site-card__media-tag, .site-card__meta-tag, .site-card__status-tag) :where(span, small) {
+body[data-page] main :is(.site-card__meta-tag, .site-card__status-tag) :where(span, small) {
     text-align: inherit;
     text-align-last: inherit;
+}
+
+/* Image labels share one fixed footprint across every page and card type. */
+body[data-page]
+    main
+    :is(
+        .site-card__media-tag,
+        .article-card__category,
+        .projects-page__card-category,
+        .home-product-category,
+        .product-card__category,
+        .industry-card__tag,
+        .project-details__product-media-tag,
+        .industry-textile__product-media > span,
+        .industry-textile__project-media > span
+    ) {
+    box-sizing: border-box;
+    display: flex !important;
+    width: min(150px, 100%) !important;
+    min-width: 0 !important;
+    max-width: min(150px, 100%) !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    padding: 0 10px !important;
+    border-radius: 4px !important;
+    color: #fff !important;
+    font-size: 12px !important;
+    line-height: 1.25 !important;
+    text-align: center !important;
+    text-overflow: ellipsis;
+    white-space: nowrap !important;
 }
